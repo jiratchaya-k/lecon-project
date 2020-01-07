@@ -23,7 +23,7 @@ class AssignmentController extends Controller
                 ->join('subjects','subjects.id', '=','assignments.subject_id')
                 ->join('sections','subjects.section_id','=','sections.id')
 //                ->join('works','works.assignment_id','=','assignments.id')
-                ->select('*')
+                ->select('*','assignments.id')
                ->get();
 
 //            $submiited = DB::table('works')->where('assignment_id',1)->count();
@@ -148,8 +148,11 @@ class AssignmentController extends Controller
 
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
 
+            $allWorks = DB::table('works')->where('assignment_id',$id)->join('users','users.id','=','works.student_id')->select('*')->get();
+
+
             $fileType = json_decode($assignment->fileType);
-            return view('teacher.assignment-show',compact('assignment','fileType','sections'));
+            return view('teacher.assignment-show',compact('assignment','fileType','sections','allWorks'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
