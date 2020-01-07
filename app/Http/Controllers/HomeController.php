@@ -46,9 +46,10 @@ class HomeController extends Controller
             $assignments = DB::table('assignments')
                 ->join('subjects','subjects.id', '=','assignments.subject_id')
                 ->join('sections','subjects.section_id','=','sections.id')
-                ->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
+                ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
                 ->get();
 
+//            dd($assignments);
             return view('student.home',compact('assignments'));
         }else{
             redirect('/');

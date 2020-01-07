@@ -20,6 +20,7 @@
                                 </div>
 
                                 <div class="card-body">
+                                    <h6> id = {{$assignment->id}}</h6>
                                     <h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>
                                     <p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>
                                 </div>

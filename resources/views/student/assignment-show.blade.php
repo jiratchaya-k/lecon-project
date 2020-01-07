@@ -116,8 +116,6 @@
                             <div class="col-md-3 item-center mt-5 mb-3">
                                 <input class="btn btn-dark btn-submit" type="submit" value="ส่งงาน" style="background: #3956A3 !important; border: none; width: 100%">
                             </div>
-
-
                     </form>
 
                 </div>

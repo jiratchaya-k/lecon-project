@@ -154,6 +154,7 @@ class AssignmentController extends Controller
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
 
+
             $fileType = json_decode($assignment->fileType);
 
 
