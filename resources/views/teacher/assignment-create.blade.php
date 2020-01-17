@@ -252,7 +252,7 @@
 
 
                         <div class="col-md-5 item-center mt-5 mb-3">
-                            <input class="btn btn-dark btn-submit" type="submit" value="มอยหมายงาน" style="background: #3956A3 !important; border: none; width: 100%">
+                            <input class="btn btn-dark btn-submit" type="submit" value="มอบหมายงาน" style="background: #3956A3 !important; border: none; width: 100%">
                         </div>
                     </form>
                 </div>

@@ -66,5 +66,6 @@ Route::get('/teacher/assignment/create', 'AssignmentController@create');
 Route::post('/teacher/assignment/store', 'AssignmentController@store');
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
 Route::get('/assignment/{id}', 'AssignmentController@show');
+Route::get('/teacher/assignment/{title}/work={id}', 'AssignmentController@showWorkDetail');
 
 Route::post('/assignment/{id}/send', 'WorkController@store');
