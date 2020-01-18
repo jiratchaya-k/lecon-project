@@ -190,9 +190,21 @@ class AssignmentController extends Controller
     }
 
     public function showWorkDetail($title, $id) {
-        $works = DB::table('works')->select('*')->where('id',$id)->first();
+//        $works = DB::table('works')->select('*')->where('id',$id)->first();
+
+        $works = DB::table('works')->select('*','works.id')->where('works.id',$id)->join('users','works.student_id','=','users.id')->first();
 //        dd($works);
         return view('teacher.assignment-grade',compact('works'));
+    }
+
+    public function inputGrade(Request $request, $id)
+    {
+        //
+        $work = Work::find($id);
+        $work->grade = $request->input('grade');
+        $work->save();
+
+        return redirect('/teacher/assignment');
     }
 
 }

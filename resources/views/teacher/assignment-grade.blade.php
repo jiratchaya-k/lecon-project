@@ -114,39 +114,87 @@
                     </style>
 
                     <div class="container-fluid">
-                    <div class="container">
-                    <div class="card card-shadow col-md-12 item-center mb-3">
-                    <div class="card-body container">
+                        <div class="container">
+                            <div class="card card-shadow col-md-12 item-center mb-3">
+                                <div class="card-body container">
+                                    <form method="POST" action="/teacher/assignment/work={{$works->id}}/graded" enctype="multipart/form-data">
+                                        @csrf
+                                    <div class="table-responsive-xl">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th class="table-head" style="width: 100px!important;">รหัสนักศึกษา</th>
+                                                <th class="table-head">ชื่อ-นามสกุล</th>
+                                                <th class="table-head">ไฟล์งาน</th>
+                                                <th class="table-head">เกรด</th>
+                                                <th class="table-head">ให้เกรด</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>{{ $works->student_id }}</td>
+                                                    <td>{{ $works->firstname.' '.$works->lastname }}</td>
+
+                                                    <?php
+                                                    $file = json_decode($works->file);
+                                                    $countfile = count(json_decode($works->file));
+                                                    ?>
+                                                    <td>
+                                                        @for($i = 0; $i < $countfile; $i++)
+                                                            {{ $file[$i] }} <br>
+                                                        @endfor
+                                                    </td>
+
+                                                    <td>{{ $works->grade }}</td>
+                                                    <td>
+                                                        <select class="f-input ml-2 mt-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">
+                                                            <option value="A">A</option>
+                                                            <option value="B+">B+</option>
+                                                            <option value="B">B</option>
+                                                            <option value="C+">C+</option>
+                                                            <option value="C">C</option>
+                                                            <option value="D+">D+</option>
+                                                            <option value="D">D</option>
+                                                            <option value="DELETE">DELETE</option>
+                                                        </select>
+
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="container row mt-3">
+                                        @for($i = 0; $i < $countfile; $i++)
+                                            <div class="card mr-3" style="width: 18rem; box-shadow: none;">
+                                                <img class="card-img-top" src="/uploads/workFiles/{{ $file[$i] }}" alt="Card image cap">
+                                            </div>
+                                        @endfor
+                                    </div>
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6 text-right">
+                                                <input class="btn btn-primary btn-submit" type="submit" value="บันทึก">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a href="/teacher/assignment/{{$works->assignment_id}}" class="btn btn-primary btn-submit" style="background: darkgray!important;">
+                                                    ย้อนกลับ
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                </div>
 
 
-
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-
-                    </div>
-                    </div>
-                    {{--<div class="row">--}}
-                    {{--@if(count($assignments)>0)--}}
-                    {{--@foreach($assignments as $assignment)--}}
-                    {{--<a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">--}}
-                    {{--<div class="card card-shadow  mt-3 mb-2">--}}
-                    {{--<div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">--}}
-                    {{--<span>Sect.</span>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="card-body">--}}
-                    {{--<h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>--}}
-                    {{--<p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--@endforeach--}}
-                    {{--@else--}}
-                    {{--<div>--}}
-                    {{--<p>No Assignment</p>--}}
-                    {{--</div>--}}
-                    {{--@endif--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>
