@@ -55,6 +55,9 @@ Route::get('/teacher/subject/create', 'SubjectController@create');
 Route::post('/teacher/subject/store', 'SubjectController@store');
 Route::get('/teacher/subject/add-section', 'SubjectController@addSection');
 
+Route::get('/teacher/student-check', 'CheckStudentController@index');
+
+
 
 Route::get('/teacher/manage','ManageController@index');
 Route::get('/teacher/manage/create','ManageController@create');

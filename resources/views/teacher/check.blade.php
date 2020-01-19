@@ -102,30 +102,60 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
-    {{--<div class="container-fluid mt-10">--}}
+                    @if(count($subject_groups)>0)
+                        @foreach($subject_groups as $subject)
+                            <div class="col-md-12">
+                                <div class="card box-shadow mb-2">
+                                    <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
+                                <span class="fs-18">
+                                    @foreach($code as $sub_code)
+                                        {{ $sub_code->code }}
+                                    @endforeach
+                                    {{ $subject->name }}</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive-xl">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th class="table-head">กลุ่มเรียน</th>
+                                                    <th class="table-head">วัน</th>
+                                                    <th class="table-head">เวลา</th>
+                                                    <th class="table-head">วันที่เช็คชื่อ</th>
+                                                    <th class="table-head"> </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @if(count($subjects)>0)
+                                                    @foreach($subjects as $subj)
+                                                        <tr>
+                                                            <td>{{ $subj->section }}</td>
+                                                            <td>{{ $subj->date }}</td>
+                                                            <td>{{ $subj->startTime.' - '.$subj->endTime }}</td>
+                                                            <td>
+                                                                <div class="form-group mt-2">
+                                                                    <input class="form-control f-input" name="checkStudent_Date" type="date" id="date">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="" class="btn btn-primary btn-submit" style="width: 100%">
+                                                                    สร้าง QR CODE
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    {{--@foreach($sections as $sect)--}}
 
-                    {{--<div class="row">--}}
-                        {{--@if(count($assignments)>0)--}}
-                            {{--@foreach($assignments as $assignment)--}}
-                                {{--<a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">--}}
-                                    {{--<div class="card card-shadow  mt-3 mb-2">--}}
-                                        {{--<div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">--}}
-                                            {{--<span>Sect.</span>--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="card-body">--}}
-                                            {{--<h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>--}}
-                                            {{--<p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</a>--}}
-                            {{--@endforeach--}}
-                        {{--@else--}}
-                            {{--<div>--}}
-                                {{--<p>No Assignment</p>--}}
-                            {{--</div>--}}
-                        {{--@endif--}}
-                    {{--</div>--}}
+                                                    {{--@endforeach--}}
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
