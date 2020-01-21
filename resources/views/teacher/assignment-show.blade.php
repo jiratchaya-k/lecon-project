@@ -85,12 +85,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title" style=" float: left">งามที่มอบหมาย > {{ $assignment->title }}</h2>
-                            <div class="text-right mb-2">
-                                <a href="๒๒" class="btn btn-primary btn-submit" style="width: 20%;">
-                                    เปรียบเทียบงาน
-                                </a>
-                            </div>
+                            <h2 class="pageheader-title">งามที่มอบหมาย</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -188,7 +183,7 @@
                                     @foreach($allWorks as $work)
                                         <tr class="click-row" data-href="/teacher/assignment/work/{{$work->id}}">
 
-                                            <td>{{$work->student_id}} {{ $work->id }}</td>
+                                            <td>{{$work->student_id}}</td>
                                             <td>{{$work->firstname.' '.$work->lastname}}</td>
 
                                             <?php

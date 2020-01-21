@@ -24,7 +24,12 @@ class AssignmentController extends Controller
                 ->join('sections','subjects.section_id','=','sections.id')
 //                ->join('works','works.assignment_id','=','assignments.id')
                 ->select('*','assignments.id')
-               ->get();
+                ->get();
+
+
+
+
+//            dd($assignments);
 
 //            $submiited = DB::table('works')->where('assignment_id',1)->count();
 

@@ -131,9 +131,29 @@
                                                 <tr class="click-row" data-href="/teacher/assignment/{{$assignment->id}}">
                                                     <td>{{ $assignment->title }}</td>
                                                     <td>{{ $assignment->section }}</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
+
+                                                    <?php
+                                                        $countWorks = \Illuminate\Support\Facades\DB::table('works')->where('assignment_id',$assignment->id)->count();
+                                                        $countGraded = \Illuminate\Support\Facades\DB::table('works')->where('assignment_id',$assignment->id)->where('grade','!=','')->count();
+                                                    ?>
+
+
+                                                    <td>{{ $countWorks }}</td>
+                                                    <td>{{ $countGraded.'/'.$countWorks }}</td>
+                                                    <td>
+                                                        @if($countWorks != 0)
+                                                            @if($countWorks == $countGraded)
+                                                                ตรวจเสร็จแล้ว
+                                                            @elseif ($countGraded == 0)
+                                                                รอตรวจ
+                                                            @else
+                                                                กำลังตรวจ
+                                                            @endif
+                                                        @else
+                                                            ยังไม่มีงานที่ส่ง
+                                                        @endif
+
+                                                    </td>
                                                     <td>
                                                         <a href="#" class="ml-3">
                                                             <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
