@@ -87,7 +87,7 @@
                         <div class="page-header">
                             <h2 class="pageheader-title" style=" float: left">งามที่มอบหมาย</h2>
                             <div class="text-right mb-2">
-                                <a href="๒๒" class="btn btn-primary btn-submit" style="width: 20%;">
+                                <a id="myBtn" class="btn btn-primary btn-submit" style="width: 20%; color: white">
                                     เปรียบเทียบงาน
                                 </a>
                             </div>
@@ -106,7 +106,59 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
+                    <?php
+                    use Symfony\Component\Console\Input\Input;$file = json_decode($works->file);
+                    $countfile = count(json_decode($works->file));
+                    ?>
                     {{--<div class="container-fluid mt-10">--}}
+
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close text-right">&times;</span>
+                            <div class="container">
+                                <h3>เปรียบเทียบงาน</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6" style="border-right: 1px solid gray;">
+                                        @for($i = 0; $i < $countfile; $i++)
+                                            <div class="card mr-3" style="width: 18rem; box-shadow: none;">
+                                                <img class="card-img-top" src="/uploads/workFiles/{{ $file[$i] }}" alt="Card image cap">
+                                            </div>
+                                        @endfor
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <h5 style="float: left; margin-top: 5px">เปรียบเทียบกับเกรด</h5>
+                                        <select class="f-input ml-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">
+                                            <option value="">เลือกเกรด</option>
+                                            <option value="A">A</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B">B</option>
+                                            <option value="C+">C+</option>
+                                            <option value="C">C</option>
+                                            <option value="D+">D+</option>
+                                            <option value="D">D</option>
+                                            <option value="DELETE">DELETE</option>
+                                        </select>
+
+                                        <div id="workGrade">
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                     <style>
                     .card-shadow:hover {
                     box-shadow: 0 5px 19px 0 rgba(0,0,0,0.1),0 10px 20px 0 rgba(0,0,0,0.1);
@@ -136,10 +188,6 @@
                                                     <td>{{ $works->student_id }}</td>
                                                     <td>{{ $works->firstname.' '.$works->lastname }}</td>
 
-                                                    <?php
-                                                    $file = json_decode($works->file);
-                                                    $countfile = count(json_decode($works->file));
-                                                    ?>
                                                     <td>
                                                         @for($i = 0; $i < $countfile; $i++)
                                                             {{ $file[$i] }} <br>
@@ -223,6 +271,80 @@
         });
     });
 </script>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+        jQuery('select[name="grade"]').on('change',function(){
+            var grade = jQuery(this).val();
+            if(grade)
+            {
+                jQuery.ajax({
+                    url : '/get-works/' +grade,
+                    type : "GET",
+                    dataType : "json",
+                    success:function(data)
+                    {
+                        console.log(data, data.length);
+                        jQuery('select[name="work"]').empty();
+                        $('.work_img').remove();
+                        $('.work_txt').remove();
+                        $('.img_box').remove();
+
+                        if (data.length != 0){
+                            $.map( data , function ( value , key) {
+
+                                for ( var i=0; i< key.length; i++){
+                                    console.log(value,key);
+                                    $('#workGrade').append('<div class="card mr-2 mt-3 img_box" style="width: 15rem; box-shadow: none;">'+
+                                        '<img class="card-img-top work_img"  src="/uploads/workFiles/'+ value +'" alt="Card image cap">'+'</div>');
+                                }
+
+                            });
+                        } else {
+                            $('#workGrade').append('<h5 class="work_txt mt-3">No Work.</h5>');
+                        }
+
+                    }
+                });
+            }
+            else
+            {
+                $('select[name="work"]').empty();
+            }
+        });
+    });
+</script>
+
+
 </body>
 
 </html>

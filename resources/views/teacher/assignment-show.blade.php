@@ -181,7 +181,7 @@
                                 <tbody>
                                 @if(count($allWorks)>0)
                                     @foreach($allWorks as $work)
-                                        <tr class="click-row" data-href="/teacher/assignment/work/{{$work->id}}">
+                                        <tr class="click-row" data-href="/teacher/assignment/{{$assignment->title}}/work={{ $work->id }}">
 
                                             <td>{{$work->student_id}}</td>
                                             <td>{{$work->firstname.' '.$work->lastname}}</td>

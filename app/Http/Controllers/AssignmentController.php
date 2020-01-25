@@ -212,4 +212,11 @@ class AssignmentController extends Controller
         return redirect('/teacher/assignment');
     }
 
+    public function getWork($grade)
+    {
+        $works = DB::table("works")->where("grade",$grade)->join('files','works.id','=','files.work_id')->pluck('files.file','files.id');
+
+        return json_encode($works);
+    }
+
 }
