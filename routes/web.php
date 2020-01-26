@@ -65,12 +65,15 @@ Route::post('/teacher/manage/section/store','ManageController@storeSection');
 Route::post('/teacher/manage/year-term/store','ManageController@storeYear_Term');
 
 Route::get('/teacher/assignment', 'AssignmentController@index');
+Route::get('/teacher/assignment/compare', 'AssignmentController@compareIndex');
 Route::get('/teacher/assignment/create', 'AssignmentController@create');
 Route::post('/teacher/assignment/store', 'AssignmentController@store');
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
 Route::get('/assignment/{id}', 'AssignmentController@show');
 Route::get('/teacher/assignment/{title}/work={id}', 'AssignmentController@showWorkDetail');
 Route::post('/teacher/assignment/work={id}/graded', 'AssignmentController@inputGrade');
+
+
 
 
 Route::get('/get-works/{grade}', 'AssignmentController@getWork');

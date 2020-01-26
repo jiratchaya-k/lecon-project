@@ -1655,7 +1655,7 @@ Left Navigation Sidebar
 }
 
 .nav-left-sidebar .nav-link[data-toggle="collapse"]::after {
-    display: inline-block;
+    display: none;
     width: 0;
     height: 0;
     position: absolute;
@@ -1716,25 +1716,25 @@ Left Navigation Sidebar
     padding-left: 12px;
     padding-right: 12px;
     /* margin-top: 5px; */
-    background: #24274a;
+    background: white;
 }
 
 .nav-left-sidebar .submenu .nav .nav-item .nav-link {
-    font-size: 14px;
-    padding: 6px 12px;
+    font-size: 13px;
+    padding: 6px 0 6px 20px;
     transition: 0.3s;
 }
 
 .nav-left-sidebar .navbar-nav .nav-link:focus,
 .nav-left-sidebar .navbar-nav .nav-link.active {
     background-color: #e2e2eb;
-    color: #3d405c;
+    color: white;
     border-radius: 2px;
 }
 
 .nav-left-sidebar .navbar-nav .nav-link:focus,
 .nav-left-sidebar .navbar-nav .nav-link:hover {
-    background-color: #e2e2eb;
+    background-color: #71789e;
     color: #3d405c;
     border-radius: 2px;
 }
@@ -1742,7 +1742,7 @@ Left Navigation Sidebar
 .nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
     color: #3d405c;
     border-radius: 2px;
-    background-color: transparent;
+    background-color: #71789e;
 }
 
 .nav-left-sidebar .navbar-toggler {
@@ -1795,7 +1795,7 @@ Leftsidebar - Primary
 .sidebar-primary.nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
     color: #fff;
     border-radius: 2px;
-    background-color: transparent;
+    background-color: #71789e;
 }
 
 
@@ -1841,9 +1841,9 @@ Leftsidebar - dark
 }
 
 .sidebar-dark.nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
-    color: #fff;
+    color: #3956A3;
     border-radius: 2px;
-    background-color: #242849;
+    background-color: transparent;
 }
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-item .badge{

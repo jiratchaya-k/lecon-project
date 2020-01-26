@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Assignment;
+use App\File;
 use App\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,10 @@ class WorkController extends Controller
 
                 // upload image
                 $work->move('uploads/workFiles/',$filenameToStore);
+
+//                $file = new File;
+//                $file->file = $filenameToStore;
+//                $file->save();
 
                 $fileStore[] = $filenameToStore;
 
@@ -103,13 +108,37 @@ class WorkController extends Controller
         }
 
         $work = new Work;
-        $work->file = json_encode($fileStore);
         $work->student_id = Auth::id();
+        $work->file = '';
         $work->grade = $grade;
         $work->status = $status;
         $work->remark = $remark;
         $work->assignment_id = $request->input('assignment_id');
         $work->save();
+
+        $work_id = DB::table('works')->select('id')->orderBy('id','DESC')->limit('1')->first();
+
+        foreach ($fileStore as $f) {
+            $file = new File;
+            $file->file = $f;
+            $file->work_id = $work_id->id;
+            $file->status = 'use';
+            $file->save();
+//            dd($file->file, $file->work_id);
+        }
+
+
+
+//        $work = new Work;
+//        $work->file = json_encode($fileStore);
+//        $work->student_id = Auth::id();
+//        $work->grade = $grade;
+//        $work->status = $status;
+//        $work->remark = $remark;
+//        $work->assignment_id = $request->input('assignment_id');
+//        $work->save();
+
+
 
 
 

@@ -161,7 +161,15 @@ class AssignmentController extends Controller
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
+            $workFile = DB::table('works')->join('files','works.id','=','files.work_id')
+                ->where('works.student_id','=',Auth::id())->where('works.assignment_id','=',$id)
+                ->select('files.file')->get();
 
+            $files = [];
+
+            foreach ($workFile as $wfile){
+                $files[] = $wfile->file;
+            }
 
             $fileType = json_decode($assignment->fileType);
 
@@ -176,8 +184,9 @@ class AssignmentController extends Controller
 
 //            dd($dueDate);
 
+
             if (!empty($assignmentWork)){
-                $works = json_decode($assignmentWork->file);
+                $works = $files;
                 $status = $assignmentWork->status;
             }else {
                 $works = null;
@@ -187,7 +196,6 @@ class AssignmentController extends Controller
                     $status = 'Missed';
                 }
             }
-
 
             return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections'));
         }
@@ -209,7 +217,16 @@ class AssignmentController extends Controller
         $work->grade = $request->input('grade');
         $work->save();
 
-        return redirect('/teacher/assignment');
+        return redirect()->back();
+    }
+
+
+    public function compareIndex() {
+        if (Auth::check() && auth()->user()->role == User::role_teacher) {
+            return view('teacher.assignment-compare');
+        }else{
+            redirect('/');
+        }
     }
 
     public function getWork($grade)
