@@ -115,12 +115,13 @@
                     @if(count($subject_groups)>0)
                         @foreach($subject_groups as $subject)
                     <div class="col-md-12">
-                        <div class="card box-shadow mb-2">
+                        <div class="card box-shadow mb-4">
                             <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
                                 <span class="fs-18">
-                                    @foreach($code as $sub_code)
-                                        {{ $sub_code->code }}
-                                    @endforeach
+                                    {{--@foreach($code as $sub_code)--}}
+                                        {{--{{ $sub_code->code }}--}}
+                                    {{--@endforeach--}}
+                                        {{ $subject->code }}
                                         {{ $subject->name }}</span>
                                 <a href="/teacher/subject/add-section" class="btn btn-default btn-add ml-2">+ เพิ่มกลุ่มเรียน</a>
                             </div>
@@ -136,12 +137,20 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
+                                        <?php
+
+                                        $sections = \Illuminate\Support\Facades\DB::table('subjects')->where('name',$subject->name)->join('sections','subjects.section_id', '=','sections.id')->select('sections.section')->get();
+                                        $years = \Illuminate\Support\Facades\DB::table('subjects')->where('name',$subject->name)->join('years','subjects.year_id', '=','years.id')->select('years.year','years.term')->get();
+//                                        dd(json_decode($sections),json_decode($years));
+                                        ?>
+
                                         @if(count($sections)>0)
-                                            @for($i=0;$i<count($sections);$i++)
+                                            @for ($i=0;$i<count($sections);$i++)
                                                 <tr>
-                                                    <td>{{ $sections[$i]->section }}</td>
-                                                    <td>{{ $years[$i]->year }}</td>
-                                                    <td>{{ $years[$i]->term }}</td>
+                                                    <td>{{ $sections[$i] -> section }}</td>
+                                                    <td>{{ $years[$i] -> year }}</td>
+                                                    <td>{{ $years[$i] -> term}}</td>
                                                     <td>
                                                         <a href="" class="btn btn-primary btn-dark btn-table">
                                                             view
@@ -151,7 +160,22 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                @endfor
+                                            @endfor
+                                            {{--@for($i=0;$i<count($sections);$i++)--}}
+                                                {{--<tr>--}}
+                                                    {{--<td>{{ $sections[$i]->section }}</td>--}}
+                                                    {{--<td>{{ $years[$i]->year }}</td>--}}
+                                                    {{--<td>{{ $years[$i]->term }}</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--<a href="" class="btn btn-primary btn-dark btn-table">--}}
+                                                            {{--view--}}
+                                                        {{--</a>--}}
+                                                        {{--<a href="#" class="ml-3">--}}
+                                                            {{--<i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>--}}
+                                                        {{--</a>--}}
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                                {{--@endfor--}}
                                             {{--@foreach($sections as $sect)--}}
 
                                         {{--@endforeach--}}

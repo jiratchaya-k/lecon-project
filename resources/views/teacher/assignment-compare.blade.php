@@ -299,7 +299,7 @@
 
                             });
                         } else {
-                            $('#workGrade2').append('<h5 class="work_txt2 mt-3 ml-3">No Work.</h5>');
+                            $('#workGrade2').append('<h5 class="work_txt2 mt-3 ml-3b">No Work.</h5>');
                         }
 
                     }

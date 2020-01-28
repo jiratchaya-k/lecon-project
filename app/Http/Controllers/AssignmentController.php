@@ -20,7 +20,7 @@ class AssignmentController extends Controller
 
 
             $assignments = DB::table('assignments')
-                ->join('subjects','subjects.id', '=','assignments.subject_id')
+                ->join('subjects','subjects.id', '=','assignments.subject_id')->where('subjects.teacher_id','=',Auth::id())
                 ->join('sections','subjects.section_id','=','sections.id')
 //                ->join('works','works.assignment_id','=','assignments.id')
                 ->select('*','assignments.id')
@@ -234,6 +234,7 @@ class AssignmentController extends Controller
         $works = DB::table("works")->where("grade",$grade)->join('files','works.id','=','files.work_id')->pluck('files.file','files.id');
 
         return json_encode($works);
+
     }
 
 }

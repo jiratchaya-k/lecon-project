@@ -14,8 +14,11 @@ class CheckStudentController extends Controller
     {
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
             $assignments = DB::table('assignments')->select('*')->orderBy('created_at','desc')->get();
-            $subj_groups = DB::table('subjects')->select('name')->groupBy('name')->get();
+            $subj_groups = DB::table('subjects')->where('teacher_id',Auth::id())->select('name','code')
+                ->groupBy('name','code')->get();
             $subject_groups = json_decode($subj_groups);
+
+//            dd(Auth::id());
 
             foreach($subject_groups as $subject){
                 $code = DB::table('subjects')->select('code')->where('name',$subject->name)

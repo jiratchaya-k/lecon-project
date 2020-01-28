@@ -7,6 +7,7 @@ use App\Subject;
 use App\User;
 use App\Year;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
@@ -14,17 +15,11 @@ class SubjectController extends Controller
     //
     public function index()
     {
-        $subj_groups = DB::table('subjects')->select('name')->groupBy('name')->get();
+        $subj_groups = DB::table('subjects')->where('teacher_id',Auth::id())->select('name','code')
+            ->groupBy('name','code')->get();
         $subject_groups = json_decode($subj_groups);
 
-        foreach($subject_groups as $subject){
-            $code = DB::table('subjects')->select('code')->where('name',$subject->name)->groupBy('code')->get();
-            $sections = DB::table('subjects')->where('name',$subject->name)->join('sections','subjects.section_id', '=','sections.id')->select('sections.section')->get();
-            $years = DB::table('subjects')->where('name',$subject->name)->join('years','subjects.year_id', '=','years.id')->select('years.year','years.term')->get();
-        }
-
-
-        return view('teacher.home',compact('subject_groups','code','sections','years'));
+        return view('teacher.home',compact('subject_groups'));
     }
 
 
