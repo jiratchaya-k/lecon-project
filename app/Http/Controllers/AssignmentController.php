@@ -19,14 +19,23 @@ class AssignmentController extends Controller
 //            $sections = DB::table('assignments')->join('subjects','subjects.id', '=','assignments.subject_id')->join('sections','subjects.section_id','=','sections.id')->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
 
 
+//            $assignments = DB::table('assignments')
+//                ->join('subjects','subjects.id', '=','assignments.subject_id')->where('subjects.teacher_id','=',Auth::id())
+//                ->join('sections','subjects.section_id','=','sections.id')
+////                ->join('works','works.assignment_id','=','assignments.id')
+//                ->select('*','assignments.id')
+//                ->get();
+
             $assignments = DB::table('assignments')
-                ->join('subjects','subjects.id', '=','assignments.subject_id')->where('subjects.teacher_id','=',Auth::id())
-                ->join('sections','subjects.section_id','=','sections.id')
-//                ->join('works','works.assignment_id','=','assignments.id')
+                ->join('sections_in_subject as sis','assignments.sis_id','=','sis.id')
+                ->join('sections','sis.section_id','=','sections.id')
+                ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+                ->join('users','attend_sections.user_id','=','users.id')
+                ->where('users.id','=',Auth::id())
                 ->select('*','assignments.id')
                 ->get();
 
-
+//            dd($assignments);
 
 
 //            dd($assignments);
@@ -40,11 +49,11 @@ class AssignmentController extends Controller
 
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
-            $assignments = DB::table('assignments')
-                ->join('subjects','subjects.id', '=','assignments.subject_id')
-                ->join('sections','subjects.section_id','=','sections.id')
-//                ->join('works','works.assignment_id','=','assignments.id')
-                ->select('*')
+            $assignments = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+                ->join('sections_in_subject as sis','sis.id', '=','attend_sections.sis_id')
+                ->join('sections','sis.section_id','=','sections.id')
+                ->join('assignments','sis.id','=','assignments.sis_id')
+                ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
                 ->get();
             return view('student.home',compact('assignments'));
         }else{
@@ -148,12 +157,26 @@ class AssignmentController extends Controller
 
         $assignment = Assignment::all()->find($id);
         $assignment_id = $id;
-        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)->join('subjects','subjects.id', '=','assignments.subject_id')->join('sections','subjects.section_id','=','sections.id')->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
+//        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
+//            ->join('subjects','subjects.id', '=','assignments.subject_id')
+//            ->join('sections','subjects.section_id','=','sections.id')
+//            ->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
 
+        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
+            ->join('sections_in_subject as sis','assignments.sis_id','=','sis.id')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
+
+//        dd($sections);
 
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
 
-            $allWorks = DB::table('works')->where('assignment_id',$id)->join('users','users.id','=','works.student_id')->select('*','works.id')->get();
+            $allWorks = DB::table('works')->where('assignment_id',$id)
+                ->join('users','users.id','=','works.student_id')
+                ->select('*','works.id')->distinct('users.student_id')->get();
+
+//            dd($allWorks);
 
             $fileType = json_decode($assignment->fileType);
 

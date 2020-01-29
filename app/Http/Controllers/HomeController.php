@@ -29,20 +29,37 @@ class HomeController extends Controller
     {
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
             $assignments = DB::table('assignments')->select('*')->orderBy('created_at','desc')->get();
-            $subj_groups = DB::table('subjects')->where('teacher_id',Auth::id())->select('name','code')
-                ->groupBy('name','code')->get();
-            $subject_groups = json_decode($subj_groups);
+
+//            $subject = DB::table('attend_section as attend')->where('user_id', '=',Auth::id())
+//                ->join('sections_in_subject as sis','attend.sis_id','=','sis.id')
+//                ->join('subjects','sis.subject_id','=','subjects.id')
+//                ->join('sections','sis.section_id','=','sections.id')
+//                ->join('years','sis.year_id','=','years.id')
+//                ->select('*','attend.id')
+//                ->get();
+
+            $subject = DB::table('attend_sections as attend')->where('user_id', '=',Auth::id())
+                ->join('sections_in_subject as sis','attend.sis_id','=','sis.id')
+                ->join('subjects','sis.subject_id','=','subjects.id')
+                ->select('code','name')->distinct()
+                ->get();
+
+            $subjects = json_decode($subject);
+//            $subj_groups = DB::table('sections_in_subject')->where('teacher_id',Auth::id())->select('name','code')
+//                ->groupBy('name','code')->get();
+//            $subject_groups = json_decode($subj_groups);
 
 //            dd(Auth::id());
 
-            return view('teacher.home',compact('assignments','subject_groups'));
+            return view('teacher.home',compact('assignments','subjects'));
 //            return view('teacher.home');
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
 
-            $assignments = DB::table('assignments')
-                ->join('subjects','subjects.id', '=','assignments.subject_id')
-                ->join('sections','subjects.section_id','=','sections.id')
+            $assignments = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+                ->join('sections_in_subject as sis','sis.id', '=','attend_sections.sis_id')
+                ->join('sections','sis.section_id','=','sections.id')
+                ->join('assignments','sis.id','=','assignments.sis_id')
                 ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
                 ->get();
 

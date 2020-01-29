@@ -171,15 +171,56 @@
                                                     </div>
                                                     <div class="form-group col-md-7">
                                                         <label for="title" class="control-label">เวลา</label> <br>
-                                                        <input class="form-control f-input col-4" name="subject_startTime" type="time" style="float: left">
+                                                        <select class="f-input" name="subject_startTime" style="width: 180px; height: 32px; padding-left: 10px; float: left;">
+                                                            <option value="08:30">08:30</option>
+                                                            <option value="09:25">09:25</option>
+                                                            <option value="10:20">10:20</option>
+                                                            <option value="11:15">11:15</option>
+                                                            <option value="12:10">12:10</option>
+                                                            <option value="13:00">13:00</option>
+                                                            <option value="13:55">13:55</option>
+                                                            <option value="14:50">14:50</option>
+                                                            <option value="15:45">15:45</option>
+                                                            <option value="16:40">16:40</option>
+                                                            <option value="17:35">17:35</option>
+                                                            <option value="18:30">18:30</option>
+                                                            <option value="19:25">19:25</option>
+                                                            <option value="20:20">20:20</option>
+                                                            <option value="21:15">21:15</option>
+                                                        </select>
+                                                        {{--<input class="form-control f-input col-4" name="subject_startTime" type="time" style="float: left">--}}
                                                         <h4 style="float: left; margin: 0 20px; padding-top: 3px;">-</h4>
-                                                        <input class="form-control f-input col-4" name="subject_endTime" type="time">
+                                                        <select class="f-input" name="subject_startTime" style="width: 180px; height: 32px; padding-left: 10px;">
+                                                            <option value="09:20">09:20</option>
+                                                            <option value="10:15">10:15</option>
+                                                            <option value="11:10">11:10</option>
+                                                            <option value="12:05">12:05</option>
+                                                            <option value="13:00">13:00</option>
+                                                            <option value="13:50">13:50</option>
+                                                            <option value="14:45">14:45</option>
+                                                            <option value="15:40">15:40</option>
+                                                            <option value="16:35">16:35</option>
+                                                            <option value="17:30">17:30</option>
+                                                            <option value="18:25">18:25</option>
+                                                            <option value="19:20">19:20</option>
+                                                            <option value="20:15">20:15</option>
+                                                            <option value="21:10">21:10</option>
+                                                            <option value="22:05">22:05</option>
+                                                        </select>
+                                                        {{--<input class="form-control f-input col-4" name="subject_endTime" type="time">--}}
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="title" class="control-label">รายชื่ออาจารย์</label><button class="btn btn-default btn-add ml-2">+ เพิ่ม</button>
-                                                    <input class="form-control f-input" name="subject_teacher" type="text" list="teachers">
+                                                <?php $user_id = \Illuminate\Support\Facades\Auth::id() ?>
+
+                                                <div class="form-group container">
+                                                    <label for="title" class="control-label">รายชื่ออาจารย์</label><button class="btn btn-default btn-add ml-2 add_button_teacher">+ เพิ่ม</button>
+                                                    <div class="row input_teacher_wrap">
+                                                        <input class="form-control f-input"  name="subject_createby" type="hidden" value="{{ $user_id }}">
+                                                        <div class="col-md-4">
+                                                            <input class="form-control f-input"  name="subject_teacher[]" type="text" list="teachers" style="width: 90%; height: 35px; margin-bottom: 10px">
+                                                        </div>
+                                                    </div>
                                                     <datalist id="teachers">
                                                         @if(count($teachers)>0)
                                                             @foreach($teachers as $teacher)
@@ -188,9 +229,13 @@
                                                         @endif
                                                     </datalist>
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="title" class="control-label">รายชื่อนักศึกษา</label><button class="btn btn-default btn-add ml-2">+ เพิ่ม</button>
-                                                    <input class="form-control f-input" name="subject_student" type="text" list="students">
+                                                <div class="form-group container">
+                                                    <label for="title" class="control-label">รายชื่อนักศึกษา</label><button class="btn btn-default btn-add ml-2 add_button_student">+ เพิ่ม</button>
+                                                    <div class="row input_student_wrap">
+                                                        <div class="col-md-4">
+                                                            <input class="form-control f-input"  name="subject_student[]" type="text" list="students" style="width: 90%; height: 35px; margin-bottom: 10px">
+                                                        </div>
+                                                    </div>
                                                     <datalist id="students">
                                                         @if(count($students)>0)
                                                             @foreach($students as $student)
@@ -240,54 +285,50 @@
 
 <script>
     $(document).ready(function() {
-        var max_fields      = 6; //maximum input boxes allowed
-        var wrapper_section   		= $(".input_section_wrap"); //Fields wrapper
-        var add_button_section      = $(".add_button_section"); //Add button Class
-        var wrapper_year   		= $(".input_year_wrap"); //Fields wrapper
-        var add_button_year      = $(".add_button_year"); //Add button Class
+        var max_fields_teacher      = 10; //maximum input boxes allowed
+        var max_fields_student      = 50; //maximum input boxes allowed
+        var wrapper_teacher   		= $(".input_teacher_wrap"); //Fields wrapper
+        var add_button_teacher      = $(".add_button_teacher"); //Add button Class
+        var wrapper_student   		= $(".input_student_wrap"); //Fields wrapper
+        var add_button_student      = $(".add_button_student"); //Add button Class
 
-        var section = 1; //initlal text box count
-        var year = 1;
+        var teacher = 1; //initlal text box count
+        var student = 1;
 
-        if ($(add_button_section).click) {
-            $(add_button_section).click(function(e){ //on add input button click
+        if ($(add_button_teacher).click) {
+            $(add_button_teacher).click(function(e){ //on add input button click
                 e.preventDefault();
-                if(section < max_fields){ //max input box allowed
-                    section++; //text box increment
-                    $(wrapper_section).append('<div class="col-md-4"><input class="form-control f-input"  name="sections[]" type="text" style="width: 100px;height: 35px;float: left; margin-bottom: 10px"><a href="#" class="remove_section ml-1 pt-1" style="float: left">X</a></div> '); //add input box
+                if(teacher < max_fields_teacher){ //max input box allowed
+                    teacher++; //text box increment
+                    $(wrapper_teacher).append('' +
+                        '<div class="col-md-4">' +
+                        '<input class="form-control f-input"  name="subject_teacher[]" type="text" list="teachers" ' +
+                        'style="width: 90%; height: 35px; margin-bottom: 10px; float: left">' +
+                        '<a href="#" class="remove_teacher ml-1 pt-1" style="float: left">X</a></div> '); //add input box
                 }
             });
 
-            $(wrapper_section).on("click",".remove_section", function(e){ //user click on remove text
-                e.preventDefault(); $(this).parent('div').remove(); x--;
+            $(wrapper_teacher).on("click",".remove_teacher", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); teacher--;
             })
         }
-        if ($(add_button_year).click){
-            $(add_button_year).click(function(e){ //on add input button click
+        if ($(add_button_student).click){
+            $(add_button_student).click(function(e){ //on add input button click
                 e.preventDefault();
-                if(year < max_fields){ //max input box allowed
-                    year++; //text box increment
-                    $(wrapper_year).append('<div class="row">\n' +
-                        ' <label for="inputYear" class="col-1 col-form-label">ปี</label>\n' +
-                        ' <div class="col-md-4">\n' +
-                        '   <input class="form-control f-input" name="years[]" type="text">\n' +
-                        ' </div>\n' +
-                        ' <div class="col-1 pt-1">\n' +
-                        ' <h3>/</h3>\n' +
-                        ' </div>\n' +
-                        ' <label for="inputTerm" class="col-2 col-form-label">เทอม</label>\n' +
-                        ' <div class="col-md-3">\n' +
-                        ' <input class="form-control f-input" name="terms[]" type="text" id="title">\n' +
-                        ' </div>\n' +
-                        '<a href="#" class="remove_year ml-1 pt-1" style="float: left">X</a>\n' +
-                        ' </div>'); //add input box
+                if(student < max_fields_student){ //max input box allowed
+                    student++; //text box increment
+                    $(wrapper_student).append('' +
+                        '<div class="col-md-4">' +
+                        '<input class="form-control f-input"  name="subject_student[]" type="text" list="students" ' +
+                        'style="width: 90%; height: 35px; margin-bottom: 10px; float: left">' +
+                        '<a href="#" class="remove_student ml-1 pt-1" style="float: left">X</a></div> '); //add input box
                 }
             });
 
 
 
-            $(wrapper_year).on("click",".remove_year", function(e){ //user click on remove text
-                e.preventDefault(); $(this).parent('div').remove(); year--;
+            $(wrapper_student).on("click",".remove_student", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); student--;
             })
         }
 

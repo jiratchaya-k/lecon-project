@@ -125,8 +125,8 @@
                     <div class="card-body container">
                     <div class="row">
                     <div class="col-md-8">
-                    <h5>Assignment Sect. {{ $sections[0]->section}}</h5>
-                    <span>{{ $sections[0]->code.' '.$sections[0]->name  }}</span>
+                    <h5>Assignment Sect. {{ $sections->section}}</h5>
+                    <span>{{ $sections->code.' '.$sections->name  }}</span>
                     </div>
                     <div class="col-md-4 text-right">
                     <h5 class="text-green">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}}</h5>
@@ -197,14 +197,18 @@
                                             <td>{{$work->student_id}}</td>
                                             <td>{{$work->firstname.' '.$work->lastname}}</td>
 
-                                            <?php
-                                                $file = json_decode($work->file);
-                                                $countfile = count(json_decode($work->file));
-                                            ?>
+<                                         <?php
+                                                $files = \Illuminate\Support\Facades\DB::table('files')->where('work_id','=',$work->id)
+                                                    ->get();
+
+
+
+                                           ?>
                                             <td>
-                                            @for($i = 0; $i < $countfile; $i++)
-                                                {{ $file[$i] }} <br>
-                                            @endfor
+                                                @foreach($files as $file)
+
+                                                    {{ $file->file }}
+                                                @endforeach
                                             </td>
 
                                             <td>

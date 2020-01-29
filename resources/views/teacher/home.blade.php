@@ -112,8 +112,8 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
-                    @if(count($subject_groups)>0)
-                        @foreach($subject_groups as $subject)
+                    @if(count($subjects)>0)
+                        @foreach($subjects as $subject)
                     <div class="col-md-12">
                         <div class="card box-shadow mb-4">
                             <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
@@ -140,9 +140,24 @@
 
                                         <?php
 
-                                        $sections = \Illuminate\Support\Facades\DB::table('subjects')->where('name',$subject->name)->join('sections','subjects.section_id', '=','sections.id')->select('sections.section')->get();
-                                        $years = \Illuminate\Support\Facades\DB::table('subjects')->where('name',$subject->name)->join('years','subjects.year_id', '=','years.id')->select('years.year','years.term')->get();
-//                                        dd(json_decode($sections),json_decode($years));
+                                        $sections = \Illuminate\Support\Facades\DB::table('subjects')
+                                            ->where('name',$subject->name)
+                                            ->join('sections_in_subject as sis','sis.subject_id', '=','subjects.id')
+                                            ->join('sections','sis.section_id', '=','sections.id')
+                                            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+                                            ->join('users','attend_sections.user_id','=','users.id')
+                                            ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
+                                            ->select('sections.section')->get();
+
+                                        $years = \Illuminate\Support\Facades\DB::table('subjects')
+                                            ->where('name',$subject->name)
+                                            ->join('sections_in_subject as sis','sis.subject_id', '=','subjects.id')
+                                            ->join('years','sis.year_id', '=','years.id')
+                                            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+                                            ->join('users','attend_sections.user_id','=','users.id')
+                                            ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
+                                            ->select('years.year','years.term')->get();
+
                                         ?>
 
                                         @if(count($sections)>0)
@@ -150,7 +165,7 @@
                                                 <tr>
                                                     <td>{{ $sections[$i] -> section }}</td>
                                                     <td>{{ $years[$i] -> year }}</td>
-                                                    <td>{{ $years[$i] -> term}}</td>
+                                                    <td>{{ $years[$i] -> term }}</td>
                                                     <td>
                                                         <a href="" class="btn btn-primary btn-dark btn-table">
                                                             view
@@ -161,25 +176,7 @@
                                                     </td>
                                                 </tr>
                                             @endfor
-                                            {{--@for($i=0;$i<count($sections);$i++)--}}
-                                                {{--<tr>--}}
-                                                    {{--<td>{{ $sections[$i]->section }}</td>--}}
-                                                    {{--<td>{{ $years[$i]->year }}</td>--}}
-                                                    {{--<td>{{ $years[$i]->term }}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--<a href="" class="btn btn-primary btn-dark btn-table">--}}
-                                                            {{--view--}}
-                                                        {{--</a>--}}
-                                                        {{--<a href="#" class="ml-3">--}}
-                                                            {{--<i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>--}}
-                                                        {{--</a>--}}
-                                                    {{--</td>--}}
-                                                {{--</tr>--}}
-                                                {{--@endfor--}}
-                                            {{--@foreach($sections as $sect)--}}
-
-                                        {{--@endforeach--}}
-                                            @endif
+                                        @endif
                                         </tbody>
                                     </table>
                                     </div>
