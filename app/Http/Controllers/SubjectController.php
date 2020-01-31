@@ -17,8 +17,8 @@ class SubjectController extends Controller
     //
     public function index()
     {
-        $subject = DB::table('attend_section as attend')->where('user_id', '=',Auth::id())
-            ->join('sections_in_subject as sis','attend.sis_id','=','sis.id')
+        $subject = DB::table('attend_sections as attend')->where('user_id', '=',Auth::id())
+            ->join('sections_in_subjects as sis','attend.sis_id','=','sis.id')
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->select('code','name')->distinct()
             ->get();
@@ -71,22 +71,24 @@ class SubjectController extends Controller
 
 //        dd($subject_id);
 
-//        DB::table('sections_in_subject')
+//        dd(DB::table('sections_in_subject')
 //            ->insertGetId(['section_id' => $request->input('subject_section'),
 //                'subject_id' => $subject_id , 'year_id' => $request->input('subject_year'),
 //                'date' => $request->input('subject_date'), 'startTime' => $request->input('subject_startTime'),
-//                'endTime' => $request->input('subject_endTime')]);
+//                'endTime' => $request->input('subject_endTime')]));
 
-//        $sis = new SectionsInSubject;
-//        $sis->section_id = $request->input('subject_section');
-//        $sis->subject_id = $subject_id;
-//        $sis->year_id = $request->input('subject_year');
-//        $sis->date = $request->input('subject_date');
-//        $sis->startTime = $request->input('subject_startTime');
-//        $sis->endTime = $request->input('subject_endTime');
-//        $sis->save();
+        $sis = new SectionsInSubject;
+        $sis->section_id = $request->input('subject_section');
+        $sis->subject_id = $subject_id->id;
+        $sis->year_id = $request->input('subject_year');
+        $sis->date = $request->input('subject_date');
+        $sis->startTime = $request->input('subject_startTime');
+        $sis->endTime = $request->input('subject_endTime');
+        $sis->save();
 
-        $sis_id = DB::table('sections_in_subject')->select('id')->orderBy('id','DESC')->limit('1')->first();
+//        dd($request->input('subject_endTime'));
+
+        $sis_id = DB::table('sections_in_subjects')->select('id')->orderBy('id','DESC')->limit('1')->first();
 
         $attend = new AttendSection;
         $attend->user_id =  $request->input('subject_createby');

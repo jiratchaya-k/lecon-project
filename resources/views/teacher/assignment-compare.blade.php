@@ -96,12 +96,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">เปรียบเทียบงาน</h2>
-                            {{--<div class="text-right mb-2">--}}
-                                {{--<a href="/teacher/assignment/create" class="btn btn-primary btn-submit" style="width: 20%;">--}}
-                                    {{--มอบหมายงาน--}}
-                                {{--</a>--}}
-                            {{--</div>--}}
+                            <h2 class="pageheader-title">งามที่มอบหมาย</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -117,83 +112,95 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
-    {{--<div class="container-fluid mt-10">--}}
+                    {{--<div class="container-fluid mt-10">--}}
                     <div class="col-md-12">
-                        <div class="card box-shadow">
+                        <div class="card box-shadow mb-2">
                             <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h5 style="float: left; margin-top: 5px; color: white;">เปรียบเทียบเกรด</h5>
-                                            <select class="f-input ml-2" name="grade1" style="width: 100px; height: 32px; padding-left: 10px;">
-                                                <option value="">เลือกเกรด</option>
-                                                <option value="A">A</option>
-                                                <option value="B+">B+</option>
-                                                <option value="B">B</option>
-                                                <option value="C+">C+</option>
-                                                <option value="C">C</option>
-                                                <option value="D+">D+</option>
-                                                <option value="D">D</option>
-                                                <option value="DELETE">DELETE</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h5 style="float: left; margin-top: 5px; color: white;">กับเกรด</h5>
-                                            <select class="f-input ml-2" name="grade2" style="width: 100px; height: 32px; padding-left: 10px;">
-                                                <option value="">เลือกเกรด</option>
-                                                <option value="A">A</option>
-                                                <option value="B+">B+</option>
-                                                <option value="B">B</option>
-                                                <option value="C+">C+</option>
-                                                <option value="C">C</option>
-                                                <option value="D+">D+</option>
-                                                <option value="D">D</option>
-                                                <option value="DELETE">DELETE</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                <span class="fs-18">งานที่มอบหมาย</span>
                             </div>
                             <div class="card-body">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-6" style="height: auto; border-right: 1px solid gray;">
-                                            <div class="row" id="workGrade1">
+                                <div class="table-responsive-xl">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="table-head">ชื่องาน</th>
+                                            <th class="table-head">กลุ่มเรียน</th>
+                                            <th class="table-head">ส่งงาน</th>
+                                            <th class="table-head">ตรวจแล้ว</th>
+                                            <th class="table-head">สถานะ</th>
+                                            <th class="table-head"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @if(count($assignments)>0)
+                                            @foreach($assignments as $assignment)
+                                                <tr class="click-row" data-href="/teacher/assignment/compare/asm={{$assignment->id}}">
+                                                    <td>{{ $assignment->title }}</td>
+                                                    <td>{{ $assignment->section }}</td>
 
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 pl-3">
-                                            <div class="row"
-                                                 id="workGrade2">
+                                                    <?php
+                                                    $countWorks = \Illuminate\Support\Facades\DB::table('works')->where('assignment_id',$assignment->id)->count();
+                                                    $countGraded = \Illuminate\Support\Facades\DB::table('works')->where('assignment_id',$assignment->id)->where('grade','!=','')->count();
+                                                    ?>
 
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                                    <td>{{ $countWorks }}</td>
+                                                    <td>{{ $countGraded.'/'.$countWorks }}</td>
+                                                    <td>
+                                                        @if($countWorks != 0)
+                                                            @if($countWorks == $countGraded)
+                                                                ตรวจเสร็จแล้ว
+                                                            @elseif ($countGraded == 0)
+                                                                รอตรวจ
+                                                            @else
+                                                                กำลังตรวจ
+                                                            @endif
+                                                        @else
+                                                            ยังไม่มีงานที่ส่ง
+                                                        @endif
+
+                                                    </td>
+                                                    <td>
+                                                        <a href="/teacher/assignment/compare/asm={{$assignment->id}}" class="btn btn-primary btn-dark bg-gradient box-shadow" style="border: none">
+                                                            เปรียบเทียบงานทั้งหมด
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>ไม่มีข้อมูล</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        @endif
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {{--<div class="row">--}}
-                        {{--@if(count($assignments)>0)--}}
-                            {{--@foreach($assignments as $assignment)--}}
-                                {{--<a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">--}}
-                                    {{--<div class="card card-shadow  mt-3 mb-2">--}}
-                                        {{--<div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">--}}
-                                            {{--<span>Sect.</span>--}}
-                                        {{--</div>--}}
+                    {{--@if(count($assignments)>0)--}}
+                    {{--@foreach($assignments as $assignment)--}}
+                    {{--<a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">--}}
+                    {{--<div class="card card-shadow  mt-3 mb-2">--}}
+                    {{--<div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">--}}
+                    {{--<span>Sect.</span>--}}
+                    {{--</div>--}}
 
-                                        {{--<div class="card-body">--}}
-                                            {{--<h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>--}}
-                                            {{--<p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</a>--}}
-                            {{--@endforeach--}}
-                        {{--@else--}}
-                            {{--<div>--}}
-                                {{--<p>No Assignment</p>--}}
-                            {{--</div>--}}
-                        {{--@endif--}}
+                    {{--<div class="card-body">--}}
+                    {{--<h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>--}}
+                    {{--<p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</a>--}}
+                    {{--@endforeach--}}
+                    {{--@else--}}
+                    {{--<div>--}}
+                    {{--<p>No Assignment</p>--}}
+                    {{--</div>--}}
+                    {{--@endif--}}
                     {{--</div>--}}
                 </div>
             </div>
@@ -223,96 +230,6 @@
         });
     });
 </script>
-
-<script type="text/javascript">
-    jQuery(document).ready(function ()
-    {
-        jQuery('select[name="grade1"]').on('change',function(){
-            var grade = jQuery(this).val();
-            if(grade)
-            {
-                jQuery.ajax({
-                    url : '/get-works/' +grade,
-                    type : "GET",
-                    dataType : "json",
-                    success:function(data)
-                    {
-                        console.log(data, data.length);
-                        jQuery('select[name="work"]').empty();
-                        $('.box-container').remove();
-                        $('.work_img').remove();
-                        $('.work_txt').remove();
-                        $('.img_box').remove();
-
-                        if (data.length != 0){
-                            $.map( data , function ( value , key) {
-
-                                for ( var i=0; i< key.length; i++){
-                                    console.log(value,key);
-                                    $('#workGrade1').append(
-                                        '<div class="col-md-3 box-container"> '+
-                                        '<div class="card mt-3 img_box" style="box-shadow: none;">'+
-                                        '<img class="card-img-top work_img"  src="/uploads/workFiles/'+ value +'" alt="Card image cap">'+'</div>'+'</div>');
-                                }
-
-                            });
-                        } else {
-                            $('#workGrade1').append('<h5 class="work_txt mt-3">No Work.</h5>');
-                        }
-
-                    }
-                });
-            }
-            else
-            {
-                $('select[name="work"]').empty();
-            }
-        });
-
-        jQuery('select[name="grade2"]').on('change',function(){
-            var grade = jQuery(this).val();
-            if(grade)
-            {
-                jQuery.ajax({
-                    url : '/get-works/' +grade,
-                    type : "GET",
-                    dataType : "json",
-                    success:function(data)
-                    {
-                        console.log(data, data.length);
-                        jQuery('select[name="work"]').empty();
-                        $('.box-container2').remove();
-                        $('.work_img2').remove();
-                        $('.work_txt2').remove();
-                        $('.img_box2').remove();
-
-                        if (data.length != 0){
-                            $.map( data , function ( value , key) {
-
-                                for ( var i=0; i< key.length; i++){
-                                    console.log(value,key);
-                                    $('#workGrade2').append(
-                                        '<div class="col-md-3 box-container2"> '+
-                                        '<div class="card mt-3 img_box2" style="box-shadow: none;">'+
-                                        '<img class="card-img-top work_img2"  src="/uploads/workFiles/'+ value +'" alt="Card image cap">'+'</div>'+'</div>');
-                                }
-
-                            });
-                        } else {
-                            $('#workGrade2').append('<h5 class="work_txt2 mt-3 ml-3b">No Work.</h5>');
-                        }
-
-                    }
-                });
-            }
-            else
-            {
-                $('select[name="work"]').empty();
-            }
-        });
-    });
-</script>
-
 </body>
 
 </html>

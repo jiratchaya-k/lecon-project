@@ -56,6 +56,7 @@ Route::post('/teacher/subject/store', 'SubjectController@store');
 Route::get('/teacher/subject/add-section', 'SubjectController@addSection');
 
 Route::get('/teacher/student-check', 'CheckStudentController@index');
+Route::post('/teacher/student-check/get-qrcode', 'CheckStudentController@getQrcode');
 
 
 
@@ -65,7 +66,11 @@ Route::post('/teacher/manage/section/store','ManageController@storeSection');
 Route::post('/teacher/manage/year-term/store','ManageController@storeYear_Term');
 
 Route::get('/teacher/assignment', 'AssignmentController@index');
+
 Route::get('/teacher/assignment/compare', 'AssignmentController@compareIndex');
+Route::get('/teacher/assignment/compare/asm={id}', 'AssignmentController@compareShow');
+Route::get('/teacher/assignment/compare/file={id}', 'AssignmentController@compareDetail');
+
 Route::get('/teacher/assignment/create', 'AssignmentController@create');
 Route::post('/teacher/assignment/store', 'AssignmentController@store');
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
@@ -74,8 +79,7 @@ Route::get('/teacher/assignment/{title}/work={id}', 'AssignmentController@showWo
 Route::post('/teacher/assignment/work={id}/graded', 'AssignmentController@inputGrade');
 
 
+Route::get('/get-works/id={asm_id}/{grade}', 'AssignmentController@getWork');
 
-
-Route::get('/get-works/{grade}', 'AssignmentController@getWork');
 
 Route::post('/assignment/{id}/send', 'WorkController@store');

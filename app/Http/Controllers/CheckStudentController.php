@@ -14,34 +14,37 @@ class CheckStudentController extends Controller
     {
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
             $assignments = DB::table('assignments')->select('*')->orderBy('created_at','desc')->get();
-            $subj_groups = DB::table('subjects')->where('teacher_id',Auth::id())->select('name','code')
-                ->groupBy('name','code')->get();
-            $subject_groups = json_decode($subj_groups);
+            $subject = DB::table('attend_sections as attend')->where('user_id', '=',Auth::id())
+                ->join('sections_in_subjects as sis','attend.sis_id','=','sis.id')
+                ->join('subjects','sis.subject_id','=','subjects.id')
+                ->select('code','name')->distinct()
+                ->get();
+            $subjects = json_decode($subject);
 
 //            dd(Auth::id());
 
-            foreach($subject_groups as $subject){
-                $code = DB::table('subjects')->select('code')->where('name',$subject->name)
-                    ->groupBy('code')
-                    ->get();
-                $sections = DB::table('subjects')->where('name',$subject->name)
-                    ->join('sections','subjects.section_id', '=','sections.id')
-                    ->select('sections.section')
-                    ->get();
-                $years = DB::table('subjects')->where('name',$subject->name)
-                    ->join('years','subjects.year_id', '=','years.id')
-                    ->select('years.year','years.term')
-                    ->get();
-                $subjects = DB::table('subjects')->select('*','sections.section')->where('name',$subject->name)
-                    ->join('sections','subjects.section_id', '=','sections.id')
-                    ->orderBy('sections.section')
-                    ->get();
-            }
+//            foreach($subject_groups as $subject){
+//                $code = DB::table('subjects')->select('code')->where('name',$subject->name)
+//                    ->groupBy('code')
+//                    ->get();
+//                $sections = DB::table('subjects')->where('name',$subject->name)
+//                    ->join('sections','subjects.section_id', '=','sections.id')
+//                    ->select('sections.section')
+//                    ->get();
+//                $years = DB::table('subjects')->where('name',$subject->name)
+//                    ->join('years','subjects.year_id', '=','years.id')
+//                    ->select('years.year','years.term')
+//                    ->get();
+//                $subjects = DB::table('subjects')->select('*','sections.section')->where('name',$subject->name)
+//                    ->join('sections','subjects.section_id', '=','sections.id')
+//                    ->orderBy('sections.section')
+//                    ->get();
+//            }
 
 //            dd($code);
 
 
-            return view('teacher.check',compact('assignments','subject_groups','code','sections','years','subjects'));
+            return view('teacher.check',compact('assignments','subjects'));
 //            return view('teacher.home');
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
@@ -57,5 +60,16 @@ class CheckStudentController extends Controller
         }else{
             redirect('/');
         }
+    }
+
+    public function getQrcode(Request $request)
+    {
+        $checkDate = $request->input('check_date');
+        $checkSubject = $request->input('check_code').' '.$request->input('check_name');
+        $checkSection = $request->input('check_section');
+        $checkDeDate = $request->input('check_dedate');
+        $checkTime = $request->input('check_time');
+//        dd($checkDate,$checkSubject,$checkDeDate,$checkSection,$checkTime);
+        return view('teacher.check-qrcode',compact('checkDate','checkTime','checkSection','checkDeDate','checkSubject'));
     }
 }

@@ -190,7 +190,7 @@
                                                         </select>
                                                         {{--<input class="form-control f-input col-4" name="subject_startTime" type="time" style="float: left">--}}
                                                         <h4 style="float: left; margin: 0 20px; padding-top: 3px;">-</h4>
-                                                        <select class="f-input" name="subject_startTime" style="width: 180px; height: 32px; padding-left: 10px;">
+                                                        <select class="f-input" name="subject_endTime" style="width: 180px; height: 32px; padding-left: 10px;">
                                                             <option value="09:20">09:20</option>
                                                             <option value="10:15">10:15</option>
                                                             <option value="11:10">11:10</option>

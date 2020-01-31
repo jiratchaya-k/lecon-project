@@ -27,7 +27,7 @@ class AssignmentController extends Controller
 //                ->get();
 
             $assignments = DB::table('assignments')
-                ->join('sections_in_subject as sis','assignments.sis_id','=','sis.id')
+                ->join('sections_in_subjects as sis','assignments.sis_id','=','sis.id')
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                 ->join('users','attend_sections.user_id','=','users.id')
@@ -50,7 +50,7 @@ class AssignmentController extends Controller
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
             $assignments = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
-                ->join('sections_in_subject as sis','sis.id', '=','attend_sections.sis_id')
+                ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('assignments','sis.id','=','assignments.sis_id')
                 ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
@@ -63,7 +63,18 @@ class AssignmentController extends Controller
 
     public function create(){
         //
-        $sections = DB::table('subjects')->join('sections','subjects.section_id', '=','sections.id')->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
+//        $sections = DB::table('subjects')->join('sections','subjects.section_id', '=','sections.id')
+//            ->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
+
+        $sections = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+            ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','sis.subject_id','=','subjects.id')
+            ->select('*','sis.id as sis_id')
+            ->get();
+
+//            dd($sections);
+
         return view('teacher.assignment-create',compact('sections'));
     }
 
@@ -95,11 +106,7 @@ class AssignmentController extends Controller
 
 
 
-        if ($request->input('dimensionsType') == 'null') {
-            $dimensionsType = null;
-        }else {
-            $dimensionsType = $request->input('dimensionsType');
-        }
+
 
         // auto grade
         if (($request->input('autoGrade-fileType') == '1') && ($request->input('autoGrade-dimensions') == '1')) {
@@ -118,6 +125,8 @@ class AssignmentController extends Controller
         }
 
 
+
+
         //multi file
         $fileType = $request->input('fileType');
         $type = [];
@@ -131,8 +140,21 @@ class AssignmentController extends Controller
             $inFileType = json_encode($type);
         }
 
+        if ($request->input('dimensions_width') != null && $request->input('dimensions_height') != null){
+            $dimensions = $request->input('dimensions_width').' x '.$request->input('dimensions_height');
+        }else {
+            $dimensions = null;
+        }
 
-        $dimensions = $request->input('dimensions_width').' x '.$request->input('dimensions_height');
+
+        if ($dimensions == null) {
+            $dimensionsType = null;
+        }else {
+            $dimensionsType = 'px';
+        }
+
+//        dd($dimensionsType);
+
 
         $assignment = new Assignment;
         $assignment->title = $request->input('assignment_title');
@@ -140,7 +162,7 @@ class AssignmentController extends Controller
         $assignment->file = $filenameToStore;
         $assignment->dueDate = $request->input('assignment_dueDate');
         $assignment->dueTime = $request->input('assignment_dueTime');
-        $assignment->subject_id = $request->input('subject_id');
+        $assignment->sis_id = $request->input('sis_id');
         $assignment->autoGrade_fileType = $autoGradeType;
         $assignment->autoGrade_dimensions = $autoGradeDimensions;
         $assignment->fileType = $inFileType;
@@ -149,7 +171,7 @@ class AssignmentController extends Controller
         $assignment->save();
 //
 //
-        return redirect('/teacher/subject');
+        return redirect('/teacher/assignment');
 //        dd($request->all());
     }
 
@@ -163,7 +185,7 @@ class AssignmentController extends Controller
 //            ->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
 
         $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
-            ->join('sections_in_subject as sis','assignments.sis_id','=','sis.id')
+            ->join('sections_in_subjects as sis','assignments.sis_id','=','sis.id')
             ->join('sections','sis.section_id','=','sections.id')
             ->join('subjects','subjects.id','=','sis.subject_id')
             ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
@@ -228,9 +250,20 @@ class AssignmentController extends Controller
     public function showWorkDetail($title, $id) {
 //        $works = DB::table('works')->select('*')->where('id',$id)->first();
 
-        $works = DB::table('works')->select('*','works.id')->where('works.id',$id)->join('users','works.student_id','=','users.id')->first();
-//        dd($works);
-        return view('teacher.assignment-grade',compact('works'));
+        $asm_id = DB::table('assignments')->where('title','=',$title)->select('id')->first();
+
+        $works = DB::table('works')->select('*','works.id')->where('works.id',$id)
+            ->join('users','works.student_id','=','users.id')
+            ->join('files','works.id','=','files.work_id')
+            ->first();
+
+        $files = DB::table('works')->where('works.id',$id)
+            ->join('users','works.student_id','=','users.id')
+            ->join('files','works.id','=','files.work_id')
+            ->select('files.file','files.id')
+            ->get();
+//        dd($files);
+        return view('teacher.assignment-grade',compact('works','files','asm_id'));
     }
 
     public function inputGrade(Request $request, $id)
@@ -246,18 +279,73 @@ class AssignmentController extends Controller
 
     public function compareIndex() {
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
-            return view('teacher.assignment-compare');
+            $assignments = DB::table('assignments')
+                ->join('sections_in_subjects as sis','assignments.sis_id','=','sis.id')
+                ->join('sections','sis.section_id','=','sections.id')
+                ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+                ->join('users','attend_sections.user_id','=','users.id')
+                ->where('users.id','=',Auth::id())
+                ->select('*','assignments.id')
+                ->get();
+
+            return view('teacher.assignment-compare',compact('assignments'));
         }else{
             redirect('/');
         }
     }
 
-    public function getWork($grade)
+    public function compareShow($id) {
+        if (Auth::check() && auth()->user()->role == User::role_teacher) {
+
+            $assignment_id = $id;
+
+
+            return view('teacher.assignment-comparegrade',compact('assignment_id'));
+        }else{
+            redirect('/');
+        }
+    }
+
+    public function getWork($asm_id,$grade)
     {
-        $works = DB::table("works")->where("grade",$grade)->join('files','works.id','=','files.work_id')->pluck('files.file','files.id');
+        $works = DB::table("works")->where('assignment_id',$asm_id)->where("grade",$grade)
+            ->join('files','works.id','=','files.work_id')
+            ->join('users','works.student_id','=','users.id')
+            ->select('files.file','files.id','users.student_id')->get();
 
         return json_encode($works);
 
+    }
+
+    public function getAllWork($asm_id,$grade)
+    {
+        $works = DB::table("works")->where('assignment_id',$asm_id)->where("grade",$grade)
+            ->join('files','works.id','=','files.work_id')
+            ->join('users','works.student_id','=','users.id')
+            ->select('files.file','files.id','users.student_id')->get();
+
+        return json_encode($works);
+
+    }
+
+    public function compareDetail($id) {
+//        $works = DB::table('works')->select('*')->where('id',$id)->first();
+
+        $work = DB::table('files')->where('id',$id)->select('work_id')->first();
+
+        $works = DB::table('works')->select('*','works.id')->where('works.id',$work->work_id)
+            ->join('users','works.student_id','=','users.id')
+            ->join('files','works.id','=','files.work_id')
+            ->first();
+
+        $files = DB::table('works')->where('works.id',$work->work_id)
+            ->join('users','works.student_id','=','users.id')
+            ->join('files','works.id','=','files.work_id')
+            ->select('files.file','files.id')
+            ->get();
+
+//        dd($files);
+        return view('teacher.assignment-compare-detail',compact('works','files'));
     }
 
 }

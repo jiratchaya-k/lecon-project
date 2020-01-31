@@ -24,8 +24,8 @@
                 <div class="card-body container">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Assignment Sect. {{ $sections[0]->section}}</h5>
-                            <span>{{ $sections[0]->code.' '.$sections[0]->name  }}</span>
+                            <h5>Assignment Sect. {{ $sections->section}}</h5>
+                            <span>{{ $sections->code.' '.$sections->name  }}</span>
                         </div>
                         <div class="col-md-6 text-right">
                             <h5 class="text-green">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}}</h5>

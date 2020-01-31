@@ -109,7 +109,6 @@ class WorkController extends Controller
 
         $work = new Work;
         $work->student_id = Auth::id();
-        $work->file = '';
         $work->grade = $grade;
         $work->status = $status;
         $work->remark = $remark;

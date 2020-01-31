@@ -142,7 +142,7 @@
 
                                         $sections = \Illuminate\Support\Facades\DB::table('subjects')
                                             ->where('name',$subject->name)
-                                            ->join('sections_in_subject as sis','sis.subject_id', '=','subjects.id')
+                                            ->join('sections_in_subjects as sis','sis.subject_id', '=','subjects.id')
                                             ->join('sections','sis.section_id', '=','sections.id')
                                             ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                                             ->join('users','attend_sections.user_id','=','users.id')
@@ -151,7 +151,7 @@
 
                                         $years = \Illuminate\Support\Facades\DB::table('subjects')
                                             ->where('name',$subject->name)
-                                            ->join('sections_in_subject as sis','sis.subject_id', '=','subjects.id')
+                                            ->join('sections_in_subjects as sis','sis.subject_id', '=','subjects.id')
                                             ->join('years','sis.year_id', '=','years.id')
                                             ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                                             ->join('users','attend_sections.user_id','=','users.id')

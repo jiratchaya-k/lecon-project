@@ -117,10 +117,13 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
-                    <?php
-                    use Symfony\Component\Console\Input\Input;$file = json_decode($works->file);
-                    $countfile = count(json_decode($works->file));
-                    ?>
+<!--                    --><?php
+//                    use Symfony\Component\Console\Input\Input;
+//                    dd(json_decode($files));
+//                    $files = json_decode($works->file);
+//                    $countfile = count(json_decode($works->file));
+//                        dd($files);
+//                    ?>
                     {{--<div class="container-fluid mt-10">--}}
 
                     <div id="myModal" class="modal">
@@ -133,31 +136,54 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6" style="border-right: 1px solid gray;">
-                                        @for($i = 0; $i < $countfile; $i++)
-                                            <div class="card mr-3" style="width: 18rem; box-shadow: none;">
-                                                <img class="card-img-top" src="/uploads/workFiles/{{ $file[$i] }}" alt="Card image cap">
-                                            </div>
-                                        @endfor
-                                    </div>
-                                    <div class="col-md-6">
+                                        <div class="row">
+                                            @foreach( $files as $file)
 
-                                        <h5 style="float: left; margin-top: 5px">เปรียบเทียบกับเกรด</h5>
-                                        <select class="f-input ml-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">
-                                            <option value="">เลือกเกรด</option>
-                                            <option value="A">A</option>
-                                            <option value="B+">B+</option>
-                                            <option value="B">B</option>
-                                            <option value="C+">C+</option>
-                                            <option value="C">C</option>
-                                            <option value="D+">D+</option>
-                                            <option value="D">D</option>
-                                            <option value="DELETE">DELETE</option>
-                                        </select>
+                                                <div class="col-md-4 box-container2">
+                                                    <div class="card mt-3 img_box2" style="box-shadow: none;">
+                                                        <img class="card-img-top work_img2"  src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
+                                                        <div class="card-body" style="background-color: #3956A3; border: 1px solid #3956A3; border-radius: 0px 0px 3px 3px ">
+                                                            <p class="card-text2" style="color: white;">{{ $file->file }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        <div id="workGrade">
-
+                                                {{--<div class="card mr-3" style="width: 18rem; box-shadow: none;">--}}
+                                                {{--<img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">--}}
+                                                {{--</div>--}}
+                                            @endforeach
                                         </div>
 
+                                        {{--@for($i = 0; $i < $countfile; $i++)--}}
+                                            {{--<div class="card mr-3" style="width: 18rem; box-shadow: none;">--}}
+                                                {{--<img class="card-img-top" src="/uploads/workFiles/{{ $file[$i] }}" alt="Card image cap">--}}
+                                            {{--</div>--}}
+                                        {{--@endfor--}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="container">
+                                            <div class="row">
+                                                <h5 style="float: left; margin-top: 5px">เปรียบเทียบกับเกรด</h5>
+                                                <select class="f-input ml-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">
+                                                    <option value="">เลือกเกรด</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B+">B+</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C+">C+</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D+">D+</option>
+                                                    <option value="D">D</option>
+                                                    <option value="DELETE">DELETE</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="row" id="workGrade">
+
+                                            </div>
+
+                                        </div>
                                     </div>
 
 
@@ -182,6 +208,7 @@
                                 <div class="card-body container">
                                     <form method="POST" action="/teacher/assignment/work={{$works->id}}/graded" enctype="multipart/form-data">
                                         @csrf
+                                        <input class="asm_id" value="{{ $asm_id->id }}" type="hidden">
                                     <div class="table-responsive-xl">
                                         <table class="table">
                                             <thead>
@@ -189,8 +216,8 @@
                                                 <th class="table-head" style="width: 100px!important;">รหัสนักศึกษา</th>
                                                 <th class="table-head">ชื่อ-นามสกุล</th>
                                                 <th class="table-head">ไฟล์งาน</th>
-                                                <th class="table-head">เกรด</th>
-                                                <th class="table-head">ให้เกรด</th>
+                                                <th class="table-head">เกรดปัจจุบัน</th>
+                                                <th class="table-head">ให้เกรด / เปลี่ยนเกรด</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -200,14 +227,15 @@
                                                     <td>{{ $works->firstname.' '.$works->lastname }}</td>
 
                                                     <td>
-                                                        @for($i = 0; $i < $countfile; $i++)
-                                                            {{ $file[$i] }} <br>
-                                                        @endfor
+                                                        @foreach($files as $file)
+                                                            {{ $file->file }} <br>
+                                                        @endforeach
                                                     </td>
 
                                                     <td>{{ $works->grade }}</td>
                                                     <td>
                                                         <select class="f-input ml-2 mt-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">
+                                                            <option value="">เลือกเกรด</option>
                                                             <option value="A">A</option>
                                                             <option value="B+">B+</option>
                                                             <option value="B">B</option>
@@ -226,11 +254,11 @@
                                     </div>
 
                                     <div class="container row mt-3">
-                                        @for($i = 0; $i < $countfile; $i++)
+                                        @foreach( $files as $file)
                                             <div class="card mr-3" style="width: 18rem; box-shadow: none;">
-                                                <img class="card-img-top" src="/uploads/workFiles/{{ $file[$i] }}" alt="Card image cap">
+                                                <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
                                             </div>
-                                        @endfor
+                                        @endforeach
                                     </div>
 
                                     <div class="container">
@@ -316,10 +344,11 @@
     {
         jQuery('select[name="grade"]').on('change',function(){
             var grade = jQuery(this).val();
+            var asm_id = $('.asm_id').val();
             if(grade)
             {
                 jQuery.ajax({
-                    url : '/get-works/' +grade,
+                    url : '/get-works/id='+ asm_id +'/' +grade,
                     type : "GET",
                     dataType : "json",
                     success:function(data)
@@ -331,15 +360,22 @@
                         $('.img_box').remove();
 
                         if (data.length != 0){
-                            $.map( data , function ( value , key) {
-
-                                for ( var i=0; i< key.length; i++){
-                                    console.log(value,key);
-                                    $('#workGrade').append('<div class="card mr-2 mt-3 img_box" style="width: 15rem; box-shadow: none;">'+
-                                        '<img class="card-img-top work_img"  src="/uploads/workFiles/'+ value +'" alt="Card image cap">'+'</div>');
-                                }
-
-                            });
+                            for ( var i=0; i< 3; i++) {
+                                // $.map( data[0] , function ( value , key , std_id) {
+                                var arr_data = data[i];
+                                // console.log(arr_data["student_id"]);
+                                $('#workGrade').append(
+                                    '<div class="col-md-4 box-container2"> ' +
+                                    '<div class="card mt-3 img_box2" style="box-shadow: none;">' +
+                                    '<img class="card-img-top work_img2"  src="/uploads/workFiles/' + arr_data["file"] + '" alt="Card image cap">' +
+                                    '<div class="card-body" style="background-color: #3956A3; border: 1px solid #3956A3; border-radius: 0px 0px 3px 3px ">' +
+                                    '<p class="card-text" style="color: white;">' + arr_data["student_id"] +
+                                    '</p>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>');
+                                // });
+                            };
                         } else {
                             $('#workGrade').append('<h5 class="work_txt mt-3">No Work.</h5>');
                         }

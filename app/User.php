@@ -37,8 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    const role_admin = 1;
-    const role_teacher = 2;
-    const  role_student = 3;
+//    const role_admin = 1;
+    const role_teacher = 'teacher';
+    const  role_student = 'student';
 
 }

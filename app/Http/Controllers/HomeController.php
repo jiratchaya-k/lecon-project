@@ -39,7 +39,7 @@ class HomeController extends Controller
 //                ->get();
 
             $subject = DB::table('attend_sections as attend')->where('user_id', '=',Auth::id())
-                ->join('sections_in_subject as sis','attend.sis_id','=','sis.id')
+                ->join('sections_in_subjects as sis','attend.sis_id','=','sis.id')
                 ->join('subjects','sis.subject_id','=','subjects.id')
                 ->select('code','name')->distinct()
                 ->get();
@@ -57,7 +57,7 @@ class HomeController extends Controller
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
 
             $assignments = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
-                ->join('sections_in_subject as sis','sis.id', '=','attend_sections.sis_id')
+                ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('assignments','sis.id','=','assignments.sis_id')
                 ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')

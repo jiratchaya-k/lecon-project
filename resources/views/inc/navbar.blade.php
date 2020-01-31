@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: white; box-shadow: 0px 9px 25px -17px rgba(0,0,0,0.75);">
         <div class="container">
-        <a class="navbar-brand" href="/" style="color: #3956A3; font-weight: bold;"><img src="/uploads/lecon-logo-blue.png" style="width: 150px;"></a>
+        <a class="navbar-brand" href="/" style="color: #3956A3; font-weight: bold;"><img src="/uploads/logo-b.png" style="width: 100px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

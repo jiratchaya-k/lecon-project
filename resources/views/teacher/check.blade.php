@@ -113,15 +113,13 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
-                    @if(count($subject_groups)>0)
-                        @foreach($subject_groups as $subject)
+                    @if(count($subjects)>0)
+                        @foreach($subjects as $subject)
                             <div class="col-md-12">
                                 <div class="card box-shadow mb-2">
                                     <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
                                 <span class="fs-18">
-                                    @foreach($code as $sub_code)
-                                        {{ $sub_code->code }}
-                                    @endforeach
+                                    {{ $subject->code }}
                                     {{ $subject->name }}</span>
                                     </div>
                                     <div class="card-body">
@@ -137,27 +135,76 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @if(count($subjects)>0)
-                                                    @foreach($subjects as $subj)
+
+                                                <?php
+
+                                                $sections = \Illuminate\Support\Facades\DB::table('subjects')
+                                                    ->where('name',$subject->name)
+                                                    ->join('sections_in_subjects as sis','sis.subject_id', '=','subjects.id')
+                                                    ->join('sections','sis.section_id', '=','sections.id')
+                                                    ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+                                                    ->join('users','attend_sections.user_id','=','users.id')
+                                                    ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
+                                                    ->select('sections.section','sis.date','sis.startTime','sis.endTime')->get();
+
+//                                                dd($sections);
+
+
+                                                ?>
+
+                                                @if(count($sections)>0)
+                                                    @foreach($sections as $section)
+                                                        <form method="POST" action="/teacher/student-check/get-qrcode" enctype="multipart/form-data">
+                                                            @csrf
                                                         <tr>
-                                                            <td>{{ $subj->section }}</td>
-                                                            <td>{{ $subj->date }}</td>
-                                                            <td>{{ $subj->startTime.' - '.$subj->endTime }}</td>
+                                                            <td>{{ $section->section }}</td>
+
+                                                            @switch( $section->date )
+                                                                @case('Sunday')
+                                                                    <td>อาทิยต์</td>
+                                                                @break
+                                                                @case('Monday')
+                                                                    <td>จันทร์</td>
+                                                                @break
+                                                                @case('Tuesday')
+                                                                    <td>อังคาร</td>
+                                                                @break
+                                                                @case('Wednesday')
+                                                                    <td>พุธ</td>
+                                                                @break
+                                                                @case('Thursday')
+                                                                    <td>พฤหัสบดี</td>
+                                                                @break
+                                                                @case('Friday')
+                                                                    <td>ศุกร์</td>
+                                                                @break
+                                                                @case('Saturday')
+                                                                    <td>เสาร์</td>
+                                                                @break
+                                                            @endswitch
+
+
+                                                            {{--<td>{{ $section->date }}</td>--}}
+                                                            <td>{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}</td>
                                                             <td>
                                                                 <div class="form-group mt-2">
-                                                                    <input class="form-control f-input" name="checkStudent_Date" type="date" id="date">
+                                                                    <input class="form-control f-input" name="check_date" type="date" id="date">
+                                                                    <input class="form-control f-input" name="check_name" type="hidden" value="{{$subject->name}}">
+                                                                    <input class="form-control f-input" name="check_code" type="hidden" value="{{$subject->code}}">
+                                                                    <input class="form-control f-input" name="check_section" type="hidden" value="{{$section->section}}">
+                                                                    <input class="form-control f-input" name="check_time" type="hidden" value="{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}">
+                                                                    <input class="form-control f-input" name="check_dedate" type="hidden" value="{{$section->date}}">
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <a href="" class="btn btn-primary btn-submit" style="width: 100%">
-                                                                    สร้าง QR CODE
-                                                                </a>
+                                                                <input class="btn btn-primary btn-submit" style="width: 100%" type="submit" value="บันทึก">
+                                                                {{--<a href="/teacher/student-check/get-qrcode" class="btn btn-primary btn-submit" style="width: 100%">--}}
+                                                                    {{--สร้าง QR CODE--}}
+                                                                {{--</a>--}}
                                                             </td>
                                                         </tr>
+                                                        </form>
                                                     @endforeach
-                                                    {{--@foreach($sections as $sect)--}}
-
-                                                    {{--@endforeach--}}
                                                 @endif
                                                 </tbody>
                                             </table>

@@ -130,10 +130,10 @@
                         </div>
                         <div class="form-group col-md-8">
                             <label class="control-label">มอบหมายให้กลุ่มเรียน</label>
-                            <select class="f-input ml-2 mt-2" name="subject_id" style="width: auto; height: 32px; padding-left: 10px;">
+                            <select class="f-input ml-2 mt-2" name="sis_id" style="width: auto; height: 32px; padding-left: 10px;">
                                 @if(count($sections)>0)
                                     @foreach($sections as $section)
-                                        <option value="{{ $section->id }}">{{ 'กลุ่ม '.$section->section.' ('.$section->code.' '.$section->name }}</option>
+                                        <option value="{{ $section->sis_id }}">{{ 'กลุ่ม '.$section->section.' ('.$section->code.' '.$section->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -147,7 +147,24 @@
 
                             <div class="form-group col-md-3">
                                 <label for="time" class="control-label">กำหนดเวลาส่ง</label>
-                                <input class="form-control f-input" name="assignment_dueTime" type="time" id="time">
+                                {{--<input class="form-control f-input" name="assignment_dueTime" type="time" id="time">--}}
+                                <select class="f-input" name="assignment_dueTime" style="width: 180px; height: 32px; padding-left: 10px;">
+                                    <option value="09:20">09:20</option>
+                                    <option value="10:15">10:15</option>
+                                    <option value="11:10">11:10</option>
+                                    <option value="12:05">12:05</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:50">13:50</option>
+                                    <option value="14:45">14:45</option>
+                                    <option value="15:40">15:40</option>
+                                    <option value="16:35">16:35</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="18:25">18:25</option>
+                                    <option value="19:20">19:20</option>
+                                    <option value="20:15">20:15</option>
+                                    <option value="21:10">21:10</option>
+                                    <option value="22:05">22:05</option>
+                                </select>
                             </div>
                         </div>
 
@@ -225,22 +242,23 @@
                                     </div>
                                 </div>
                                 <div class="container" id="dimensions-box" style="display: none">
-                                    <div class="row mt-2">
-                                        <label for="dimensionsType" class="control-label col-md-3">Type</label>
-                                        <select class="custom-select col-md-3 f-input" id="dimensionsType" name="dimensionsType">
-                                            <option selected value="null">Select</option>
-                                            <option value="px">Pixels</option>
-                                            <option value="in">Inches</option>
-                                            <option value="cm">Centimeters</option>
-                                            <option value="mm">Millimeters</option>
-                                        </select>
-                                    </div>
+                                    {{--<div class="row mt-2">--}}
+                                        {{--<label for="dimensionsType" class="control-label col-md-3">Type</label>--}}
+                                        {{--<select class="custom-select col-md-3 f-input" id="dimensionsType" name="dimensionsType">--}}
+                                            {{--<option selected value="null">Select</option>--}}
+                                            {{--<option value="px">Pixels</option>--}}
+                                            {{--<option value="in">Inches</option>--}}
+                                            {{--<option value="cm">Centimeters</option>--}}
+                                            {{--<option value="mm">Millimeters</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
                                     <div class="row mt-3">
-                                        <label for="dimensionsWidth" class="control-label col-md-3">กว้าง</label>
+                                        <label for="dimensionsWidth" class="control-label col-md-2">กว้าง</label>
                                         <input class="form-control col-md-2 f-input" name="dimensions_width" type="text" id="dimensionsWidth">
                                         <span class="col-md-1 text-center">x</span>
-                                        <label for="dimensionsHeight" class="control-label col-md-3">สูง</label>
-                                        <input class="form-control col-md-2 f-input" name="dimensions_height" type="text" id="dimensionsHeight">
+                                        <label for="dimensionsHeight" class="control-label col-md-2">สูง</label>
+                                        <input class="form-control col-md-2 f-input mr-3" name="dimensions_height" type="text" id="dimensionsHeight">
+                                        <span class="col-md-2 text-center">px</span>
                                     </div>
                                     <hr>
                                     <div class="row mt-1">

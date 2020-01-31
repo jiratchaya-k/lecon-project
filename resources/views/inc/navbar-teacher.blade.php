@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #3956A3;">
-        <a class="navbar-brand" href="/"><img src="/uploads/lecon-logo-white.png" style="width: 150px;"></a>
+        <a class="navbar-brand" href="/"><img src="/uploads/logo-w.png" style="width: 100px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
