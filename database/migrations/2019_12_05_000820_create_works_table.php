@@ -17,7 +17,7 @@ class CreateWorksTable extends Migration
             $table->bigIncrements('id');
             $table->string('file');
             $table->integer('student_id');
-            $table->integer('assignment_id');
+            $table->integer('sis_id');
             $table->string('grade')->nullable();
             $table->timestamps();
         });

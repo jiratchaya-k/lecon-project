@@ -197,7 +197,7 @@
                                             <td>{{$work->student_id}}</td>
                                             <td>{{$work->firstname.' '.$work->lastname}}</td>
 
-<                                         <?php
+                                         <?php
                                                 $files = \Illuminate\Support\Facades\DB::table('files')->where('work_id','=',$work->id)
                                                     ->get();
 

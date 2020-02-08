@@ -73,4 +73,8 @@ class ManageController extends Controller
 
     }
 
+    public function sectionAdd($id){
+
+    }
+
 }

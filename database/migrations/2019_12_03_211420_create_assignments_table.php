@@ -20,15 +20,12 @@ class CreateAssignmentsTable extends Migration
             $table->string('file');
             $table->date('dueDate');
             $table->time('dueTime');
-            $table->integer('section_id');
-            $table->string('fileType01');
-            $table->string('fileType02');
-            $table->string('fileType03');
-            $table->string('fileType04');
-            $table->string('fileType05');
+            $table->integer('sis_id');
+            $table->string('autoGrade_fileType');
+            $table->string('autoGrade_dimensions');
+            $table->string('fileType');
+            $table->string('dimensions');
             $table->string('dimensionsType');
-            $table->integer('width');
-            $table->integer('height');
             $table->timestamps();
         });
     }

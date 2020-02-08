@@ -123,7 +123,13 @@
                                     {{--@endforeach--}}
                                         {{ $subject->code }}
                                         {{ $subject->name }}</span>
-                                <a href="/teacher/subject/add-section" class="btn btn-default btn-add ml-2">+ เพิ่มกลุ่มเรียน</a>
+
+                                <?php
+                                    $subject_id = \Illuminate\Support\Facades\DB::table('subjects')->where('code','=',$subject->code)
+                                    ->select('id')->first();
+//                                    dd($subject_id);
+                                 ?>
+                                <a href="/teacher/subject/{{$subject_id->id}}/add-section" class="btn btn-default btn-add ml-2">+ เพิ่มกลุ่มเรียน</a>
                             </div>
                             <div class="card-body">
                                     <div class="table-responsive-xl">
@@ -157,6 +163,8 @@
                                             ->join('users','attend_sections.user_id','=','users.id')
                                             ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
                                             ->select('years.year','years.term')->get();
+
+//                                        dd($sections);
 
                                         ?>
 

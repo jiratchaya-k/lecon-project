@@ -99,13 +99,17 @@ class WorkController extends Controller
 
 
         if (($date <= $dueDate)) {
-            if (($time <= $dueTime) || ($time > $dueTime)){
+            if (($time <= $dueTime)){
                 $status = 'Submitted';
+            }else{
+                $status = 'Submitted Late';
             }
         }
         else {
             $status = 'Submitted Late';
         }
+
+//        dd($status,$grade);
 
         $work = new Work;
         $work->student_id = Auth::id();
