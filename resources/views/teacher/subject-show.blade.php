@@ -125,38 +125,75 @@
                     <div class="container">
                     <div class="card card-shadow col-md-12 item-center mb-3">
                     <div class="card-body container">
-                    <div class="row">
-                    <div class="col-md-8">
-                    <h5>Assignment Sect. {{ $sections->section}}</h5>
-                    <span>{{ $sections->code.' '.$sections->name  }}</span>
-                    </div>
-                    <div class="col-md-4 text-right">
-                    <h5 class="text-green">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}}</h5>
-                    </div>
-                    </div>
 
-                    <hr>
-                    <h3>{{ $assignment->title }}</h3>
-                    <span>{{ $assignment-> description }}</span>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <span>802104 <br> subject name</span>
+                                <h5 class="mb-0 mt-2">กลุ่มเรียน 1301  วันอาทิตย์  เวลา</h5>
+                                <h5>อาจารย์</h5>
+                            </div>
+                            <div class="col-md-4">
+                                {{--<a href="/teacher/assignment/create" class="btn btn-primary btn-submit" style="width: 100%;">--}}
+                                    {{--สร้าง--}}
+                                {{--</a>--}}
 
-                    <h5>Work Required</h5>
-                    <p>File Type :
-                    @if(empty($assignment->fileType))
-                    None
-                    @else
-                    @foreach($fileType as $type)
-                    {{ $type.' ' }}
-                    @endforeach
-                    @endif
-                    <br>
-                    Dimentions :
-                    @if( $assignment->dimensions == '')
-                    None
-                    @else
-                    {{ $assignment->dimensions }} {{ $assignment->dimensionsType }}
-                    @endif
+                            </div>
+                        </div>
 
-                    </p>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card mb-3">
+                                    <div class="card-body container">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <h5 class="card-title" style="float: left">โพสต์</h5>
+                                            </div>
+                                            <div class="col">
+                                                <a href="/teacher/assignment/create" class="text-right" style="width: 20%;">
+                                                    <i class="fas fa-edit" style="font-size: 16px;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-6">
+                                <div class="card mb-3">
+                                    <div class="card-body container">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <h5 class="card-title" style="float: left">เนื้อหา</h5>
+                                            </div>
+                                            <div class="col">
+                                                <a href="/teacher/assignment/create" class="text-right" style="width: 20%;">
+                                                    <i class="fas fa-edit" style="font-size: 16px;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {{--<p>File Type :--}}
+                    {{--@if(empty($assignment->fileType))--}}
+                    {{--None--}}
+                    {{--@else--}}
+                    {{--@foreach($fileType as $type)--}}
+                    {{--{{ $type.' ' }}--}}
+                    {{--@endforeach--}}
+                    {{--@endif--}}
+                    {{--<br>--}}
+                    {{--Dimentions :--}}
+                    {{--@if( $assignment->dimensions == '')--}}
+                    {{--None--}}
+                    {{--@else--}}
+                    {{--{{ $assignment->dimensions }} {{ $assignment->dimensionsType }}--}}
+                    {{--@endif--}}
+
+                    {{--</p>--}}
 
                     <div class="row">
                     <div class="col-md-6 text-right">
@@ -177,98 +214,8 @@
                     </div>
                     </div>
 
-                        <div class="card card-shadow col-md-12 item-center mb-5">
-                            <div class="card-body container">
-
-                        <div class="table-responsive-xl">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="table-head" style="width: 100px!important;">รหัสนักศึกษา</th>
-                                    <th class="table-head">ชื่อ-นามสกุล</th>
-                                    <th class="table-head">ไฟล์งาน</th>
-                                    <th class="table-head">เกรด</th>
-                                    <th class="table-head">แก้ไข</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if(count($allWorks)>0)
-                                    @foreach($allWorks as $work)
-                                        <tr class="click-row" data-href="/teacher/assignment/{{$assignment->title}}/work={{ $work->id }}">
-
-                                            <td>{{$work->student_id}}</td>
-                                            <td>{{$work->firstname.' '.$work->lastname}}</td>
-
-                                         <?php
-                                                $files = \Illuminate\Support\Facades\DB::table('files')->where('work_id','=',$work->id)
-                                                    ->get();
-
-
-
-                                           ?>
-                                            <td>
-                                                @foreach($files as $file)
-
-                                                    {{ $file->file }}
-                                                @endforeach
-                                            </td>
-
-                                            <td>
-                                                @if($work->grade != null)
-                                                    {{$work->grade}}
-                                                @else
-                                                    -
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="/teacher/assignment/{{$assignment->title}}/work={{ $work->id }}" class="btn btn-primary btn-dark bg-gradient box-shadow" style="border: none">
-                                                    ให้เกรด
-                                                </a>
-                                                <a href="#" class="ml-3">
-                                                    <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td>ยังไม่มีงานที่ส่ง</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                @endif
-                                </tbody>
-                            </table>
-                        </div>
-                            </div>
-                        </div>
-
                     </div>
                     </div>
-                    {{--<div class="row">--}}
-                    {{--@if(count($assignments)>0)--}}
-                    {{--@foreach($assignments as $assignment)--}}
-                    {{--<a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">--}}
-                    {{--<div class="card card-shadow  mt-3 mb-2">--}}
-                    {{--<div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">--}}
-                    {{--<span>Sect.</span>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="card-body">--}}
-                    {{--<h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>--}}
-                    {{--<p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--@endforeach--}}
-                    {{--@else--}}
-                    {{--<div>--}}
-                    {{--<p>No Assignment</p>--}}
-                    {{--</div>--}}
-                    {{--@endif--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>

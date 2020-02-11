@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Assignment;
 use App\attendSection;
 use App\Section;
 use App\SectionsInSubject;
@@ -44,6 +45,78 @@ class SubjectController extends Controller
         return view('teacher.subject-create',compact('years','sections','teachers','students'));
     }
 
+    public function show($id){
+
+        $assignment = Assignment::all()->find($id);
+        $assignment_id = $id;
+//        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
+//            ->join('subjects','subjects.id', '=','assignments.subject_id')
+//            ->join('sections','subjects.section_id','=','sections.id')
+//            ->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
+
+        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
+            ->join('sections_in_subjects as sis','assignments.sis_id','=','sis.id')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
+
+//        dd($sections);
+
+        if (Auth::check() && auth()->user()->role == User::role_teacher) {
+
+            $allWorks = DB::table('works')->where('assignment_id',$id)
+                ->join('users','users.id','=','works.student_id')
+                ->select('*','works.id')->distinct('users.student_id')->get();
+
+//            dd($allWorks);
+
+            $fileType = json_decode($assignment->fileType);
+
+            return view('teacher.subject-show',compact('assignment','fileType','sections','allWorks'));
+        }else if (Auth::check() && auth()->user()->role == User::role_student) {
+
+            $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
+            $workFile = DB::table('works')->join('files','works.id','=','files.work_id')
+                ->where('works.student_id','=',Auth::id())->where('works.assignment_id','=',$id)
+                ->select('files.file')->get();
+
+            $files = [];
+
+            foreach ($workFile as $wfile){
+                $files[] = $wfile->file;
+            }
+
+            $fileType = json_decode($assignment->fileType);
+
+
+            // change string of date,time(2019-12-05) to number of date,time (1575478800)
+            $dueDate = strtotime($assignment->dueDate);
+            $dueTime = strtotime($assignment->dueTime);
+            $date = strtotime(date("Y-m-d"));
+            $time = strtotime(date("H:i:s"));
+
+            $status = '';
+
+//            dd($dueDate);
+
+
+            if (!empty($assignmentWork)){
+                $works = $files;
+                $status = $assignmentWork->status;
+            }else {
+                $works = null;
+
+                //if student not send -> status = Missed
+                if ((($date > $dueDate) && ($time > $dueTime)) || (($date > $dueDate) && ($time <= $dueTime)) ) {
+                    $status = 'Missed';
+                }
+            }
+
+            return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections'));
+        }
+
+    }
+
     public function store(Request $request){
 
 
@@ -61,6 +134,10 @@ class SubjectController extends Controller
 
 
 //        dd(count($request->input('subject_teacher')));
+
+//        $teachers = $request->input('subject_teacher');
+//
+//        dd($teachers);
 
         $subject = new Subject;
         $subject->code = $request->input('subject_code');
@@ -105,6 +182,8 @@ class SubjectController extends Controller
         }
 
         $teachers = $request->input('subject_teacher');
+
+//        dd($teachers);
 
         if (!empty($teachers)){
             for ($i=0;$i < count($teachers);$i++){

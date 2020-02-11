@@ -47,7 +47,9 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav flex-column">
                         <li class="nav-divider">
-                            พลเอก สังฆกุล
+                            <?php $user = \Illuminate\Support\Facades\DB::table('users')->where('id','=',\Illuminate\Support\Facades\Auth::id())->first();
+                            ?>
+                            {{ $user->firstname.' '.$user->lastname }}
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link active" href="/teacher/subject"><i class="fa fa-fw fa-angle-right"></i>วิชาทั้งหมด<span class="badge badge-success">6</span></a>
@@ -153,7 +155,7 @@
                                             ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                                             ->join('users','attend_sections.user_id','=','users.id')
                                             ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
-                                            ->select('sections.section')->get();
+                                            ->select('sections.section', 'sis.id as sis_id')->get();
 
                                         $years = \Illuminate\Support\Facades\DB::table('subjects')
                                             ->where('name',$subject->name)
@@ -175,7 +177,7 @@
                                                     <td>{{ $years[$i] -> year }}</td>
                                                     <td>{{ $years[$i] -> term }}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-primary btn-dark btn-table">
+                                                        <a href="/teacher/subject/section/{{$sections[$i]->sis_id}}" class="btn btn-primary btn-dark btn-table">
                                                             view
                                                         </a>
                                                         <a href="#" class="ml-3">

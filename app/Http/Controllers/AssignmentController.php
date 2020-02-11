@@ -202,7 +202,7 @@ class AssignmentController extends Controller
 
             $fileType = json_decode($assignment->fileType);
 
-            return view('teacher.assignment-show',compact('assignment','fileType','sections','allWorks'));
+            return view('teacher.assignment-show');
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
