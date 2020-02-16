@@ -158,20 +158,25 @@
 
                     </p>
 
-                    <div class="row">
-                    <div class="col-md-6 text-right">
-                    <a href="#" class="btn btn-primary btn-dark" style="width: 200px;">
-                    edit
-                    </a>
-                    </div>
-                    <div class="col-md-6">
-                    <a href="#" class="btn btn-primary btn-danger" style="width: 200px;">
-                    delete
-                    </a>
-                    </div>
-                    </div>
+                        @if(count($allWorks) <= 0)
+                            <div class="row">
+                                <div class="col-md-6 text-right">
+                                    <a href="#" class="btn btn-primary btn-dark" style="width: 200px;">
+                                        edit
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="#" class="btn btn-primary btn-danger" style="width: 200px;">
+                                        delete
+                                    </a>
+                                </div>
+                            </div>
+                            {{--<hr>--}}
+                        @else
 
-                    <hr>
+                        @endif
+
+
 
 
                     </div>
@@ -194,7 +199,10 @@
                                 <tbody>
                                 @if(count($allWorks)>0)
                                     @foreach($allWorks as $work)
-                                        <tr class="click-row" data-href="/teacher/assignment/{{$assignment->title}}/work={{ $work->id }}">
+                                        <?php
+                                        $arrayIndex = array_search($work->id, $arr_workId);
+                                        ?>
+                                        <tr class="click-row" data-href="/teacher/assignment/{{$assignment->title}}/index={{$arrayIndex}}/work={{ $work->id }}">
 
                                             <td>{{$work->student_id}}</td>
                                             <td>{{$work->firstname.' '.$work->lastname}}</td>
@@ -221,7 +229,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="/teacher/assignment/{{$assignment->title}}/work={{ $work->id }}" class="btn btn-primary btn-dark bg-gradient box-shadow" style="border: none">
+                                                <a href="/teacher/assignment/{{$assignment->title}}/index={{$arrayIndex}}/work={{ $work->id }}" class="btn btn-primary btn-dark bg-gradient box-shadow" style="border: none">
                                                     ให้เกรด
                                                 </a>
                                                 <a href="#" class="ml-3">

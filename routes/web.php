@@ -77,7 +77,9 @@ Route::get('/teacher/assignment/create', 'AssignmentController@create');
 Route::post('/teacher/assignment/store', 'AssignmentController@store');
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
 Route::get('/assignment/{id}', 'AssignmentController@show');
-Route::get('/teacher/assignment/{title}/work={id}', 'AssignmentController@showWorkDetail');
+Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}', 'AssignmentController@showWorkDetail');
+Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/next', 'AssignmentController@nextWork');
+Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/previous', 'AssignmentController@previousWork');
 Route::post('/teacher/assignment/work={id}/graded', 'AssignmentController@inputGrade');
 
 

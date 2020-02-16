@@ -198,11 +198,29 @@ class AssignmentController extends Controller
                 ->join('users','users.id','=','works.student_id')
                 ->select('*','works.id')->distinct('users.student_id')->get();
 
-//            dd($allWorks);
+            $arr_allWorks = json_decode($allWorks);
+
+            $arr_workId = array();
+
+
+            foreach ($arr_allWorks as $arr_work){
+                $arr_workId[] = $arr_work->id;
+            }
+
+            $value = 1;
+
+            function Search($value, $array)
+            {
+                return(array_search($value, $array));
+            }
+
+//            dd(Search($value, $arr_workId));
 
             $fileType = json_decode($assignment->fileType);
 
-            return view('teacher.assignment-show');
+//            dd($allWorks);
+
+            return view('teacher.assignment-show',compact('assignment','sections','fileType','sections','allWorks','arr_workId'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
@@ -247,10 +265,13 @@ class AssignmentController extends Controller
 
     }
 
-    public function showWorkDetail($title, $id) {
+    public function showWorkDetail($title, $arr_index, $id) {
+
 //        $works = DB::table('works')->select('*')->where('id',$id)->first();
 
         $asm_id = DB::table('assignments')->where('title','=',$title)->select('id')->first();
+
+        $asm_title = $title;
 
         $works = DB::table('works')->select('*','works.id')->where('works.id',$id)
             ->join('users','works.student_id','=','users.id')
@@ -262,8 +283,69 @@ class AssignmentController extends Controller
             ->join('files','works.id','=','files.work_id')
             ->select('files.file','files.id')
             ->get();
+
+        $allworks = DB::table('works')->where('assignment_id','=',$asm_id->id)->orderBy('student_id')->get();
+
+        $arr_allWorks = json_decode($allworks);
+
+//        dd($arr_allWorks);
+
+        foreach ($arr_allWorks as $arr_work){
+            $arr_workId[] = $arr_work->id;
+        }
+
+        $value = $id;
+
+        function Search($value, $array)
+        {
+            return(array_search($value, $array));
+        }
+
+        $arrayCount = count($arr_workId);
+
+        $arrayIndex = Search($value, $arr_workId);
+//            dd(Search($value, $arr_workId));
+
+
 //        dd($files);
-        return view('teacher.assignment-grade',compact('works','files','asm_id'));
+        return view('teacher.assignment-grade',compact('works','files','asm_id','arrayIndex','asm_title','arrayCount'));
+    }
+
+    public function nextWork($title, $arr_index, $id)
+    {
+        $asm_id = DB::table('assignments')->where('title','=',$title)->select('id')->first();
+        $allworks = DB::table('works')->where('assignment_id','=',$asm_id->id)->orderBy('student_id')->get();
+
+        $arr_allWorks = json_decode($allworks);
+
+//        dd($arr_allWorks);
+
+        foreach ($arr_allWorks as $arr_work){
+            $arr_workId[] = $arr_work->id;
+        }
+
+//        dd($arr_workId[$arr_index+1]);
+
+        return redirect('/teacher/assignment/'.$title.'/index='.($arr_index+1).'/work='.$arr_workId[$arr_index+1]);
+
+    }
+    public function previousWork($title, $arr_index, $id)
+    {
+        $asm_id = DB::table('assignments')->where('title','=',$title)->select('id')->first();
+        $allworks = DB::table('works')->where('assignment_id','=',$asm_id->id)->orderBy('student_id')->get();
+
+        $arr_allWorks = json_decode($allworks);
+
+//        dd($arr_allWorks);
+
+        foreach ($arr_allWorks as $arr_work){
+            $arr_workId[] = $arr_work->id;
+        }
+
+//        dd($arr_workId[$arr_index+1]);
+
+        return redirect('/teacher/assignment/'.$title.'/index='.($arr_index-1).'/work='.$arr_workId[$arr_index-1]);
+
     }
 
     public function inputGrade(Request $request, $id)
@@ -344,8 +426,15 @@ class AssignmentController extends Controller
             ->select('files.file','files.id')
             ->get();
 
-//        dd($files);
-        return view('teacher.assignment-compare-detail',compact('works','files'));
+        $asm_id = DB::table('files')->where('files.id','=',$id)->join('works','files.work_id','=','works.id')->select('works.assignment_id')->first();
+
+        $allworks = DB::table('works')->where('assignment_id','=',$asm_id->assignment_id)->orderBy('student_id')->get();
+
+        $arr_allWorks = json_decode($allworks);
+
+        dd($arr_allWorks[0]);
+
+        return view('teacher.assignment-compare-detail',compact('works','files','asm_id'));
     }
 
 }
