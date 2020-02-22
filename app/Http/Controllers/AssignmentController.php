@@ -432,9 +432,25 @@ class AssignmentController extends Controller
 
         $arr_allWorks = json_decode($allworks);
 
-        dd($arr_allWorks[0]);
+//        dd($arr_allWorks);
 
-        return view('teacher.assignment-compare-detail',compact('works','files','asm_id'));
+        foreach ($arr_allWorks as $arr_work){
+            $arr_workId[] = $arr_work->id;
+        }
+
+        $value = $id;
+
+        function Search($value, $array)
+        {
+            return(array_search($value, $array));
+        }
+
+        $arrayCount = count($arr_workId);
+
+        $arrayIndex = Search($value, $arr_workId);
+
+
+        return view('teacher.assignment-compare-detail',compact('works','files','asm_id','arrayIndex','arrayCount'));
     }
 
 }

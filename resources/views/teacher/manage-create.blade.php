@@ -129,14 +129,14 @@
                                                         <div class="input_year_wrap">
                                                             <div class="row">
                                                                 <label for="inputYear" class="col-1 col-form-label">ปี</label>
-                                                                <div class="col-md-4">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control f-input" name="years[]" type="text">
                                                                 </div>
                                                                 <div class="col-1 pt-1">
                                                                     <h3>/</h3>
                                                                 </div>
-                                                                <label for="inputTerm" class="col-2 col-form-label">เทอม</label>
-                                                                <div class="col-md-3">
+                                                                <label for="inputTerm" class="col-4 col-form-label">ภาคการศึกษา</label>
+                                                                <div class="col-md-2">
                                                                     <input class="form-control f-input" name="terms[]" type="text">
                                                                 </div>
                                                             </div>

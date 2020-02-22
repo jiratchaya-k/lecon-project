@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Assignment;
 use App\attendSection;
+use App\Lesson;
+use App\Post;
 use App\Section;
 use App\SectionsInSubject;
 use App\Subject;
@@ -12,6 +14,7 @@ use App\Year;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\New_;
 
 class SubjectController extends Controller
 {
@@ -47,18 +50,16 @@ class SubjectController extends Controller
 
     public function show($id){
 
-        $assignment = Assignment::all()->find($id);
-        $assignment_id = $id;
+        $sis_id = $id;
 //        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
 //            ->join('subjects','subjects.id', '=','assignments.subject_id')
 //            ->join('sections','subjects.section_id','=','sections.id')
 //            ->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
 
-        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
-            ->join('sections_in_subjects as sis','assignments.sis_id','=','sis.id')
+        $sections = DB::table('sections_in_subjects as sis')->where('sis.id',$sis_id)
             ->join('sections','sis.section_id','=','sections.id')
             ->join('subjects','subjects.id','=','sis.subject_id')
-            ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
+            ->select('sis.id as sis_id','sis.date','sis.startTime','sis.endTime','subjects.id','sections.section','subjects.code','subjects.name')->first();
 
 //        dd($sections);
 
@@ -70,9 +71,47 @@ class SubjectController extends Controller
 
 //            dd($allWorks);
 
-            $fileType = json_decode($assignment->fileType);
+            switch( $sections->date ) {
+                case('Sunday') :
+                    $date = 'อาทิตย์';
+                    break;
+                case('Monday') :
+                    $date = 'จันทร์';
+                    break;
+                case('Tuesday') :
+                    $date = 'อังคาร';
+                    break;
+                case('Wednesday') :
+                    $date = 'พุธ';
+                    break;
+                case('Thursday') :
+                    $date = 'พฤหัสบดี';
+                    break;
+                case('Friday') :
+                    $date = 'ศุกร์';
+                    break;
+                case('Saturday') :
+                    $date = 'เสาร์';
+                  break;
+            }
 
-            return view('teacher.subject-show',compact('assignment','fileType','sections','allWorks'));
+            $teachers = DB::table('attend_sections')->where('attend_sections.sis_id','=',$sections->sis_id)->get();
+
+
+            $posts = DB::table('posts')->where('posts.sis_id','=',$id)->get();
+            $lessons = DB::table('lessons')->where('lessons.sis_id','=',$id)->get();
+
+            foreach ($teachers as $teacher) {
+                $teach = DB::table('users')->where('users.role','=',User::role_teacher)->where('users.id','=',$teacher->user_id)->select('users.firstname','users.lastname')->first();
+                if ($teach != null){
+                    $allTeacher[] = $teach;
+                }
+
+            }
+
+//            dd($allTeacher);
+
+            return view('teacher.subject-show',compact('sections','allWorks','date','allTeacher','posts','lessons'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
@@ -357,5 +396,49 @@ class SubjectController extends Controller
         return redirect('/teacher/subject');
     }
 
+    public function postStore(Request $request, $id){
+        $post = New Post;
+        $post->topic = $request->input('post_topic');
+        $post->description = $request->input('post_description');
+        $post->user_id = Auth::id();
+        $post->sis_id = $id;
+        $post->save();
+        return redirect('/teacher/subject/section/'.$id);
+    }
+    public function lessonStore(Request $request, $id){
+
+        $lesson_files = $request->file('lesson_file');
+
+        foreach ($lesson_files as $file) {
+            // get file with extension
+            $filenameWithExt = $file->getClientOriginalName();
+
+            // get file name = 1
+            $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+
+            // get extention = jpg
+            $extension = $file->getClientOriginalExtension();
+
+            // crete new file name = 1_1223322.jpg
+            $filenameToStore = date("YmdHis").'_'.$filename.'.'.$extension;
+
+            // upload image
+            $file->move('uploads/LessonFiles/'.$id,$filenameToStore);
+
+            $fileStore[] = $filenameToStore;
+
+        }
+
+        dd($request->input('lesson_description'));
+
+        $lesson = New Lesson;
+        $lesson->topic = $request->input('lesson_topic');
+        $lesson->description = $request->input('lesson_description');
+        $lesson->file = json_encode($fileStore);
+        $lesson->user_id = Auth::id();
+        $lesson->sis_id = $id;
+        $lesson->save();
+        return redirect('/teacher/subject/section/'.$id);
+    }
 
 }

@@ -52,6 +52,8 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/teacher/subject', 'SubjectController@index');
 Route::get('/teacher/subject/section/{id}', 'SubjectController@show');
+Route::post('/teacher/subject/section/{id}/post/store', 'SubjectController@postStore');
+Route::post('/teacher/subject/section/{id}/lesson/store', 'SubjectController@lessonStore');
 Route::get('/teacher/subject/create', 'SubjectController@create');
 Route::post('/teacher/subject/store', 'SubjectController@store');
 Route::get('/teacher/subject/{id}/add-section', 'SubjectController@addSection');

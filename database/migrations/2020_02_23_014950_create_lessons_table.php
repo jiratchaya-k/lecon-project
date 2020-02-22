@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttendSectionsTable extends Migration
+class CreateLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateAttendSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('attend_sections', function (Blueprint $table) {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('topic');
+            $table->text('description')->nullable();
+            $table->string('file');
             $table->string('user_id');
             $table->integer('sis_id');
             $table->timestamps();
@@ -28,6 +31,6 @@ class CreateAttendSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attend_section');
+        Schema::dropIfExists('lessons');
     }
 }

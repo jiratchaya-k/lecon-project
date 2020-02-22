@@ -263,13 +263,15 @@
                                         {{--@endforeach--}}
                                         {{--</div>--}}
 
-                                        <div class="container">
+                                        <div class="container mt-3">
                                             <div class="row">
                                                 <div class="col-md-6" style="border-right: 1px solid gray;">
                                                     <div class="row">
                                                         @foreach( $files as $file)
-                                                            <div class="card mr-3" style="width: 18rem; box-shadow: none;">
-                                                                <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
+                                                            <div class="col-md-6 mt-2">
+                                                                <div class="card mr-3" style="width: 100%; box-shadow: none;">
+                                                                    <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
+                                                                </div>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -302,7 +304,7 @@
 
 
 
-                                        <div class="container">
+                                        <div class="container mt-5 mb-3">
                                             <div class="row">
                                                 <div class="col-md-6 text-right">
                                                     <input class="btn btn-primary btn-submit" type="submit" value="บันทึก">
