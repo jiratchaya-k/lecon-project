@@ -170,6 +170,27 @@
     });
 </script>
 
+<script>
+    var x = document.getElementById("demo");
+    var lat = document.getElementById("lat");
+    var long = document.getElementById("long");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        // x.innerHTML = "Latitude: " + position.coords.latitude +
+        //     "<br>Longitude: " + position.coords.longitude;
+        lat.value = position.coords.latitude;
+        long.value = position.coords.longitude;
+    }
+</script>
+
 {{--<script>--}}
     {{--$('#datepicker').datepicker({--}}
         {{--uiLibrary: 'bootstrap4'--}}

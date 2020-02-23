@@ -41,6 +41,10 @@ Route::get('/teacher/student-check', function () {
     return view('teacher.checkname');
 });
 
+Route::get('/check-in', function () {
+    return view('student.check');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -61,6 +65,8 @@ Route::post('/teacher/subject/{id}/add-section/store', 'SubjectController@sectio
 
 Route::get('/teacher/student-check', 'CheckStudentController@index');
 Route::post('/teacher/student-check/get-qrcode', 'CheckStudentController@getQrcode');
+Route::get('/student/check', 'LocationController@location');
+Route::post('/check-in/check', 'LocationController@location');
 
 
 

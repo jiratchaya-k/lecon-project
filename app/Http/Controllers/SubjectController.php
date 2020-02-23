@@ -429,7 +429,7 @@ class SubjectController extends Controller
 
         }
 
-        dd($request->input('lesson_description'));
+//        dd($request->input('lesson_description'));
 
         $lesson = New Lesson;
         $lesson->topic = $request->input('lesson_topic');
