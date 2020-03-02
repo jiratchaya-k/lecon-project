@@ -41,9 +41,9 @@ Route::get('/teacher/student-check', function () {
     return view('teacher.checkname');
 });
 
-Route::get('/check-in', function () {
-    return view('student.check');
-});
+//Route::get('/check-in', function () {
+//    return view('student.check');
+//});
 
 Auth::routes();
 
@@ -64,8 +64,12 @@ Route::get('/teacher/subject/{id}/add-section', 'SubjectController@addSection');
 Route::post('/teacher/subject/{id}/add-section/store', 'SubjectController@sectionStore');
 
 Route::get('/teacher/student-check', 'CheckStudentController@index');
-Route::post('/teacher/student-check/get-qrcode', 'CheckStudentController@getQrcode');
+Route::get('/teacher/student-check/check={check_id}/get-qrcode', 'CheckStudentController@getQrcode');
+Route::post('/teacher/student-check/create', 'CheckStudentController@createCheck');
 Route::get('/student/check', 'LocationController@location');
+//Route::get('/check-in', 'LocationController@index');
+Route::get('/check-in/{id}', 'LocationController@index');
+Route::get('/check-in/{id}/complete', 'LocationController@checkComplete');
 Route::post('/check-in/check', 'LocationController@location');
 
 

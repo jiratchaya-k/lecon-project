@@ -147,7 +147,7 @@
                                                     ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                                                     ->join('users','attend_sections.user_id','=','users.id')
                                                     ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
-                                                    ->select('sections.section','sis.date','sis.startTime','sis.endTime')->get();
+                                                    ->select('sections.section','sis.date','sis.startTime','sis.endTime','sis.id as sis_id')->get();
 
 //                                                dd($sections);
 
@@ -156,7 +156,7 @@
 
                                                 @if(count($sections)>0)
                                                     @foreach($sections as $section)
-                                                        <form method="POST" action="/teacher/student-check/get-qrcode" enctype="multipart/form-data">
+                                                        <form method="POST" action="/teacher/student-check/create" enctype="multipart/form-data">
                                                             @csrf
                                                         <tr>
                                                             <td>{{ $section->section }}</td>
@@ -191,11 +191,12 @@
                                                             <td>
                                                                 <div class="form-group mt-2">
                                                                     <input class="form-control f-input" name="check_date" type="date" id="date">
-                                                                    <input class="form-control f-input" name="check_name" type="hidden" value="{{$subject->name}}">
-                                                                    <input class="form-control f-input" name="check_code" type="hidden" value="{{$subject->code}}">
-                                                                    <input class="form-control f-input" name="check_section" type="hidden" value="{{$section->section}}">
-                                                                    <input class="form-control f-input" name="check_time" type="hidden" value="{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}">
-                                                                    <input class="form-control f-input" name="check_dedate" type="hidden" value="{{$section->date}}">
+                                                                    {{--<input class="form-control f-input" name="check_name" type="hidden" value="{{$subject->name}}">--}}
+                                                                    {{--<input class="form-control f-input" name="check_code" type="hidden" value="{{$subject->code}}">--}}
+                                                                    {{--<input class="form-control f-input" name="check_section" type="hidden" value="{{$section->section}}">--}}
+                                                                    {{--<input class="form-control f-input" name="check_time" type="hidden" value="{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}">--}}
+                                                                    {{--<input class="form-control f-input" name="check_dedate" type="hidden" value="{{$section->date}}">--}}
+                                                                    <input class="form-control f-input" name="sis_id" type="hidden" value="{{$section->sis_id}}">
                                                                 </div>
                                                             </td>
                                                             <td>

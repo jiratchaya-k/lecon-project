@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\SectionCheck;
 use App\Subject;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CheckStudentController extends Controller
 {
@@ -20,6 +22,7 @@ class CheckStudentController extends Controller
                 ->select('code','name')->distinct()
                 ->get();
             $subjects = json_decode($subject);
+
 
 //            dd(Auth::id());
 
@@ -62,14 +65,64 @@ class CheckStudentController extends Controller
         }
     }
 
-    public function getQrcode(Request $request)
+    public function createCheck(Request $request)
     {
-        $checkDate = $request->input('check_date');
-        $checkSubject = $request->input('check_code').' '.$request->input('check_name');
-        $checkSection = $request->input('check_section');
-        $checkDeDate = $request->input('check_dedate');
-        $checkTime = $request->input('check_time');
-//        dd($checkDate,$checkSubject,$checkDeDate,$checkSection,$checkTime);
-        return view('teacher.check-qrcode',compact('checkDate','checkTime','checkSection','checkDeDate','checkSubject'));
+        $check = New SectionCheck();
+        $check->check_date = $request->input('check_date');
+        $check->sis_id = $request->input('sis_id');
+        $check->save();
+
+        $check = SectionCheck::all()->last();
+
+//        dd(json_decode($check));
+
+        return redirect('/teacher/student-check/check='.$check->id.'/get-qrcode')->withSuccessMessage('Success.');
+    }
+
+    public function getQrcode($check_id)
+    {
+
+        if (session('success_message')){
+            Alert::success('สร้างคิวอาร์โค้ดสำเร็จ')->autoClose($milliseconds = 2000);
+        }
+
+        $section = DB::table('section_checks')->where('section_checks.id','=',$check_id)
+        ->join('sections_in_subjects as sis','sis.id','=','section_checks.sis_id')
+            ->join('sections','sections.id','=','sis.section_id')
+        ->join('subjects','sis.subject_id','=','subjects.id')
+        ->join('years','sis.year_id','=','years.id')
+        ->select('*','section_checks.id')->first();
+
+
+//        dd($teachers);
+
+        switch( $section->date ) {
+            case('Sunday') :
+                $date = 'อาทิตย์';
+                break;
+            case('Monday') :
+                $date = 'จันทร์';
+                break;
+            case('Tuesday') :
+                $date = 'อังคาร';
+                break;
+            case('Wednesday') :
+                $date = 'พุธ';
+                break;
+            case('Thursday') :
+                $date = 'พฤหัสบดี';
+                break;
+            case('Friday') :
+                $date = 'ศุกร์';
+                break;
+            case('Saturday') :
+                $date = 'เสาร์';
+                break;
+        }
+
+//        dd($section);
+
+        return view('teacher.check-qrcode',compact('section','date'));
+
     }
 }

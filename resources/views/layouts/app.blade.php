@@ -15,6 +15,7 @@
 
 <div>
     @include('inc.message')
+    @include('sweetalert::alert')
     @yield('content')
 </div>
 {{--<footer class="footer">--}}
