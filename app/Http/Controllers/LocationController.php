@@ -12,7 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class LocationController extends Controller
 {
-    public function index($id)
+    public function index($id,$time)
     {
 
         $section = DB::table('section_checks')->where('section_checks.id','=',$id)
@@ -20,7 +20,11 @@ class LocationController extends Controller
             ->join('sections','sections.id','=','sis.section_id')
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->join('years','sis.year_id','=','years.id')
-            ->select('*','section_checks.id')->first();
+            ->select('*','section_checks.id','section_checks.updated_at as qrcode_update')->first();
+
+        $updateTime = date('H:i:s',strtotime($time));
+
+        $qrcode_update = date('H:i:s',strtotime($section->qrcode_update));
 
         $teachers = DB::table('attend_sections')->where('attend_sections.sis_id','=',$section->sis_id)
             ->join('users','users.id','=','attend_sections.user_id')
@@ -51,13 +55,20 @@ class LocationController extends Controller
                 break;
         }
 
-        if (session('error_message')) {
-            Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจากไม่อยู่ภายในพื้นที่ที่กำหนด');
-        }else if (session('success_message')) {
-            Alert::success('เช็คชื่อสำเร็จ')->autoClose($milliseconds = 2000);
+        if ($updateTime == $qrcode_update){
+            if (session('error_message')) {
+                Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจากไม่อยู่ภายในพื้นที่ที่กำหนด');
+            }else if (session('success_message')) {
+                Alert::success('เช็คชื่อสำเร็จ')->autoClose($milliseconds = 2000);
+            }
+            return view('student.check',compact('section','date','teachers'));
+        }else {
+            Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจาก QR Code หมดอายุ');
+            return redirect('/');
         }
 
-        return view('student.check',compact('section','date','teachers'));
+
+
     }
     public function checkComplete($id)
     {
@@ -177,7 +188,7 @@ class LocationController extends Controller
             ->join('sections_in_subjects as sis','sis.id','=','section_checks.sis_id')->first();
 //        dd($sectionCheck);
 
-        if ((float)$distance < 0.10){
+        if ((float)$distance > 0.10){
             return redirect()->back()->withErrorMessage('Check In Error.');
         }else{
 

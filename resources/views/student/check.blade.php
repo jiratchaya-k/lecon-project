@@ -32,7 +32,7 @@
                     $inTime = strtotime("+15 minutes",strtotime($time));
                     ?>
                         <h5 class="mt-5">เช็คชื่อเข้าเรียน</h5>
-                        <h6 class="mt-3">ภายใน {{ date('h:i', $inTime) }} น.</h6>
+                        <h6 class="mt-3">ภายใน {{ date('H:i', $inTime) }} น.</h6>
                     <input type="hidden" name="latitude" id="lat" value="">
                     <input type="hidden" name="longitude" id="long" value="">
                     <input type="hidden" name="sectionCheck_id" value="{{ $section->id }}">

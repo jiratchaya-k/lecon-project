@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\SectionCheck;
+use App\StudentCheck;
 use App\Subject;
 use App\User;
 use Illuminate\Http\Request;
@@ -124,5 +125,29 @@ class CheckStudentController extends Controller
 
         return view('teacher.check-qrcode',compact('section','date'));
 
+    }
+
+    public function update ($id,$time) {
+//        dd($request->input('currentTime'));
+//        $check = StudentCheck::all()->where('id','=',$id);
+//        $check = DB::table('section_checks')->where('id',$id)->first();
+////        dd($check);
+//        $check->updated_at = $request->input('currentTime');
+
+        $time = time();
+        $currentTime = date('Y-m-d H:i:s',$time);
+
+        DB::table('section_checks')->where('id', $id) -> update(['updated_at' => $currentTime]);
+
+
+//        $check = SectionCheck::all()->last();
+
+        $message = 'Success';
+
+//        dd(json_decode($check));
+
+        return $message;
+
+//        return redirect('/teacher/student-check/check='.$check->id.'/get-qrcode')->withSuccessMessage('Success.');
     }
 }
