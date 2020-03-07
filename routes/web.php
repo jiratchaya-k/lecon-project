@@ -68,11 +68,14 @@ Route::get('/teacher/student-check/check={check_id}/get-qrcode', 'CheckStudentCo
 Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentController@update');
 //Route::post('/teacher/student-check/check={check_id}/get-qrcode/update', 'CheckStudentController@update');
 Route::post('/teacher/student-check/create', 'CheckStudentController@createCheck');
-Route::get('/student/check', 'LocationController@location');
-//Route::get('/check-in', 'LocationController@index');
-Route::get('/check-in/{id}/{time}', 'LocationController@index');
-Route::get('/check-in/{id}/complete', 'LocationController@checkComplete');
+
+//Route::get('/student/check', 'LocationController@location');
+
 Route::post('/check-in/check', 'LocationController@location');
+Route::get('/check-in/{id}/complete', 'LocationController@checkComplete');
+Route::get('/check-in/{id}/{time}', 'LocationController@index');
+
+//Route::post('/check-in/check', 'LocationController@location');
 
 
 

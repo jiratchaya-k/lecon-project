@@ -20,11 +20,15 @@ class LocationController extends Controller
             ->join('sections','sections.id','=','sis.section_id')
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->join('years','sis.year_id','=','years.id')
-            ->select('*','section_checks.id','section_checks.updated_at as qrcode_update')->first();
+            ->select('*','section_checks.id','section_checks.updated_at as qrcode_update','section_checks.created_at as qrcode_create')->first();
 
         $updateTime = date('H:i:s',strtotime($time));
 
         $qrcode_update = date('H:i:s',strtotime($section->qrcode_update));
+
+        $createTime = strtotime('+1 second',strtotime($section->qrcode_create));
+
+        $qrcode_create = date('H:i:s',$createTime);
 
         $teachers = DB::table('attend_sections')->where('attend_sections.sis_id','=',$section->sis_id)
             ->join('users','users.id','=','attend_sections.user_id')
@@ -55,7 +59,7 @@ class LocationController extends Controller
                 break;
         }
 
-        if ($updateTime == $qrcode_update){
+        if (($updateTime == $qrcode_update)){
             if (session('error_message')) {
                 Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจากไม่อยู่ภายในพื้นที่ที่กำหนด');
             }else if (session('success_message')) {
@@ -188,7 +192,7 @@ class LocationController extends Controller
             ->join('sections_in_subjects as sis','sis.id','=','section_checks.sis_id')->first();
 //        dd($sectionCheck);
 
-        if ((float)$distance > 0.10){
+        if ((float)$distance < 0.10){
             return redirect()->back()->withErrorMessage('Check In Error.');
         }else{
 
