@@ -358,3 +358,7 @@ td {
     text-decoration: none;
     cursor: pointer;
 }
+
+.detail-btn :hover {
+    color: #3956A3;
+}

@@ -68,6 +68,7 @@ Route::get('/teacher/student-check/check={check_id}/get-qrcode', 'CheckStudentCo
 Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentController@update');
 //Route::post('/teacher/student-check/check={check_id}/get-qrcode/update', 'CheckStudentController@update');
 Route::post('/teacher/student-check/create', 'CheckStudentController@createCheck');
+Route::get('/teacher/student-check/{subject_code}/{section}/{sis_id}','CheckStudentController@detail');
 
 //Route::get('/student/check', 'LocationController@location');
 

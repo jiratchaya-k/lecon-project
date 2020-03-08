@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">เช็คชื่อเข้าเรียน</h2>
+                            <h2 class="pageheader-title">เช็คชื่อเข้าเรียน -> {{ $subject->code.' '.$subject->name }}</h2>
 
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
@@ -115,100 +115,82 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
-                    @if(count($subjects)>0)
-                        @foreach($subjects as $subject)
+
                             <div class="col-md-12">
                                 <div class="card box-shadow mb-2">
                                     <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
+
                                 <span class="fs-18">
-                                    {{ $subject->code }}
-                                    {{ $subject->name }}</span>
+                                    กลุ่มเรียน {{ $subject->section }} ,
+                                    @switch( $subject->date )
+                                        @case('Sunday')
+                                        วันอาทิยต์
+                                        @break
+                                        @case('Monday')
+                                        วันจันทร์
+                                        @break
+                                        @case('Tuesday')
+                                        วันอังคาร
+                                        @break
+                                        @case('Wednesday')
+                                        วันพุธ
+                                        @break
+                                        @case('Thursday')
+                                        วันพฤหัสบดี
+                                        @break
+                                        @case('Friday')
+                                        วันศุกร์
+                                        @break
+                                        @case('Saturday')
+                                        วันเสาร์
+                                        @break
+                                    @endswitch
+                                </span>
+
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive-xl">
                                             <table class="table">
                                                 <thead>
                                                 <tr>
-                                                    <th class="table-head">กลุ่มเรียน</th>
-                                                    <th class="table-head">วัน</th>
-                                                    <th class="table-head">เวลา</th>
                                                     <th class="table-head">วันที่เช็คชื่อ</th>
+                                                    <th class="table-head">เช็คชื่อแล้ว</th>
+                                                    {{--<th class="table-head"></th>--}}
+                                                    {{--<th class="table-head">วันที่เช็คชื่อ</th>--}}
                                                     <th class="table-head"> </th>
                                                     <th class="table-head" style="width: 100px!important;"> </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
 
-                                                <?php
 
-                                                $sections = \Illuminate\Support\Facades\DB::table('subjects')
-                                                    ->where('name',$subject->name)
-                                                    ->join('sections_in_subjects as sis','sis.subject_id', '=','subjects.id')
-                                                    ->join('sections','sis.section_id', '=','sections.id')
-                                                    ->join('attend_sections','attend_sections.sis_id','=','sis.id')
-                                                    ->join('users','attend_sections.user_id','=','users.id')
-                                                    ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
-                                                    ->select('sections.section','sis.date','sis.startTime','sis.endTime','sis.id as sis_id')->get();
+                                                @if(count($check_date)>0)
+                                                    @foreach($check_date as $check)
 
-//                                                dd($sections);
+                                                        <?php
+                                                        $student_count = DB::table('section_checks as sect_check')->where('sect_check.check_date',$check->check_date)
+                                                            ->join('student_checks as std_check','std_check.sectionCheck_id','=','sect_check.id')
+                                                            ->select('*')->count();
 
+//                                                        dd($student_count);
+                                                        ?>
 
-                                                ?>
-
-                                                @if(count($sections)>0)
-                                                    @foreach($sections as $section)
                                                         <form method="POST" action="/teacher/student-check/create" enctype="multipart/form-data">
                                                             @csrf
                                                         <tr>
-                                                            <td>{{ $section->section }}</td>
+                                                            <td>{{ date('d M Y', strtotime($check->check_date))}}</td>
 
-                                                            @switch( $section->date )
-                                                                @case('Sunday')
-                                                                    <td>อาทิยต์</td>
-                                                                @break
-                                                                @case('Monday')
-                                                                    <td>จันทร์</td>
-                                                                @break
-                                                                @case('Tuesday')
-                                                                    <td>อังคาร</td>
-                                                                @break
-                                                                @case('Wednesday')
-                                                                    <td>พุธ</td>
-                                                                @break
-                                                                @case('Thursday')
-                                                                    <td>พฤหัสบดี</td>
-                                                                @break
-                                                                @case('Friday')
-                                                                    <td>ศุกร์</td>
-                                                                @break
-                                                                @case('Saturday')
-                                                                    <td>เสาร์</td>
-                                                                @break
-                                                            @endswitch
 
 
                                                             {{--<td>{{ $section->date }}</td>--}}
-                                                            <td>{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}</td>
+                                                            <td>{{ $student_count.'/'.$allStd.' คน' }}</td>
                                                             <td>
-                                                                <div class="form-group mt-2">
-                                                                    <input class="form-control f-input" name="check_date" type="date" id="date">
-                                                                    {{--<input class="form-control f-input" name="check_name" type="hidden" value="{{$subject->name}}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_code" type="hidden" value="{{$subject->code}}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_section" type="hidden" value="{{$section->section}}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_time" type="hidden" value="{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_dedate" type="hidden" value="{{$section->date}}">--}}
-                                                                    <input class="form-control f-input" name="sis_id" type="hidden" value="{{$section->sis_id}}">
-                                                                </div>
+                                                                <input class="btn btn-primary btn-submit" style="background:#FF8574; width: 60%;" type="submit" value="ดูรายละเอียด">
                                                             </td>
                                                             <td>
-                                                                <input class="btn btn-primary btn-submit" style="background:#FF8574; width: 100%;" type="submit" value="สร้าง QR Code">
-                                                                {{--<a href="/teacher/student-check/get-qrcode" class="btn btn-primary btn-submit" style="width: 100%">--}}
-                                                                    {{--สร้าง QR CODE--}}
-                                                                {{--</a>--}}
+
                                                             </td>
-                                                            <td class="text-center">
-                                                                <a href="/teacher/student-check/{{ $subject->code }}/{{ $section->section }}/{{ $section->sis_id }}" class="detail-btn" data-toggle="tooltip" data-placement="bottom" title="รายละเอียดการเช็คชื่อ"><i class="far fa-list-alt fa-2x"></i></a>
-                                                            </td>
+
                                                         </tr>
                                                         </form>
                                                     @endforeach
@@ -219,8 +201,6 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    @endif
                 </div>
             </div>
         </div>

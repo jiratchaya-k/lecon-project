@@ -150,4 +150,33 @@ class CheckStudentController extends Controller
 
 //        return redirect('/teacher/student-check/check='.$check->id.'/get-qrcode')->withSuccessMessage('Success.');
     }
+
+    public function detail ($subjec_code,$section,$sis_id) {
+
+        $check_date = DB::table('section_checks')->where('sis_id',$sis_id)
+            ->orderBy('check_date','asc')
+            ->get();
+
+
+        $subject = DB::table('sections_in_subjects as sis')->where('sis.id', '=',$sis_id)
+            ->join('subjects','sis.subject_id','=','subjects.id')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('years','sis.year_id','=','years.id')
+            ->select('*')
+            ->first();
+
+        $allStd = DB::table('sections_in_subjects as sis')->where('sis.id', '=',$sis_id)
+            ->join('attend_sections as attend','attend.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend.user_id')->where('users.role',User::role_student)
+//            ->select('*')
+            ->count();
+
+//        $subject = json_decode($subject);
+
+//        dd($allStd);
+
+        return view('teacher.check-detail',compact('check_date','subject','allStd'));
+
+    }
+
 }
