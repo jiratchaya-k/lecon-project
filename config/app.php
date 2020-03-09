@@ -161,7 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class, // sweetalert
+        Maatwebsite\Excel\ExcelServiceProvider::class, // exel package
 
 
         /*
@@ -233,6 +234,7 @@ return [
 
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

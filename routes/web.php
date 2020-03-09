@@ -18,10 +18,12 @@ Route::get('reader', function () {
     return view('qrcodereader');
 });
 
+Route::post('/sign-in', 'Auth\LoginController@login');
 
 Route::get('/sign-in', function () {
     return view('auth.login');
 });
+
 Route::get('/sign-up', function () {
     return view('auth.register');
 });
@@ -84,6 +86,11 @@ Route::get('/teacher/manage','ManageController@index');
 Route::get('/teacher/manage/create','ManageController@create');
 Route::post('/teacher/manage/section/store','ManageController@storeSection');
 Route::post('/teacher/manage/year-term/store','ManageController@storeYear_Term');
+Route::get('/teacher/manage/year-term/{id}/edit','ManageController@edit_YearTerm');
+Route::post('/teacher/manage/year-term/{id}/update','ManageController@update_YearTerm');
+Route::get('/teacher/manage/section/{id}/edit','ManageController@edit_section');
+Route::post('/teacher/manage/section/{id}/update','ManageController@update_section');
+
 
 Route::get('/teacher/assignment', 'AssignmentController@index');
 

@@ -29,6 +29,8 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+    protected $student_id;
+
     /**
      * Create a new controller instance.
      *
@@ -37,6 +39,23 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->student_id = $this->findStudentId();
+    }
+
+    public function findStudentId()
+    {
+        $login = request()->input('login');
+
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'student_id';
+
+        request()->merge([$fieldType => $login]);
+
+        return $fieldType;
+    }
+
+    public function username()
+    {
+        return $this->student_id;
     }
 
     public function logout() {

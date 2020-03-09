@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Assignment;
 use App\attendSection;
+use App\Imports\CsvImport;
 use App\Lesson;
 use App\Post;
 use App\Section;
@@ -11,9 +12,11 @@ use App\SectionsInSubject;
 use App\Subject;
 use App\User;
 use App\Year;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use PhpParser\Node\Expr\New_;
 
 class SubjectController extends Controller
@@ -241,6 +244,10 @@ class SubjectController extends Controller
             }
         }
 
+        Excel::import(new CsvImport, $request->file('file'));
+
+
+
         $students = $request->input('subject_student');
         if (!empty($students)){
             for($i=0;$i < count($students);$i++){
@@ -277,6 +284,7 @@ class SubjectController extends Controller
 //            $attend->sis_id = $sis_id;
 //            $attend->save();
 //        }
+
 
 
         return redirect('/teacher/subject');

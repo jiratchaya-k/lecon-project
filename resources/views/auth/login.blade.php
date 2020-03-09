@@ -35,6 +35,7 @@
 
 
                 <form method="POST" action="{{ route('login') }}" class="align-items-center col-8 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">
+                    {{--<form method="POST" action="/login" class="align-items-center col-8 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">--}}
                     @csrf
 
 
@@ -42,12 +43,28 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                         </div>
-                        <input id="email" type="email" class="form-control form-control-login @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email@silpakorn.edu or @su.ac.th">
-                        @error('email')
-                        <span class="invalid-feedback text-left pl-2" role="alert">
-                            <spam>{{ $message }}</spam>
-                         </span>
-                        @enderror
+                        {{--<input id="email" name="email" type="text" class="form-control{{ $errors->has('student_id') || $errors->has('email') ? ' is-invalid' : '' }} form-control-login " name="email" value="{{ old('student_id') ?: old('email') }}" required autocomplete="email" placeholder="email@silpakorn.edu or @su.ac.th">--}}
+                        {{--@if ($errors->has('student_id') || $errors->has('email'))--}}
+                            {{--<span class="invalid-feedback">--}}
+                                        {{--<strong>{{ $errors->first('student_id') ?: $errors->first('email') }}</strong>--}}
+                                    {{--</span>--}}
+                        {{--@endif--}}
+
+                        <input id="login" type="text"
+                               class="form-control{{ $errors->has('student_id') || $errors->has('email') ? ' is-invalid' : '' }} form-control-login"
+                               name="login" value="{{ old('student_id') ?: old('email') }}" required placeholder="email or student id">
+
+                        @if ($errors->has('student_id') || $errors->has('email'))
+                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('student_id') ?: $errors->first('email') }}</strong>
+                                    </span>
+                        @endif
+
+                        {{--@error('email')--}}
+                        {{--<span class="invalid-feedback text-left pl-2" role="alert">--}}
+                            {{--<spam>{{ $message }}</spam>--}}
+                         {{--</span>--}}
+                        {{--@enderror--}}
                     </div>
 
                     <div class="input-group mb-4">

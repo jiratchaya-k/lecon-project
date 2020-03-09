@@ -234,11 +234,12 @@
                                                 <div class="form-group container">
                                                     <label for="title" class="control-label">รายชื่อนักศึกษา</label><button class="btn btn-default btn-add ml-2 add_button_student">+ เพิ่ม</button>
                                                     <div class="row input_student_wrap">
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-4"><input type="file" name="file" accept=".csv">
                                                             <input class="form-control f-input"  name="subject_student[]" type="text" list="students" style="width: 90%; height: 35px; margin-bottom: 10px">
                                                         </div>
                                                     </div>
                                                     <datalist id="students">
+
                                                         @if(count($students)>0)
                                                             @foreach($students as $student)
                                                                 <option value="{{ $student->firstname.' '.$student->lastname.' ('.$student->email.')' }}"></option>

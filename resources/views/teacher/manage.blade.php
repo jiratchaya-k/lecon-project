@@ -144,7 +144,7 @@
                                                             <td>{{ $year->year }}</td>
                                                             <td>{{ $year->term }}</td>
                                                             <td>
-                                                                <a href="#" class="btn btn-primary btn-dark btn-table" style="width: 80px;">
+                                                                <a href="/teacher/manage/year-term/{{ $year->id }}/edit" class="btn btn-primary btn-dark btn-table" style="width: 80px;">
                                                                     edit
                                                                 </a>
                                                                 <a href="#" class="ml-3">
@@ -220,7 +220,7 @@
                                                 <tr>
                                                     <td>{{ $section->section }}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-primary btn-dark btn-table">
+                                                        <a href="/teacher/manage/section/{{ $section->id }}/edit" class="btn btn-primary btn-dark btn-table">
                                                             edit
                                                         </a>
                                                         <a href="#" class="ml-3">

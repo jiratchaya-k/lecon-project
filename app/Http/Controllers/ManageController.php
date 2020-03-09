@@ -21,6 +21,8 @@ class ManageController extends Controller
 //            $terms = DB::table('terms')->select('*')->orderBy('term','asc')->get();
             $teachers = DB::table('users')->select('*')->where('role',2)->orderBy('firstname','asc')->get();
 
+//            dd($years);
+
             return view('teacher.manage',compact('years','sections','teachers'));
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
             return view('student.home');
@@ -69,8 +71,51 @@ class ManageController extends Controller
         return redirect('/teacher/manage');
     }
 
-    public function show($id){
+    public function edit_YearTerm($id){
 
+        $year = DB::table('years')->where('id',$id)->select('*')->first();
+//        dd($year);
+
+        return view('teacher.manage-edit-year',compact('year'));
+
+    }
+
+    public function update_YearTerm(Request $request, $id){
+
+//        $year = DB::table('years')->where('id',$id)->select('*')->first();
+//        dd($year);
+
+        $year = Year::find($id);
+        $year->year = $request->input('year');
+        $year->term = $request->input('term');
+        $year->save();
+
+//        dd($request->all());
+
+        return redirect('/teacher/manage');
+
+    }
+    public function edit_section($id){
+
+        $section = DB::table('sections')->where('id',$id)->select('*')->first();
+//        dd($year);
+
+        return view('teacher.manage-edit-section',compact('section'));
+
+    }
+
+    public function update_section(Request $request, $id){
+
+//        $year = DB::table('years')->where('id',$id)->select('*')->first();
+//        dd($year);
+
+        $section = Section::find($id);
+        $section->section = $request->input('section');
+        $section->save();
+
+//        dd($request->all());
+
+        return redirect('/teacher/manage');
     }
 
     public function sectionAdd($id){
@@ -78,3 +123,4 @@ class ManageController extends Controller
     }
 
 }
+
