@@ -31,6 +31,8 @@ class SubjectController extends Controller
             ->get();
         $subjects = json_decode($subject);
 
+//        dd($subject);
+
         return view('teacher.home',compact('subjects'));
     }
 
@@ -244,46 +246,29 @@ class SubjectController extends Controller
             }
         }
 
-        Excel::import(new CsvImport, $request->file('file'));
+        $csv_file = $request->file('file');
+        if (!empty($csv_file)){
+            Excel::import(new CsvImport, $request->file('file'));
+        }
+        else {
+            $students = $request->input('subject_student');
+            if (!empty($students)){
+                for($i=0;$i < count($students);$i++){
+                    $start = "(";
+                    $end = ")";
+                    $student_email = getBetween($students[$i],$start,$end);
+                    $student_id = DB::table('users')->select('id')->where('email',$student_email)->first();
 
-
-
-        $students = $request->input('subject_student');
-        if (!empty($students)){
-            for($i=0;$i < count($students);$i++){
-                $start = "(";
-                $end = ")";
-                $student_email = getBetween($students[$i],$start,$end);
-                $student_id = DB::table('users')->select('id')->where('email',$student_email)->first();
-
-                $attend = new AttendSection;
-                $attend->user_id = $student_id->id;
-                $attend->sis_id = $sis_id->id;
-                $attend->save();
+                    $attend = new AttendSection;
+                    $attend->user_id = $student_id->id;
+                    $attend->sis_id = $sis_id->id;
+                    $attend->save();
+                }
             }
         }
 
+
 //        dd($tcs,$std);
-
-
-
-//        foreach ($tcs as $t){
-//            $teacher_email = getBetween($t,$start,$end);
-//            $teacher_id = DB::table('users')->select('id')->where('email',$teacher_email)->get();
-//            $attend = new AttendSection;
-//            $attend->user_id = $teacher_id;
-//            $attend->sis_id = $sis_id;
-//            $attend->save();
-//        }
-//
-//        foreach ($std as $s){
-//            $student_email = getBetween($s,$start,$end);
-//            $student_id = DB::table('users')->select('id')->where('email',$student_email)->get();
-//            $attend = new AttendSection;
-//            $attend->user_id = $student_id;
-//            $attend->sis_id = $sis_id;
-//            $attend->save();
-//        }
 
 
 
@@ -297,7 +282,10 @@ class SubjectController extends Controller
 
         $subject_id = $id;
 
-        $teachers = DB::table('users')->select('id','firstname','lastname','email')->where('role',User::role_teacher)->get();
+        $teachers = DB::table('users')->select('id','firstname','lastname','email')
+            ->where('role',User::role_teacher)
+            ->where('id','!=',Auth::id())
+            ->get();
         $students = DB::table('users')->select('id','firstname','lastname','email')->where('role',User::role_student)->get();
 
         $subject = DB::table('subjects')->where('id','=',$subject_id)->first();
@@ -385,18 +373,24 @@ class SubjectController extends Controller
             }
         }
 
-        $students = $request->input('subject_student');
-        if (!empty($students)){
-            for($i=0;$i < count($students);$i++){
-                $start = "(";
-                $end = ")";
-                $student_email = getBetween($students[$i],$start,$end);
-                $student_id = DB::table('users')->select('id')->where('email',$student_email)->first();
+        $csv_file = $request->file('file');
+        if (!empty($csv_file)){
+            Excel::import(new CsvImport, $request->file('file'));
+        }
+        else {
+            $students = $request->input('subject_student');
+            if (!empty($students)){
+                for($i=0;$i < count($students);$i++){
+                    $start = "(";
+                    $end = ")";
+                    $student_email = getBetween($students[$i],$start,$end);
+                    $student_id = DB::table('users')->select('id')->where('email',$student_email)->first();
 
-                $attend = new AttendSection;
-                $attend->user_id = $student_id->id;
-                $attend->sis_id = $sis_id->id;
-                $attend->save();
+                    $attend = new AttendSection;
+                    $attend->user_id = $student_id->id;
+                    $attend->sis_id = $sis_id->id;
+                    $attend->save();
+                }
             }
         }
 

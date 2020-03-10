@@ -152,32 +152,25 @@
                                             ->where('name',$subject->name)
                                             ->join('sections_in_subjects as sis','sis.subject_id', '=','subjects.id')
                                             ->join('sections','sis.section_id', '=','sections.id')
-                                            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
-                                            ->join('users','attend_sections.user_id','=','users.id')
-                                            ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
-                                            ->select('sections.section', 'sis.id as sis_id')->get();
-
-                                        $years = \Illuminate\Support\Facades\DB::table('subjects')
-                                            ->where('name',$subject->name)
-                                            ->join('sections_in_subjects as sis','sis.subject_id', '=','subjects.id')
                                             ->join('years','sis.year_id', '=','years.id')
                                             ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                                             ->join('users','attend_sections.user_id','=','users.id')
                                             ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
-                                            ->select('years.year','years.term')->get();
+                                            ->select('sections.section', 'sis.id as sis_id','years.year','years.term')->distinct()->get();
 
-//                                        dd($sections);
+
+//                                        dd($years, $sections);
 
                                         ?>
 
                                         @if(count($sections)>0)
-                                            @for ($i=0;$i<count($sections);$i++)
+                                            @foreach($sections as $section)
                                                 <tr>
-                                                    <td>{{ $sections[$i] -> section }}</td>
-                                                    <td>{{ $years[$i] -> year }}</td>
-                                                    <td>{{ $years[$i] -> term }}</td>
+                                                    <td>{{ $section -> section }}</td>
+                                                    <td>{{ $section -> year }}</td>
+                                                    <td>{{ $section -> term }}</td>
                                                     <td>
-                                                        <a href="/teacher/subject/section/{{$sections[$i]->sis_id}}" class="btn btn-primary btn-dark btn-table">
+                                                        <a href="/teacher/subject/section/{{$section->sis_id}}" class="btn btn-primary btn-dark btn-table">
                                                             view
                                                         </a>
                                                         <a href="#" class="ml-3">
@@ -185,7 +178,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                            @endfor
+                                            @endforeach
                                         @endif
                                         </tbody>
                                     </table>

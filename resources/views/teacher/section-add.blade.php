@@ -233,19 +233,36 @@
                                                     </datalist>
                                                 </div>
                                                 <div class="form-group container">
-                                                    <label for="title" class="control-label">รายชื่อนักศึกษา</label><button class="btn btn-default btn-add ml-2 add_button_student">+ เพิ่ม</button>
-                                                    <div class="row input_student_wrap">
-                                                        <div class="col-md-4">
-                                                            <input class="form-control f-input"  name="subject_student[]" type="text" list="students" style="width: 90%; height: 35px; margin-bottom: 10px">
+                                                    <label for="title" class="control-label">รายชื่อนักศึกษา</label>
+                                                    <nav class="mt-2">
+                                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">แบบไฟล์</a>
+                                                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">แบบรายคน</a>
+                                                        </div>
+                                                    </nav>
+                                                    <div class="tab-content pt-3" id="nav-tabContent">
+                                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                            <input class="form-control f-input col-md-6" id="addList" type="file" name="file" accept=".csv">
+
+                                                            {{--<input type="file" name="file" accept=".csv">--}}
+                                                        </div>
+                                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                            <button class="btn btn-default btn-add mb-2 add_button_student">+ เพิ่ม</button>
+                                                            <div class="row input_student_wrap">
+                                                                <div class="col-md-4">
+                                                                    <input class="form-control f-input"  id="addStd" name="subject_student[]" type="text" list="students" style="width: 90%; height: 35px; margin-bottom: 10px">
+                                                                </div>
+                                                            </div>
+                                                            <datalist id="students">
+
+                                                                @if(count($students)>0)
+                                                                    @foreach($students as $student)
+                                                                        <option value="{{ $student->firstname.' '.$student->lastname.' ('.$student->email.')' }}"></option>
+                                                                    @endforeach
+                                                                @endif
+                                                            </datalist>
                                                         </div>
                                                     </div>
-                                                    <datalist id="students">
-                                                        @if(count($students)>0)
-                                                            @foreach($students as $student)
-                                                                <option value="{{ $student->firstname.' '.$student->lastname.' ('.$student->email.')' }}"></option>
-                                                            @endforeach
-                                                        @endif
-                                                    </datalist>
                                                 </div>
 
                                             </div>
@@ -285,6 +302,30 @@
 <!-- main js -->
 <script src="/js/main-js.js"></script>
 
+<script>
+    $(document).ready(function(){
+        $(".nav-tabs a").click(function(){
+            $(this).tab('show');
+        });
+        $('.nav-tabs a').on('shown.bs.tab', function(event){
+            var active_tab = $(event.target).text();         // active tab
+            var previous_tab = $(event.relatedTarget).text();  // previous tab
+            //
+            // console.log(y);
+
+            var addStd = document.getElementById("addStd");
+            var addList = document.getElementById("addList");
+
+            if (active_tab == 'แบบรายคน'){
+                addList.value = "";
+
+            }else if (active_tab == 'แบบไฟล์'){
+                addStd.value = null;
+            }
+
+        });
+    });
+</script>
 
 <script>
     $(document).ready(function() {
