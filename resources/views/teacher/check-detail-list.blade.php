@@ -145,6 +145,8 @@
                                         วันเสาร์
                                         @break
                                     @endswitch
+
+                                    {{ ' - '.$check_date }}
                                 </span>
 
                                     </div>
@@ -153,46 +155,23 @@
                                             <table class="table">
                                                 <thead>
                                                 <tr>
-                                                    <th class="table-head">วันที่เช็คชื่อ</th>
-                                                    <th class="table-head">เช็คชื่อแล้ว</th>
-                                                    {{--<th class="table-head"></th>--}}
-                                                    {{--<th class="table-head">วันที่เช็คชื่อ</th>--}}
-                                                    <th class="table-head"> </th>
-                                                    <th class="table-head" style="width: 100px!important;"> </th>
+                                                    <th class="table-head" style="width: 100px!important;">รหัสนักศึกษา</th>
+                                                    <th class="table-head">ชื่อ-นามสกุล</th>
+                                                    <th class="table-head">วันที่เช็ค</th>
+                                                    <th class="table-head">เวลาที่เช็ค</th>
+                                                    <th class="table-head">สถานะ</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-
-
-                                                @if(count($check_date)>0)
-                                                    @foreach($check_date as $check)
-
-                                                        <?php
-                                                        $student_count = DB::table('section_checks as sect_check')->where('sect_check.check_date',$check->check_date)
-                                                            ->join('student_checks as std_check','std_check.sectionCheck_id','=','sect_check.id')
-                                                            ->select('*')->count();
-
-//                                                        dd($student_count);
-                                                        ?>
-
-                                                        <form method="POST" action="/teacher/student-check/{{ $subject->code }}/{{ $subject->section }}/{{ $subject->sis_id }}/{{ $check->check_date }}" enctype="multipart/form-data">
-                                                            @csrf
-                                                        <tr>
-                                                            <td>{{ date('d M Y', strtotime($check->check_date))}}</td>
-
-
-
-                                                            {{--<td>{{ $section->date }}</td>--}}
-                                                            <td>{{ $student_count.'/'.$allStd.' คน' }}</td>
-                                                            <td>
-                                                                <input class="btn btn-primary btn-submit" style="background:#FF8574; width: 60%;" type="submit" value="ดูรายละเอียด">
-                                                            </td>
-                                                            <td>
-
-                                                            </td>
-
-                                                        </tr>
-                                                        </form>
+                                                @if(count($lists)>0)
+                                                    @foreach($lists as $list)
+                                                    <tr>
+                                                        <td>{{ $list->student_id }}</td>
+                                                        <td>{{ $list->firstname.' '.$list->lastname }}</td>
+                                                        <td>{{ date('d M Y', strtotime($list->std_check)) }}</td>
+                                                        <td>{{ date('H:i', strtotime($list->std_check)) }}</td>
+                                                        <td><i class="fas fa-check-circle" style="color: #00ab6c; font-size: 18px;"></i></td>
+                                                    </tr>
                                                     @endforeach
                                                 @endif
                                                 </tbody>

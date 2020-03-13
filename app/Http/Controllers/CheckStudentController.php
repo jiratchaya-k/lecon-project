@@ -162,7 +162,7 @@ class CheckStudentController extends Controller
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->join('sections','sis.section_id','=','sections.id')
             ->join('years','sis.year_id','=','years.id')
-            ->select('*')
+            ->select('*','sis.id as sis_id')
             ->first();
 
         $allStd = DB::table('sections_in_subjects as sis')->where('sis.id', '=',$sis_id)
@@ -173,10 +173,33 @@ class CheckStudentController extends Controller
 
 //        $subject = json_decode($subject);
 
-//        dd($allStd);
+//        dd($subject);
 
         return view('teacher.check-detail',compact('check_date','subject','allStd'));
 
+    }
+
+
+    public function studentList($subjec_code,$section,$sis_id,$check_date) {
+
+        $lists = DB::table('section_checks')->where('section_checks.check_date',$check_date)
+            ->join('student_checks','student_checks.sectionCheck_id','=','section_checks.id')
+            ->join('users','users.id','=','student_checks.user_id')
+            ->select('*','student_checks.created_at as std_check')
+            ->get();
+
+        $subject = DB::table('sections_in_subjects as sis')->where('sis.id', '=',$sis_id)
+            ->join('subjects','sis.subject_id','=','subjects.id')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('years','sis.year_id','=','years.id')
+            ->select('*','sis.id as sis_id')
+            ->first();
+
+        $check_date = date('d M Y', strtotime($check_date));
+
+//        dd($lists);
+
+        return view('teacher.check-detail-list',compact('lists','subject','check_date'));
     }
 
 }

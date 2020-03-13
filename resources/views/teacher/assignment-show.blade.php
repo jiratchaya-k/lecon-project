@@ -161,14 +161,19 @@
                         @if(count($allWorks) <= 0)
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <a href="#" class="btn btn-primary btn-dark" style="width: 200px;">
-                                        edit
+                                    <a href="/teacher/assignment/{{ $assignment->id }}/edit" class="btn btn-primary btn-dark" style="width: 200px;">
+                                        แก้ไข
                                     </a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="#" class="btn btn-primary btn-danger" style="width: 200px;">
-                                        delete
-                                    </a>
+                                    <form method="POST" action="/teacher/assignment/{{ $assignment->id }}/delete">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="btn btn-primary btn-danger" onclick="return confirm('Are you sure to delete?')" style="width: 200px;"> <i class="fas fa-trash"></i> ลบ</button>
+                                    </form>
+                                    {{--<a href="#" class="btn btn-primary btn-danger" style="width: 200px;">--}}
+                                        {{--delete--}}
+                                    {{--</a>--}}
                                 </div>
                             </div>
                             {{--<hr>--}}

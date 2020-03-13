@@ -192,7 +192,7 @@ class LocationController extends Controller
             ->join('sections_in_subjects as sis','sis.id','=','section_checks.sis_id')->first();
 //        dd($sectionCheck);
 
-        if ((float)$distance < 0.10){
+        if ((float)$distance > 0.10){
             return redirect()->back()->withErrorMessage('Check In Error.');
         }else{
 

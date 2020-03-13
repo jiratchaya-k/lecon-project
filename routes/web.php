@@ -18,7 +18,7 @@ Route::get('reader', function () {
     return view('qrcodereader');
 });
 
-Route::post('/sign-in', 'Auth\LoginController@login');
+//Route::post('/sign-in', 'Auth\LoginController@login');
 
 Route::get('/sign-in', function () {
     return view('auth.login');
@@ -71,6 +71,7 @@ Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentControlle
 //Route::post('/teacher/student-check/check={check_id}/get-qrcode/update', 'CheckStudentController@update');
 Route::post('/teacher/student-check/create', 'CheckStudentController@createCheck');
 Route::get('/teacher/student-check/{subject_code}/{section}/{sis_id}','CheckStudentController@detail');
+Route::post('/teacher/student-check/{subject_code}/{section}/{sis_id}/{check_date}','CheckStudentController@studentList');
 
 //Route::get('/student/check', 'LocationController@location');
 
@@ -100,6 +101,10 @@ Route::get('/teacher/assignment/compare/file={id}', 'AssignmentController@compar
 
 Route::get('/teacher/assignment/create', 'AssignmentController@create');
 Route::post('/teacher/assignment/store', 'AssignmentController@store');
+Route::get('/teacher/assignment/{id}/edit', 'AssignmentController@edit');
+Route::post('/teacher/assignment/{id}/update', 'AssignmentController@update');
+Route::delete('/teacher/assignment/{id}/delete', 'AssignmentController@destroy');
+
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
 Route::get('/assignment/{id}', 'AssignmentController@show');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}', 'AssignmentController@showWorkDetail');

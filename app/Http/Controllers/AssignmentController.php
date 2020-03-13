@@ -31,7 +31,7 @@ class AssignmentController extends Controller
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                 ->join('users','attend_sections.user_id','=','users.id')
-                ->where('users.id','=',Auth::id())
+                ->where('users.id','=',Auth::id())->where('assignments.status','=','active')
                 ->select('*','assignments.id')
                 ->get();
 
@@ -218,7 +218,7 @@ class AssignmentController extends Controller
 
             $fileType = json_decode($assignment->fileType);
 
-//            dd($allWorks);
+//            dd($assignment->id);
 
             return view('teacher.assignment-show',compact('assignment','sections','fileType','sections','allWorks','arr_workId'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
@@ -263,6 +263,138 @@ class AssignmentController extends Controller
             return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections'));
         }
 
+    }
+
+    public function edit($id){
+
+        $assignment = DB::table('assignments')->where('id',$id)->first();
+
+        $fileType = json_decode($assignment->fileType);
+
+        $sections = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+            ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','sis.subject_id','=','subjects.id')
+            ->select('*','sis.id as sis_id')
+            ->get();
+
+        $width = '';
+        $height = '';
+
+        if ($assignment->dimensions != null){
+
+            $width = substr("$assignment->dimensions",0,-6);
+            $height = substr("$assignment->dimensions",-3);
+//            dd($height);
+        }
+
+//        dd($fileType);
+
+        return view('teacher.assignment-edit',compact('assignment','fileType','width','height','sections'));
+    }
+
+    public function update(Request $request,$id){
+
+        if ($request->file('assignment_file') != ''){
+            // get file with extension
+            $filenameWithExt = $request->file('assignment_file')->getClientOriginalName();
+
+            // get file name = 1
+            $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+
+            // get extention = jpg
+            $extension = $request->file('assignment_file')->getClientOriginalExtension();
+
+            // crete new file name = 1_1223322.jpg
+            $filenameToStore = date("YmdHis").'_'.$filename.'.'.$extension;
+
+            // upload image
+            $request->file('assignment_file')->move('uploads/assignmentFiles/',$filenameToStore);
+        }else {
+            $filenameToStore = null;
+        }
+
+
+
+
+
+        // auto grade
+        if (($request->input('autoGrade-fileType') == '1') && ($request->input('autoGrade-dimensions') == '1')) {
+            $autoGradeType = '1';
+            $autoGradeDimensions = '1';
+        } elseif (($request->input('autoGrade-dimensions') == '1')){
+            $autoGradeType = '0';
+            $autoGradeDimensions = '1';
+        }elseif (($request->input('autoGrade-fileType') == '1')){
+            $autoGradeType = '1';
+            $autoGradeDimensions = '0';
+        }
+        else{
+            $autoGradeType = 0;
+            $autoGradeDimensions = 0;
+        }
+
+
+
+
+        //multi file
+        $fileType = $request->input('fileType');
+        $type = [];
+        $inFileType = '';
+
+        if (!empty($fileType)){
+            foreach ($fileType as $fType) {
+                $type[] = $fType;
+            }
+//        dd(json_encode($type));
+            $inFileType = json_encode($type);
+        }
+
+        if ($request->input('dimensions_width') != null && $request->input('dimensions_height') != null){
+            $dimensions = $request->input('dimensions_width').' x '.$request->input('dimensions_height');
+        }else {
+            $dimensions = null;
+        }
+
+
+        if ($dimensions == null) {
+            $dimensionsType = null;
+        }else {
+            $dimensionsType = 'px';
+        }
+
+//        dd($dimensionsType);
+
+
+        $assignment = Assignment::find($id);
+        $assignment->title = $request->input('assignment_title');
+        $assignment->description = $request->input('assignment_description');
+        $assignment->file = $filenameToStore;
+        $assignment->dueDate = $request->input('assignment_dueDate');
+        $assignment->dueTime = $request->input('assignment_dueTime');
+        $assignment->sis_id = $request->input('sis_id');
+        $assignment->autoGrade_fileType = $autoGradeType;
+        $assignment->autoGrade_dimensions = $autoGradeDimensions;
+        $assignment->fileType = $inFileType;
+        $assignment->dimensions = $dimensions;
+        $assignment->dimensionsType = $dimensionsType;
+
+//        dd($request->all(),$filenameToStore,$autoGradeType,$autoGradeDimensions,$inFileType,$dimensions,$dimensionsType);
+
+        $assignment->save();
+//
+//
+        return redirect('/teacher/assignment/'.$id);
+//        dd($request->all());
+    }
+
+    public function destroy($id)
+    {
+        //
+        $assignment = Assignment::find($id);
+        $assignment->status = 'inactive';
+        $assignment->save();
+        return redirect('/teacher/assignment');
     }
 
     public function showWorkDetail($title, $arr_index, $id) {
