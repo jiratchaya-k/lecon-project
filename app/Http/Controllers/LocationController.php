@@ -204,13 +204,13 @@ class LocationController extends Controller
 
             if (($date == $checkDate)) {
                 if (($time <= $checkTime)){
-                    $status = 'Checked';
+                    $status = 'checked';
                 }else{
-                    $status = 'Checked Late';
+                    $status = 'checked late';
                 }
             }
             else {
-                $status = '-';
+                $status = 'checked';
             }
 
 

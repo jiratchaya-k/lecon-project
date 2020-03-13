@@ -8,6 +8,8 @@
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="\css\style.css">
+    <link rel="shortcut icon" href="uploads/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="uploads/favicon.ico" type="image/x-icon">
 </head>
 <style>
     html, body {

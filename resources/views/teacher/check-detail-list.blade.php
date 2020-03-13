@@ -7,15 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet"> -->
+
     <link rel="stylesheet" href="/css/style-teacher.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/fontawesome-all.css">
-    <!-- <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css"> -->
-    <!-- <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css"> -->
-    <!-- <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css"> -->
-    <!-- <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css"> -->
-    <!-- <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css"> -->
+
+    <link rel="shortcut icon" href="/uploads/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/uploads/favicon.ico" type="image/x-icon">
+
     <title>LECON - Teacher</title>
 </head>
 
@@ -47,7 +46,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav flex-column">
                         <li class="nav-divider">
-                            <?php $user = \Illuminate\Support\Facades\DB::table('users')->where('id','=',\Illuminate\Support\Facades\Auth::id())->first();
+                            <?php use Illuminate\Support\Facades\DB;$user = \Illuminate\Support\Facades\DB::table('users')->where('id','=',\Illuminate\Support\Facades\Auth::id())->first();
                             ?>
                             {{ $user->firstname.' '.$user->lastname }}
                         </li>
@@ -165,12 +164,66 @@
                                                 <tbody>
                                                 @if(count($lists)>0)
                                                     @foreach($lists as $list)
+                                                        <?php
+                                                                $check_date = date('Y-m-d',strtotime($check_date));
+
+//                                                                dd($list->id);
+                                                                $std = DB::table('student_checks')->where('user_id',$list->user_id)
+                                                                    ->join('section_checks','section_checks.id','=','student_checks.sectionCheck_id')
+                                                                    ->where('section_checks.check_date',$check_date)
+                                                                    ->first();
+
+//                                                                dd($std);
+
+                                                                if ($std != null){
+                                                                    $check = DB::table('section_checks')->where('section_checks.check_date',$check_date)
+                                                                        ->join('student_checks','student_checks.sectionCheck_id','=','section_checks.id')
+                                                                        ->join('users','users.id','=','student_checks.user_id')->where('users.id',$list->user_id)
+                                                                        ->select('student_checks.status as status','student_checks.created_at as std_check')
+                                                                        ->first();
+
+
+                                                                    $status = $check->status;
+                                                                    $std_check_date = date('d M Y', strtotime($check->std_check));
+                                                                    $std_check_time = date('H:i', strtotime($check->std_check));
+
+//                                                                    dd($status,$std_check_date,$std_check_time);
+                                                                }else {
+
+                                                                    if (strtotime($check_date) < time()){
+                                                                        $status = 'missed';
+                                                                        $std_check_date = '-';
+                                                                        $std_check_time = '-';
+                                                                    }else {
+                                                                        $status = '-';
+                                                                        $std_check_date = '-';
+                                                                        $std_check_time = '-';
+                                                                    }
+
+
+//                                                                    dd($status,$std_check_date,$std_check_time);
+                                                                }
+
+//                                                            dd($check);
+                                                        ?>
                                                     <tr>
                                                         <td>{{ $list->student_id }}</td>
                                                         <td>{{ $list->firstname.' '.$list->lastname }}</td>
-                                                        <td>{{ date('d M Y', strtotime($list->std_check)) }}</td>
-                                                        <td>{{ date('H:i', strtotime($list->std_check)) }}</td>
-                                                        <td><i class="fas fa-check-circle" style="color: #00ab6c; font-size: 18px;"></i></td>
+                                                        <td>{{ $std_check_date }}</td>
+                                                        <td>{{ $std_check_time }}</td>
+                                                        <td>
+                                                            @if( $status == 'checked')
+                                                                <i class="fas fa-check-circle" style="color: #00ab6c; font-size: 18px;"></i>
+                                                            @elseif ( $status == 'missed')
+                                                                <i class="fas fa-times-circle" style="color: firebrick; font-size: 18px;"></i>
+                                                            @elseif ( $status == 'checked late')
+                                                                <i class="fas fa-check-circle" style="color: sandybrown; font-size: 18px;"></i>
+                                                            @elseif ( $status == 'leave')
+                                                                <i class="fas fa-exclamation-circle" style="color: #f3b600; font-size: 18px;"></i>
+                                                            @elseif ( $status == '-')
+                                                                <i class="fas fa-minus-circle" style="color: grey; font-size: 18px;"></i>
+                                                            @endif
+                                                        </td>
                                                     </tr>
                                                     @endforeach
                                                 @endif

@@ -182,11 +182,13 @@ class CheckStudentController extends Controller
 
     public function studentList($subjec_code,$section,$sis_id,$check_date) {
 
-        $lists = DB::table('section_checks')->where('section_checks.check_date',$check_date)
-            ->join('student_checks','student_checks.sectionCheck_id','=','section_checks.id')
-            ->join('users','users.id','=','student_checks.user_id')
-            ->select('*','student_checks.created_at as std_check')
+        $lists = DB::table('attend_sections')->where('attend_sections.sis_id','=',$sis_id)
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role',User::role_student)
+            ->select('*')
             ->get();
+
+//        dd($lists);
 
         $subject = DB::table('sections_in_subjects as sis')->where('sis.id', '=',$sis_id)
             ->join('subjects','sis.subject_id','=','subjects.id')
