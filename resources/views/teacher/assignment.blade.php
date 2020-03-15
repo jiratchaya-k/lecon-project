@@ -139,6 +139,7 @@
                                         </thead>
                                         <tbody>
                                         @if(count($assignments)>0)
+                                            {{--@foreach($assignments as $assignment)--}}
                                             @foreach($assignments as $assignment)
                                                 <tr class="click-row" data-href="/teacher/assignment/{{$assignment->id}}">
                                                     <td>{{ $assignment->title }}</td>

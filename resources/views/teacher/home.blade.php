@@ -140,7 +140,7 @@
                                             <th class="table-head">กลุ่มเรียน</th>
                                             <th class="table-head">ปีการศึกษา</th>
                                             <th class="table-head">เทอม</th>
-                                            <th class="table-head">แก้ไข</th>
+                                            <th class="table-head">ดูรายละเอียด</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -150,11 +150,13 @@
                                         $sections = \Illuminate\Support\Facades\DB::table('subjects')
                                             ->where('name',$subject->name)
                                             ->join('sections_in_subjects as sis','sis.subject_id', '=','subjects.id')
+                                            ->where('sis.status','=','active')
                                             ->join('sections','sis.section_id', '=','sections.id')
                                             ->join('years','sis.year_id', '=','years.id')
                                             ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                                             ->join('users','attend_sections.user_id','=','users.id')
                                             ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
+                                            ->where('attend_sections.status','=','active')
                                             ->select('sections.section', 'sis.id as sis_id','years.year','years.term')->distinct()->get();
 
 
@@ -169,11 +171,8 @@
                                                     <td>{{ $section -> year }}</td>
                                                     <td>{{ $section -> term }}</td>
                                                     <td>
-                                                        <a href="/teacher/subject/section/{{$section->sis_id}}" class="btn btn-primary btn-dark btn-table">
-                                                            view
-                                                        </a>
-                                                        <a href="#" class="ml-3">
-                                                            <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
+                                                        <a href="/teacher/subject/section/{{$section->sis_id}}" class="btn btn-primary btn-submit" style="background:#FF8574; width: 60%;">
+                                                            ดูรายละเอียด
                                                         </a>
                                                     </td>
                                                 </tr>

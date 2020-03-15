@@ -85,7 +85,7 @@
                         </div>
                     </div>
 
-
+                    {{--@if(count($works) == 0)--}}
                     <hr>
 
                     <form method="POST" action="/assignment/{{ $assignment->id }}/send" enctype="multipart/form-data" class="sendAssignment">
@@ -117,6 +117,10 @@
                                 <input class="btn btn-dark btn-submit" type="submit" value="ส่งงาน" style="background: #3956A3 !important; border: none; width: 100%">
                             </div>
                     </form>
+
+                        {{--@else--}}
+                        <br class="mt-5 mb-5">
+                    {{--@endif--}}
 
                 </div>
             </div>

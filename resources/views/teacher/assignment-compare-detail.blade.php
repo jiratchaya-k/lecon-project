@@ -97,12 +97,12 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title" style=" float: left">งามที่มอบหมาย</h2>
-                            <div class="text-right mb-2">
-                                <a id="myBtn" class="btn btn-primary btn-submit" style="width: 20%; color: white">
-                                    เปรียบเทียบงาน
-                                </a>
-                            </div>
+                            <h2 class="pageheader-title">เปรียบเทียบงาน</h2>
+                            {{--<div class="text-right mb-2">--}}
+                                {{--<a id="myBtn" class="btn btn-primary btn-submit" style="width: 20%; color: white">--}}
+                                    {{--เปรียบเทียบงาน--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -234,17 +234,18 @@
                                                     </td>
 
                                                     <td>{{ $works->grade }}</td>
+                                                    <input type="hidden" id="work_grade" value="{{ $works->grade }}">
                                                     <td>
                                                         <select class="f-input ml-2 mt-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">
-                                                            <option value="">เลือกเกรด</option>
-                                                            <option value="A">A</option>
-                                                            <option value="B+">B+</option>
-                                                            <option value="B">B</option>
-                                                            <option value="C+">C+</option>
-                                                            <option value="C">C</option>
-                                                            <option value="D+">D+</option>
-                                                            <option value="D">D</option>
-                                                            <option value="DELETE">DELETE</option>
+                                                            <option name="grade[]" value="">เลือกเกรด</option>
+                                                            <option name="grade[]" value="A">A</option>
+                                                            <option name="grade[]" value="B+">B+</option>
+                                                            <option name="grade[]" value="B">B</option>
+                                                            <option name="grade[]" value="C+">C+</option>
+                                                            <option name="grade[]" value="C">C</option>
+                                                            <option name="grade[]" value="D+">D+</option>
+                                                            <option name="grade[]" value="D">D</option>
+                                                            <option name="grade[]" value="DELETE">DELETE</option>
                                                         </select>
 
                                                     </td>
@@ -351,6 +352,19 @@
             window.location = $(this).data("href");
         });
     });
+</script>
+
+<script>
+
+    var work_grade = document.getElementById("work_grade");
+    var grade_opt = document.getElementsByName("grade[]");
+
+    for (var i = 0; i < grade_opt.length; i++) {
+        if (work_grade.value == grade_opt[i].value){
+            grade_opt[i].selected = true;
+        }
+    }
+
 </script>
 
 <script>

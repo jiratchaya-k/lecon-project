@@ -197,7 +197,7 @@
                                     <th class="table-head">ชื่อ-นามสกุล</th>
                                     <th class="table-head">ไฟล์งาน</th>
                                     <th class="table-head">เกรด</th>
-                                    <th class="table-head">แก้ไข</th>
+                                    <th class="table-head"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -236,9 +236,9 @@
                                                 <a href="/teacher/assignment/{{$assignment->title}}/index={{$arrayIndex}}/work={{ $work->id }}" class="btn btn-primary btn-dark bg-gradient box-shadow" style="border: none">
                                                     ให้เกรด
                                                 </a>
-                                                <a href="#" class="ml-3">
-                                                    <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
-                                                </a>
+                                                {{--<a href="#" class="ml-3">--}}
+                                                    {{--<i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>--}}
+                                                {{--</a>--}}
                                             </td>
                                         </tr>
                                     @endforeach

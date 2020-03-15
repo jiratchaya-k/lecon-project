@@ -56,8 +56,14 @@ Route::post('/sign-up', 'Auth\RegisterController@createStudent');
 Route::post('/teacher/sign-up', 'Auth\RegisterController@createTeacher');
 Route::get('/logout', 'Auth\LoginController@logout');
 
+
+Route::post('/teacher/subject/section/{sis_id}/delete_user/{user_id}', 'SubjectController@deleteUser');
 Route::get('/teacher/subject', 'SubjectController@index');
 Route::get('/teacher/subject/section/{id}', 'SubjectController@show');
+Route::get('/teacher/subject/section/{id}/edit', 'SubjectController@edit');
+Route::post('/teacher/subject/section/{id}/update', 'SubjectController@update');
+
+Route::delete('/teacher/subject/section/{id}/delete', 'SubjectController@destroy');
 Route::post('/teacher/subject/section/{id}/post/store', 'SubjectController@postStore');
 Route::post('/teacher/subject/section/{id}/lesson/store', 'SubjectController@lessonStore');
 Route::get('/teacher/subject/create', 'SubjectController@create');

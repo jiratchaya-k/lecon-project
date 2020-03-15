@@ -27,6 +27,7 @@ class SubjectController extends Controller
         $subject = DB::table('attend_sections as attend')->where('user_id', '=',Auth::id())
             ->join('sections_in_subjects as sis','attend.sis_id','=','sis.id')
             ->join('subjects','sis.subject_id','=','subjects.id')
+            ->where('attend.status','=','active')
             ->select('code','name')->distinct()
             ->get();
         $subjects = json_decode($subject);
@@ -70,11 +71,10 @@ class SubjectController extends Controller
 
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
 
-            $allWorks = DB::table('works')->where('assignment_id',$id)
-                ->join('users','users.id','=','works.student_id')
-                ->select('*','works.id')->distinct('users.student_id')->get();
+            $assignments = DB::table('assignments')->where('assignments.sis_id',$id)->where('status','=','active')
+                ->select('*')->get();
 
-//            dd($allWorks);
+//            dd($assignments);
 
             switch( $sections->date ) {
                 case('Sunday') :
@@ -116,7 +116,7 @@ class SubjectController extends Controller
 
 //            dd($allTeacher);
 
-            return view('teacher.subject-show',compact('sections','allWorks','date','allTeacher','posts','lessons'));
+            return view('teacher.subject-show',compact('sections','assignments','date','allTeacher','posts','lessons'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
@@ -205,6 +205,7 @@ class SubjectController extends Controller
         $sis->date = $request->input('subject_date');
         $sis->startTime = $request->input('subject_startTime');
         $sis->endTime = $request->input('subject_endTime');
+        $sis->status = 'active';
         $sis->save();
 
 //        dd($request->input('subject_endTime'));
@@ -214,6 +215,7 @@ class SubjectController extends Controller
         $attend = new AttendSection;
         $attend->user_id =  $request->input('subject_createby');
         $attend->sis_id = $sis_id->id;
+        $attend->status = 'active';
         $attend->save();
 
         function getBetween($content,$start,$end){
@@ -240,6 +242,7 @@ class SubjectController extends Controller
                 $attend = new AttendSection;
                 $attend->user_id = $teacher_id->id;
                 $attend->sis_id = $sis_id->id;
+                $attend->status = 'active';
                 $attend->save();
 
 
@@ -262,6 +265,7 @@ class SubjectController extends Controller
                     $attend = new AttendSection;
                     $attend->user_id = $student_id->id;
                     $attend->sis_id = $sis_id->id;
+                    $attend->status = 'active';
                     $attend->save();
                 }
             }
@@ -272,6 +276,187 @@ class SubjectController extends Controller
 
 
 
+        return redirect('/teacher/subject');
+    }
+
+    public function edit($id)
+    {
+        $years = Year::all();
+        $sections = Section::all();
+
+        $section = DB::table('sections_in_subjects as sis')->where('sis.id',$id)
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('sis.id as sis_id','sis.date','sis.startTime','sis.endTime','subjects.id as subject_id','sections.section','subjects.code','subjects.name','sis.year_id','sis.section_id')
+            ->first();
+
+        $teachers = DB::table('sections_in_subjects as sis')->where('sis.id',$id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_teacher)
+            ->where('users.id','!=',Auth::id())
+            ->where('attend_sections.status','=','active')
+            ->select('users.id','users.firstname','users.lastname','users.email')->get();
+
+        $allTeachers = DB::table('users')->where('role',User::role_teacher)
+            ->where('id','!=',Auth::id())->get();
+        $allStudents = DB::table('users')->where('role',User::role_student)->get();
+
+        $students = DB::table('sections_in_subjects as sis')->where('sis.id',$id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_student)
+            ->where('attend_sections.status','=','active')
+            ->select('users.id','users.firstname','users.lastname','users.email','users.student_id')->get();
+
+//            dd($section,$teachers,$students);
+
+            return view('teacher.subject-edit',compact('section','teachers','students','years','sections','allStudents','allTeachers'));
+
+    }
+
+    public function update(Request $request,$id){
+
+        $subject_id = $request->input('subject_id');
+
+        $subject = Subject::find($subject_id);
+        $subject->code = $request->input('subject_code');
+        $subject->name = $request->input('subject_name');
+        $subject->save();
+
+//        $subject_id = DB::table('subjects')->select('id')->orderBy('id','DESC')->limit('1')->first();
+
+//        dd($subject_id);
+
+//        dd(DB::table('sections_in_subject')
+//            ->insertGetId(['section_id' => $request->input('subject_section'),
+//                'subject_id' => $subject_id , 'year_id' => $request->input('subject_year'),
+//                'date' => $request->input('subject_date'), 'startTime' => $request->input('subject_startTime'),
+//                'endTime' => $request->input('subject_endTime')]));
+
+        $sis = SectionsInSubject::find($id);
+        $sis->section_id = $request->input('subject_section');
+        $sis->subject_id = $subject_id;
+        $sis->year_id = $request->input('subject_year');
+        $sis->date = $request->input('subject_date');
+        $sis->startTime = $request->input('subject_startTime');
+        $sis->endTime = $request->input('subject_endTime');
+        $sis->status = 'active';
+        $sis->save();
+
+//        dd($request->input('subject_endTime'));
+
+//        $sis_id = DB::table('sections_in_subjects')->select('id')->orderBy('id','DESC')->limit('1')->first();
+
+//        $attend = new AttendSection;
+//        $attend->user_id =  $request->input('subject_createby');
+//        $attend->sis_id = $id;
+//        $attend->status = 'active';
+//        $attend->save();
+
+        function getBetween($content,$start,$end){
+            $r = explode($start, $content);
+            if (isset($r[1])){
+                $r = explode($end, $r[1]);
+                return $r[0];
+            }
+            return '';
+        }
+
+        $teachers = $request->input('subject_teacher');
+
+
+        if (!empty($teachers)){
+
+            for ($i=0;$i < count($teachers);$i++){
+                $start = "(";
+                $end = ")";
+                $teacher_email = getBetween($teachers[$i],$start,$end);
+
+                $teacher_id = DB::table('users')->select('id')->where('email',$teacher_email)->first();
+
+                $haveTeacher = DB::table('attend_sections')->where('sis_id',$id)
+                    ->where('user_id',$teacher_id->id)->count();
+
+                if ($haveTeacher > 0) {
+                    DB::table('attend_sections')
+                        ->where('user_id', $teacher_id->id)->where('sis_id',$id)
+                        ->update(['status' => 'active']);
+                }else {
+                    $attend = new AttendSection;
+                    $attend->user_id = $teacher_id->id;
+                    $attend->sis_id = $id;
+                    $attend->status = 'active';
+                    $attend->save();
+                }
+            }
+
+        }
+
+//        $csv_file = $request->file('file');
+//        if (!empty($csv_file)){
+//            Excel::import(new CsvImport, $request->file('file'));
+//        }
+//        else {
+            $students = $request->input('subject_student');
+            if (!empty($students)){
+                for($i=0;$i < count($students);$i++){
+                    $start = "(";
+                    $end = ")";
+                    $student_email = getBetween($students[$i],$start,$end);
+                    $student_id = DB::table('users')->select('id')->where('email',$student_email)->first();
+
+                    $haveStudent = DB::table('attend_sections')->where('sis_id',$id)
+                        ->where('user_id',$teacher_id->id)->count();
+
+                    if ($haveStudent > 0) {
+                        DB::table('attend_sections')
+                            ->where('user_id', $student_id->id)->where('sis_id',$id)
+                            ->update(['status' => 'active']);
+                    }else {
+                        $attend = new AttendSection;
+                        $attend->user_id = $student_id->id;
+                        $attend->sis_id = $id;
+                        $attend->status = 'active';
+                        $attend->save();
+                    }
+
+                }
+            }
+//        }
+
+
+//        dd($tcs,$std);
+
+
+
+        return redirect('/teacher/subject');
+    }
+
+    public function deleteUser($sis_id,$user_id){
+
+
+
+        DB::table('attend_sections')
+            ->where('user_id', $user_id)->where('sis_id',$sis_id)
+            ->update(['status' => 'inactive']);
+
+
+//        $check = SectionCheck::all()->last();
+
+        $message = 'Success';
+
+//        dd(json_decode($check));
+
+        return $message;
+    }
+
+    public function destroy($id)
+    {
+        //
+        $sis = SectionsInSubject::find($id);
+        $sis->status = 'inactive';
+        $sis->save();
         return redirect('/teacher/subject');
     }
 
@@ -343,6 +528,7 @@ class SubjectController extends Controller
         $attend = new AttendSection;
         $attend->user_id =  $request->input('subject_createby');
         $attend->sis_id = $sis_id->id;
+        $attend->status = 'active';
         $attend->save();
 
         function getBetween($content,$start,$end){
@@ -367,6 +553,7 @@ class SubjectController extends Controller
                 $attend = new AttendSection;
                 $attend->user_id = $teacher_id->id;
                 $attend->sis_id = $sis_id->id;
+                $attend->status = 'active';
                 $attend->save();
 
 
@@ -389,6 +576,7 @@ class SubjectController extends Controller
                     $attend = new AttendSection;
                     $attend->user_id = $student_id->id;
                     $attend->sis_id = $sis_id->id;
+                    $attend->status = 'active';
                     $attend->save();
                 }
             }

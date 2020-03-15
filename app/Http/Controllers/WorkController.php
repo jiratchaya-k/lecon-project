@@ -80,7 +80,7 @@ class WorkController extends Controller
 
                     foreach ($dimensions as $dms){
                         if (!in_array($dms,$fileDimensions)) {
-                            $grade = 'DELETE';
+                              $grade = 'DELETE';
                             $remark = 'ขนาดไฟล์ไม่ตรงกับเงื่อนไขงาน';
                         }
                     }

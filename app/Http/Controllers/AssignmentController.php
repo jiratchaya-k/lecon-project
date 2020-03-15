@@ -31,14 +31,17 @@ class AssignmentController extends Controller
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('attend_sections','attend_sections.sis_id','=','sis.id')
                 ->join('users','attend_sections.user_id','=','users.id')
-                ->where('users.id','=',Auth::id())->where('assignments.status','=','active')
+//                ->join('works','works.assignment_id','=','assignments.id')
                 ->select('*','assignments.id')
+//                ->select('works.assignment_id',DB::raw('COUNT(grade) as count'))->groupBy('works.assignment_id')
+                ->where('users.id','=',Auth::id())
+                ->where('assignments.status','=','active')
+                ->where('attend_sections.status','=','active')
                 ->get();
 
-//            dd($assignments);
+//            dd(count($assignments));
 
 
-//            dd($assignments);
 
 //            $submiited = DB::table('works')->where('assignment_id',1)->count();
 
@@ -49,12 +52,15 @@ class AssignmentController extends Controller
 
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
-            $assignments = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+            $assignments = DB::table('attend_sections')->where('attend_sections.status','active')
+                ->where('attend_sections.user_id','=',Auth::id())
                 ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('assignments','sis.id','=','assignments.sis_id')
                 ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
                 ->get();
+
+//            dd($asm);
             return view('student.home',compact('assignments'));
         }else{
             redirect('/');
@@ -168,6 +174,7 @@ class AssignmentController extends Controller
         $assignment->fileType = $inFileType;
         $assignment->dimensions = $dimensions;
         $assignment->dimensionsType = $dimensionsType;
+        $assignment->status = 'active';
         $assignment->save();
 //
 //
@@ -288,7 +295,7 @@ class AssignmentController extends Controller
 //            dd($height);
         }
 
-//        dd($fileType);
+//        dd($assignment->dueDate);
 
         return view('teacher.assignment-edit',compact('assignment','fileType','width','height','sections'));
     }

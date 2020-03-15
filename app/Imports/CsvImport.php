@@ -34,11 +34,13 @@ class CsvImport implements ToModel, WithHeadingRow
             $attend = new AttendSection;
             $attend->user_id = $user->id;
             $attend->sis_id = $sis_id->id;
+            $attend->status = 'active';
             $attend->save();
         }else {
             $attend = new AttendSection;
             $attend->user_id = $user_id->id+1;
             $attend->sis_id = $sis_id->id;
+            $attend->status = 'active';
             $attend->save();
 
             return new User([

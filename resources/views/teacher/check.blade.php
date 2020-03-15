@@ -163,7 +163,7 @@
 
                                                             @switch( $section->date )
                                                                 @case('Sunday')
-                                                                    <td>อาทิยต์</td>
+                                                                    <td>อาทิตย์</td>
                                                                 @break
                                                                 @case('Monday')
                                                                     <td>จันทร์</td>
@@ -190,12 +190,11 @@
                                                             <td>{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}</td>
                                                             <td>
                                                                 <div class="form-group mt-2">
-                                                                    <input class="form-control f-input" name="check_date" type="date" id="date">
-                                                                    {{--<input class="form-control f-input" name="check_name" type="hidden" value="{{$subject->name}}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_code" type="hidden" value="{{$subject->code}}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_section" type="hidden" value="{{$section->section}}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_time" type="hidden" value="{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}">--}}
-                                                                    {{--<input class="form-control f-input" name="check_dedate" type="hidden" value="{{$section->date}}">--}}
+                                                                    <?php
+                                                                        $currentDate = date(('Y-m-d'));
+                                                                    ?>
+                                                                    <input class="form-control f-input" name="check_date" type="date" id="date" value="{{ $currentDate }}">
+
                                                                     <input class="form-control f-input" name="sis_id" type="hidden" value="{{$section->sis_id}}">
                                                                 </div>
                                                             </td>

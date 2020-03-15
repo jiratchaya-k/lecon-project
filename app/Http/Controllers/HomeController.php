@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
-            $assignments = DB::table('assignments')->select('*')->orderBy('created_at','desc')->get();
+            $assignments = DB::table('assignments')->select('*')
+                ->orderBy('created_at','desc')->get();
 
 //            $subject = DB::table('attend_section as attend')->where('user_id', '=',Auth::id())
 //                ->join('sections_in_subject as sis','attend.sis_id','=','sis.id')
@@ -41,6 +42,7 @@ class HomeController extends Controller
             $subject = DB::table('attend_sections as attend')->where('user_id', '=',Auth::id())
                 ->join('sections_in_subjects as sis','attend.sis_id','=','sis.id')
                 ->join('subjects','sis.subject_id','=','subjects.id')
+                ->where('attend.status','=','active')
                 ->select('code','name')->distinct()
                 ->get();
 
@@ -56,7 +58,8 @@ class HomeController extends Controller
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
 
-            $assignments = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+            $assignments = DB::table('attend_sections')->where('attend_sections.status','active')
+                ->where('attend_sections.user_id','=',Auth::id())
                 ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('assignments','sis.id','=','assignments.sis_id')

@@ -94,10 +94,10 @@
                 <!-- ============================================================== -->
                 <!-- pageheader  -->
                 <!-- ============================================================== -->
-                <div class="row">
+                <div class="row container">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">งามที่มอบหมาย</h2>
+                            <h2 class="pageheader-title">วิชา {{ $sections->code.' '.$sections->name }}</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -299,22 +299,37 @@
 
                         </div>
 
+                        <hr>
 
-                    <div class="row">
-                    <div class="col-md-6 text-right">
-                    <a href="#" class="btn btn-primary btn-dark" style="width: 200px;">
-                    edit
-                    </a>
-                    </div>
-                    <div class="col-md-6">
-                    <a href="#" class="btn btn-primary btn-danger" style="width: 200px;">
-                    delete
-                    </a>
-                    </div>
-                    </div>
+                        @if(count($assignments) > 0)
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <a href="/teacher/subject/section/{{$sections->sis_id}}/edit" class="btn btn-primary btn-dark" style="width: 200px;">
+                                        แก้ไข
+                                    </a>
+                                </div>
+                            </div>
 
-                    <hr>
+                        @else
+                            <div class="row">
+                                <div class="col-md-6 text-right">
+                                    <a href="/teacher/subject/section/{{$sections->sis_id}}/edit" class="btn btn-primary btn-dark" style="width: 200px;">
+                                        แก้ไข
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <form method="POST" action="/teacher/subject/section/{{$sections->sis_id}}/delete">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="btn btn-primary btn-danger" onclick="return confirm('Are you sure to delete?')" style="width: 200px;"> <i class="fas fa-trash"></i> ลบ</button>
+                                    </form>
+                                    {{--<a href="#" class="btn btn-primary btn-danger" style="width: 200px;">--}}
+                                    {{--delete--}}
+                                    {{--</a>--}}
+                                </div>
+                            </div>
 
+                        @endif
 
                     </div>
                     </div>
