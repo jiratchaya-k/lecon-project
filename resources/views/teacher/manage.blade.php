@@ -125,6 +125,7 @@
                                 <div class="card box-shadow mb-2">
                                     <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
                                         <span class="fs-18">ปีการศึกษา</span>
+                                        <button class="btn btn-default btn-add ml-2" id="myBtn-year">+ เพิ่ม</button>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive-xl">
@@ -133,7 +134,7 @@
                                                 <tr>
                                                     <th class="table-head">ปีการศึกษา</th>
                                                     <th class="table-head">เทอม</th>
-                                                    <th class="table-head">แก้ไข</th>
+                                                    <th class="table-head"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -143,10 +144,10 @@
                                                             <td>{{ $year->year }}</td>
                                                             <td>{{ $year->term }}</td>
                                                             <td>
-                                                                <a href="/teacher/manage/year-term/{{ $year->id }}/edit" class="btn btn-primary btn-dark btn-table" style="width: 80px;">
-                                                                    edit
-                                                                </a>
-                                                                <a href="#" class="ml-3">
+                                                                {{--<a href="/teacher/manage/year-term/{{ $year->id }}/edit" class="btn btn-primary btn-dark btn-table" style="width: 80px;">--}}
+                                                                    {{--edit--}}
+                                                                {{--</a>--}}
+                                                                <a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">
                                                                     <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
                                                                 </a>
                                                             </td>
@@ -165,44 +166,11 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--<div class="col-md-4">--}}
-                                {{--<div class="card box-shadow mb-2">--}}
-                                    {{--<div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">--}}
-                                        {{--<span class="fs-18">ภาคการศึกษา</span>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="card-body">--}}
-                                        {{--<div class="table-responsive-xl">--}}
-                                            {{--<table class="table">--}}
-                                                {{--<thead>--}}
-                                                {{--<tr>--}}
-                                                    {{--<th class="table-head">ภาคการศึกษา</th>--}}
-                                                    {{--<th class="table-head">แก้ไข</th>--}}
-                                                {{--</tr>--}}
-                                                {{--</thead>--}}
-                                                {{--<tbody>--}}
-                                                {{--@if(count($terms)>0)--}}
-                                                    {{--@foreach($terms as $term)--}}
-                                                        {{--<tr>--}}
-                                                            {{--<td>{{ $term->term }}</td>--}}
-                                                            {{--<td>1</td>--}}
-                                                            {{--<td>--}}
-                                                                {{--<a href="#" class="btn btn-primary btn-danger ">--}}
-                                                                    {{--delete--}}
-                                                                {{--</a>--}}
-                                                            {{--</td>--}}
-                                                        {{--</tr>--}}
-                                                    {{--@endforeach--}}
-                                                {{--@endif--}}
-                                                {{--</tbody>--}}
-                                            {{--</table>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
                             <div class="col-md-6">
                                 <div class="card box-shadow mb-2">
                                     <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
                                         <span class="fs-18">กลุ่มเรียน</span>
+                                        <button class="btn btn-default btn-add ml-2" id="myBtn-section">+ เพิ่ม</button>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive-xl">
@@ -210,7 +178,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="table-head">รหัสกลุ่มเรียน</th>
-                                                    <th class="table-head">แก้ไข</th>
+                                                    <th class="table-head"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -219,10 +187,10 @@
                                                 <tr>
                                                     <td>{{ $section->section }}</td>
                                                     <td>
-                                                        <a href="/teacher/manage/section/{{ $section->id }}/edit" class="btn btn-primary btn-dark btn-table">
-                                                            edit
-                                                        </a>
-                                                        <a href="#" class="ml-3">
+                                                        {{--<a href="/teacher/manage/section/{{ $section->id }}/edit" class="btn btn-primary btn-dark btn-table">--}}
+                                                            {{--edit--}}
+                                                        {{--</a>--}}
+                                                        <a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">
                                                             <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
                                                         </a>
                                                     </td>
@@ -241,40 +209,212 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-12 mt-4">
-                        <div class="card box-shadow mb-2">
-                            <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
-                                <span class="fs-18">รายชื่ออาจารย์</span>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive-xl">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th class="table-head">ชื่อ-นามสกุล</th>
-                                            <th class="table-head">อีเมล</th>
-                                            {{--<th class="table-head">แก้ไข</th>--}}
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @if(count($teachers)>0)
-                                            @foreach($teachers as $teacher)
-                                        <tr>
-                                            <td>{{ $teacher->firstname.' '.$teacher->lastname }}</td>
-                                            <td>{{ $teacher->email }}</td>
-                                        </tr>
-                                            @endforeach
-                                        @endif
-                                        </tbody>
-                                    </table>
+                        </div>
+
+
+                    <div class="row mt-4">
+                        <div class="col-md-7">
+                            <div class="card box-shadow mb-2">
+                                <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
+                                    <span class="fs-18">สถานที่สำหรับเช็คชื่อ</span>
+                                    <button class="btn btn-default btn-add ml-2" id="myBtn-location">+ เพิ่ม</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive-xl">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th class="table-head" style="width: 350px!important;">ชื่อสถานที่</th>
+                                                <th class="table-head">ละติจูด</th>
+                                                <th class="table-head">ลองจิจูด</th>
+                                                <th class="table-head"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if(count($teachers)>0)
+                                                @foreach($teachers as $teacher)
+                                                    <tr>
+                                                        <td>ศิลปากร เมืองทองธานี</td>
+                                                        <td>13.9148435</td>
+                                                        <td>100.5512695</td>
+                                                        <td>
+                                                            <a href="/teacher/manage/section/{{ $section->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข">
+                                                                <i class="fas fa-pencil-alt" style="font-size: 20px; color: #FF8574;"></i>
+                                                            </a>
+                                                            <a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">
+                                                                <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-5">
+                            <div class="card box-shadow mb-2">
+                                <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
+                                    <span class="fs-18">รายชื่ออาจารย์</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive-xl">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th class="table-head">ชื่อ-นามสกุล</th>
+                                                <th class="table-head">อีเมล</th>
+                                                {{--<th class="table-head">แก้ไข</th>--}}
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if(count($teachers)>0)
+                                                @foreach($teachers as $teacher)
+                                                    <tr>
+                                                        <td>{{ $teacher->firstname.' '.$teacher->lastname }}</td>
+                                                        <td>{{ $teacher->email }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                     </div>
                 </div>
+
+                <!-- The Modal Year-->
+                <div id="modelYear" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content modal-content-year">
+                        <span class="close">&times;</span>
+                        <div class="container" style="padding: 30px;">
+                            <h3 style="float: left;">ปีการศึกษา</h3> <button class="btn btn-default btn-add add_button_year ml-3">+ เพิ่ม</button>
+                            <hr>
+                            <form method="POST" action="/teacher/manage/year-term/store" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="form-group mt-2">
+                                    {{--<label for="title" class="control-label mb-3 mr-2"style="color: black">ปีการศึกษา</label>--}}
+
+                                    <div class="input_year_wrap">
+                                        <div class="row">
+                                            <label for="inputYear" class="col-1 col-form-label">ปี</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control f-input" name="years[]" type="text">
+                                            </div>
+                                            <div class="col-1 pt-1">
+                                                <h3>/</h3>
+                                            </div>
+                                            <label for="inputTerm" class="col-3 col-form-label">ภาคการศึกษา</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control f-input" name="terms[]" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 item-center mt-4 mb-3">
+                                    <input class="btn btn-dark btn-submit" type="submit" value="เพิ่มปีการศึกษา" style="background: #3956A3 !important; border: none; width: 100%">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Modal Section-->
+                <div id="modelSection" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content modal-content-year">
+                        <span class="close-section">&times;</span>
+                        <div class="container" style="padding: 30px;">
+                            <h3 style="float: left;">กลุ่มเรียน</h3> <button class="btn btn-default btn-add add_button_section ml-3">+ เพิ่ม</button>
+                            <hr>
+                            <form method="POST" action="/teacher/manage/section/store" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="form-group mt-2">
+                                    {{--<label for="title" class="control-label mb-3 mr-2"style="color: black">กลุ่มเรียน</label>--}}
+
+                                    <div class="row input_section_wrap">
+                                        <div class="col-md-4">
+                                            <input class="form-control f-input"  name="sections[]" type="text" style="width: 100px; height: 35px; margin-bottom: 10px">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 item-center mt-4 mb-3">
+                                    <input class="btn btn-dark btn-submit" type="submit" value="เพิ่มปีการศึกษา" style="background: #3956A3 !important; border: none; width: 100%">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Modal Location-->
+                <div id="modelLocation" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close-location">&times;</span>
+                        <div class="container" style="padding: 30px;">
+                            <h3 style="float: left;">สถานที่สำหรับเช็คชื่อ</h3> <button class="btn btn-default btn-add add_button_location ml-3">+ เพิ่ม</button>
+                            <hr>
+                            <form method="POST" action="/teacher/manage/location/store" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="form-group mt-2">
+                                    {{--<label for="title" class="control-label mb-3 mr-2"style="color: black">กลุ่มเรียน</label>--}}
+
+                                    <div class="input_location_wrap">
+                                        <div class="card p-4">
+
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label for="location_name" class="pt-1">ชื่อสถานที่</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input class="form-control f-input"  name="location_name[]" type="text" style="width: 100%; height: 35px; margin-bottom: 10px">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label for="location_latitude" class="pt-1">ละติจูด</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input class="form-control f-input"  name="location_latitude[]" type="text" style="width: 100%; height: 35px; margin-bottom: 10px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="location_longtitude" class="pt-1">ลองจิจูด</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input class="form-control f-input"  name="location_longitude[]" type="text" style="width: 100%; height: 35px; margin-bottom: 10px">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 item-center mt-4 mb-3">
+                                    <input class="btn btn-dark btn-submit" type="submit" value="เพิ่มปีการศึกษา" style="background: #3956A3 !important; border: none; width: 100%">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -294,6 +434,160 @@
 <script src="/js/jquery.slimscroll.js"></script>
 <!-- main js -->
 <script src="/js/main-js.js"></script>
+
+<script>
+    // Get the modal
+    var modalYear = document.getElementById("modelYear");
+    var modalSection = document.getElementById("modelSection");
+    var modalLocation = document.getElementById("modelLocation");
+
+    // Get the button that opens the modal
+    var btnYear = document.getElementById("myBtn-year");
+    var btnSection = document.getElementById("myBtn-section");
+    var btnLocation = document.getElementById("myBtn-location");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var spanSection = document.getElementsByClassName("close-section")[0];
+    var spanLocation = document.getElementsByClassName("close-location")[0];
+
+    // When the user clicks on the button, open the modal
+    btnYear.onclick = function() {
+        modalYear.style.display = "block";
+    }
+    btnSection.onclick = function() {
+        modalSection.style.display = "block";
+    }
+    btnLocation.onclick = function() {
+        modalLocation.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modalYear.style.display = "none";
+    }
+    spanSection.onclick = function() {
+        modalSection.style.display = "none";
+    }
+    spanLocation.onclick = function() {
+        modalLocation.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modalYear) {
+            modalYear.style.display = "none";
+        }
+        if (event.target == modalSection) {
+            modalSection.style.display = "none";
+        }
+        if (event.target == modalLocation) {
+            modalLocation.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+        var max_fields      = 6; //maximum input boxes allowed
+        var wrapper_section   		= $(".input_section_wrap"); //Fields wrapper
+        var add_button_section      = $(".add_button_section"); //Add button Class
+        var wrapper_year   		= $(".input_year_wrap"); //Fields wrapper
+        var add_button_year      = $(".add_button_year"); //Add button Class
+        var wrapper_location   		= $(".input_location_wrap"); //Fields wrapper
+        var add_button_location      = $(".add_button_location"); //Add button Class
+
+        var section = 1; //initlal text box count
+        var year = 1;
+        var location = 1;
+
+        if ($(add_button_section).click) {
+            $(add_button_section).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(section < max_fields){ //max input box allowed
+                    section++; //text box increment
+                    $(wrapper_section).append('<div class="col-md-4"><input class="form-control f-input"  name="sections[]" type="text" style="width: 100px;height: 35px;float: left; margin-bottom: 10px"><a href="#" class="remove_section ml-1 pt-1" style="float: left">X</a></div> '); //add input box
+                }
+            });
+
+            $(wrapper_section).on("click",".remove_section", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); x--;
+            })
+        }
+        if ($(add_button_year).click){
+            $(add_button_year).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(year < max_fields){ //max input box allowed
+                    year++; //text box increment
+                    $(wrapper_year).append('<div class="row">\n' +
+                        ' <label for="inputYear" class="col-1 col-form-label">ปี</label>\n' +
+                        ' <div class="col-md-3">\n' +
+                        '   <input class="form-control f-input" name="years[]" type="text">\n' +
+                        ' </div>\n' +
+                        ' <div class="col-1 pt-1">\n' +
+                        ' <h3>/</h3>\n' +
+                        ' </div>\n' +
+                        ' <label for="inputTerm" class="col-3 col-form-label">ภาคการศึกษา</label>\n' +
+                        ' <div class="col-md-3">\n' +
+                        ' <input class="form-control f-input" name="terms[]" type="text" id="title">\n' +
+                        ' </div>\n' +
+                        '<a href="#" class="remove_year ml-1 pt-1" style="float: left">X</a>\n' +
+                        ' </div>'); //add input box
+                }
+            });
+
+
+
+            $(wrapper_year).on("click",".remove_year", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); year--;
+            })
+        }
+        if ($(add_button_location).click){
+            $(add_button_location).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(location < max_fields){ //max input box allowed
+                    location++; //text box increment
+                    $(wrapper_location).append('<div class="card p-4" id="card-location">'+
+                        '<div class="row">'+
+                        '<div class="col-md-2">'+
+                        '<label for="location_name" class="pt-1">ชื่อสถานที่</label>'+
+                        '</div>'+
+                        '<div class="col-md-6">'+
+                        '<input class="form-control f-input"  name="location_name[]" type="text" style="width: 100%; height: 35px; margin-bottom: 10px">'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="row">'+
+                        '<div class="col-md-2">'+
+                        '<label for="location_latitude" class="pt-1">ละติจูด</label>'+
+                        '</div>'+
+                        '<div class="col-md-4">'+
+                        '<input class="form-control f-input"  name="location_latitude[]" type="text" style="width: 100%; height: 35px; margin-bottom: 10px">'+
+                        '</div>'+
+                        '<div class="col-md-2">'+
+                        '<label for="location_longitudee" class="pt-1">ลองจิจูด</label>'+
+                        '</div>'+
+                        '<div class="col-md-4">'+
+                        '<input class="form-control f-input"  name="location_longitude[]" type="text" style="width: 100%; height: 35px; margin-bottom: 10px">'+
+                        '</div>'+
+                        '</div> <hr>'+
+                        '<div class="col-md-12 text-center"> <a href="#" class="remove_location ml-1 pt-1"><i class="fas fa-trash-alt mt-2" style="font-size: 18px;"></i></a>' +
+                        '</div>'+
+                        '</div>') //add input box
+                }
+            });
+
+
+
+            $(wrapper_location).on("click",".remove_location", function(e){ //user click on remove text
+                e.preventDefault(); $('#card-location').remove(); location--;
+                console.log(location.val);
+            })
+        }
+
+
+    });
+</script>
+
 </body>
 
 </html>

@@ -19,7 +19,7 @@ class ManageController extends Controller
             $years = DB::table('years')->select('*')->orderBy('year','asc')->get();
             $sections = DB::table('sections')->select('*')->orderBy('section','asc')->get();
 //            $terms = DB::table('terms')->select('*')->orderBy('term','asc')->get();
-            $teachers = DB::table('users')->select('*')->where('role',2)->orderBy('firstname','asc')->get();
+            $teachers = DB::table('users')->select('*')->where('role',User::role_teacher)->orderBy('firstname','asc')->get();
 
 //            dd($years);
 

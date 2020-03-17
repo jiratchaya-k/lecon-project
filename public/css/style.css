@@ -329,9 +329,12 @@ td {
     border: none!important;
     border-radius: 1.3rem;
 }
+.modal-content-year {
+    width: 40% !important;
+}
 
 /* The Close Button */
-.close {
+.close, .close-lesson, .close-section, .close-location {
     width: 10px;
     color: #aaaaaa;
     margin: auto 0 auto auto;
@@ -340,20 +343,13 @@ td {
 }
 
 .close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}.close-lesson {
-    width: 10px;
-    color: #aaaaaa;
-    margin: auto 0 auto auto;
-    font-size: 28px;
-    font-weight: bold;
-}
-
+.close:focus,
 .close-lesson:hover,
-.close-lesson:focus {
+.close-lesson:focus,
+.close-section:hover,
+.close-section:focus,
+.close-location:hover,
+.close-location:focus{
     color: #000;
     text-decoration: none;
     cursor: pointer;
