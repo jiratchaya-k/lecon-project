@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Location;
 use App\SectionCheck;
 use App\StudentCheck;
 use App\Subject;
@@ -23,6 +24,10 @@ class CheckStudentController extends Controller
                 ->select('code','name')->distinct()
                 ->get();
             $subjects = json_decode($subject);
+
+            $locations = DB::table('locations')->where('user_id',Auth::id())->get();
+
+//            dd($locations);
 
 
 //            dd(Auth::id());
@@ -48,7 +53,7 @@ class CheckStudentController extends Controller
 //            dd($code);
 
 
-            return view('teacher.check',compact('assignments','subjects'));
+            return view('teacher.check',compact('assignments','subjects','locations'));
 //            return view('teacher.home');
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
@@ -70,6 +75,7 @@ class CheckStudentController extends Controller
     {
         $check = New SectionCheck();
         $check->check_date = $request->input('check_date');
+        $check->location_id = $request->input('location_id');
         $check->sis_id = $request->input('sis_id');
         $check->save();
 

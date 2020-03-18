@@ -6,9 +6,11 @@ use App\Section;
 use App\Term;
 use App\User;
 use App\Year;
+use App\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+//use phpDocumentor\Reflection\Location;
 
 class ManageController extends Controller
 {
@@ -67,6 +69,30 @@ class ManageController extends Controller
 //            $Tterm->term = $term;
 //            $Tterm->save();
 //        }
+
+        return redirect('/teacher/manage');
+    }
+
+    public function storeLocation(Request $request){
+        $names = $request->input('location_name');
+        $lats = $request->input('location_latitude');
+        $longs = $request->input('location_longitude');
+        $count = 0;
+
+        foreach ($names as $name){
+            $count++;
+        }
+//        dd($names,$lats,$longs);
+        for ($x=0;$x < $count;$x++){
+            $location = new Location;
+            $location->name = $names[$x];
+            $location->latitude = $lats[$x];
+            $location->longitude = $longs[$x];
+            $location->status = 'active';
+            $location->user_id = Auth::id();
+            $location->save();
+//            dd($names[$x],$lats[$x],$longs[$x]);
+        }
 
         return redirect('/teacher/manage');
     }

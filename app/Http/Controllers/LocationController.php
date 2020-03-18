@@ -20,7 +20,8 @@ class LocationController extends Controller
             ->join('sections','sections.id','=','sis.section_id')
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->join('years','sis.year_id','=','years.id')
-            ->select('*','section_checks.id','section_checks.updated_at as qrcode_update','section_checks.created_at as qrcode_create')->first();
+            ->select('*','section_checks.id','section_checks.updated_at as qrcode_update','section_checks.created_at as qrcode_create','section_checks.location_id')->first();
+
 
         $updateTime = date('H:i:s',strtotime($time));
 
@@ -123,15 +124,27 @@ class LocationController extends Controller
     }
     public function location(Request $request)
     {
+        $sectionCheck_id = $request->input('sectionCheck_id');
+        $sectionCheck = DB::table('section_checks')->where('section_checks.id',$sectionCheck_id)
+            ->join('sections_in_subjects as sis','sis.id','=','section_checks.sis_id')
+            ->select('*','section_checks.location_id')->first();
 
-        function getDistance($addressFrom, $addressTo, $user_lat, $user_long, $unit = '')
+        $location = DB::table('locations')->where('id',$sectionCheck->location_id)->first();
+
+        $check_lat = $location->latitude;
+        $check_long = $location->longitude;
+
+//        dd($check_lat,$check_long);
+
+
+        function getDistance($check_lat, $check_long, $user_lat, $user_long, $unit = '')
         {
             // Google API key
             $apiKey = 'AIzaSyA9rDCoMw1jOfZTkDcnDIn4anKekYFQwBI';
 
             // Change address format
-            $formattedAddrFrom = str_replace(' ', '+', $addressFrom);
-            $formattedAddrTo = str_replace(' ', '+', $addressTo);
+//            $formattedAddrFrom = str_replace(' ', '+', $addressFrom);
+//            $formattedAddrTo = str_replace(' ', '+', $addressTo);
 
 
             // Geocoding API request with start address
@@ -145,15 +158,15 @@ class LocationController extends Controller
 //            }
 
             // Geocoding API request with end address
-            $geocodeTo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . $formattedAddrTo . '&sensor=false&key=' . $apiKey);
-            $outputTo = json_decode($geocodeTo);
-            if (!empty($outputTo->error_message)) {
-                return $outputTo->error_message;
-            }
+//            $geocodeTo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . $formattedAddrTo . '&sensor=false&key=' . $apiKey);
+//            $outputTo = json_decode($geocodeTo);
+//            if (!empty($outputTo->error_message)) {
+//                return $outputTo->error_message;
+//            }
 //            dd($geocodeTo);
             // Get latitude and longitude from the geodata
-            $latitudeFrom = 13.9148435;
-            $longitudeFrom = 100.5512695;
+            $latitudeFrom = $check_lat;
+            $longitudeFrom = $check_long;
 //            $latitudeTo = $outputTo->results[0]->geometry->location->lat;
 //            $longitudeTo = $outputTo->results[0]->geometry->location->lng;
             $latitudeTo = $user_lat;
@@ -177,19 +190,17 @@ class LocationController extends Controller
             }
         }
 
-        $addressFrom = 'มหาวิทยาลัยศิลปากร วิทยาเขตซิตี้แคมปัส เมืองทองธานี, Pakkret, Nonthaburi, TH';
-        $addressTo   = 'Ibis Bangkok Impact, Pakkret, Nonthaburi, TH';
+//        $addressFrom = 'มหาวิทยาลัยศิลปากร วิทยาเขตซิตี้แคมปัส เมืองทองธานี, Pakkret, Nonthaburi, TH';
+//        $addressTo   = 'Ibis Bangkok Impact, Pakkret, Nonthaburi, TH';
 
         $user_lat = (float)($request->input('latitude'));
         $user_long = (float)($request->input('longitude'));
 //        dd($user_lat);
         // Get distance in km
-        $distance = getDistance($addressFrom, $addressTo, $user_lat, $user_long, "K");
+        $distance = getDistance($check_lat, $check_long, $user_lat, $user_long, "K");
 
-        $sectionCheck_id = $request->input('sectionCheck_id');
 
-        $sectionCheck = DB::table('section_checks')->where('section_checks.id',$sectionCheck_id)
-            ->join('sections_in_subjects as sis','sis.id','=','section_checks.sis_id')->first();
+
 //        dd($sectionCheck);
 
         if ((float)$distance > 0.10){

@@ -132,6 +132,7 @@
                                                     <th class="table-head">วัน</th>
                                                     <th class="table-head">เวลา</th>
                                                     <th class="table-head">วันที่เช็คชื่อ</th>
+                                                    <th class="table-head">สถานที่ที่เช็คชื่อ</th>
                                                     <th class="table-head"> </th>
                                                     <th class="table-head" style="width: 100px!important;"> </th>
                                                 </tr>
@@ -189,7 +190,7 @@
                                                             {{--<td>{{ $section->date }}</td>--}}
                                                             <td>{{substr($section->startTime,0,-3) .' - '.substr($section->endTime,0,-3) }}</td>
                                                             <td>
-                                                                <div class="form-group mt-2">
+                                                                <div class="form-group mt-2 pt-1" style="width: 180px;">
                                                                     <?php
                                                                         $currentDate = date(('Y-m-d'));
                                                                     ?>
@@ -197,6 +198,15 @@
 
                                                                     <input class="form-control f-input" name="sis_id" type="hidden" value="{{$section->sis_id}}">
                                                                 </div>
+                                                            </td>
+                                                            <td>
+                                                                <select class="f-input" name="location_id" style="width: 200px; height: 37px; padding-left: 10px; border-color: #d2d2e4;">
+                                                                    @if(count($locations)>0)
+                                                                        @foreach($locations as $location)
+                                                                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </select>
                                                             </td>
                                                             <td>
                                                                 <input class="btn btn-primary btn-submit" style="background:#FF8574; width: 100%;" type="submit" value="สร้าง QR Code">

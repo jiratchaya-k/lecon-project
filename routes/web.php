@@ -93,10 +93,13 @@ Route::get('/teacher/manage','ManageController@index');
 Route::get('/teacher/manage/create','ManageController@create');
 Route::post('/teacher/manage/section/store','ManageController@storeSection');
 Route::post('/teacher/manage/year-term/store','ManageController@storeYear_Term');
+Route::post('/teacher/manage/location/store','ManageController@storeLocation');
 Route::get('/teacher/manage/year-term/{id}/edit','ManageController@edit_YearTerm');
 Route::post('/teacher/manage/year-term/{id}/update','ManageController@update_YearTerm');
 Route::get('/teacher/manage/section/{id}/edit','ManageController@edit_section');
 Route::post('/teacher/manage/section/{id}/update','ManageController@update_section');
+Route::get('/teacher/manage/location/{id}/edit','ManageController@edit_location');
+Route::post('/teacher/manage/location/{id}/update','ManageController@update_location');
 
 
 Route::get('/teacher/assignment', 'AssignmentController@index');
