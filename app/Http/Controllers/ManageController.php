@@ -22,10 +22,10 @@ class ManageController extends Controller
             $sections = DB::table('sections')->select('*')->orderBy('section','asc')->get();
 //            $terms = DB::table('terms')->select('*')->orderBy('term','asc')->get();
             $teachers = DB::table('users')->select('*')->where('role',User::role_teacher)->orderBy('firstname','asc')->get();
-
+            $locations = DB::table('locations')->select('*')->get();
 //            dd($years);
 
-            return view('teacher.manage',compact('years','sections','teachers'));
+            return view('teacher.manage',compact('years','sections','teachers','locations'));
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
             return view('student.home');
         }else{

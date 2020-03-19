@@ -232,14 +232,14 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if(count($teachers)>0)
-                                                @foreach($teachers as $teacher)
+                                            @if(count($locations)>0)
+                                                @foreach($locations as $location)
                                                     <tr>
-                                                        <td>ศิลปากร เมืองทองธานี</td>
-                                                        <td>13.9148435</td>
-                                                        <td>100.5512695</td>
+                                                        <td>{{ $location->name }}</td>
+                                                        <td>{{ $location->latitude }}</td>
+                                                        <td>{{ $location->longitude }}</td>
                                                         <td>
-                                                            <a href="/teacher/manage/section/{{ $section->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข">
+                                                            <a href="/teacher/manage/location/{{ $location->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข">
                                                                 <i class="fas fa-pencil-alt" style="font-size: 20px; color: #FF8574;"></i>
                                                             </a>
                                                             <a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">
