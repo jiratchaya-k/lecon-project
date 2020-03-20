@@ -25,11 +25,12 @@ class ManageController extends Controller
             $locations = DB::table('locations')->select('*')->get();
 //            dd($years);
 
+//            dd(url()->previous());
             return view('teacher.manage',compact('years','sections','teachers','locations'));
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
             return view('student.home');
         }else{
-            redirect('/');
+            return redirect('/');
         }
     }
 

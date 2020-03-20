@@ -69,7 +69,7 @@ class HomeController extends Controller
 //            dd($assignments);
             return view('student.home',compact('assignments'));
         }else{
-            redirect('/');
+            return redirect('/');
         }
     }
 }

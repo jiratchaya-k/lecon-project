@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -27,7 +29,33 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/home';
+
+//    protected function redirectTo()
+//    {
+//        if(auth()->user()->role == User::role_teacher) {
+//            return '/teacher';
+//        } elseif ( !empty(url()->previous())){
+//            $url = url()->previous();
+//            $getUrl = substr($url, strrpos($url, "com/") + 4);
+//            return substr($url, strrpos($url, "com/") + 4);
+//        }
+//
+//    }
+
+    public function showLoginForm()
+    {
+        // Get URLs
+        $urlPrevious = url()->previous();
+        $urlBase = url()->to('/');
+
+        // Set the previous url that we came from to redirect to after successful login but only if is internal
+        if(($urlPrevious != $urlBase . '/login') && (substr($urlPrevious, 0, strlen($urlBase)) === $urlBase)) {
+            session()->put('url.intended', $urlPrevious);
+        }
+
+        return view('auth.login');
+    }
 
     protected $student_id;
 

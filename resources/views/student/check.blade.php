@@ -37,7 +37,7 @@
                     <input type="hidden" name="longitude" id="long" value="">
                     <input type="hidden" name="sectionCheck_id" value="{{ $section->id }}">
                     <div class="col-md-12 mt-5 mb-3">
-                        <input class="btn btn-dark btn-submit" type="submit" value="check in" style="background: #3956A3 !important; border: none; width: 50%">
+                        <input class="btn btn-dark btn-submit" type="submit" value="เช็คชื่อเลย!" style="background: #3956A3 !important; border: none; width: 50%">
                     </div>
                 </div>
 

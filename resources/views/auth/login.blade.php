@@ -38,7 +38,6 @@
                     {{--<form method="POST" action="/login" class="align-items-center col-8 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">--}}
                     @csrf
 
-
                     <div class="input-group mb-4">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-envelope"></i></div>

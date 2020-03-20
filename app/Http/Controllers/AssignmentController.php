@@ -63,7 +63,7 @@ class AssignmentController extends Controller
 //            dd($asm);
             return view('student.home',compact('assignments'));
         }else{
-            redirect('/');
+            return redirect('/');
         }
     }
 

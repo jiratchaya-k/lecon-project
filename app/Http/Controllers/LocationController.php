@@ -60,17 +60,22 @@ class LocationController extends Controller
                 break;
         }
 
-        if (($updateTime == $qrcode_update)){
-            if (session('error_message')) {
-                Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจากไม่อยู่ภายในพื้นที่ที่กำหนด');
-            }else if (session('success_message')) {
-                Alert::success('เช็คชื่อสำเร็จ')->autoClose($milliseconds = 2000);
+        if (!empty(Auth::check())) {
+            if (($updateTime == $qrcode_update)){
+                if (session('error_message')) {
+                    Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจากไม่อยู่ภายในพื้นที่ที่กำหนด');
+                }else if (session('success_message')) {
+                    Alert::success('เช็คชื่อสำเร็จ')->autoClose($milliseconds = 2000);
+                }
+                return view('student.check',compact('section','date','teachers'));
+            }else {
+                Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจาก QR Code หมดอายุ');
+                return redirect('/');
             }
-            return view('student.check',compact('section','date','teachers'));
         }else {
-            Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจาก QR Code หมดอายุ');
-            return redirect('/');
+            return redirect('/login');
         }
+
 
 
 
