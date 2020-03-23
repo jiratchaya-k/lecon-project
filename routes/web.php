@@ -100,6 +100,7 @@ Route::get('/teacher/manage/section/{id}/edit','ManageController@edit_section');
 Route::post('/teacher/manage/section/{id}/update','ManageController@update_section');
 Route::get('/teacher/manage/location/{id}/edit','ManageController@edit_location');
 Route::post('/teacher/manage/location/{id}/update','ManageController@update_location');
+Route::delete('/teacher/manage/location/{id}/delete','ManageController@destroy_location');
 
 
 Route::get('/teacher/assignment', 'AssignmentController@index');

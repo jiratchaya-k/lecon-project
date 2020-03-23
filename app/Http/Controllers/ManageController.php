@@ -22,7 +22,7 @@ class ManageController extends Controller
             $sections = DB::table('sections')->select('*')->orderBy('section','asc')->get();
 //            $terms = DB::table('terms')->select('*')->orderBy('term','asc')->get();
             $teachers = DB::table('users')->select('*')->where('role',User::role_teacher)->orderBy('firstname','asc')->get();
-            $locations = DB::table('locations')->select('*')->get();
+            $locations = DB::table('locations')->select('*')->where('status','=','active')->get();
 //            dd($years);
 
 //            dd(url()->previous());
@@ -145,9 +145,35 @@ class ManageController extends Controller
         return redirect('/teacher/manage');
     }
 
-    public function sectionAdd($id){
+
+    public function edit_location($id){
+
+        $location = DB::table('locations')->where('id',$id)->select('*')->first();
+//        dd($location);
+
+        return view('teacher.manage-edit-location',compact('location'));
 
     }
+    public function update_location(Request $request, $id){
 
+        $location = Location::find($id);
+        $location->name = $request->input('location_name');
+        $location->latitude = $request->input('location_latitude');
+        $location->longitude = $request->input('location_longitude');
+        $location->save();
+
+//        dd($request->all());
+
+        return redirect('/teacher/manage');
+    }
+
+    public function destroy_location($id)
+    {
+        //
+        $location = Location::find($id);
+        $location->status = 'inactive';
+        $location->save();
+        return redirect('/teacher/manage');
+    }
 }
 

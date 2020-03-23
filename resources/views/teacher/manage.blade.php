@@ -238,12 +238,17 @@
                                                         <td>{{ $location->latitude }}</td>
                                                         <td>{{ $location->longitude }}</td>
                                                         <td>
-                                                            <a href="/teacher/manage/location/{{ $location->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข">
+                                                            <a href="/teacher/manage/location/{{ $location->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข" style="float: left; padding-top: 18px;">
                                                                 <i class="fas fa-pencil-alt" style="font-size: 20px; color: #FF8574;"></i>
                                                             </a>
-                                                            <a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">
-                                                                <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
-                                                            </a>
+                                                            <form method="POST" action="/teacher/manage/location/{{ $location->id }}/delete">
+                                                                @csrf
+                                                                <input name="_method" type="hidden" value="DELETE">
+                                                                <button class="btn" onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;"> <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ลบ" style="font-size: 20px; color: #818182;"></i></button>
+                                                            </form>
+                                                            {{--<a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">--}}
+                                                                {{--<i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>--}}
+                                                            {{--</a>--}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -406,7 +411,7 @@
                                 </div>
 
                                 <div class="col-md-5 item-center mt-4 mb-3">
-                                    <input class="btn btn-dark btn-submit" type="submit" value="เพิ่มปีการศึกษา" style="background: #3956A3 !important; border: none; width: 100%">
+                                    <input class="btn btn-dark btn-submit" type="submit" value="เพิ่มสถานที่" style="background: #3956A3 !important; border: none; width: 100%">
                                 </div>
                             </form>
                         </div>
