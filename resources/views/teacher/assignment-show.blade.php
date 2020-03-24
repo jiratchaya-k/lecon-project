@@ -138,7 +138,41 @@
                     <h3>{{ $assignment->title }}</h3>
                     <span>{{ $assignment-> description }}</span>
 
-                    <h5>Work Required</h5>
+                    @if(!empty($assignment->file))
+
+
+                                <div class="row">
+                                    <div class="col-4 mt-3">
+                                        <button class="btn" style="background-color: transparent; padding: 0;">
+                                        <div class="card" style="margin-bottom: 0; width: 150px; overflow: hidden;">
+                                                <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5;">
+                                                    <?php
+                                                        $filename = $assignment->file;
+                                                    $ext =  substr($filename, strrpos($filename, '.' )+1);
+//                                                    dd($ext);
+                                                    ?>
+                                                    @if($ext == 'pdf')
+                                                    <iframe src="/uploads/assignmentFiles/20191204001158_artworkA1.pdf" scrolling="no" style="width: 100%; height: 100%; border: none;">
+                                                        <p>Your browser does not support iframes.</p>
+                                                    </iframe>
+                                                        @else
+                                                    <img class="" src="/uploads/assignmentFiles/{{ $assignment->file }}"  alt="Card image cap" style="width: 100%; height: 100%; border: none;">
+                                                        @endif
+                                                </div>
+                                                <div class="card-body" style="padding: 5px;">
+                                                    <h6 class="card-title" style="margin-bottom: 0;">{{ $assignment->file }}</h6>
+                                                </div>
+                                        </div>
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                        @else
+
+                        @endif
+
+                    <h5 class="mt-4">Work Required</h5>
                     <p>File Type :
                     @if(empty($assignment->fileType))
                     None

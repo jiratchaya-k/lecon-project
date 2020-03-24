@@ -197,7 +197,7 @@ class AssignmentController extends Controller
             ->join('subjects','subjects.id','=','sis.subject_id')
             ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
 
-//        dd($sections);
+//        dd($assignment);
 
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
 
