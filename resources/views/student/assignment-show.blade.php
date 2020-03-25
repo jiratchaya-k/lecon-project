@@ -42,9 +42,11 @@
 
 
                                 <div class="row">
+                                    <div class="tz-gallery">
                                     <div class="col-md-3 mt-3">
-                                        <button class="btn" style="background-color: transparent; padding: 0;">
+                                        <a href="/uploads/assignmentFiles/{{ $assignment->file }}" class="btn lightbox" style="background-color: transparent; padding: 0;">
                                             <div class="card" style="margin-bottom: 0; width: 100px; overflow: hidden;">
+
                                                 <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5; overflow: hidden;">
                                                     <?php
                                                     $filename = $assignment->file;
@@ -59,11 +61,13 @@
                                                         <img class="" src="/uploads/assignmentFiles/{{ $assignment->file }}"  alt="Card image cap" style="width: 100%; border: none;">
                                                     @endif
                                                 </div>
+                                                </div>
                                                 <div class="card-body" style="padding: 5px;">
                                                     <h6 class="card-title" style="margin-bottom: 0; font-size: 12px;">{{ $assignment->file }}</h6>
                                                 </div>
-                                            </div>
-                                        </button>
+
+                                        </a>
+                                    </div>
                                     </div>
                                 </div>
 

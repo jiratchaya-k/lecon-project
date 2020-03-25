@@ -195,6 +195,10 @@
         long.value = position.coords.longitude;
     }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
 
 {{--<script>--}}
     {{--$('#datepicker').datepicker({--}}

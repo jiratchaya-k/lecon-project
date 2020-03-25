@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e12c524b-36f4-4472-8ee3-1e50059801c1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" afterDir="false" />
     </list>
@@ -57,94 +56,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/teacher/manage.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="246" column="174" selection-start-line="246" selection-start-column="136" selection-end-line="246" selection-end-column="174" />
-              <folding>
-                <element signature="e#16109#16147#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#a#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="172" selection-end-column="30" />
-              <folding>
-                <element signature="e#7992#8042#0#HTML" expanded="true" />
-                <element signature="e#8102#8159#0#HTML" expanded="true" />
-                <element signature="e#8241#8305#0#HTML" expanded="true" />
-                <element signature="e#8880#8945#0#HTML" expanded="true" />
-                <element signature="e#9281#9329#0#HTML" expanded="true" />
-                <element signature="e#9520#9541#0#HTML" expanded="true" />
-                <element signature="e#9618#9643#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="441" selection-start-line="441" selection-end-line="491" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/student/assignment-show.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493">
-              <caret line="47" column="145" selection-start-line="47" selection-start-column="145" selection-end-line="47" selection-end-column="145" />
+            <state relative-caret-position="228">
+              <caret line="299" column="54" lean-forward="true" selection-start-line="299" selection-start-column="36" selection-end-line="299" selection-end-column="54" />
               <folding>
-                <element signature="e#1635#1685#0#HTML" expanded="true" />
-                <element signature="e#1752#1823#0#HTML" expanded="true" />
-                <element signature="e#1891#1955#0#HTML" expanded="true" />
-                <element signature="e#2510#2558#0#HTML" expanded="true" />
-                <element signature="e#2929#2977#0#HTML" expanded="true" />
-                <element signature="e#3168#3189#0#HTML" expanded="true" />
-                <element signature="e#3320#3362#0#HTML" expanded="true" />
+                <element signature="e#8277#8334#0#HTML" expanded="true" />
+                <element signature="e#8434#8481#0#HTML" expanded="true" />
+                <element signature="e#9060#9108#0#HTML" expanded="true" />
+                <element signature="e#9431#9479#0#HTML" expanded="true" />
+                <element signature="e#9718#9739#0#HTML" expanded="true" />
+                <element signature="e#9816#9841#0#HTML" expanded="true" />
+                <element signature="e#18579#18605#0#HTML" expanded="true" />
+                <element signature="e#18706#18726#0#HTML" expanded="true" />
+                <element signature="e#19055#19103#0#HTML" expanded="true" />
+                <element signature="e#17081#17137#0#HTML" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
-              <folding>
-                <element signature="e#40#59#0#PHP" expanded="true" />
-                <marker date="1585067023067" expanded="true" signature="361:705" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="367" column="8" selection-start-line="367" selection-start-column="8" selection-end-line="367" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2363">
-              <caret line="139" column="37" selection-start-line="133" selection-start-column="28" selection-end-line="139" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -202,7 +136,6 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/inc/navbar-teacher.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/inc/navbar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app-teacher.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/appForLogin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/subject-create.blade.php" />
@@ -240,8 +173,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ManageController.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" />
       </list>
     </option>
   </component>
@@ -344,9 +278,9 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="922" />
-    <option name="y" value="43" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="5" />
+    <option name="y" value="-15" />
     <option name="width" value="1382" />
     <option name="height" value="784" />
   </component>
@@ -457,13 +391,6 @@
               <item name="lecon-project" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lecon-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lecon-project" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lecon-project" type="b2602c69:ProjectViewProjectNode" />
@@ -635,18 +562,19 @@
       <workItem from="1584721814761" duration="5640000" />
       <workItem from="1584953137087" duration="3157000" />
       <workItem from="1585040494315" duration="1239000" />
-      <workItem from="1585065171549" duration="4855000" />
+      <workItem from="1585065171549" duration="5032000" />
+      <workItem from="1585126644237" duration="4754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="502160000" />
+    <option name="totallyTimeSpent" value="507091000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15658094" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15885022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -843,13 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="187" column="9" lean-forward="true" selection-start-line="187" selection-start-column="9" selection-end-line="187" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-compare.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -1027,13 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="101" column="82" selection-start-line="101" selection-start-column="82" selection-end-line="101" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ManageController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1041,6 +955,13 @@
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="101" column="82" selection-start-line="101" selection-start-column="82" selection-end-line="101" selection-end-column="82" />
         </state>
       </provider>
     </entry>
@@ -1054,48 +975,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2363">
-          <caret line="139" column="37" selection-start-line="133" selection-start-column="28" selection-end-line="139" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="367" column="8" selection-start-line="367" selection-start-column="8" selection-end-line="367" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/manage.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="246" column="174" selection-start-line="246" selection-start-column="136" selection-end-line="246" selection-end-column="174" />
-          <folding>
-            <element signature="e#16109#16147#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#a#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
+        <state relative-caret-position="5185">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
             <marker date="1585067023067" expanded="true" signature="361:705" ph="..." />
@@ -1103,34 +986,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="172" selection-end-column="30" />
-          <folding>
-            <element signature="e#7992#8042#0#HTML" expanded="true" />
-            <element signature="e#8102#8159#0#HTML" expanded="true" />
-            <element signature="e#8241#8305#0#HTML" expanded="true" />
-            <element signature="e#8880#8945#0#HTML" expanded="true" />
-            <element signature="e#9281#9329#0#HTML" expanded="true" />
-            <element signature="e#9520#9541#0#HTML" expanded="true" />
-            <element signature="e#9618#9643#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6239">
+          <caret line="367" column="8" selection-start-line="367" selection-start-column="8" selection-end-line="367" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2363">
+          <caret line="139" column="37" selection-start-line="133" selection-start-column="28" selection-end-line="139" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2515">
+          <caret line="187" column="9" lean-forward="true" selection-start-line="187" selection-start-column="9" selection-end-line="187" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/student/assignment-show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="47" column="145" selection-start-line="47" selection-start-column="145" selection-end-line="47" selection-end-column="145" />
+        <state relative-caret-position="260">
+          <caret line="71" column="38" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="71" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/manage.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="441" selection-start-line="441" selection-end-line="491" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="299" column="54" lean-forward="true" selection-start-line="299" selection-start-column="36" selection-end-line="299" selection-end-column="54" />
           <folding>
-            <element signature="e#1635#1685#0#HTML" expanded="true" />
-            <element signature="e#1752#1823#0#HTML" expanded="true" />
-            <element signature="e#1891#1955#0#HTML" expanded="true" />
-            <element signature="e#2510#2558#0#HTML" expanded="true" />
-            <element signature="e#2929#2977#0#HTML" expanded="true" />
-            <element signature="e#3168#3189#0#HTML" expanded="true" />
-            <element signature="e#3320#3362#0#HTML" expanded="true" />
+            <element signature="e#8277#8334#0#HTML" expanded="true" />
+            <element signature="e#8434#8481#0#HTML" expanded="true" />
+            <element signature="e#9060#9108#0#HTML" expanded="true" />
+            <element signature="e#9431#9479#0#HTML" expanded="true" />
+            <element signature="e#9718#9739#0#HTML" expanded="true" />
+            <element signature="e#9816#9841#0#HTML" expanded="true" />
+            <element signature="e#18579#18605#0#HTML" expanded="true" />
+            <element signature="e#18706#18726#0#HTML" expanded="true" />
+            <element signature="e#19055#19103#0#HTML" expanded="true" />
+            <element signature="e#17081#17137#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

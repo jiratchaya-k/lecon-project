@@ -18,6 +18,8 @@
     <title>LECON - Teacher</title>
 </head>
 
+
+
 <body>
 <!-- ============================================================== -->
 <!-- main wrapper -->
@@ -140,34 +142,31 @@
 
                     @if(!empty($assignment->file))
 
-
-                                <div class="row">
-                                    <div class="col-4 mt-3">
-                                        <button class="btn" style="background-color: transparent; padding: 0;">
-                                        <div class="card" style="margin-bottom: 0; width: 150px; overflow: hidden;">
-                                                <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5;">
-                                                    <?php
+                            <div class="row mt-3">
+                                        <figure class="col-md-4">
+                                            <a href="/uploads/assignmentFiles/{{ $assignment->file }}" data-toggle="lightbox" data-gallery="gallery" data-size="1600x1067">
+                                                <div class="card img-fluid" style="margin-bottom: 0; width: 150px; overflow: hidden;" >
+                                                    <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5;">
+                                                        <?php
                                                         $filename = $assignment->file;
-                                                    $ext =  substr($filename, strrpos($filename, '.' )+1);
-//                                                    dd($ext);
-                                                    ?>
-                                                    @if($ext == 'pdf')
-                                                    <iframe src="/uploads/assignmentFiles/20191204001158_artworkA1.pdf" scrolling="no" style="width: 100%; height: 100%; border: none;">
-                                                        <p>Your browser does not support iframes.</p>
-                                                    </iframe>
+                                                        $ext =  substr($filename, strrpos($filename, '.' )+1);
+                                                        //                                                    dd($ext);
+                                                        ?>
+                                                        @if($ext == 'pdf')
+                                                            <iframe src="/uploads/assignmentFiles/20191204001158_artworkA1.pdf" scrolling="no" style="width: 100%; height: 100%; border: none;">
+                                                                <p>Your browser does not support iframes.</p>
+                                                            </iframe>
                                                         @else
-                                                    <img class="" src="/uploads/assignmentFiles/{{ $assignment->file }}"  alt="Card image cap" style="width: 100%; height: 100%; border: none;">
+                                                            <img class="" src="/uploads/assignmentFiles/{{ $assignment->file }}"  alt="Card image cap" style="width: 100%; height: 100%; border: none;">
                                                         @endif
+                                                    </div>
+                                                    <div class="card-body" style="padding: 5px;">
+                                                        <h6 class="card-title" style="margin-bottom: 0;">{{ $assignment->file }}</h6>
+                                                    </div>
                                                 </div>
-                                                <div class="card-body" style="padding: 5px;">
-                                                    <h6 class="card-title" style="margin-bottom: 0;">{{ $assignment->file }}</h6>
-                                                </div>
-                                        </div>
-                                        </button>
-                                    </div>
-                                </div>
-
-
+                                            </a>
+                                        </figure>
+                            </div>
                         @else
 
                         @endif
@@ -291,30 +290,27 @@
                             </div>
                         </div>
 
-                    </div>
-                    </div>
-                    {{--<div class="row">--}}
-                    {{--@if(count($assignments)>0)--}}
-                    {{--@foreach($assignments as $assignment)--}}
-                    {{--<a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">--}}
-                    {{--<div class="card card-shadow  mt-3 mb-2">--}}
-                    {{--<div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">--}}
-                    {{--<span>Sect.</span>--}}
-                    {{--</div>--}}
+                        <!-- The Modal Section-->
+                        <div id="modelImg" class="modal" style="padding-top: 90px;">
 
-                    {{--<div class="card-body">--}}
-                    {{--<h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>--}}
-                    {{--<p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--@endforeach--}}
-                    {{--@else--}}
-                    {{--<div>--}}
-                    {{--<p>No Assignment</p>--}}
-                    {{--</div>--}}
-                    {{--@endif--}}
-                    {{--</div>--}}
+                            <!-- Modal content -->
+                            <div class="modal-content modal-content-img" style="height: 90%">
+                                <span class="close">&times;</span>
+                                {{--<div class="container" style="padding: 30px;">--}}
+                                    @if($ext == 'pdf')
+                                        <iframe src="/uploads/assignmentFiles/20191204001158_artworkA1.pdf" scrolling="no" style="height: 100%; border: none;">
+                                            <p>Your browser does not support iframes.</p>
+                                        </iframe>
+                                    @else
+                                        <img class="item-center" src="/uploads/assignmentFiles/{{ $assignment->file }}"  alt="Card image cap" style="height: 100%; border: none; align-items: center;">
+                                    @endif
+                                {{--</div>--}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -343,6 +339,41 @@
         });
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+
+<script>
+    // Get the modal
+    var modalImg = document.getElementById("modelImg");
+
+    // Get the button that opens the modal
+    // var btnYear = document.getElementById("myBtn-year");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+
+    // When the user clicks on the button, open the modal
+    $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        modalImg.style.display = "block";
+    });
+    // btnImg.onclick = function() {
+    //
+    // }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modalImg.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modalImg) {
+            modalImg.style.display = "none";
+        }
+    }
+</script>
+
 </body>
 
 </html>
