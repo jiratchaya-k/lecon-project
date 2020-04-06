@@ -8,28 +8,28 @@
             <div class="col-md-5 left-box">
                <div class="container mt-10 text-center text-white">
                    <br><br>
-                   <h1 class="ls-3">Welcome Student !</h1>
+                   <h1 class="ls-3">สวัสดี นักศึกษา !</h1>
                    <br><br><br><br>
-                   <span>Do you have an account ?</span><br>
+                   <span>คุณมีบัญชีอยู่แล้ว ?</span><br>
                    <div class="button-login button-3">
                        <a href="/sign-in">
                            <div class="circle circle-short"></div>
-                           SIGN IN</a>
+                           เข้าสู่ระบบ</a>
                    </div>
                    <br><br>
-                    <h6>OR</h6>
+                    <h6>หรือ</h6>
                    <br><br>
-                   <span>You are teacher ?</span><br>
+                   <span>คุณคืออาจารย์ใช่ไหม ?</span><br>
                    <div class="button-login button-3">
                        <a href="/teacher/sign-up">
                        <div class="circle"></div>
-                       SIGN UP as TEACHER</a>
+                       สมัครสมาชิกของผู้สอน</a>
                    </div>
                </div>
             </div>
             <div class="col-md-7 right-box mt-10 text-center">
-                <h2 class="mt-3">SIGN UP</h2>
-                <span style="color: dimgray;">as student</span>
+                <h2 class="mt-3">สมัครสมาชิก</h2>
+                <span style="color: dimgray;">นักศึกษา</span>
                 <br><br><br>
 
 
@@ -42,7 +42,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-id-card-alt"></i></div>
                         </div>
-                        <input id="student_id" type="text" class="form-control form-control-login @error('student_id') is-invalid @enderror" name="student_id" value="{{ old('student_id') }}" required autocomplete="student_id" autofocus placeholder="student id">
+                        <input id="student_id" type="text" class="form-control form-control-login @error('student_id') is-invalid @enderror" name="student_id" value="{{ old('student_id') }}" required autocomplete="student_id" autofocus placeholder="รหัสนักศึกษา">
                         @error('student_id')
                         <span class="invalid-feedback text-left pl-2" role="alert">
                             <span>{{ $message }}</span>
@@ -55,7 +55,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="far fa-id-card"></i></div>
                         </div>
-                        <input id="firstname" type="text" class="form-control form-control-login @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus placeholder="firstname">
+                        <input id="firstname" type="text" class="form-control form-control-login @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus placeholder="ชื่อจริง">
 
                         @error('firstname')
                         <span class="invalid-feedback text-left pl-2" role="alert">
@@ -67,7 +67,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="far fa-id-card"></i></div>
                         </div>
-                        <input id="lastname" type="text" class="form-control form-control-login @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus placeholder="lastname">
+                        <input id="lastname" type="text" class="form-control form-control-login @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus placeholder="นามสกุล">
 
                         @error('lastname')
                         <span class="invalid-feedback text-left pl-2" role="alert">
@@ -81,7 +81,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                         </div>
-                        <input id="email" type="email" class="form-control form-control-login @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email@silpakorn.edu or @su.ac.th">
+                        <input id="email" type="email" class="form-control form-control-login @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="อีเมล">
                         @error('email')
                         <span class="invalid-feedback text-left pl-2" role="alert">
                             <spam>{{ $message }}</spam>
@@ -94,7 +94,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                             </div>
-                            <input id="password" type="password" class="form-control form-control-login @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="password">
+                            <input id="password" type="password" class="form-control form-control-login @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="รหัสผ่าน">
 
                             @error('password')
                             <span class="invalid-feedback text-left pl-2" role="alert">
@@ -106,7 +106,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                             </div>
-                            <input id="password-confirm" type="password" class="form-control form-control-login" name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
+                            <input id="password-confirm" type="password" class="form-control form-control-login" name="password_confirmation" required autocomplete="new-password" placeholder="ยืนยันรหัสผ่าน">
 
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                     <div class="form-group row mt-4 mb-0">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary btn-submit">
-                                {{ __('Register') }}
+                                {{ __('สมัครสมาชิก') }}
                             </button>
                         </div>
                     </div>

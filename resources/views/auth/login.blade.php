@@ -8,27 +8,27 @@
             <div class="col-md-5 left-box">
                 <div class="container mt-10 text-center text-white">
                     <br><br>
-                    <h1 class="ls-3">Welcome !</h1>
+                    <h1 class="ls-3">สวัสดี !</h1>
                     <br><br><br><br>
-                    <span>Don't have an account ?</span><br>
+                    <span>คุณยังไม่มีบัญชี ?</span><br>
                     <div class="button-login button-3">
                         <a href="/sign-up">
                             <div class="circle circle-short"></div>
-                            SIGN UP as STUDENT</a>
+                            สมัครสมาชิกของนักศึกษา</a>
                     </div>
                     <br><br>
-                    <h6>OR</h6>
+                    <h6>หรือ</h6>
                     <br><br>
-                    <span>You are teacher ?</span><br>
+                    <span>คุณคืออาจารย์ใช่ไหม ?</span><br>
                     <div class="button-login button-3">
                         <a href="/teacher/sign-up">
                             <div class="circle"></div>
-                            SIGN UP as TEACHER</a>
+                            สมัครสมาชิกของผู้สอน</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-7 right-box mt-10 text-center">
-                <h2 class="mt-5">SIGN IN</h2>
+                <h2 class="mt-5">เข้าสู่ระบบ</h2>
                 <br><br>
 
 
@@ -51,7 +51,7 @@
 
                         <input id="login" type="text"
                                class="form-control{{ $errors->has('student_id') || $errors->has('email') ? ' is-invalid' : '' }} form-control-login"
-                               name="login" value="{{ old('student_id') ?: old('email') }}" required placeholder="email or student id">
+                               name="login" value="{{ old('student_id') ?: old('email') }}" required placeholder="อีเมล / รหัสนักศึกษา">
 
                         @if ($errors->has('student_id') || $errors->has('email'))
                             <span class="invalid-feedback">
@@ -70,7 +70,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                             </div>
-                            <input id="password" type="password" class="form-control form-control-login @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="password">
+                            <input id="password" type="password" class="form-control form-control-login @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="รหัสผ่าน">
 
                             @error('password')
                             <span class="invalid-feedback text-left pl-2" role="alert">
@@ -82,14 +82,14 @@
                     <div class="form-group row mt-5 mb-3">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary btn-submit">
-                                {{ __('SIGN IN') }}
+                                {{ __('เข้าสู่ระบบ') }}
                             </button>
                         </div>
                     </div>
 
                     @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}" style="color: #5e5d5d; font-size: 10px">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('ลืมรหัสผ่านใช่หรือไม่ ?') }}
                         </a>
                     @endif
 

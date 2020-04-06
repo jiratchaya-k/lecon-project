@@ -208,7 +208,7 @@ class LocationController extends Controller
 
 //        dd($sectionCheck);
 
-        if ((float)$distance > 0.10){
+        if ((float)$distance < 0.10){
             return redirect()->back()->withErrorMessage('Check In Error.');
         }else{
 

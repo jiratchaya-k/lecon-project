@@ -123,6 +123,11 @@ Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/previous', '
 Route::post('/teacher/assignment/work={id}/graded', 'AssignmentController@inputGrade');
 
 
+Route::get('/teacher/profile/{name}', 'ProfileController@index');
+Route::get('/teacher/profile/{name}/edit', 'ProfileController@edit');
+Route::post('/teacher/profile/{name}/update', 'ProfileController@update');
+
+
 Route::get('/get-works/id={asm_id}/{grade}', 'AssignmentController@getWork');
 
 

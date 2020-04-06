@@ -58,6 +58,17 @@ class HomeController extends Controller
         }elseif (Auth::check() && auth()->user()->role == User::role_student) {
 //            $assignments = DB::table('assignments')->select('*')->orderBy('dueDate','asc')->orderBy('dueTime','asc')->get();
 
+            $sections = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+                ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
+                ->where('attend_sections.status','=','active')
+                ->join('sections','sis.section_id','=','sections.id')
+                ->join('subjects','sis.subject_id','=','subjects.id')
+                ->join('years','sis.year_id','=','years.id')
+                ->select('sis.id','subjects.code','subjects.name','sections.section','years.year','years.term')
+                ->get();
+
+//            dd($sections);
+
             $assignments = DB::table('attend_sections')->where('attend_sections.status','active')
                 ->where('attend_sections.user_id','=',Auth::id())
                 ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
@@ -67,7 +78,7 @@ class HomeController extends Controller
                 ->get();
 
 //            dd($assignments);
-            return view('student.home',compact('assignments'));
+            return view('student.home',compact('assignments','sections'));
         }else{
             return redirect('/');
         }

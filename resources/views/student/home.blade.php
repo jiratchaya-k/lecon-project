@@ -5,9 +5,32 @@
 
     <div class="container-fluid">
         <div class="container mt-4">
-            {{--<h4>Your Section</h4>--}}
+            <h4>Your Section</h4>
+            <div class="row">
+                @if(count($sections)>0)
+                    @foreach($sections as $section)
+                        <a href="/assignment/{{ $section->id }}" class="cardLink col-md-3">
+                            <div class="card card-shadow  mt-3 mb-2">
+                                <div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">
+                                    <span style="font-size: 12px">{{ $section->code }}</span><br>
+                                    <span style="font-size: 12px">{{ $section->name }}</span>
+                                </div>
 
-            {{--<hr>--}}
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold fs-18">Sect. {{ $section->section }}</h5>
+                                    <p class="card-text fs-12"></p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                @else
+                    <div>
+                        <p>No Assignment</p>
+                    </div>
+                @endif
+            </div>
+
+            <hr>
 
             <h4>Assignment</h4>
             <div class="row">

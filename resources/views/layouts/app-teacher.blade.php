@@ -9,6 +9,21 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 
+    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/filepond/dist/filepond.min.css">
+
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.min.js"></script>
+    <!-- include FilePond plugins -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+
+    <!-- include FilePond jQuery adapter -->
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
     <link rel="shortcut icon" href="uploads/favicon.ico" type="image/x-icon">
     <link rel="icon" href="uploads/favicon.ico" type="image/x-icon">
 </head>
@@ -35,57 +50,71 @@
 <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
-{{--<script type="text/javascript">--}}
-    {{--let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });--}}
-    {{--scanner.addListener('scan', function (content) {--}}
-        {{--alert(content);--}}
-    {{--});--}}
-    {{--Instascan.Camera.getCameras().then(function (cameras) {--}}
-        {{--if (cameras.length > 0) {--}}
-            {{--scanner.start(cameras[0]);--}}
-        {{--} else {--}}
-            {{--console.error('No cameras found.');--}}
-        {{--}--}}
-    {{--}).catch(function (e) {--}}
-        {{--console.error(e);--}}
-    {{--});--}}
-{{--</script>--}}
-
 {{--<script>--}}
-    {{--$(function () {--}}
-        {{--$("#showDimensions").hide();--}}
+    {{--/*--}}
+{{--We need to register the required plugins to do image manipulation and previewing.--}}
+{{--*/--}}
+    {{--FilePond.registerPlugin(--}}
+        {{--// encodes the file as base64 data--}}
+        {{--FilePondPluginFileEncode,--}}
 
-        {{--$("#fileTypeImg01").click(function () {--}}
-            {{--if ($(this).is(":checked")) {--}}
-                {{--$("#showDimensions").show();--}}
-                {{--$("#hideDimensions").hide();--}}
-            {{--} else {--}}
-                {{--$("#showDimensions").hide();--}}
-                {{--$("#hideDimensions").show();--}}
-            {{--}--}}
-        {{--});--}}
-        {{--$("#fileTypeImg02").click(function () {--}}
-            {{--if ($(this).is(":checked")) {--}}
-                {{--$("#showDimensions").show();--}}
-                {{--$("#hideDimensions").hide();--}}
-            {{--} else {--}}
-                {{--$("#showDimensions").hide();--}}
-                {{--$("#hideDimensions").show();--}}
-            {{--}--}}
-        {{--});--}}
-        {{--$("#fileTypeImg03").click(function () {--}}
-            {{--if ($(this).is(":checked")) {--}}
-                {{--$("#showDimensions").show();--}}
-                {{--$("#hideDimensions").hide();--}}
-            {{--} else {--}}
-                {{--$("#showDimensions").hide();--}}
-                {{--$("#hideDimensions").show();--}}
-            {{--}--}}
-        {{--});--}}
-    {{--});--}}
+        {{--// validates files based on input type--}}
+        {{--FilePondPluginFileValidateType,--}}
+
+        {{--// corrects mobile image orientation--}}
+        {{--FilePondPluginImageExifOrientation,--}}
+
+        {{--// previews the image--}}
+        {{--FilePondPluginImagePreview,--}}
+
+        {{--// crops the image to a certain aspect ratio--}}
+        {{--FilePondPluginImageCrop,--}}
+
+        {{--// resizes the image to fit a certain size--}}
+        {{--FilePondPluginImageResize,--}}
+
+        {{--// applies crop and resize information on the client--}}
+        {{--FilePondPluginImageTransform--}}
+    {{--);--}}
+
+    {{--// Select the file input and use create() to turn it into a pond--}}
+    {{--// in this example we pass properties along with the create method--}}
+    {{--// we could have also put these on the file input element itself--}}
+
+
+
+    {{--FilePond.create(--}}
+        {{--document.querySelector('.filepond'),--}}
+        {{--{--}}
+            {{--labelIdle: `<span class="filepond--label-action">เปลี่ยนรูปโปรไฟล์</span>`,--}}
+            {{--imagePreviewHeight: 150,--}}
+            {{--imageCropAspectRatio: '1:1',--}}
+            {{--imageResizeTargetWidth: 150,--}}
+            {{--imageResizeTargetHeight: 150,--}}
+            {{--stylePanelLayout: 'compact circle',--}}
+            {{--styleLoadIndicatorPosition: 'center bottom',--}}
+            {{--styleButtonRemoveItemPosition: 'center bottom'--}}
+        {{--}--}}
+    {{--);--}}
 {{--</script>--}}
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+                $('#imagePreview').hide();
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+</script>
+
 
 {{--check toggle--}}
 <script>

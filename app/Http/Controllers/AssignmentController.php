@@ -89,6 +89,7 @@ class AssignmentController extends Controller
 
         ]);
 
+//        dd($request->file('assignment_file'));
 
 
         if ($request->file('assignment_file') != ''){

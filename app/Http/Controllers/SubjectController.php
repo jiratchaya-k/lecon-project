@@ -631,4 +631,8 @@ class SubjectController extends Controller
         return redirect('/teacher/subject/section/'.$id);
     }
 
+    public function lessonShow() {
+
+    }
+
 }

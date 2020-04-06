@@ -140,7 +140,13 @@
                     <h3>{{ $assignment->title }}</h3>
                     <span>{{ $assignment-> description }}</span>
 
-                    @if(!empty($assignment->file))
+                        <?php
+                        $filename = $assignment->file;
+                        $ext =  substr($filename, strrpos($filename, '.' )+1);
+                        //                                                    dd($ext);
+                        ?>
+
+                    @if(($assignment->file) != null)
 
                             <div class="row mt-3">
                                         <figure class="col-md-4">

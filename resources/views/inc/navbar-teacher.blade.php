@@ -6,14 +6,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
 
-
+            <?php $user = \Illuminate\Support\Facades\DB::table('users')->where('id','=',\Illuminate\Support\Facades\Auth::id())->first();
+            ?>
             @if(Auth::check())
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Profile</a>
+                        <a class="nav-link" href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">logout</a>
