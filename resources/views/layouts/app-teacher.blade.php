@@ -177,6 +177,39 @@
     })
 </script>
 
+<script>
+    // Get the modal
+    var modalImg = document.getElementById("modelImg");
+
+    // Get the button that opens the modal
+    // var btnYear = document.getElementById("myBtn-year");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+
+    // When the user clicks on the button, open the modal
+    $(document).on("click", '[data-toggle="lesson_file"]', function(event) {
+        event.preventDefault();
+        modalImg.style.display = "block";
+    });
+    // btnImg.onclick = function() {
+    //
+    // }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modalImg.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modalImg) {
+            modalImg.style.display = "none";
+        }
+    }
+</script>
+
 
 
 

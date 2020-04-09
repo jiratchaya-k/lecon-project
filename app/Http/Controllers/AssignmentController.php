@@ -185,7 +185,7 @@ class AssignmentController extends Controller
 
     public function show($id){
 
-        $assignment = Assignment::all()->find($id);
+        $assignment = Assignment::find($id);
         $assignment_id = $id;
 //        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
 //            ->join('subjects','subjects.id', '=','assignments.subject_id')
@@ -226,9 +226,17 @@ class AssignmentController extends Controller
 
             $fileType = json_decode($assignment->fileType);
 
+//            dd($assignment->showGrade);
+
+            if ($assignment->showGrade == "show"){
+                $showGrade = "แสดง";
+            }else{
+                $showGrade = "ไม่แสดง";
+            }
+
 //            dd($assignment->id);
 
-            return view('teacher.assignment-show',compact('assignment','sections','fileType','sections','allWorks','arr_workId'));
+            return view('teacher.assignment-show',compact('assignment','sections','fileType','sections','allWorks','arr_workId','showGrade'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
@@ -253,7 +261,16 @@ class AssignmentController extends Controller
 
             $status = '';
 
-//            dd($dueDate);
+            if ($assignment->showGrade == 'hidden') {
+                if ($assignmentWork->remark != ''){
+                    $assignmentWork->grade = $assignmentWork->grade;
+                }else {
+                    $assignmentWork->grade = '';
+                }
+
+            }
+
+//            dd($assignmentWork->grade);
 
 
             if (!empty($assignmentWork)){
@@ -591,6 +608,17 @@ class AssignmentController extends Controller
 
 
         return view('teacher.assignment-compare-detail',compact('works','files','asm_id','arrayIndex','arrayCount'));
+    }
+
+    public function showGrade(Request $request, $id){
+
+        $assignment = Assignment::find($id);
+        $assignment->showGrade = $request->input('showGrade');
+//        dd($request->all());
+        $assignment->save();
+
+        return redirect()->back();
+
     }
 
 }

@@ -66,6 +66,7 @@ Route::post('/teacher/subject/section/{id}/update', 'SubjectController@update');
 Route::delete('/teacher/subject/section/{id}/delete', 'SubjectController@destroy');
 Route::post('/teacher/subject/section/{id}/post/store', 'SubjectController@postStore');
 Route::post('/teacher/subject/section/{id}/lesson/store', 'SubjectController@lessonStore');
+Route::get('/teacher/subject/section/{sis_id}/lesson={id}', 'SubjectController@lessonShow');
 Route::get('/teacher/subject/create', 'SubjectController@create');
 Route::post('/teacher/subject/store', 'SubjectController@store');
 Route::get('/teacher/subject/{id}/add-section', 'SubjectController@addSection');
@@ -114,6 +115,7 @@ Route::post('/teacher/assignment/store', 'AssignmentController@store');
 Route::get('/teacher/assignment/{id}/edit', 'AssignmentController@edit');
 Route::post('/teacher/assignment/{id}/update', 'AssignmentController@update');
 Route::delete('/teacher/assignment/{id}/delete', 'AssignmentController@destroy');
+Route::post('/teacher/assignment/{id}/update-showgrade', 'AssignmentController@showGrade');
 
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
 Route::get('/assignment/{id}', 'AssignmentController@show');
@@ -121,6 +123,7 @@ Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}', 'Assignmen
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/next', 'AssignmentController@nextWork');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/previous', 'AssignmentController@previousWork');
 Route::post('/teacher/assignment/work={id}/graded', 'AssignmentController@inputGrade');
+
 
 
 Route::get('/teacher/profile/{name}', 'ProfileController@index');

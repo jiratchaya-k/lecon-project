@@ -128,27 +128,30 @@
                     <div class="card-body container">
                     <div class="row">
                     <div class="col-md-8">
-                    <h5>Assignment Sect. {{ $sections->section}}</h5>
+                    <h5 style="line-height: 2px; padding-top: 10px;">Assignment Sect. {{ $sections->section}}</h5>
                     <span>{{ $sections->code.' '.$sections->name  }}</span>
                     </div>
                     <div class="col-md-4 text-right">
-                    <h5 class="text-green">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}}</h5>
+                    <h4 style="color: #3956A3; padding-top: 10px;">ส่งภายใน {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}}</h4>
                     </div>
                     </div>
 
                     <hr>
-                    <h3>{{ $assignment->title }}</h3>
-                    <span>{{ $assignment-> description }}</span>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 style="color: black">{{ $assignment->title }}</h2>
+                                <span style="font-size: 12px; color: #818182;">รายละเอียด</span><br>
+                                <span style="font-size: 16px; color: black;">{{ $assignment-> description }}</span>
 
-                        <?php
-                        $filename = $assignment->file;
-                        $ext =  substr($filename, strrpos($filename, '.' )+1);
-                        //                                                    dd($ext);
-                        ?>
+                                <?php
+                                $filename = $assignment->file;
+                                $ext =  substr($filename, strrpos($filename, '.' )+1);
+                                //                                                    dd($ext);
+                                ?>
 
-                    @if(($assignment->file) != null)
+                                @if(($assignment->file) != null)
 
-                            <div class="row mt-3">
+                                    <div class="row mt-3">
                                         <figure class="col-md-4">
                                             <a href="/uploads/assignmentFiles/{{ $assignment->file }}" data-toggle="lightbox" data-gallery="gallery" data-size="1600x1067">
                                                 <div class="card img-fluid" style="margin-bottom: 0; width: 150px; overflow: hidden;" >
@@ -172,29 +175,58 @@
                                                 </div>
                                             </a>
                                         </figure>
+                                    </div>
+                                @else
+
+                                @endif
+
+                                <h5 class="mt-4">Work Required</h5>
+                                <p>File Type :
+                                    @if(empty($assignment->fileType))
+                                        None
+                                    @else
+                                        @foreach($fileType as $type)
+                                            {{ $type.' ' }}
+                                        @endforeach
+                                    @endif
+                                    <br>
+                                    Dimentions :
+                                    @if( $assignment->dimensions == '')
+                                        None
+                                    @else
+                                        {{ $assignment->dimensions }} {{ $assignment->dimensionsType }}
+                                    @endif
+
+                                </p>
                             </div>
-                        @else
+                            <div class="col-md-4">
+                                <div class="card mt-3" style="border: 3px solid #FF8574; border-radius: 20px; background-color: white;">
+                                    <div class="card-body text-center">
+                                        <span style="font-size: 12px; color: #818182;">การแสดงเกรด</span>
+                                        <h2 style="color: #3956A3; margin: 10px 0 15px 0;">{{ $showGrade }}</h2>
+                                        <hr>
+                                        <form method="POST" action="/teacher/assignment/{{ $assignment->id }}/update-showgrade" enctype="multipart/form-data">
+                                            @csrf
 
-                        @endif
+                                            <div class="row text-center">
+                                                <div class="container">
+                                                    <input type="hidden" id="showGrade_status" value="{{ $assignment->showGrade }}">
+                                                    <select class="f-input" name="showGrade" style="width: 120px; height: 32px; padding-left: 10px; margin-right: 5px;">
+                                                        <option name="show_opt[]" value="show">แสดงเกรด</option>
+                                                        <option name="show_opt[]" value="hidden">ไม่แสดงเกรด</option>
+                                                    </select>
+                                                    <input class="btn btn-submit" type="submit" value="บันทึก" style="width: 80px;background: #3956A3; border: none; color: white">
 
-                    <h5 class="mt-4">Work Required</h5>
-                    <p>File Type :
-                    @if(empty($assignment->fileType))
-                    None
-                    @else
-                    @foreach($fileType as $type)
-                    {{ $type.' ' }}
-                    @endforeach
-                    @endif
-                    <br>
-                    Dimentions :
-                    @if( $assignment->dimensions == '')
-                    None
-                    @else
-                    {{ $assignment->dimensions }} {{ $assignment->dimensionsType }}
-                    @endif
+                                                </div>
 
-                    </p>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         @if(count($allWorks) <= 0)
                             <div class="row">
@@ -378,6 +410,18 @@
             modalImg.style.display = "none";
         }
     }
+</script>
+<script>
+
+    var showGrade = document.getElementById("showGrade_status");
+    var show_opt = document.getElementsByName("show_opt[]");
+
+    for (var i = 0; i < show_opt.length; i++) {
+        if (showGrade.value == show_opt[i].value){
+            show_opt[i].selected = true;
+        }
+    }
+
 </script>
 
 </body>

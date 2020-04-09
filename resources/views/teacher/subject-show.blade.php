@@ -150,7 +150,7 @@
 
                         <div class="row">
                             <div class="col-md-4 col-sm-6">
-                                <div class="card mb-3">
+                                <div class="card mb-3" style="border: 3px solid #FF8574; border-radius: 20px; background-color: white;">
                                     <div class="card-body container">
                                         <div class="row">
                                             <div class="col-9">
@@ -158,16 +158,19 @@
                                             </div>
                                             <div class="col">
                                                 <button class="text-right" id="myBtn-post" style="width: 100%; background: none; border: none">
-                                                    <i class="fas fa-edit" style="font-size: 16px;"></i>
+                                                    <i class="fas fa-edit" style="font-size: 16px; cursor: pointer;"></i>
                                                 </button>
                                             </div>
                                         </div>
                                         <hr>
                                         @if(count($posts)>0)
                                             @foreach($posts as $post)
-                                        <h5>{{ $post->topic }}</h5>
-                                            <span>{{ $post->description }}</span>
-                                            <hr>
+                                                <div class="card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df;">
+                                                    <div class="card-body">
+                                                        <h5 style="font-weight: bolder; margin-bottom: 5px;">{{ $post->topic }}</h5>
+                                                        <h6 style="font-size: 14px; color: #818182; font-weight: normal; margin: 0;">{{ $post->description }}</h6>
+                                                    </div>
+                                                </div>
                                             @endforeach
 
                                         @else
@@ -178,7 +181,7 @@
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-6">
-                                <div class="card mb-3">
+                                <div class="card mb-3" style="border: 3px solid #3956A3; border-radius: 20px; background-color: white;">
                                     <div class="card-body container">
                                         <div class="row">
                                             <div class="col-10">
@@ -186,16 +189,22 @@
                                             </div>
                                             <div class="col">
                                                 <button class="text-right" id="myBtn-lesson" style="width: 100%; background: none; border: none">
-                                                    <i class="fas fa-edit" style="font-size: 16px;"></i>
+                                                    <i class="fas fa-edit" style="font-size: 16px; cursor: pointer;"></i>
                                                 </button>
                                             </div>
                                         </div>
                                         <hr>
                                         @if(count($lessons)>0)
                                             @foreach($lessons as $lesson)
-                                                <h5>{{ $lesson->topic }}</h5>
-                                                <span>{{ $lesson->description }}</span>
-                                                <hr>
+                                                <a href="/teacher/subject/section/{{$sections->sis_id}}/lesson={{ $lesson->id }}" class="lesson-box">
+                                                    <div class="card lesson-card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df;">
+                                                        <div class="card-body">
+
+                                                            <h4 style="font-weight: bolder; margin-bottom: 5px;">{{ $lesson->topic }}</h4>
+                                                            <h6 style="font-size: 14px; color: #818182; font-weight: normal; margin: 0;">{{ $lesson->description }}</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             @endforeach
 
                                         @else
