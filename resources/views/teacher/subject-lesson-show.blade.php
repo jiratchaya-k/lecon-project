@@ -46,7 +46,8 @@
                                 <div class="row container mt-3">
                                     @foreach($files as $file)
                                     <figure class="col-md-2 col-sm-6">
-                                        <a href="/uploads/LessonFiles/{{ $file }}" data-toggle="lesson_file" data-gallery="gallery" data-size="1600x1067">
+                                        <a href="/teacher/subject/section/{{ $sections->sis_id }}/lesson={{ $lesson->id }}/{{ $file }}" data-toggle="lesson_file" data-gallery="gallery" data-size="1600x1067">
+                                            <input type="hidden" name="name[]" value="{{ $file }}">
                                             <div class="card img-fluid" style="margin-bottom: 0; width: 150px; overflow: hidden;" >
                                                 <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5;">
                                                     <?php
@@ -84,6 +85,7 @@
                 <!-- Modal content -->
                 <div class="modal-content modal-content-img" style="height: 90%">
                     <span class="close">&times;</span>
+                    <input type="hidden" class="filename" value="">
                     {{--<div class="container" style="padding: 30px;">--}}
                     @if(($ext == 'pdf') || ($ext == 'mp4'))
                         <iframe src="/uploads/LessonFiles/{{$lesson->sis_id}}/{{ $file }}" scrolling="no" style="height: 100%; border: none;">
@@ -100,37 +102,6 @@
         </div>
     </div>
 
-    <script>
-        // Get the modal
-        var modalImg = document.getElementById("modelImg");
 
-        // Get the button that opens the modal
-        // var btnYear = document.getElementById("myBtn-year");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-
-        // When the user clicks on the button, open the modal
-        $(document).on("click", '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            modalImg.style.display = "block";
-        });
-        // btnImg.onclick = function() {
-        //
-        // }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modalImg.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modalImg) {
-                modalImg.style.display = "none";
-            }
-        }
-    </script>
 
 @endsection

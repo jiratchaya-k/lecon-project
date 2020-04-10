@@ -630,7 +630,7 @@ class SubjectController extends Controller
         return redirect('/teacher/subject/section/'.$id);
     }
 
-    public function Lessonshow($sis_id,$id){
+    public function lessonShow($sis_id,$id){
 
 //        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
 //            ->join('subjects','subjects.id', '=','assignments.subject_id')
@@ -693,6 +693,115 @@ class SubjectController extends Controller
             $files = json_decode($lesson->file);
 
             return view('teacher.subject-lesson-show',compact('sections','assignments','date','allTeacher','lesson','files'));
+        }else if (Auth::check() && auth()->user()->role == User::role_student) {
+
+            $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$sis_id)->first();
+            $workFile = DB::table('works')->join('files','works.id','=','files.work_id')
+                ->where('works.student_id','=',Auth::id())->where('works.assignment_id','=',$sis_id)
+                ->select('files.file')->get();
+
+            $files = [];
+
+            foreach ($workFile as $wfile){
+                $files[] = $wfile->file;
+            }
+
+            $fileType = json_decode($assignment->fileType);
+
+
+            // change string of date,time(2019-12-05) to number of date,time (1575478800)
+            $dueDate = strtotime($assignment->dueDate);
+            $dueTime = strtotime($assignment->dueTime);
+            $date = strtotime(date("Y-m-d"));
+            $time = strtotime(date("H:i:s"));
+
+            $status = '';
+
+//            dd($dueDate);
+
+
+            if (!empty($assignmentWork)){
+                $works = $files;
+                $status = $assignmentWork->status;
+            }else {
+                $works = null;
+
+                //if student not send -> status = Missed
+                if ((($date > $dueDate) && ($time > $dueTime)) || (($date > $dueDate) && ($time <= $dueTime)) ) {
+                    $status = 'Missed';
+                }
+            }
+
+            return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections'));
+        }
+
+    }
+
+    public function lessonDetail($sis_id,$lesson_id,$filename){
+
+//        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
+//            ->join('subjects','subjects.id', '=','assignments.subject_id')
+//            ->join('sections','subjects.section_id','=','sections.id')
+//            ->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
+
+        $sections = DB::table('sections_in_subjects as sis')->where('sis.id',$sis_id)
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('sis.id as sis_id','sis.date','sis.startTime','sis.endTime','subjects.id','sections.section','subjects.code','subjects.name')->first();
+
+//        dd($sections);
+
+        $ext = substr($filename, strrpos($filename, '.') + 1);
+
+//        dd($ext);
+
+        if (Auth::check() && auth()->user()->role == User::role_teacher) {
+
+            $assignments = DB::table('assignments')->where('assignments.sis_id',$sis_id)
+                ->where('status','=','active')
+                ->select('*')->get();
+
+
+            switch( $sections->date ) {
+                case('Sunday') :
+                    $date = 'อาทิตย์';
+                    break;
+                case('Monday') :
+                    $date = 'จันทร์';
+                    break;
+                case('Tuesday') :
+                    $date = 'อังคาร';
+                    break;
+                case('Wednesday') :
+                    $date = 'พุธ';
+                    break;
+                case('Thursday') :
+                    $date = 'พฤหัสบดี';
+                    break;
+                case('Friday') :
+                    $date = 'ศุกร์';
+                    break;
+                case('Saturday') :
+                    $date = 'เสาร์';
+                    break;
+            }
+
+            $teachers = DB::table('attend_sections')->where('attend_sections.sis_id','=',$sections->sis_id)->get();
+
+            $lesson = DB::table('lessons')->where('lessons.id','=',$lesson_id)->first();
+
+            foreach ($teachers as $teacher) {
+                $teach = DB::table('users')->where('users.role','=',User::role_teacher)
+                    ->where('users.id','=',$teacher->user_id)
+                    ->select('users.firstname','users.lastname')
+                    ->first();
+                if ($teach != null){
+                    $allTeacher[] = $teach;
+                }
+
+            }
+
+            return view('teacher.subject-lesson-detail',compact('sections','assignments','date','allTeacher','lesson','filename','ext'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$sis_id)->first();

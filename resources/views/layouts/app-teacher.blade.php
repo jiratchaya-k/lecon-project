@@ -178,45 +178,60 @@
 </script>
 
 <script>
-    // Get the modal
-    var modalImg = document.getElementById("modelImg");
-
-    // Get the button that opens the modal
-    // var btnYear = document.getElementById("myBtn-year");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-
-    // When the user clicks on the button, open the modal
-    $(document).on("click", '[data-toggle="lesson_file"]', function(event) {
-        event.preventDefault();
-        modalImg.style.display = "block";
+    var button = document.querySelector('.btn-fullscreen');
+    button.addEventListener('click', fullscreen);
+    // when you are in fullscreen, ESC and F11 may not be trigger by keydown listener.
+    // so don't use it to detect exit fullscreen
+    document.addEventListener('keydown', function (e) {
+        console.log('key press' + e.keyCode);
     });
-    // btnImg.onclick = function() {
-    //
-    // }
+    // detect enter or exit fullscreen mode
+    document.addEventListener('webkitfullscreenchange', fullscreenChange);
+    document.addEventListener('mozfullscreenchange', fullscreenChange);
+    document.addEventListener('fullscreenchange', fullscreenChange);
+    document.addEventListener('MSFullscreenChange', fullscreenChange);
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modalImg.style.display = "none";
+    function fullscreen() {
+        // check if fullscreen mode is available
+        if (document.fullscreenEnabled ||
+            document.webkitFullscreenEnabled ||
+            document.mozFullScreenEnabled ||
+            document.msFullscreenEnabled) {
+
+            // which element will be fullscreen
+            var iframe = document.querySelector('iframe');
+            // Do fullscreen
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+        else {
+            document.querySelector('.error').innerHTML = 'Your browser is not supported';
+        }
     }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modalImg) {
-            modalImg.style.display = "none";
+    function fullscreenChange() {
+        if (document.fullscreenEnabled ||
+            document.webkitIsFullScreen ||
+            document.mozFullScreen ||
+            document.msFullscreenElement) {
+            console.log('enter fullscreen');
         }
+        else {
+            console.log('exit fullscreen');
+        }
+        // force to reload iframe once to prevent the iframe source didn't care about trying to resize the window
+        // comment this line and you will see
+        var iframe = document.querySelector('iframe');
+        iframe.src = iframe.src;
     }
 </script>
 
-
-
-
-{{--<script>--}}
-    {{--$('#datepicker').datepicker({--}}
-        {{--uiLibrary: 'bootstrap4'--}}
-    {{--});--}}
-{{--</script>--}}
 </body>
 </html>
