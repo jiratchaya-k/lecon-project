@@ -157,7 +157,11 @@
                                             ->join('users','attend_sections.user_id','=','users.id')
                                             ->where('attend_sections.user_id','=',\Illuminate\Support\Facades\Auth::id())
                                             ->where('attend_sections.status','=','active')
-                                            ->select('sections.section', 'sis.id as sis_id','years.year','years.term')->distinct()->get();
+                                            ->orderBy('years.year','ASC')
+                                            ->orderBy('years.term','ASC')
+                                            ->orderBy('sections.section','ASC')
+                                            ->select('sections.section', 'sis.id as sis_id','years.year','years.term')
+                                            ->distinct()->get();
 
 
 //                                        dd($years, $sections);

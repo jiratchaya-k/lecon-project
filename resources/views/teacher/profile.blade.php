@@ -43,9 +43,15 @@
                             }
                         </style>
 
+                        <div class="vertical-menu text-center mb-3">
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="active">โปรไฟล์</a>
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="">เปลี่ยนรหัสผ่าน</a>
+                            {{--<a href="#">Link 2</a>--}}
+                            {{--<a href="#">Link 3</a>--}}
+                            {{--<a href="#">Link 4</a>--}}
+                        </div>
                         <div class="vertical-menu text-center mb-2">
-                            <a href="#" class="active">โปรไฟล์</a>
-                            {{--<a href="#">Link 1</a>--}}
+                            <a href="/logout" class="btn btn-submit" style=" width:100%; background: #5e5d5d; color: white;">ออกจากระบบ</a>
                             {{--<a href="#">Link 2</a>--}}
                             {{--<a href="#">Link 3</a>--}}
                             {{--<a href="#">Link 4</a>--}}

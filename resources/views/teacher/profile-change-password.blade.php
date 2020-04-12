@@ -65,8 +65,8 @@
                         </style>
 
                         <div class="vertical-menu text-center mb-3">
-                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="active">โปรไฟล์</a>
-                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="">เปลี่ยนรหัสผ่าน</a>
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="">โปรไฟล์</a>
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="active">เปลี่ยนรหัสผ่าน</a>
                             {{--<a href="#">Link 2</a>--}}
                             {{--<a href="#">Link 3</a>--}}
                             {{--<a href="#">Link 4</a>--}}
@@ -84,35 +84,42 @@
             <div class="col-md-8">
                 <div class="card box-shadow" style="width: 100%; border-radius: 20px; border: none;">
                     <div class="card-body">
-                        <form method="POST" action="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/update" enctype="multipart/form-data">
+                        <form method="POST" action="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password/update" enctype="multipart/form-data">
                             @csrf
-                        <div class="row" >
-                            <div class="col-md-6 text-center" style="margin: 0 auto;">
-                                    <div class="avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input type='file' id="imageUpload" name="profile_img" accept=".png, .jpg, .jpeg" />
-                                            <label class="upload-icon" for="imageUpload"></label>
-                                        </div>
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview" style="background-image: url('/uploads/profileImage/{{ $user->profile_img }}');">
-                                            </div>
-                                        </div>
-                                    </div>
-                                {{--<img src="https://www.w3schools.com/css/ocean.jpg" alt="Avatar" style="width: 150px;border-radius: 50%;">--}}
-                                {{--<input type="file" name="profile_img">--}}
-                                {{--<img src="https://www.w3schools.com/css/ocean.jpg" alt="Avatar" style="width: 150px;border-radius: 50%;">--}}
-                            </div>
+                        <div class="row mt-5">
+                                <div class="col-md-12 text-center">
+                                    <img src="/uploads/profileImage/{{ $user->profile_img }}" alt="Avatar" style="width: 150px;border-radius: 50%;">
+                                    <h5 class="card-title mt-2" style="font-weight: bolder;">
+                                        {{ $user->firstname.' '.$user->lastname }}
+                                    </h5>
+                                    <h6>{{ $user->email }}</h6>
+                                </div>
                         </div>
                         <div class="container mt-4">
                             <div class="row mb-2">
                                 {{--<label class="col-md-4 text-right">ชื่อจริง : </label>--}}
                                 <div class="input-group col-md-8" style="margin-left: auto;margin-right: auto;">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="far fa-id-card"></i></div>
+                                        <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                                     </div>
-                                    <input id="firstname" type="text" class="form-control form-control-login @error('firstname') is-invalid @enderror" name="firstname" value="{{ $user->firstname }}" required autocomplete="firstname" autofocus placeholder="ชื่อจริง">
+                                    <input id="old-password" type="password" class="form-control form-control-login @error('password') is-invalid @enderror" name="oldPassword" required autocomplete="new-password" placeholder="รหัสผ่านเดิม">
 
-                                    @error('firstname')
+                                    @error('password')
+                                    <span class="invalid-feedback text-left pl-2" role="alert">
+                                        <span>{{ $message }}</span>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="input-group col-md-8" style="margin-left: auto;margin-right: auto;">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
+                                    </div>
+                                    <input id="password" type="password" class="form-control form-control-login @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="รหัสผ่าน">
+
+                                    @error('password')
                                     <span class="invalid-feedback text-left pl-2" role="alert">
                             <span>{{ $message }}</span>
                          </span>
@@ -123,33 +130,13 @@
                             <div class="row mt-3">
                                 <div class="input-group col-md-8" style="margin-left: auto;margin-right: auto;">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="far fa-id-card"></i></div>
+                                        <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                                     </div>
-                                    <input id="lastname" type="text" class="form-control form-control-login @error('lastname') is-invalid @enderror" name="lastname" value="{{ $user->lastname }}" required autocomplete="lastname" autofocus placeholder="นามสกุล">
-
-                                    @error('lastname')
-                                    <span class="invalid-feedback text-left pl-2" role="alert">
-                            <span>{{ $message }}</span>
-                         </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="input-group col-md-8" style="margin-left: auto;margin-right: auto;">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="fas fa-envelope"></i></div>
-                                    </div>
-                                    <input id="email" type="email" class="form-control form-control-login @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" placeholder="อีเมล">
-                                    @error('email')
-                                    <span class="invalid-feedback text-left pl-2" role="alert">
-                            <spam>{{ $message }}</spam>
-                         </span>
-                                    @enderror
+                                    <input id="password-confirm" type="password" class="form-control form-control-login" name="password_confirmation" required autocomplete="new-password" placeholder="ยืนยันรหัสผ่าน">
                                 </div>
                             </div>
                             <div class="col-md-5 item-center mt-5 mb-3">
-                                <input class="btn btn-submit" type="submit" value="บันทึก" style="width: 150px;background: #FF8574; border: none; color: white">
+                                <input class="btn btn-submit" type="submit" value="บันทึก" style="width: 100%;background: #FF8574; border: none; color: white">
                             </div>
                         </div>
                         </form>

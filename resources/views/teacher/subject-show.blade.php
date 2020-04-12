@@ -154,7 +154,7 @@
                                     <div class="card-body container">
                                         <div class="row">
                                             <div class="col-9">
-                                                <h5 class="card-title" style="float: left">โพสต์</h5>
+                                                <h5 class="card-title" style="font-weight: bolder; float: left;">โพสต์</h5>
                                             </div>
                                             <div class="col">
                                                 <button class="text-right" id="myBtn-post" style="width: 100%; background: none; border: none">
@@ -185,7 +185,7 @@
                                     <div class="card-body container">
                                         <div class="row">
                                             <div class="col-10">
-                                                <h5 class="card-title" style="float: left">เนื้อหา</h5>
+                                                <h5 class="card-title" style="font-weight: bolder; float: left;">เนื้อหา</h5>
                                             </div>
                                             <div class="col">
                                                 <button class="text-right" id="myBtn-lesson" style="width: 100%; background: none; border: none">

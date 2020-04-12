@@ -61,7 +61,9 @@ body{
     transition-duration: 0.4s;
 }
 .card-shadow:hover {
-    box-shadow: 0 5px 19px 0 rgba(68,160,141,0.3),0 14px 35px 0 rgba(17,102,104,0.3);
+    -webkit-box-shadow: 0px 0px 40px -10px rgba(57,86,163,1);
+    -moz-box-shadow: 0px 0px 40px -10px rgba(57,86,163,1);
+    box-shadow: 0px 0px 40px -10px rgba(57,86,163,1);
 }
 
 .cardLink{
@@ -521,6 +523,7 @@ td {
     /*margin-right: 100%;*/
     /*margin-right: auto;*/
     margin-top: 170px;
+    margin-left: -5px;
     border-radius: 20px;
     background: #3956A3;
     border: 1px solid transparent;
@@ -551,7 +554,7 @@ td {
     height: 192px;
     position: relative;
     border-radius: 100%;
-    border: 6px solid #FF8574;
+    border: 6px solid white;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 #imagePreview {
@@ -561,6 +564,10 @@ td {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.lesson-box ,.lesson-box:hover{
+    color: black;
+    text-decoration: none;
 }
 
 

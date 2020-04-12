@@ -81,7 +81,11 @@ Route::post('/teacher/student-check/create', 'CheckStudentController@createCheck
 Route::get('/teacher/student-check/{subject_code}/{section}/{sis_id}','CheckStudentController@detail');
 Route::post('/teacher/student-check/{subject_code}/{section}/{sis_id}/{check_date}','CheckStudentController@studentList');
 
-//Route::get('/student/check', 'LocationController@location');
+Route::get('/subject/section/{id}', 'SubjectController@show');
+Route::get('/subject/section/{sis_id}/lesson={id}', 'SubjectController@lessonShow');
+Route::get('/subject/section/{sis_id}/lesson={lesson_id}/{filename}', 'SubjectController@lessonDetail');
+
+
 
 Route::post('/check-in/check', 'LocationController@location');
 Route::get('/check-in/{id}/complete', 'LocationController@checkComplete');
@@ -130,6 +134,8 @@ Route::post('/teacher/assignment/work={id}/graded', 'AssignmentController@inputG
 Route::get('/teacher/profile/{name}', 'ProfileController@index');
 Route::get('/teacher/profile/{name}/edit', 'ProfileController@edit');
 Route::post('/teacher/profile/{name}/update', 'ProfileController@update');
+Route::get('/teacher/profile/{name}/change-password', 'ProfileController@editPassword');
+Route::post('/teacher/profile/{name}/change-password/update', 'ProfileController@updatePassword');
 
 
 Route::get('/get-works/id={asm_id}/{grade}', 'AssignmentController@getWork');

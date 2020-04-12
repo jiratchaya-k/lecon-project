@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -17,6 +19,9 @@ class ProfileController extends Controller
             ->first();
 
 //        dd($user);
+        if (session('success_message')) {
+            Alert::success('เปลี่ยนรหัสผ่านสำเร็จ')->autoClose($milliseconds = 2000);
+        }
 
         return view('teacher.profile',compact('user'));
     }
@@ -70,6 +75,65 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect('/teacher/profile/'.$request->input('firstname').'-'.$request->input('lastname'));
+
+    }
+
+    public function editPassword($name) {
+        $firstname = strtok($name, '-' );
+        $lastname = substr($name,strpos($name,'-')+1);
+
+        $user = DB::table('users')->where('firstname',$firstname)->where('lastname',$lastname)
+            ->first();
+
+//        dd($user);
+
+        return view('teacher.profile-change-password',compact('user'));
+    }
+
+    public function updatePassword(Request $request, $name) {
+        $firstname = strtok($name, '-' );
+        $lastname = substr($name,strpos($name,'-')+1);
+
+
+        $user = DB::table('users')->where('firstname',$firstname)->where('lastname',$lastname)
+            ->first();
+
+        $oldPassword = $request->input('oldPassword');
+        $password = $request->input('password');
+        $cf_password = $request->input('password_confirmation');
+
+//        dd(strlen($password));
+
+
+
+        if (Hash::check($oldPassword, $user->password)){
+            $user = User::find($user->id);
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+//            dd('success');
+
+            if (strlen($password) < 8 || strlen($cf_password) < 8) {
+                Alert::error('กรุณากรอกรหัสผ่านให้ครบ 8 ตัว', 'ลองใหม่อีกครั้ง');
+                return redirect('teacher/profile/' . $user->firstname . '-' . $user->lastname . '/change-password');
+            }
+
+            if ($password != $cf_password){
+                Alert::error('ยืนยันรหัสผ่านไม่ตรงกัน', 'ลองใหม่อีกครั้ง');
+                return redirect('teacher/profile/' . $user->firstname . '-' . $user->lastname . '/change-password');
+            }
+
+
+            return redirect('teacher/profile/'.$user->firstname.'-'.$user->lastname)->withSuccessMessage('Success.');
+        }else {
+            Alert::error('รหัสผ่านเดิมไม่ถูกต้อง', 'ลองใหม่อีกครั้ง');
+            return redirect('teacher/profile/'.$user->firstname.'-'.$user->lastname.'/change-password');
+        }
+
+
+
+//        $user->save();
+
+//        return redirect('/teacher/profile/'.$request->input('firstname').'-'.$request->input('lastname'));
 
     }
 

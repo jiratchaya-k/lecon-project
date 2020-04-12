@@ -9,8 +9,8 @@
             <div class="row">
                 @if(count($sections)>0)
                     @foreach($sections as $section)
-                        <a href="/assignment/{{ $section->id }}" class="cardLink col-md-3">
-                            <div class="card card-shadow  mt-3 mb-2">
+                        <a href="/subject/section/{{ $section->id }}" class="cardLink col-md-3">
+                            <div class="card card-shadow mt-3 mb-2">
                                 <div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">
                                     <span style="font-size: 12px">{{ $section->code }}</span><br>
                                     <span style="font-size: 12px">{{ $section->name }}</span>
