@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 
-    <link rel="shortcut icon" href="uploads/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="uploads/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/uploads/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/uploads/favicon.ico" type="image/x-icon">
 </head>
 <body>
 

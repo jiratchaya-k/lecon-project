@@ -1,4 +1,4 @@
-@extends('layouts.app-teacher')
+@extends('layouts.app')
 @section('content')
 
     <style>
@@ -27,14 +27,14 @@
                 <div class="card box-shadow" style="width: 100%; border: 2px solid #454cad; border-radius: 20px; background-color: white;">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <img src="/uploads/profileImage/{{ $user->profile_img }}" alt="Avatar" style="width: 50px;border-radius: 50%;">
                             </div>
-                            <div class="col-md-9">
-                                <h5 class="card-title" style="font-weight: bolder;">
+                            <div class="col-md-10 pl-4 mt-1">
+                                <h6 class="card-title" style="font-weight: bolder;">
                                     {{ $user->firstname.' '.$user->lastname }}
-                                </h5>
-                                <p class="card-text" style="line-height: 1px; font-size: 16px; color: #5e5d5d;">{{ $user->email }}</p>
+                                </h6>
+                                <p class="card-text" style="line-height: 1px; font-size: 15px; color: #5e5d5d;">{{ $user->email }}</p>
                             </div>
                         </div>
                         <hr>
@@ -65,18 +65,22 @@
                         </style>
 
                         <div class="vertical-menu text-center mb-3">
-                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="">โปรไฟล์</a>
-                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="active">เปลี่ยนรหัสผ่าน</a>
+                            <a href="/profile/{{ $user->firstname.'-'.$user->lastname }}" class="">โปรไฟล์</a>
+                            <a href="/profile/{{ $user->firstname.'-'.$user->lastname }}/checkname" class="">การเข้าเรียน</a>
+                            <a href="/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="active">เปลี่ยนรหัสผ่าน</a>
                         </div>
                         <div class="vertical-menu text-center mb-2">
                             <a href="/logout" class="btn btn-submit" style=" width:100%; background: #5e5d5d; color: white;">ออกจากระบบ</a>
+                            {{--<a href="#">Link 2</a>--}}
+                            {{--<a href="#">Link 3</a>--}}
+                            {{--<a href="#">Link 4</a>--}}
                         </div>
 
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="card box-shadow" style="width: 100%; border-radius: 20px; border: none;">
+                <div class="card box-shadow" style="width: 100%; border-radius: 20px; border: 2px solid #FF8574;">
                     <div class="card-body">
                         <form method="POST" action="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password/update" enctype="multipart/form-data">
                             @csrf

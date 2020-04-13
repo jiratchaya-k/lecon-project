@@ -24,8 +24,8 @@
     <!-- include FilePond jQuery adapter -->
     <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 
-    <link rel="shortcut icon" href="uploads/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="uploads/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/uploads/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/uploads/favicon.ico" type="image/x-icon">
 </head>
 <body>
 

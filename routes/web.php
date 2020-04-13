@@ -86,13 +86,20 @@ Route::get('/subject/section/{sis_id}/lesson={id}', 'SubjectController@lessonSho
 Route::get('/subject/section/{sis_id}/lesson={lesson_id}/{filename}', 'SubjectController@lessonDetail');
 
 
-
 Route::post('/check-in/check', 'LocationController@location');
 Route::get('/check-in/{id}/complete', 'LocationController@checkComplete');
 Route::get('/check-in/{id}/{time}', 'LocationController@index');
 
-//Route::post('/check-in/check', 'LocationController@location');
 
+Route::get('/profile/{name}', 'ProfileController@index');
+Route::get('/profile/{name}/edit', 'ProfileController@edit');
+Route::post('/profile/{name}/update', 'ProfileController@update');
+Route::get('/profile/{name}/change-password', 'ProfileController@editPassword');
+Route::post('/profile/{name}/change-password/update', 'ProfileController@updatePassword');
+Route::get('/profile/{name}/checkname', 'ProfileController@showCheckName');
+Route::get('/profile/{name}/checkname/sect={sis_id}', 'ProfileController@detailCheckName');
+
+//Route::post('/check-in/check', 'LocationController@location');
 
 
 Route::get('/teacher/manage','ManageController@index');
