@@ -30,6 +30,13 @@
     <div class="dashboard-header" style="border: none;">
         @include('inc.navbar-teacher')
     </div>
+    <style>
+        .nav-item > .home-active{
+            color: white !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <!-- ============================================================== -->
     <!-- end navbar -->
     <!-- ============================================================== -->
@@ -156,9 +163,10 @@
                                                 <tr>
                                                     <th class="table-head" style="width: 100px!important;">รหัสนักศึกษา</th>
                                                     <th class="table-head">ชื่อ-นามสกุล</th>
-                                                    <th class="table-head">วันที่เช็ค</th>
-                                                    <th class="table-head">เวลาที่เช็ค</th>
-                                                    <th class="table-head">สถานะ</th>
+                                                    <th class="table-head" style="width: 150px!important;">วันที่เช็ค</th>
+                                                    <th class="table-head" style="width: 100px!important;">เวลาที่เช็ค</th>
+                                                    <th class="table-head" style="width: 100px!important;">สถานะ</th>
+                                                    <th class="table-head" style="width: 300px !important;">เปลี่ยนสถานะการเช็คชื่อ</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -206,6 +214,8 @@
 
 //                                                            dd($check);
                                                         ?>
+                                                        <form method="POST" action="/teacher/student-check/{{ $subject->code }}/{{ $subject->section }}/{{ $subject->sis_id }}/{{ $check_date }}/{{ $list->student_id }}=update" enctype="multipart/form-data">
+                                                            @csrf
                                                     <tr>
                                                         <td>{{ $list->student_id }}</td>
                                                         <td>{{ $list->firstname.' '.$list->lastname }}</td>
@@ -223,8 +233,26 @@
                                                             @elseif ( $status == '-')
                                                                 <i class="fas fa-minus-circle" style="color: grey; font-size: 18px;"></i>
                                                             @endif
+                                                                <input type="hidden" id="std_status" value="{{ $status }}">
+                                                        </td>
+                                                        <td>
+                                                            <div class="row" style="padding-left: 0; padding-right: 0;">
+                                                                <div class="col-md-6">
+                                                                        <select class="f-input ml-2 mt-1" name="check_status" style="width:100%; height: 32px; padding-left: 10px;">
+                                                                            <option value="-">-</option>
+                                                                            <option value="checked">เข้าเรียน</option>
+                                                                            <option value="checked late">เข้าสาย</option>
+                                                                            <option value="missed">ขาดเรียน</option>
+                                                                            <option value="leave">ลา</option>
+                                                                        </select>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <input class="btn btn-primary btn-submit" style="background:#FF8574; width: 100%;" type="submit" value="บันทึก">
+                                                                </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
+                                                        </form>
                                                     @endforeach
                                                 @endif
                                                 </tbody>
@@ -261,6 +289,7 @@
         });
     });
 </script>
+
 </body>
 
 </html>

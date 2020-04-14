@@ -1,6 +1,12 @@
 @extends('layouts.app-teacher')
 @section('content')
-
+    <style>
+        .nav-item > .home-active{
+            color: white !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <style>
         .card-shadow:hover {
             box-shadow: 0 5px 19px 0 rgba(0,0,0,0.1),0 10px 20px 0 rgba(0,0,0,0.1);

@@ -32,9 +32,23 @@ class SubjectController extends Controller
             ->get();
         $subjects = json_decode($subject);
 
+        $sections = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
+            ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
+            ->where('attend_sections.status','=','active')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','sis.subject_id','=','subjects.id')
+            ->join('years','sis.year_id','=','years.id')
+            ->select('sis.id','subjects.code','subjects.name','sections.section','sis.date','sis.startTime','sis.endTime','years.year','years.term')
+            ->get();
+
 //        dd($subject);
 
-        return view('teacher.home',compact('subjects'));
+        if (Auth::check() && auth()->user()->role == User::role_teacher) {
+            return view('teacher.home',compact('subjects'));
+        }
+        else if (Auth::check() && auth()->user()->role == User::role_student) {
+            return view('student.subject',compact('sections'));
+        }
     }
 
 

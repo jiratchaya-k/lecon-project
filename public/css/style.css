@@ -46,6 +46,10 @@ body{
     background: linear-gradient(30deg, rgba(88,168,220,1) 0%, rgba(44,49,126,1) 100%);
     color: white;
 }
+.bg-gradient-or{
+    background: rgb(255,198,190) !important;
+    background: linear-gradient(30deg, rgba(255,198,190,1) 0%, rgba(255,133,116,1) 60%) !important;
+}
 .box-shadow {
     border-radius: 20px;
     border: none;

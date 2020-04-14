@@ -73,14 +73,19 @@ Route::post('/teacher/subject/store', 'SubjectController@store');
 Route::get('/teacher/subject/{id}/add-section', 'SubjectController@addSection');
 Route::post('/teacher/subject/{id}/add-section/store', 'SubjectController@sectionStore');
 
+
 Route::get('/teacher/student-check', 'CheckStudentController@index');
 Route::get('/teacher/student-check/check={check_id}/get-qrcode', 'CheckStudentController@getQrcode');
 Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentController@update');
 //Route::post('/teacher/student-check/check={check_id}/get-qrcode/update', 'CheckStudentController@update');
 Route::post('/teacher/student-check/create', 'CheckStudentController@createCheck');
-Route::get('/teacher/student-check/{subject_code}/{section}/{sis_id}','CheckStudentController@detail');
 Route::post('/teacher/student-check/{subject_code}/{section}/{sis_id}/{check_date}','CheckStudentController@studentList');
+Route::get('/teacher/student-check/{subject_code}/{section}/{sis_id}/{check_date}','CheckStudentController@studentList');
+Route::get('/teacher/student-check/{subject_code}/{section}/{sis_id}','CheckStudentController@detail');
 
+Route::post('/teacher/student-check/{subject_code}/{section}/{sis_id}/{check_date}/{student_id}=update','CheckStudentController@studentStatusUpdate');
+
+Route::get('/section', 'SubjectController@index');
 Route::get('/subject/section/{id}', 'SubjectController@show');
 Route::get('/subject/section/{sis_id}/lesson={id}', 'SubjectController@lessonShow');
 Route::get('/subject/section/{sis_id}/lesson={lesson_id}/{filename}', 'SubjectController@lessonDetail');

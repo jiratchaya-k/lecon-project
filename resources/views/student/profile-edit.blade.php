@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
-
+    <style>
+        .nav-item > .profile-active{
+            color: #3956A3 !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <style>
         .filepond--drop-label {
             font-weight: bolder;

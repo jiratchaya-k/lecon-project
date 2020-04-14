@@ -64,7 +64,7 @@ class HomeController extends Controller
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('subjects','sis.subject_id','=','subjects.id')
                 ->join('years','sis.year_id','=','years.id')
-                ->select('sis.id','subjects.code','subjects.name','sections.section','years.year','years.term')
+                ->select('sis.id','subjects.code','subjects.name','sections.section','sis.date','sis.startTime','sis.endTime','years.year','years.term')
                 ->get();
 
 //            dd($sections);

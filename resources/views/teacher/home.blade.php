@@ -30,6 +30,13 @@
     <div class="dashboard-header" style="border: none;">
         @include('inc.navbar-teacher')
     </div>
+    <style>
+        .nav-item > .home-active{
+            color: white !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <!-- ============================================================== -->
     <!-- end navbar -->
     <!-- ============================================================== -->
@@ -37,13 +44,13 @@
     <!-- left sidebar -->
     <!-- ============================================================== -->
     <div class="nav-left-sidebar sidebar-dark">
-        <div class="menu-list">
+        <div class="menu-list" style="position: relative;">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse" id="navbarNav" >
                     <ul class="navbar-nav flex-column">
                         <li class="nav-divider">
                             <?php $user = \Illuminate\Support\Facades\DB::table('users')->where('id','=',\Illuminate\Support\Facades\Auth::id())->first();
@@ -76,10 +83,12 @@
                         <li class="nav-item ">
                             <a class="nav-link" href="/teacher/manage"><i class="fa fa-fw fa-angle-right"></i>การจัดการ<span class="badge badge-success">6</span></a>
                         </li>
-
                     </ul>
                 </div>
             </nav>
+
+                {{--<a href="/logout" class="btn btn-submit " style=" width:100%; background: #5e5d5d; color: white; height:40px; position: absolute; bottom: 60px; border-radius: 0;">ออกจากระบบ</a>--}}
+
         </div>
     </div>
     <!-- ============================================================== -->

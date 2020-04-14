@@ -11,17 +11,17 @@
             ?>
             @if(Auth::check())
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link home-active" href="/">หน้าหลัก</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/section">Section</a>
+                        <a class="nav-link section-active" href="/section">กลุ่มเรียน</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/profile/{{ $user->firstname.'-'.$user->lastname }}">Profile</a>
+                        <a class="nav-link profile-active" href="/profile/{{ $user->firstname.'-'.$user->lastname }}"><img src="/uploads/profileImage/{{ $user->profile_img }}" alt="Avatar" style="width: 20px; border: 2px solid #818182; border-radius: 50%;"> {{ $user->firstname }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">logout</a>
+                    <li class="nav-item nav-active">
+                        <a class="nav-link" href="/logout">ออกจากระบบ</a>
                     </li>
                 </ul>
             @else

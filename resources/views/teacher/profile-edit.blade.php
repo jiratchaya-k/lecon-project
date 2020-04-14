@@ -1,6 +1,12 @@
 @extends('layouts.app-teacher')
 @section('content')
-
+    <style>
+        .nav-item > .profile-active{
+            color: white !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <style>
         .filepond--drop-label {
             font-weight: bolder;

@@ -32,6 +32,13 @@
     <div class="dashboard-header" style="border: none;">
         @include('inc.navbar-teacher')
     </div>
+    <style>
+        .nav-item > .home-active{
+            color: white !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <!-- ============================================================== -->
     <!-- end navbar -->
     <!-- ============================================================== -->

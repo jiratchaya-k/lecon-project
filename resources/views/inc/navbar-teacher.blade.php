@@ -10,14 +10,14 @@
             ?>
             @if(Auth::check())
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link home-active" href="/">หน้าหลัก</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}">Profile</a>
+                        <a class="nav-link profile-active" href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}"><img src="/uploads/profileImage/{{ $user->profile_img }}" alt="Avatar" style="width: 20px; border: 2px solid lightgray; border-radius: 50%;"> {{ $user->firstname }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">logout</a>
+                        <a class="nav-link" href="/logout">ออกจากระบบ</a>
                     </li>
                 </ul>
             @else

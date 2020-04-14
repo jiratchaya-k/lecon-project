@@ -1,5 +1,12 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .nav-item > .profile-active{
+            color: #3956A3 !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <div class="container mt-10">
         <div class="row">
             <div class="col-md-4">
@@ -70,7 +77,7 @@
                                     <div class="card card-shadow mt-2 mb-2" style="padding: 0;">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <div class="card-header bg-gradient text-center" style="border-radius: 20px 0px 0px 20px; border: none; width: 100%; height: 100%;padding-top: 40%;">
+                                                <div class="card-header bg-gradient bg-gradient-or text-center" style="border-radius: 20px 0px 0px 20px; border: none; width: 100%; height: 100%;padding-top: 40%;">
                                                     <span>กลุ่ม {{ $section->section }}</span>
                                                 </div>
                                             </div>

@@ -210,4 +210,42 @@ class CheckStudentController extends Controller
         return view('teacher.check-detail-list',compact('lists','subject','check_date'));
     }
 
+    public function studentStatusUpdate(Request $request,$subjec_code,$section,$sis_id,$check_date,$student_id)
+    {
+        $user = DB::table('users')->where('role',User::role_student)
+            ->where('student_id','=',$student_id)
+            ->select('*')
+            ->first();
+
+        $section_check = DB::table('section_checks')->where('section_checks.check_date',$check_date)
+            ->select('*')
+            ->first();
+
+        $check = DB::table('section_checks')->where('section_checks.check_date',$check_date)
+            ->join('student_checks','student_checks.sectionCheck_id','=','section_checks.id')
+            ->join('users','users.id','=','student_checks.user_id')->where('users.id',$user->id)
+            ->select('section_checks.id as sectCheck_id','student_checks.status as status','student_checks.created_at as std_check','student_checks.id as stdCheck_id')
+            ->first();
+
+
+//        dd($section_check);
+
+        if ($check != null){
+//            dd('update');
+            $student = StudentCheck::find($check->stdCheck_id);
+            $student->status = $request->input('check_status');
+            $student->save();
+        }else {
+//            dd('new');
+            $student = new StudentCheck;
+            $student->user_id = $user->id;
+            $student->sectionCheck_id = $section_check->id;
+            $student->status = $request->input('check_status');
+            $student->save();
+        }
+
+
+        return redirect()->back();
+    }
+
 }

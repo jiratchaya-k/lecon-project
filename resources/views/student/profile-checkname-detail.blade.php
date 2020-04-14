@@ -1,5 +1,12 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .nav-item > .profile-active{
+            color: #3956A3 !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <div class="container mt-10">
         <div class="row">
             <div class="col-md-4">

@@ -1,5 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app-teacher')
 @section('content')
+    <style>
+        .nav-item > .home-active{
+            color: white !important;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
     <div class="container-fluid mt-10">
         <div class="container">
             <h3 class="text-center mb-3">Create Section</h3>
