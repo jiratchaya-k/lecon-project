@@ -56,7 +56,7 @@
                         <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
                     </div>
                 </div>
-                <a href="/"><img src="/uploads/logo-blue.png" style="width: 150px; margin: 10px 0;"></a>
+                <a href="/"><img src="https://s3-ap-southeast-1.amazonaws.com/img-in-th/9756f16892bff037f624662123454e1e.png" style="width: 150px; margin: 10px 0;"></a>
             </div>
             <div>
                 <div class="layout one-col fixed-width stack" style="border-radius: 20px; Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
