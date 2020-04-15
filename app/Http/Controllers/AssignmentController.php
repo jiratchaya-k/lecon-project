@@ -177,8 +177,13 @@ class AssignmentController extends Controller
         $assignment->dimensionsType = $dimensionsType;
         $assignment->status = 'active';
         $assignment->save();
-//
-//
+
+        $asm_name = $request->input('assignment_title');
+        $asm_dueDate = $request->input('assignment_dueDate');
+        $asm_dueTime = $request->input('assignment_dueTime');
+        Mail::to('kongmuang_j2@silpakorn.edu')
+            ->send(new AssignmentMail($asm_name,$asm_dueDate,$asm_dueTime));
+
         return redirect('/teacher/assignment');
 //        dd($request->all());
     }

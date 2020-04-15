@@ -47,6 +47,9 @@ Route::get('/teacher/student-check', function () {
 //    return view('student.check');
 //});
 
+Route::get('/email', 'EmailController@index');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
