@@ -155,24 +155,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="time" class="control-label">กำหนดเวลาส่ง</label>
-                                {{--<input class="form-control f-input" name="assignment_dueTime" type="time" id="time">--}}
-                                <select class="f-input" name="assignment_dueTime" style="width: 180px; height: 32px; padding-left: 10px;">
-                                    <option value="09:20">09:20</option>
-                                    <option value="10:15">10:15</option>
-                                    <option value="11:10">11:10</option>
-                                    <option value="12:05">12:05</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="13:50">13:50</option>
-                                    <option value="14:45">14:45</option>
-                                    <option value="15:40">15:40</option>
-                                    <option value="16:35">16:35</option>
-                                    <option value="17:30">17:30</option>
-                                    <option value="18:25">18:25</option>
-                                    <option value="19:20">19:20</option>
-                                    <option value="20:15">20:15</option>
-                                    <option value="21:10">21:10</option>
-                                    <option value="22:05">22:05</option>
-                                </select>
+                                <input class="form-control f-input" name="assignment_dueTime" type="time" id="time" value="22:00:00">
                             </div>
                         </div>
 

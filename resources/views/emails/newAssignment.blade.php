@@ -87,8 +87,12 @@
                                         <strong>New Assignment!</strong>
                                         <br> {{ $asm_name }}
                                     </h3>
-                                    <p style="Margin-top: 20px;Margin-bottom: 10px; text-align: center;">&nbsp;<br>
-                                        <strong>802104 คอมพิวเตอร์กราฟิกและการออกแบบ 1</strong> มีงานมอบหมายใหม่
+                                    <p style="Margin-top: 20px;Margin-bottom: 10px; text-align: center;"><br>
+                                        สวัสดี {{ $std_name }} <br><br>
+                                        <strong>กลุ่มเรียน {{ $asm_section }} <br>
+                                            วิชา {{ $asm_subject }}</strong>
+                                        <br>
+                                        มีงานมอบหมายใหม่
                                         <br>
                                         ส่งภายใน {{ $dueDate.' '.substr($asm_dueTime,0,-3) }}
                                     </p>
@@ -101,7 +105,7 @@
 
                             <div style="Margin-left: 20px;Margin-right: 20px;">
                                 <div class="btn btn--flat btn--large" style="Margin-bottom: 20px;text-align: center;">
-                                    <![if !mso]><a style="border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #3956A3;font-family: Ubuntu, sans-serif;" href="http://test.com">
+                                    <![if !mso]><a style="border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #3956A3;font-family: Ubuntu, sans-serif;" href="http://lecon.com/assignment/{{ $asm_id }}">
                                         ดูรายละเอียด</a><![endif]>
                                     <!--[if mso]><p style="line-height:0;margin:0;">&nbsp;</p>
 <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="http://test.com" style="width:219px" arcsize="9%" fillcolor="#80BF2E" stroke="f"><v:textbox style="mso-fit-shape-to-text:t" inset="0px,11px,0px,11px"><center style="font-size:14px;line-height:24px;color:#FFFFFF;font-family:Ubuntu,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:4px">ดูรายละเอียด</center></v:textbox></v:roundrect><![endif]--></div>

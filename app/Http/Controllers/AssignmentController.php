@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Assignment;
+use App\Mail\AssignmentMail;
 use App\User;
 use App\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class AssignmentController extends Controller
 {
@@ -169,6 +171,7 @@ class AssignmentController extends Controller
         $assignment->file = $filenameToStore;
         $assignment->dueDate = $request->input('assignment_dueDate');
         $assignment->dueTime = $request->input('assignment_dueTime');
+        $assignment->showGrade = 'hidden';
         $assignment->sis_id = $request->input('sis_id');
         $assignment->autoGrade_fileType = $autoGradeType;
         $assignment->autoGrade_dimensions = $autoGradeDimensions;
@@ -178,11 +181,37 @@ class AssignmentController extends Controller
         $assignment->status = 'active';
         $assignment->save();
 
-        $asm_name = $request->input('assignment_title');
-        $asm_dueDate = $request->input('assignment_dueDate');
-        $asm_dueTime = $request->input('assignment_dueTime');
-        Mail::to('kongmuang_j2@silpakorn.edu')
-            ->send(new AssignmentMail($asm_name,$asm_dueDate,$asm_dueTime));
+        $asm = DB::table('assignments')->select('*')->orderBy('id','DESC')->first();
+
+        $subject = DB::table('sections_in_subjects as sis')->where('sis.id',$request->input('sis_id'))
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
+
+        $students = DB::table('attend_sections')->where('attend_sections.sis_id',$request->input('sis_id'))
+            ->where('attend_sections.status','=','active')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_student)
+            ->select('users.firstname','users.lastname','users.student_id','users.email')
+            ->get();
+
+//        dd($asm);
+
+        foreach ($students as $student){
+            $asm_id = $asm->id;
+            $asm_name = $request->input('assignment_title');
+            $asm_dueDate = $request->input('assignment_dueDate');
+            $asm_dueTime = $request->input('assignment_dueTime');
+            $asm_section = $subject->section;
+            $asm_subject = $subject->code.' '.$subject->name;
+            $std_name = $student->firstname.' '.$student->lastname;
+            $std_id = $student->student_id;
+
+        Mail::to($student->email)
+            ->send(new AssignmentMail($asm_id,$asm_name,$asm_dueDate,$asm_dueTime,$asm_section,$asm_subject,$std_name,$std_id));
+        }
+
+
 
         return redirect('/teacher/assignment');
 //        dd($request->all());

@@ -93,6 +93,9 @@ Route::get('/subject/section/{id}', 'SubjectController@show');
 Route::get('/subject/section/{sis_id}/lesson={id}', 'SubjectController@lessonShow');
 Route::get('/subject/section/{sis_id}/lesson={lesson_id}/{filename}', 'SubjectController@lessonDetail');
 
+Route::get('/assignment/{id}', 'AssignmentController@show');
+Route::post('/assignment/{id}/send', 'WorkController@store');
+
 
 Route::post('/check-in/check', 'LocationController@location');
 Route::get('/check-in/{id}/complete', 'LocationController@checkComplete');
@@ -138,7 +141,6 @@ Route::delete('/teacher/assignment/{id}/delete', 'AssignmentController@destroy')
 Route::post('/teacher/assignment/{id}/update-showgrade', 'AssignmentController@showGrade');
 
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
-Route::get('/assignment/{id}', 'AssignmentController@show');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}', 'AssignmentController@showWorkDetail');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/next', 'AssignmentController@nextWork');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/previous', 'AssignmentController@previousWork');
@@ -156,4 +158,4 @@ Route::post('/teacher/profile/{name}/change-password/update', 'ProfileController
 Route::get('/get-works/id={asm_id}/{grade}', 'AssignmentController@getWork');
 
 
-Route::post('/assignment/{id}/send', 'WorkController@store');
+
