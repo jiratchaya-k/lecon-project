@@ -129,7 +129,7 @@
                                 @else
                                     <tr>
                                         <th colspan="2" class="text-center" style="color: lightgray;">
-                                            <i class="fas fa-exclamation-triangle mt-3" style="font-size: 40px;"></i>
+                                            <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 100px; opacity: .5;">
                                             <br>
                                             <span>ไม่มีข้อมูล</span>
                                         </th>

@@ -30,7 +30,7 @@
                 <div class="card-body container">
                     <div class="row">
                         <div class="col-md-8">
-                            <h5 style="padding-top: 10px; margin-bottom: 5px;">Assignment Sect. {{ $sections->section}}</h5>
+                            <h5 style="padding-top: 10px; margin-bottom: 5px;"><strong>งานที่มอบหมาย</strong> - กลุ่มเรียน {{ $sections->section}}</h5>
                             <span>{{ $sections->code.' '.$sections->name  }}</span>
                         </div>
                         <div class="col-md-4 text-right">

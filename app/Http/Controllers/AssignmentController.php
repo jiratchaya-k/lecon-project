@@ -295,31 +295,43 @@ class AssignmentController extends Controller
 
             $status = '';
 
-            if ($assignment->showGrade == 'hidden') {
-                if ($assignmentWork->remark != ''){
-                    $assignmentWork->grade = $assignmentWork->grade;
-                }else {
-                    $assignmentWork->grade = '';
-                }
+//            dd($assignmentWork);
 
-            }
 
 //            dd($assignmentWork->grade);
 
 
             if (!empty($assignmentWork)){
+
+                if ($assignment->showGrade == 'hidden') {
+                    if ($assignmentWork->remark != ''){
+                        $grade = $assignmentWork->grade;
+                    }else {
+                        $grade = '';
+                    }
+                }else {
+                    $grade = $assignmentWork->grade;
+                }
+
                 $works = $files;
-                $status = $assignmentWork->status;
+
+                if ($assignmentWork->status == 'Submitted'){
+                    $status = 'ส่งแล้ว';
+                }elseif ($assignmentWork->status == 'Submitted Late'){
+                    $status = 'ส่งล่าช้า';
+                }
             }else {
                 $works = null;
-
+                $grade = '';
                 //if student not send -> status = Missed
                 if ((($date > $dueDate) && ($time > $dueTime)) || (($date > $dueDate) && ($time <= $dueTime)) ) {
-                    $status = 'Missed';
+                    $status = 'ขาดส่ง';
                 }
             }
 
-            return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections'));
+//            dd($assignmentWork);
+
+            return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections','grade'));
         }
 
     }
@@ -652,6 +664,53 @@ class AssignmentController extends Controller
         $assignment->save();
 
         return redirect()->back();
+    }
+
+    public function showFile($id,$filename){
+
+        $my_url = url()->current();
+        $folder_file = substr($my_url, strrpos($my_url, '/' )+1);
+        $folder = strstr($folder_file,'=' ,true);
+
+//        dd($folder);
+
+        $assignment = Assignment::find($id);
+        $assignment_id = $id;
+//        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
+//            ->join('subjects','subjects.id', '=','assignments.subject_id')
+//            ->join('sections','subjects.section_id','=','sections.id')
+//            ->select('subjects.id','sections.section','subjects.code','subjects.name')->get();
+
+        $sections = DB::table('assignments')->where('assignments.id',$assignment_id)
+            ->join('sections_in_subjects as sis','assignments.sis_id','=','sis.id')
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
+
+        $ext = substr($filename, strrpos($filename, '.') + 1);
+
+
+        if (Auth::check() && auth()->user()->role == User::role_teacher) {
+
+            $asm_id = $id;
+
+//            $asm_title = $title;
+
+            $works = DB::table('works')->select('*','works.id')->where('works.id',$id)
+                ->join('users','works.student_id','=','users.id')
+                ->join('files','works.id','=','files.work_id')
+                ->first();
+
+            $files = DB::table('works')->where('works.id',$id)
+                ->join('users','works.student_id','=','users.id')
+                ->join('files','works.id','=','files.work_id')
+                ->select('files.file','files.id')
+                ->get();
+
+            return view('teacher.assignment-show-file',compact('assignment','sections','filename','ext','folder','works','files'));
+        }else if (Auth::check() && auth()->user()->role == User::role_student) {
+            return view('student.assignment-show-file',compact('assignment','sections','filename','ext','folder'));
+        }
 
     }
 

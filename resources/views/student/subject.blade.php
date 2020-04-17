@@ -12,7 +12,7 @@
 
     <div class="container-fluid">
         <div class="container mt-4">
-            <h4 style="font-weight: bolder; color: #FF8574;">Your Section</h4>
+            <h4 style="font-weight: bolder; color: #FF8574;"><img src="/uploads/icons/icon-play.png" style="width: 35px; margin-right: 10px;">กลุ่มเรียนที่เข้าร่วม</h4>
             <hr>
             <div class="row">
                 @if(count($sections)>0)
@@ -65,8 +65,10 @@
 
                     @endforeach
                 @else
-                    <div>
-                        <p>No Assignment</p>
+                    <div class="text-center">
+                        <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 100px; opacity: .5;">
+                        <br>
+                        <span>ไม่มีข้อมูล</span>
                     </div>
                 @endif
             </div>

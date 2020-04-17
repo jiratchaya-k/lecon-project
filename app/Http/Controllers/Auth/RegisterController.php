@@ -111,6 +111,7 @@ class RegisterController extends Controller
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
         $user->student_id = $request->input('student_id');
+        $user->profile_img = 'profile_default.png';
         $user->role = User::role_student;
         $user->password = Hash::make($request->input(['password']));
         $user->save();
@@ -132,6 +133,7 @@ class RegisterController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
+        $user->profile_img = 'profile_default.png';
         $user->role = User::role_teacher;
         $user->password = Hash::make($request->input(['password']));
         $user->save();

@@ -198,6 +198,12 @@
                         </div>
                     </div>
                         @endforeach
+                        @else
+                        <div class="text-center">
+                            <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 100px; opacity: .5;">
+                            <br>
+                            <span>ไม่มีวิชาที่สร้าง</span>
+                        </div>
                         @endif
                 </div>
             </div>

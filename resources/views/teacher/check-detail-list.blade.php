@@ -104,8 +104,10 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">เช็คชื่อเข้าเรียน -> {{ $subject->code.' '.$subject->name }}</h2>
-
+                            <h2 class="pageheader-title" style="float: left;">เช็คชื่อเข้าเรียน -> {{ $subject->code.' '.$subject->name }}</h2>
+                            <div class="text-right mb-2">
+                                <a href="javascript:history.back()" class="btn btn-submit" style="background: white; border: 2px solid #3956A3; color: #3956A3;  width: 150px;">ย้อนกลับ</a>
+                            </div>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -125,6 +127,16 @@
                             <div class="col-md-12">
                                 <div class="card box-shadow mb-2">
                                     <div class="card-header" style="border-radius: 20px 20px 0px 0px; background-color: #3956A3; color: white;">
+
+                                        <?php
+                                        $strYear = date("Y",strtotime($check_date))+543;
+                                        $strMonth= date("n",strtotime($check_date));
+                                        $strDay= date("j",strtotime($check_date));
+                                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                                        $strMonthThai=$strMonthCut[$strMonth];
+
+                                        $checkdate = "$strDay $strMonthThai $strYear";
+                                        ?>
 
                                 <span class="fs-18">
                                     กลุ่มเรียน {{ $subject->section }} ,
@@ -152,7 +164,7 @@
                                         @break
                                     @endswitch
 
-                                    {{ ' - '.$check_date }}
+                                    {{ ' เวลา '.$checkdate }}
                                 </span>
 
                                     </div>
@@ -190,9 +202,17 @@
                                                                         ->select('student_checks.status as status','student_checks.created_at as std_check')
                                                                         ->first();
 
+                                                                    $strYear = date("Y",strtotime($check->std_check))+543;
+                                                                    $strMonth= date("n",strtotime($check->std_check));
+                                                                    $strDay= date("j",strtotime($check->std_check));
+                                                                    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                                                                    $strMonthThai=$strMonthCut[$strMonth];
+
+                                                                    $std_check_date = "$strDay $strMonthThai $strYear";
+
 
                                                                     $status = $check->status;
-                                                                    $std_check_date = date('d M Y', strtotime($check->std_check));
+//                                                                    $std_check_date = date('d M Y', strtotime($check->std_check));
                                                                     $std_check_time = date('H:i', strtotime($check->std_check));
 
 //                                                                    dd($status,$std_check_date,$std_check_time);

@@ -106,7 +106,10 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">งามที่มอบหมาย</h2>
+                            <h2 class="pageheader-title" style="float: left;">งามที่มอบหมาย</h2>
+                            <div class="text-right mb-2">
+                                <a href="javascript:history.back()" class="btn btn-submit" style="background: white; border: 2px solid #3956A3; color: #3956A3;  width: 150px;">ย้อนกลับ</a>
+                            </div>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">

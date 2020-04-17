@@ -132,77 +132,6 @@
 //                    $countfile = count(json_decode($works->file));
 //                        dd($files);
 //                    ?>
-                    {{--<div class="container-fluid mt-10">--}}
-
-                    {{--<div id="myModal" class="modal">--}}
-
-                        {{--<!-- Modal content -->--}}
-                        {{--<div class="modal-content">--}}
-                            {{--<span class="close text-right">&times;</span>--}}
-                            {{--<div class="container">--}}
-                                {{--<h3>เปรียบเทียบงาน</h3>--}}
-                                {{--<hr>--}}
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-md-6" style="border-right: 1px solid gray;">--}}
-                                        {{--<div class="row">--}}
-                                            {{--@foreach( $files as $file)--}}
-
-                                                {{--<div class="col-md-4 box-container2">--}}
-                                                    {{--<div class="card mt-3 img_box2" style="box-shadow: none;">--}}
-                                                        {{--<img class="card-img-top work_img2"  src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">--}}
-                                                        {{--<div class="card-body" style="background-color: #3956A3; border: 1px solid #3956A3; border-radius: 0px 0px 3px 3px ">--}}
-                                                            {{--<p class="card-text2" style="color: white;">{{ $file->file }}--}}
-                                                            {{--</p>--}}
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-                                                {{--</div>--}}
-
-                                                {{--<div class="card mr-3" style="width: 18rem; box-shadow: none;">--}}
-                                                {{--<img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">--}}
-                                                {{--</div>--}}
-                                            {{--@endforeach--}}
-                                        {{--</div>--}}
-
-                                        {{--@for($i = 0; $i < $countfile; $i++)--}}
-                                            {{--<div class="card mr-3" style="width: 18rem; box-shadow: none;">--}}
-                                                {{--<img class="card-img-top" src="/uploads/workFiles/{{ $file[$i] }}" alt="Card image cap">--}}
-                                            {{--</div>--}}
-                                        {{--@endfor--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-6">--}}
-                                        {{--<div class="container">--}}
-                                            {{--<div class="row">--}}
-                                                {{--<h5 style="float: left; margin-top: 5px">เปรียบเทียบกับเกรด</h5>--}}
-                                                {{--<select class="f-input ml-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">--}}
-                                                    {{--<option value="">เลือกเกรด</option>--}}
-                                                    {{--<option value="A">A</option>--}}
-                                                    {{--<option value="B+">B+</option>--}}
-                                                    {{--<option value="B">B</option>--}}
-                                                    {{--<option value="C+">C+</option>--}}
-                                                    {{--<option value="C">C</option>--}}
-                                                    {{--<option value="D+">D+</option>--}}
-                                                    {{--<option value="D">D</option>--}}
-                                                    {{--<option value="DELETE">DELETE</option>--}}
-                                                {{--</select>--}}
-                                            {{--</div>--}}
-
-
-                                            {{--<div class="row" id="workGrade">--}}
-
-                                            {{--</div>--}}
-
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-
-
-
-
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                        {{--</div>--}}
-
-                    {{--</div>--}}
 
                     <style>
                     .card-shadow:hover {
@@ -278,7 +207,9 @@
 
                                                                 <div class="col-md-6 mt-2">
                                                                     <div class="card mr-3" style="width: 100%; box-shadow: none;">
-                                                                        <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
+                                                                        <a href="/teacher/assignment/{{$asm_id->id}}/workFiles={{$file->file}}">
+                                                                            <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                         @endforeach
@@ -339,19 +270,18 @@
 
 
 
-                                    <div class="container mt-5">
-                                        <div class="row">
-                                            <div class="col-md-6 text-right">
-                                                <a href="/teacher/assignment/{{$works->assignment_id}}" class="btn btn-primary btn-submit" style="background: darkgray!important;">
-                                                    ย้อนกลับ
-                                                </a>
+                                        <div class="container mt-5 mb-3">
+                                            <div class="row">
+                                                <div class="col-md-6 text-right">
+                                                    <input class="btn btn-primary btn-submit" type="submit" value="บันทึก">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="/teacher/assignment/{{$works->assignment_id}}" class="btn btn-primary btn-submit" style="background: darkgray!important;">
+                                                        ย้อนกลับ
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <input class="btn btn-primary btn-submit" type="submit" value="บันทึก">
-                                            </div>
-
                                         </div>
-                                    </div>
 
                                     </form>
                                 </div>

@@ -183,9 +183,11 @@
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td>ไม่มีข้อมูล</td>
-                                                <td></td>
-                                                <td></td>
+                                                <th colspan="6" class="text-center" style="color: lightgray;">
+                                                    <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 100px; opacity: .5;">
+                                                    <br>
+                                                    <span style="font-family: 'Prompt', sans-serif;">ไม่มีงานที่มอบหมาย</span>
+                                                </th>
                                             </tr>
                                         @endif
                                         </tbody>

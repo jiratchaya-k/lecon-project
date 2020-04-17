@@ -105,11 +105,6 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
                             <h2 class="pageheader-title">เปรียบเทียบงาน</h2>
-                            {{--<div class="text-right mb-2">--}}
-                                {{--<a id="myBtn" class="btn btn-primary btn-submit" style="width: 20%; color: white">--}}
-                                    {{--เปรียบเทียบงาน--}}
-                                {{--</a>--}}
-                            {{--</div>--}}
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
@@ -277,7 +272,9 @@
                                                         @foreach( $files as $file)
                                                             <div class="col-md-6 mt-2">
                                                                 <div class="card mr-3" style="width: 100%; box-shadow: none;">
-                                                                    <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
+                                                                    <a href="/teacher/assignment/{{$asm_id->assignment_id}}/workFiles={{$file->file}}">
+                                                                        <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         @endforeach
@@ -317,7 +314,7 @@
                                                     <input class="btn btn-primary btn-submit" type="submit" value="บันทึก">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <a href="/teacher/assignment/{{$works->assignment_id}}" class="btn btn-primary btn-submit" style="background: darkgray!important;">
+                                                    <a href="javascript:history.back()" class="btn btn-primary btn-submit" style="background: darkgray!important;">
                                                         ย้อนกลับ
                                                     </a>
                                                 </div>

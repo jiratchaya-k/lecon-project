@@ -18,18 +18,21 @@ class ProfileController extends Controller
 
         $user = DB::table('users')->where('firstname',$firstname)->where('lastname',$lastname)
             ->first();
+        //        dd($user);
+        if ($user->id == Auth::id()){
 
-//        dd($user);
-        if (session('success_message')) {
-            Alert::success('เปลี่ยนรหัสผ่านสำเร็จ')->autoClose($milliseconds = 2000);
+            if (session('success_message')) {
+                Alert::success('เปลี่ยนรหัสผ่านสำเร็จ')->autoClose($milliseconds = 2000);
+            }
+
+            if (Auth::check() && auth()->user()->role == User::role_teacher) {
+                return view('teacher.profile',compact('user'));
+            }elseif (Auth::check() && auth()->user()->role == User::role_student) {
+                return view('student.profile',compact('user'));
+            }
+        }else {
+            return redirect('/');
         }
-
-        if (Auth::check() && auth()->user()->role == User::role_teacher) {
-            return view('teacher.profile',compact('user'));
-        }elseif (Auth::check() && auth()->user()->role == User::role_student) {
-            return view('student.profile',compact('user'));
-        }
-
     }
 
     public function edit($name) {
@@ -40,10 +43,14 @@ class ProfileController extends Controller
             ->first();
 
 //        dd($user);
-        if (Auth::check() && auth()->user()->role == User::role_teacher) {
-            return view('teacher.profile-edit',compact('user'));
-        }elseif (Auth::check() && auth()->user()->role == User::role_student) {
-            return view('student.profile-edit',compact('user'));
+        if ($user->id == Auth::id()) {
+            if (Auth::check() && auth()->user()->role == User::role_teacher) {
+                return view('teacher.profile-edit', compact('user'));
+            } elseif (Auth::check() && auth()->user()->role == User::role_student) {
+                return view('student.profile-edit', compact('user'));
+            }
+        }else {
+            return redirect('/');
         }
     }
 
@@ -108,11 +115,16 @@ class ProfileController extends Controller
             ->first();
 
 //        dd($user);
-        if (Auth::check() && auth()->user()->role == User::role_teacher) {
-            return view('teacher.profile-change-password',compact('user'));
-        }elseif (Auth::check() && auth()->user()->role == User::role_student) {
-            return view('student.profile-change-password',compact('user'));
+        if ($user->id == Auth::id()) {
+            if (Auth::check() && auth()->user()->role == User::role_teacher) {
+                return view('teacher.profile-change-password',compact('user'));
+            }elseif (Auth::check() && auth()->user()->role == User::role_student) {
+                return view('student.profile-change-password',compact('user'));
+            }
+        }else {
+            return redirect('/');
         }
+
 
     }
 
@@ -195,7 +207,14 @@ class ProfileController extends Controller
                 'sis.date','sis.startTime','sis.endTime')
             ->get();
 
-        return view('student.profile-checkname',compact('user','sections'));
+
+        if ($user->id == Auth::id()) {
+            return view('student.profile-checkname',compact('user','sections'));
+        }else {
+            return redirect('/');
+        }
+
+
     }
     public function detailCheckName($name, $sis_id) {
         $firstname = strtok($name, '-' );
@@ -239,8 +258,12 @@ class ProfileController extends Controller
         $checks = DB::table('section_checks')->where('section_checks.sis_id',$sis_id)
         ->select('*')->get();
 
+        if ($user->id == Auth::id()) {
+            return view('student.profile-checkname-detail',compact('user','section','date','checks'));
+        }else {
+            return redirect('/');
+        }
 
-        return view('student.profile-checkname-detail',compact('user','section','date','checks'));
     }
 
 }

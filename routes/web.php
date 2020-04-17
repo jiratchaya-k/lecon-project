@@ -95,6 +95,8 @@ Route::get('/subject/section/{sis_id}/lesson={lesson_id}/{filename}', 'SubjectCo
 
 Route::get('/assignment/{id}', 'AssignmentController@show');
 Route::post('/assignment/{id}/send', 'WorkController@store');
+Route::get('/assignment/{id}/assignmentFiles={filename}', 'AssignmentController@showFile');
+Route::get('/assignment/{id}/workFiles={filename}', 'AssignmentController@showFile');
 
 
 Route::post('/check-in/check', 'LocationController@location');
@@ -139,6 +141,8 @@ Route::get('/teacher/assignment/{id}/edit', 'AssignmentController@edit');
 Route::post('/teacher/assignment/{id}/update', 'AssignmentController@update');
 Route::delete('/teacher/assignment/{id}/delete', 'AssignmentController@destroy');
 Route::post('/teacher/assignment/{id}/update-showgrade', 'AssignmentController@showGrade');
+Route::get('teacher/assignment/{id}/workFiles={filename}', 'AssignmentController@showFile');
+
 
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}', 'AssignmentController@showWorkDetail');

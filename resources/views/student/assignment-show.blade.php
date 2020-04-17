@@ -20,33 +20,48 @@
 
     <div class="container-fluid">
         <div class="container mt-4">
-            <div class="card card-overlap card-shadow col-md-12 item-center">
+            <div class="card card-overlap card-shadow col-md-12 item-center mb-5">
                 <div class="card-body container">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Assignment Sect. {{ $sections->section}}</h5>
+                            <h5><strong>งานที่มอบหมาย</strong> - กลุ่มเรียน {{ $sections->section}}</h5>
                             <span>{{ $sections->code.' '.$sections->name  }}</span>
                         </div>
+
+                        <?php
+
+                        $strYear = date("Y",strtotime($assignment->dueDate))+543;
+                        $strMonth= date("n",strtotime($assignment->dueDate));
+                        $strDay= date("j",strtotime($assignment->dueDate));
+                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                        $strMonthThai=$strMonthCut[$strMonth];
+
+                        $dueDate = "$strDay $strMonthThai $strYear";
+
+                        ?>
+
                         <div class="col-md-6 text-right">
-                            <h5 class="text-green">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}}</h5>
+                            <h5 style="color: #FF8574;"><span style="color: #5e5d5d; font-size: 16px;">ส่งภายใน</span> {{ $dueDate }} <br>
+                                เวลา {{substr($assignment->dueTime, 0,-3)}}</h5>
                         </div>
                     </div>
 
                     <hr>
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>{{ $assignment->title }}</h3>
-                            <span>{{ $assignment-> description }}</span>
+                            <h3 style="color: #3956A3;">{{ $assignment->title }}</h3>
+                            <span style="font-size: 12px; color: #818182;">รายละเอียด</span><br>
+                            <span style="font-size: 16px; color: black;">{{ $assignment-> description }}</span>
                             <br><br>
                             @if(!empty($assignment->file))
 
 
                                 <div class="row">
                                     <div class="tz-gallery">
-                                    <div class="col-md-3 mt-3">
-                                        <a href="/uploads/assignmentFiles/{{ $assignment->file }}" class="btn lightbox" style="background-color: transparent; padding: 0;">
-                                            <div class="card" style="margin-bottom: 0; width: 100px; overflow: hidden;">
+                                    <div class="col-md-3 mt-2 mb-2">
+                                        <a href="/assignment/{{$assignment->id}}/assignmentFiles={{ $assignment->file }}" class="btn lightbox" style="background-color: transparent; padding: 0;">
 
+                                            <div class="card img-fluid" style="margin-bottom: 0; width: 150px; overflow: hidden;" >
                                                 <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5; overflow: hidden;">
                                                     <?php
                                                     $filename = $assignment->file;
@@ -54,18 +69,17 @@
                                                     //                                                    dd($ext);
                                                     ?>
                                                     @if($ext == 'pdf')
-                                                        <iframe src="/uploads/assignmentFiles/20191204001158_artworkA1.pdf" scrolling="no" style="width: 100%; border: none;">
+                                                        <iframe src="/uploads/assignmentFiles/{{ $assignment->file }}" scrolling="no" style="width: 100%; border: none;">
                                                             <p>Your browser does not support iframes.</p>
                                                         </iframe>
                                                     @else
                                                         <img class="" src="/uploads/assignmentFiles/{{ $assignment->file }}"  alt="Card image cap" style="width: 100%; border: none;">
                                                     @endif
                                                 </div>
-                                                </div>
                                                 <div class="card-body" style="padding: 5px;">
-                                                    <h6 class="card-title" style="margin-bottom: 0; font-size: 12px;">{{ $assignment->file }}</h6>
+                                                    <h6 class="card-title" style="margin-bottom: 0; font-size: 12px; color: #5e5d5d;">{{ $assignment->file }}</h6>
                                                 </div>
-
+                                            </div>
                                         </a>
                                     </div>
                                     </div>
@@ -75,67 +89,87 @@
                             @else
 
                             @endif
-                            <h5 class="mt-4">Work Required</h5>
-                            <p>File Type :
+                            <h6 class="mt-4 font-weight-bold" style="color: #3956A3;">เงื่อนไขของงาน</h6>
+                            <p><span style="font-size: 12px; color: #818182;">นามสกุลไฟล์</span><br>
                                 @if(empty($assignment->fileType))
-                                    None
+                                    ไม่กำหนด
                                 @else
                                     @foreach($fileType as $type)
                                         {{ $type.' ' }}
                                     @endforeach
                                 @endif
                                 <br>
-                                Dimentions :
+                                <span style="font-size: 12px; color: #818182;">ขนาดของรูป (กว้าง x ยาว)</span><br>
                                 @if( $assignment->dimensionsType == '')
-                                    None
+                                    ไม่กำหนด
                                 @else
                                     {{ $assignment->dimensions }} {{ $assignment->dimensionsType }}
                                 @endif
                             </p>
                         </div>
                         <div class="col-md-6">
-                            <h6>Status :  {{ $status }}</h6>
-                            @if(!empty($assignmentWork))
 
-                                <p id="workStatus"></p>
-                            <div class="row">
-                                @foreach($works as $work)
-                                    <div class="col-md-3">
-                                        <div class="card mb-4 box-shadow">
-                                            <a href="#">
-                                                <img src="/uploads/workFiles/{{$work}}" class="card-img-top" alt="">
-                                            </a>
+                            <div class="card mt-3" style="border: 3px solid #FF8574; border-radius: 20px; background-color: white;">
+                                <div class="card-body">
+                                    @if(!empty($assignmentWork))
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            เกรดที่ได้ <span style="margin-left: 5px; color: #3956A3; font-size: 30px; font-weight: bold;">{{ $grade }}</span>
+                                            <br>
+                                            <p style="font-size: 12px; color: #5e5d5d;">
+                                                @if($assignmentWork->remark != '')
+                                                    {{ ' ('.$assignmentWork->remark.')'  }}
+                                                @endif
+                                            </p>
+
+                                        </div>
+                                        <div class="col-md-4 text-right">
+                                            <h6 class="btn" style="background-color: #3956A3; color: white; cursor: text;">
+                                                {{ $status }}
+                                            </h6>
                                         </div>
                                     </div>
-                                @endforeach
+                                        <p id="workStatus"></p>
+                                        <div class="row">
+                                            @foreach($works as $work)
+                                                <div class="col-md-6">
+                                                    <div class="card mb-4 box-shadow">
+                                                        <a href="/assignment/{{$assignment->id}}/workFiles={{$work}}">
+                                                            <img src="/uploads/workFiles/{{$work}}" class="card-img-top" alt="">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                            <div class="col-md-12 text-right">
+                                                <h6 class="btn" style="background-color: #3956A3; color: white;">
+                                                    ยังไม่ได้ส่ง
+                                                </h6>
+                                            </div>
+
+                                        <div class="text-center">
+                                            <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 100px; opacity: .5;">
+                                            <br>
+                                            <span>ไม่มีงานที่ส่ง</span>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
-
-
-                                Grade : {{ $assignmentWork->grade }}
-                                @if($assignmentWork->remark != '')
-                                    {{ ' ('.$assignmentWork->remark.')'  }}
-                                @endif
-                            @else
-                                Grade :
-                                <h6>No Work.</h6>
-                            @endif
                         </div>
                     </div>
 
-                    {{--@if(count($works) == 0)--}}
-                    <hr>
-
-                    <form method="POST" action="/assignment/{{ $assignment->id }}/send" enctype="multipart/form-data" class="sendAssignment">
+                    @if(empty($works))
+                    <form method="POST" action="/assignment/{{ $assignment->id }}/send" enctype="multipart/form-data" class="sendAssignment card">
                     @csrf
 
-                        <div class="form-group col-md-8 item-center mt-3 mb-3">
-                            <label for="file" class="control-label">Upload your work</label>
-                            {{--<input class="form-control" name="work_file[]" type="file">--}}
+                        <div class="form-group col-md-8 item-center mt-4 text-center">
+                            <label for="file" class="control-label">อับโหลดไฟล์งาน</label>
                             <input class="form-control" name="assignment_id" value="{{ $assignment->id }}" type="hidden">
                         </div>
 
                         <div class="controls">
-                            <div class="form-group item-center mt-3 mb-3">
+                            <div class="form-group item-center mt-2 mb-3">
                                 <div class="entry input-group col-md-8 item-center">
                                     <input class="form-control f-input col-md-12" name="work_file[]" type="file" style="float: left">
                                     <span class="input-group-btn ml-2" style="float: left;" >
@@ -150,14 +184,17 @@
 
 
 
-                            <div class="col-md-3 item-center mt-5 mb-3">
+                            <div class="col-md-3 item-center mt-2 mb-3">
                                 <input class="btn btn-dark btn-submit" type="submit" value="ส่งงาน" style="background: #3956A3 !important; border: none; width: 100%">
                             </div>
                     </form>
 
-                        {{--@else--}}
+                        @else
                         <br class="mt-5 mb-5">
-                    {{--@endif--}}
+                    @endif
+                    <div class="text-center mb-3">
+                        <a href="javascript:history.back()" class="btn btn-submit mt-4" style="background: white; border: 2px solid #3956A3; color: #3956A3; width: 150px;">ย้อนกลับ</a>
+                    </div>
 
                 </div>
             </div>

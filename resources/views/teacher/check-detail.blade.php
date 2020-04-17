@@ -104,7 +104,10 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">เช็คชื่อเข้าเรียน -> {{ $subject->code.' '.$subject->name }}</h2>
+                            <h2 class="pageheader-title" style="float: left;">เช็คชื่อเข้าเรียน -> {{ $subject->code.' '.$subject->name }}</h2>
+                            <div class="text-right mb-2">
+                                <a href="javascript:history.back()" class="btn btn-submit" style="background: white; border: 2px solid #3956A3; color: #3956A3;  width: 150px;">ย้อนกลับ</a>
+                            </div>
 
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
@@ -178,13 +181,21 @@
                                                             ->join('student_checks as std_check','std_check.sectionCheck_id','=','sect_check.id')
                                                             ->select('*')->count();
 
+                                                        $strYear = date("Y",strtotime($check->check_date))+543;
+                                                        $strMonth= date("n",strtotime($check->check_date));
+                                                        $strDay= date("j",strtotime($check->check_date));
+                                                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                                                        $strMonthThai=$strMonthCut[$strMonth];
+
+                                                        $checkdate = "$strDay $strMonthThai $strYear";
+
 //                                                        dd($student_count);
                                                         ?>
 
                                                         <form method="POST" action="/teacher/student-check/{{ $subject->code }}/{{ $subject->section }}/{{ $subject->sis_id }}/{{ $check->check_date }}" enctype="multipart/form-data">
                                                             @csrf
                                                         <tr>
-                                                            <td>{{ date('d M Y', strtotime($check->check_date))}}</td>
+                                                            <td>{{ $checkdate }}</td>
 
 
 
@@ -200,6 +211,14 @@
                                                         </tr>
                                                         </form>
                                                     @endforeach
+                                                @else
+                                                    <tr>
+                                                        <th colspan="6" class="text-center" style="color: lightgray;">
+                                                            <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 100px; opacity: .5;">
+                                                            <br>
+                                                            <span style="font-family: 'Prompt', sans-serif;">ไม่มีงานที่ข้อมูล</span>
+                                                        </th>
+                                                    </tr>
                                                 @endif
                                                 </tbody>
                                             </table>

@@ -48,6 +48,7 @@ class CsvImport implements ToModel, WithHeadingRow
                 'lastname'      =>  $row["lastname"],
                 'student_id'      =>  $row["student_id"],
                 'email'     =>  null,
+                'profile_img' => 'profile_default.png',
                 'role'     =>  User::role_student,
                 'password'  =>  \Hash::make($row['password']),
             ]);

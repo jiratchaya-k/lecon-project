@@ -13,34 +13,48 @@
     <div class="container-fluid">
         <div class="container mt-4">
 
-            <h4 style="font-weight: bolder; color: #3956A3;">Assignment</h4>
+            <h4 style="font-weight: bolder; color: #3956A3;"><img src="/uploads/icons/icon-work.png" style="width: 35px; margin-right: 10px;">งานที่มอบหมาย</h4>
             <hr>
             <div class="row">
                 @if(count($assignments)>0)
                     @foreach($assignments as $assignment)
+                        <?php
+
+                        $strYear = date("Y",strtotime($assignment->dueDate))+543;
+                        $strMonth= date("n",strtotime($assignment->dueDate));
+                        $strDay= date("j",strtotime($assignment->dueDate));
+                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                        $strMonthThai=$strMonthCut[$strMonth];
+
+                        $dueDate = "$strDay $strMonthThai $strYear";
+
+                        ?>
+
                         <a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">
                             <div class="card card-shadow  mt-3 mb-2">
                                 <div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">
-                                    <span>Sect. {{ $assignment->section }}</span>
+                                    <span>กลุ่มเรียน {{ $assignment->section }}</span>
                                 </div>
 
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>
-                                    <p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>
+                                    <p class="card-text fs-12">ส่งภายใน {{ $dueDate }} เวลา {{substr($assignment->dueTime, 0,-3)}} </p>
                                 </div>
                             </div>
                         </a>
                     @endforeach
                 @else
-                    <div>
-                        <p>No Assignment</p>
+                    <div class="text-center">
+                        <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 100px; opacity: .5;">
+                        <br>
+                        <span>ไม่มีงานที่มอบหมาย</span>
                     </div>
                 @endif
             </div>
 
             <br><br>
 
-            <h4 style="font-weight: bolder; color: #FF8574;">Your Section</h4>
+            <h4 style="font-weight: bolder; color: #FF8574;"><img src="/uploads/icons/icon-play.png" style="width: 35px; margin-right: 10px;">กลุ่มเรียนที่เข้าร่วม</h4>
             <hr>
             <div class="row">
                 @if(count($sections)>0)
@@ -93,8 +107,10 @@
 
                     @endforeach
                 @else
-                    <div>
-                        <p>No Assignment</p>
+                    <div class="text-center">
+                        <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 100px; opacity: .5;">
+                        <br>
+                        <span>ไม่มีกลุ่มเรียน</span>
                     </div>
                 @endif
             </div>
