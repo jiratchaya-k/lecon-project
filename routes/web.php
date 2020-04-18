@@ -76,10 +76,10 @@ Route::post('/teacher/subject/store', 'SubjectController@store');
 Route::get('/teacher/subject/{id}/add-section', 'SubjectController@addSection');
 Route::post('/teacher/subject/{id}/add-section/store', 'SubjectController@sectionStore');
 
-
+Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentController@update');
 Route::get('/teacher/student-check', 'CheckStudentController@index');
 Route::get('/teacher/student-check/check={check_id}/get-qrcode', 'CheckStudentController@getQrcode');
-Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentController@update');
+
 //Route::post('/teacher/student-check/check={check_id}/get-qrcode/update', 'CheckStudentController@update');
 Route::post('/teacher/student-check/create', 'CheckStudentController@createCheck');
 Route::post('/teacher/student-check/{subject_code}/{section}/{sis_id}/{check_date}','CheckStudentController@studentList');

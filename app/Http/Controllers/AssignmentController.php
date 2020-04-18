@@ -233,7 +233,7 @@ class AssignmentController extends Controller
             ->select('subjects.id','sections.section','subjects.code','subjects.name')->first();
 
 //        dd($assignment);
-
+        if (!empty(Auth::check())) {
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
 
             $allWorks = DB::table('works')->where('assignment_id',$id)
@@ -332,6 +332,9 @@ class AssignmentController extends Controller
 //            dd($assignmentWork);
 
             return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections','grade'));
+        }
+        }else {
+            return redirect('/login');
         }
 
     }

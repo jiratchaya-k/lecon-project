@@ -2,10 +2,39 @@
 
 @section('content')
 
+    <style>
+        .mobile-box{
+            display: none;
+        }
+        @media (min-width: 320px) and (max-width: 480px)
+        {
+            .l-box {
+                display: none!important;
+            }
+            .mobile-box{
+                display: block;
+            }
+            .right-box {
+                margin-top: 30px!important;
+            }
+        }
+        @media (min-width: 481px) and (max-width: 767px)
+        {
+            .l-box {
+                display: none!important;
+            }
+            .mobile-box{
+                display: block;
+            }
+            .right-box {
+                margin-top: 30px!important;
+            }
+        }
+    </style>
 
     <div class="container-fluid full-height">
         <div class="row full-height">
-            <div class="col-md-5 left-box">
+            <div class="col-md-5 left-box l-box">
                <div class="container mt-10 text-center text-white">
                    <br><br>
                    <h1 class="ls-3">สวัสดี นักศึกษา !</h1>
@@ -27,15 +56,20 @@
                    </div>
                </div>
             </div>
-            <div class="col-md-7 right-box mt-10 text-center">
-                <h2 class="mt-3">สมัครสมาชิก</h2>
+            <div class="col-md-7 col-xs-12 right-box mt-10 text-center pt-3">
+                <img src="/uploads/logo-blue.png" alt="" style="width: 150px;">
+                <h3 class="mt-3">สมัครสมาชิก</h3>
                 <span style="color: dimgray;">นักศึกษา</span>
-                <br><br><br>
+                <br>
+                <a class="btn btn-link mt-2 mobile-box" href="/teacher/sign-up" style="color: #5e5d5d; font-size: 10px">
+                    {{ __('สมัครสมาชิกของผู้สอน') }}
+                </a>
+                <br>
 
 
 
 
-                <form method="POST" action="/sign-up" enctype="multipart/form-data" class="align-items-center col-8 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">
+                <form method="POST" action="/sign-up" enctype="multipart/form-data" class="align-items-center col-md-8 col-xs-12 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">
                 @csrf
 
                     <div class="input-group mb-4">
@@ -51,7 +85,7 @@
                     </div>
 
                 <div class="row">
-                    <div class="input-group mb-4 col-6" style="margin-left: auto;margin-right: auto;">
+                    <div class="input-group mb-4 col-md-6 col-xs-12" style="margin-left: auto;margin-right: auto;">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="far fa-id-card"></i></div>
                         </div>
@@ -63,7 +97,7 @@
                          </span>
                         @enderror
                     </div>
-                    <div class="input-group mb-4 col-6" style="margin-left: auto;margin-right: auto;">
+                    <div class="input-group mb-4 col-md-6 col-xs-12" style="margin-left: auto;margin-right: auto;">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="far fa-id-card"></i></div>
                         </div>
@@ -90,7 +124,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-group mb-4 col-6" style="margin-left: auto;margin-right: auto;">
+                        <div class="input-group mb-4 col-md-6 col-xs-12" style="margin-left: auto;margin-right: auto;">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                             </div>
@@ -102,7 +136,7 @@
                          </span>
                             @enderror
                         </div>
-                        <div class="input-group mb-4 col-6" style="margin-left: auto;margin-right: auto;">
+                        <div class="input-group mb-4 col-md-6 col-xs-12" style="margin-left: auto;margin-right: auto;">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                             </div>
@@ -120,178 +154,18 @@
                     </div>
                 </form>
             </div>
+
+            <div class="left-box mt-5 text-center text-white mobile-box pt-4 pb-4" style="height: auto;">
+                <span>คุณมีบัญชีอยู่แล้ว ?</span><br>
+                <div class="button-login button-3">
+                    <a href="/sign-in">
+                        <div class="circle circle-short"></div>
+                        เข้าสู่ระบบ</a>
+                </div>
+                <br>
+            </div>
+
         </div>
     </div>
 @endsection
-
-    {{--<div class="form-group row">--}}
-    {{--<label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>--}}
-
-    {{--<div class="col-md-6">--}}
-    {{--<input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>--}}
-
-    {{--@error('lastname')--}}
-    {{--<span class="invalid-feedback" role="alert">--}}
-    {{--<strong>{{ $message }}</strong>--}}
-    {{--</span>--}}
-    {{--@enderror--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="form-group row">--}}
-    {{--<label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Student ID') }}</label>--}}
-
-    {{--<div class="col-md-6">--}}
-    {{--<input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror" name="student_id" value="{{ old('student_id') }}" required autocomplete="student_id" autofocus>--}}
-
-    {{--@error('student_id')--}}
-    {{--<span class="invalid-feedback" role="alert">--}}
-    {{--<strong>{{ $message }}</strong>--}}
-    {{--</span>--}}
-    {{--@enderror--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="form-group row">--}}
-    {{--<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
-
-    {{--<div class="col-md-6">--}}
-    {{--<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">--}}
-
-    {{--@error('email')--}}
-    {{--<span class="invalid-feedback" role="alert">--}}
-    {{--<strong>{{ $message }}</strong>--}}
-    {{--</span>--}}
-    {{--@enderror--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="form-group row">--}}
-    {{--<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>--}}
-
-    {{--<div class="col-md-6">--}}
-    {{--<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">--}}
-
-    {{--@error('password')--}}
-    {{--<span class="invalid-feedback" role="alert">--}}
-    {{--<strong>{{ $message }}</strong>--}}
-    {{--</span>--}}
-    {{--@enderror--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="form-group row">--}}
-    {{--<label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>--}}
-
-    {{--<div class="col-md-6">--}}
-    {{--<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-
-
-
-
-
-{{--<div class="container">--}}
-    {{--<div class="row justify-content-center">--}}
-        {{--<div class="col-md-8">--}}
-            {{--<div class="card">--}}
-                {{--<div class="card-header">{{ __('Register as Student') }}</div>--}}
-                {{--You are Teacher ? <a href="/teacher/register">Sign Up</a>--}}
-                {{--<div class="card-body">--}}
-                    {{--<form method="POST" action="/register" enctype="multipart/form-data">--}}
-                        {{--@csrf--}}
-
-                        {{--<div class="form-group row">--}}
-                            {{--<label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Firstname') }}</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>--}}
-
-                                {{--@error('firstname')--}}
-                                    {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $message }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@enderror--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group row">--}}
-                            {{--<label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>--}}
-
-                                {{--@error('lastname')--}}
-                                {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $message }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@enderror--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group row">--}}
-                            {{--<label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Student ID') }}</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror" name="student_id" value="{{ old('student_id') }}" required autocomplete="student_id" autofocus>--}}
-
-                                {{--@error('student_id')--}}
-                                {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $message }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@enderror--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group row">--}}
-                            {{--<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">--}}
-
-                                {{--@error('email')--}}
-                                    {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $message }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@enderror--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group row">--}}
-                            {{--<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">--}}
-
-                                {{--@error('password')--}}
-                                    {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $message }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@enderror--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group row">--}}
-                            {{--<label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group row mb-0">--}}
-                            {{--<div class="col-md-6 offset-md-4">--}}
-                                {{--<button type="submit" class="btn btn-primary">--}}
-                                    {{--{{ __('Register') }}--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</form>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
 

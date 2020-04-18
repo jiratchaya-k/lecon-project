@@ -50,13 +50,21 @@
                         <div class="col-md-6 text-center">
                             {!! QrCode::size(400)->encoding('UTF-8')->generate('lecon.com/check-in/'.$section->id.'/'.date('His',$currentTime)); !!}
                         </div>
-                        <div class="col-md-6 text-center" style="padding-top: 100px;">
+                        <div class="col-md-6 text-center" style="padding-top: 80px;">
                             <h5>QR Code เช็คชื่อ</h5>
+                            <br>
+                            <span>ภายใน </span>
 
-                            <h5>ภายใน {{ date('H:i', $inTime) }} น.</h5>
-                            <button onclick="refresh()" class="btn btn-block btn-primary mt-5 box-shadow btn-submit" style="background:#FF8574; border: none; width: 200px; margin: 0 auto; ">
+                            <h3><strong style="color: #3956A3;">{{ date('H:i', $inTime) }} น.</strong></h3>
+
+                            <div class="count mt-5">
+                                <div id="timer"><i class="fas fa-redo-alt fa-sm"></i> 00:30</div>
+                            </div>
+
+                            <button onclick="refresh()" class="btn btn-block btn-primary mt-2 box-shadow btn-submit" style="background:#FF8574; border: none; width: 200px; margin: 0 auto; ">
                                 สร้าง QR Code ใหม่
                             </button>
+
 
 
                             <form method="POST" action="/teacher/student-check/check={{$section->id}}/get-qrcode/update" enctype="multipart/form-data">
@@ -69,6 +77,10 @@
 
                         </div>
                     </div>
+                    <div class="text-center">
+                        <a href="javascript:history.back()" class="btn btn-submit mt-3" style="background: white; border: 2px solid #3956A3; color: #3956A3;  width: 150px;">ย้อนกลับ</a>
+                    </div>
+
                 </div>
             </div>
 
@@ -126,5 +138,46 @@
 
 
 
+    </script>
+    <script>
+        var sec         = 30,
+            countDiv    = document.getElementById("timer"),
+            secpass,
+            countDown   = setInterval(function () {
+                'use strict';
+
+                secpass();
+            }, 1000);
+
+        function secpass() {
+            'use strict';
+
+            var min     = Math.floor(sec / 60),
+                remSec  = sec % 60;
+
+            if (remSec < 10) {
+
+                remSec = '0' + remSec;
+
+            }
+            if (min < 10) {
+
+                min = '0' + min;
+
+            }
+            countDiv.innerHTML = "<i class=\"fas fa-redo-alt fa-sm\"></i> " + min + ":" + remSec;
+
+            if (sec > 0) {
+
+                sec = sec - 1;
+
+            } else {
+
+                clearInterval(countDown);
+
+                refresh();
+
+            }
+        }
     </script>
 @endsection

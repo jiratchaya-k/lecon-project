@@ -2,10 +2,39 @@
 
 @section('content')
 
+    <style>
+        .mobile-box{
+            display: none;
+        }
+        @media (min-width: 320px) and (max-width: 480px)
+        {
+            .l-box {
+                display: none!important;
+            }
+            .mobile-box{
+                display: block;
+            }
+            .right-box {
+                margin-top: 30px!important;
+            }
+        }
+        @media (min-width: 481px) and (max-width: 767px)
+        {
+            .l-box {
+                display: none!important;
+            }
+            .mobile-box{
+                display: block;
+            }
+            .right-box {
+                margin-top: 30px!important;
+            }
+        }
+    </style>
 
     <div class="container-fluid full-height">
         <div class="row full-height">
-            <div class="col-md-5 left-box">
+            <div class="col-md-5 col-xs-12 left-box l-box">
                 <div class="container mt-10 text-center text-white">
                     <br><br>
                     <h1 class="ls-3">สวัสดี !</h1>
@@ -27,14 +56,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7 right-box mt-10 text-center">
-                <h2 class="mt-5">เข้าสู่ระบบ</h2>
+            <div class="col-md-7 col-xs-12 right-box mt-10 text-center pt-3">
+                <img src="/uploads/logo-blue.png" alt="" style="width: 150px;">
+                <h3 class="mt-3">เข้าสู่ระบบ</h3>
                 <br><br>
 
 
 
 
-                <form method="POST" action="{{ route('login') }}" class="align-items-center col-8 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">
+                <form method="POST" action="{{ route('login') }}" class="align-items-center col-md-8 col-xs-12 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">
                     {{--<form method="POST" action="/login" class="align-items-center col-8 needs-validation" novalidate style="margin-left: auto;margin-right: auto;">--}}
                     @csrf
 
@@ -95,6 +125,22 @@
 
                 </form>
             </div>
+            <div class="left-box mt-2 text-center text-white mobile-box pt-4 pb-4" style="height: auto;">
+                <span>คุณยังไม่มีบัญชี ?</span><br>
+                <div class="button-login button-3">
+                    <a href="/sign-up">
+                        <div class="circle circle-short"></div>
+                        สมัครสมาชิกของนักศึกษา</a>
+                </div>
+                <br>
+                <span>หรือ</span><br>
+                <div class="button-login button-3">
+                    <a href="/teacher/sign-up">
+                        <div class="circle"></div>
+                        สมัครสมาชิกของผู้สอน</a>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

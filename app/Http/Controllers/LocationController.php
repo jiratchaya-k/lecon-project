@@ -69,7 +69,7 @@ class LocationController extends Controller
                 }
                 return view('student.check',compact('section','date','teachers'));
             }else {
-                Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจาก QR Code หมดอายุ');
+                Alert::error('QR Code หมดอายุ', 'ไม่สามารถเช็คชื่อได้ ลองใหม่อีกครั้ง');
                 return redirect('/');
             }
         }else {
@@ -88,7 +88,7 @@ class LocationController extends Controller
             ->join('sections','sections.id','=','sis.section_id')
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->join('years','sis.year_id','=','years.id')
-            ->select('*','section_checks.id')->first();
+            ->select('*','sis.id as sis_id','section_checks.id')->first();
 
         $teachers = DB::table('attend_sections')->where('attend_sections.sis_id','=',$section->sis_id)
             ->join('users','users.id','=','attend_sections.user_id')
@@ -120,12 +120,17 @@ class LocationController extends Controller
         }
 
         if (session('error_message')) {
-            Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจากไม่อยู่ภายในพื้นที่ที่กำหนด');
+            Alert::error('คุณไม่อยู่ภายในพื้นที่ที่กำหนด', 'ไม่สามารถเช็คชื่อได้ ลองใหม่อีกครั้ง');
         }else if (session('success_message')) {
             Alert::success('เช็คชื่อสำเร็จ')->autoClose($milliseconds = 2000);
         }
 
-        return view('student.check-complete',compact('section','date','teachers'));
+        $user = DB::table('users')->where('id',Auth::id())
+            ->select('firstname','lastname')
+            ->first();
+
+//        return view('student.check-complete',compact('section','date','teachers'));
+        return redirect('/profile/'.$user->firstname.'-'.$user->lastname.'/checkname/sect='.$section->sis_id);
     }
     public function location(Request $request)
     {
@@ -147,33 +152,12 @@ class LocationController extends Controller
             // Google API key
             $apiKey = 'AIzaSyA9rDCoMw1jOfZTkDcnDIn4anKekYFQwBI';
 
-            // Change address format
-//            $formattedAddrFrom = str_replace(' ', '+', $addressFrom);
-//            $formattedAddrTo = str_replace(' ', '+', $addressTo);
 
-
-            // Geocoding API request with start address
-//            $geocodeFrom = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . $formattedAddrFrom . '&sensor=false&key=' . $apiKey);
-//            $outputFrom = json_decode($geocodeFrom);
-//
-//
-//
-//            if (!empty($outputFrom->error_message)) {
-//                return $outputFrom->error_message;
-//            }
-
-            // Geocoding API request with end address
-//            $geocodeTo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . $formattedAddrTo . '&sensor=false&key=' . $apiKey);
-//            $outputTo = json_decode($geocodeTo);
-//            if (!empty($outputTo->error_message)) {
-//                return $outputTo->error_message;
-//            }
-//            dd($geocodeTo);
-            // Get latitude and longitude from the geodata
             $latitudeFrom = $check_lat;
             $longitudeFrom = $check_long;
-//            $latitudeTo = $outputTo->results[0]->geometry->location->lat;
-//            $longitudeTo = $outputTo->results[0]->geometry->location->lng;
+//          $latitudeFrom = 13.85657;
+//          $longitudeFrom = 100.55762;
+
             $latitudeTo = $user_lat;
             $longitudeTo = $user_long;
 
@@ -201,6 +185,7 @@ class LocationController extends Controller
         $user_lat = (float)($request->input('latitude'));
         $user_long = (float)($request->input('longitude'));
 //        dd($user_lat);
+//        dd($user_lat,$user_long);
         // Get distance in km
         $distance = getDistance($check_lat, $check_long, $user_lat, $user_long, "K");
 
@@ -208,7 +193,7 @@ class LocationController extends Controller
 
 //        dd($sectionCheck);
 
-        if ((float)$distance < 0.10){
+        if ((float)$distance > 0.10){
             return redirect()->back()->withErrorMessage('Check In Error.');
         }else{
 

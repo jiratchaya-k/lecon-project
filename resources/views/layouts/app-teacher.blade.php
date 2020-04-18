@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Lecon Project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -178,8 +179,8 @@
 </script>
 
 <script>
-    var button = document.querySelector('.btn-fullscreen');
-    button.addEventListener('click', fullscreen);
+    var button_fs = document.querySelector('.btn-fullscreen');
+    button_fs.addEventListener('click', fullscreen);
     // when you are in fullscreen, ESC and F11 may not be trigger by keydown listener.
     // so don't use it to detect exit fullscreen
     document.addEventListener('keydown', function (e) {

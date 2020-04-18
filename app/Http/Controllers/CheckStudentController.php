@@ -143,6 +143,8 @@ class CheckStudentController extends Controller
         $time = time();
         $currentTime = date('Y-m-d H:i:s',$time);
 
+//        dd($currentTime);
+
         DB::table('section_checks')->where('id', $id) -> update(['updated_at' => $currentTime]);
 
 

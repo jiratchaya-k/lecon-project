@@ -14,6 +14,51 @@
         {
             font-size: 18px;
         }
+        .mobile-box{
+            display: none;
+        }
+        @media (min-width: 320px) and (max-width: 480px)
+        {
+            .banner {
+                height: 180px;
+                margin-top: 30px;
+            }
+            .card-overlap {
+                top: 130px;
+            }
+            .due-box {
+                margin-top: 5px;
+                text-align: left!important;
+            }
+            .mobile-box{
+                display: block;
+            }
+            .status-box{
+                margin-top: 5px;
+                text-align: center!important;
+            }
+        }
+        @media (min-width: 481px) and (max-width: 767px)
+        {
+            .banner {
+                height: 180px;
+                margin-top: 30px;
+            }
+            .card-overlap {
+                top: 130px;
+            }
+            .due-box {
+                margin-top: 5px;
+                text-align: left!important;
+            }
+            .status-box{
+                margin-top: 5px;
+                text-align: center!important;
+            }
+            .mobile-box{
+                display: block;
+            }
+        }
     </style>
     <div class="container-fluid banner">
     </div>
@@ -23,8 +68,8 @@
             <div class="card card-overlap card-shadow col-md-12 item-center mb-5">
                 <div class="card-body container">
                     <div class="row">
-                        <div class="col-md-6">
-                            <h5><strong>งานที่มอบหมาย</strong> - กลุ่มเรียน {{ $sections->section}}</h5>
+                        <div class="col-md-6 col-xs-12">
+                            <h5><strong>งานที่มอบหมาย</strong> - <br class="mobile-box"> กลุ่มเรียน {{ $sections->section}}</h5>
                             <span>{{ $sections->code.' '.$sections->name  }}</span>
                         </div>
 
@@ -40,7 +85,7 @@
 
                         ?>
 
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-6 col-xs-12 text-right due-box">
                             <h5 style="color: #FF8574;"><span style="color: #5e5d5d; font-size: 16px;">ส่งภายใน</span> {{ $dueDate }} <br>
                                 เวลา {{substr($assignment->dueTime, 0,-3)}}</h5>
                         </div>
@@ -48,7 +93,7 @@
 
                     <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-xs-12">
                             <h3 style="color: #3956A3;">{{ $assignment->title }}</h3>
                             <span style="font-size: 12px; color: #818182;">รายละเอียด</span><br>
                             <span style="font-size: 16px; color: black;">{{ $assignment-> description }}</span>
@@ -107,13 +152,13 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-xs-12">
 
                             <div class="card mt-3" style="border: 3px solid #FF8574; border-radius: 20px; background-color: white;">
                                 <div class="card-body">
                                     @if(!empty($assignmentWork))
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 col-xs-12">
                                             เกรดที่ได้ <span style="margin-left: 5px; color: #3956A3; font-size: 30px; font-weight: bold;">{{ $grade }}</span>
                                             <br>
                                             <p style="font-size: 12px; color: #5e5d5d;">
@@ -123,7 +168,7 @@
                                             </p>
 
                                         </div>
-                                        <div class="col-md-4 text-right">
+                                        <div class="col-md-4 col-xs-12 text-right status-box">
                                             <h6 class="btn" style="background-color: #3956A3; color: white; cursor: text;">
                                                 {{ $status }}
                                             </h6>

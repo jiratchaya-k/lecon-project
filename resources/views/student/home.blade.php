@@ -6,6 +6,21 @@
             font-weight: bold;
             font-style: italic;
         }
+        @media (min-width: 320px) and (max-width: 480px)
+        {
+            .banner {
+                height: 180px;
+                margin-top: 30px;
+            }
+        }
+        @media (min-width: 481px) and (max-width: 767px)
+        {
+            .banner {
+                height: 180px;
+                margin-top: 30px;
+            }
+        }
+
     </style>
     <div class="container-fluid banner">
     </div>
@@ -30,7 +45,7 @@
 
                         ?>
 
-                        <a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3">
+                        <a href="/assignment/{{ $assignment->id }}" class="cardLink col-md-3 col-sm-6">
                             <div class="card card-shadow  mt-3 mb-2">
                                 <div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">
                                     <span>กลุ่มเรียน {{ $assignment->section }}</span>
@@ -59,16 +74,16 @@
             <div class="row">
                 @if(count($sections)>0)
                     @foreach($sections as $section)
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-6">
                                 <a href="/subject/section/{{ $section->id }}" class="cardLink">
                                     <div class="card card-shadow mt-2 mb-2" style="padding: 0;">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 col-4 col-sm-5">
                                                 <div class="card-header bg-gradient bg-gradient-or text-center" style="border-radius: 20px 0px 0px 20px; border: none; width: 100%; height: 100%;padding-top: 40%;">
                                                     <span>กลุ่ม {{ $section->section }}</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8" style="padding: 0;">
+                                            <div class="col-md-8 col-8 col-sm-7" style="padding: 0;">
                                                 <div class="card-body" style="padding-left: 0;">
                                                     <span style="font-size: 14px;">{{ $section->code }}</span>
                                                     <h6 class="font-weight-bold fs-15">{{ $section->name }}</h6>
