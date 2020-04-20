@@ -149,12 +149,12 @@
 
                         <div class="row container">
                             <div class="form-group col-md-4">
-                                <label for="date" class="control-label">กำหนดวันส่ง</label>
-                                <input class="form-control f-input" name="assignment_dueDate" type="date" id="date">
+                                <label for="date" class="control-label">ส่งภายในวันที่</label>
+                                <input class="form-control f-input" name="assignment_dueDate" type="date" id="date" value="{{date(('Y-m-d'))}}">
                             </div>
 
                             <div class="form-group col-md-3">
-                                <label for="time" class="control-label">กำหนดเวลาส่ง</label>
+                                <label for="time" class="control-label">ส่งภายในเวลา</label>
                                 <input class="form-control f-input" name="assignment_dueTime" type="time" id="time" value="22:00:00">
                             </div>
                         </div>

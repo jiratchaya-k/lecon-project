@@ -60,6 +60,8 @@ class AssignmentController extends Controller
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('assignments','sis.id','=','assignments.sis_id')
                 ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
+                ->where('assignments.status','=','active')
+                ->where('attend_sections.status','=','active')
                 ->get();
 
 //            dd($asm);
@@ -79,6 +81,8 @@ class AssignmentController extends Controller
             ->join('sections','sis.section_id','=','sections.id')
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->select('*','sis.id as sis_id')
+            ->orderBy('subjects.id','ASC')
+            ->orderBy('sections.section','ASC')
             ->get();
 
 //            dd($sections);

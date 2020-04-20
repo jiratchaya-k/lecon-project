@@ -65,6 +65,7 @@ class HomeController extends Controller
                 ->join('subjects','sis.subject_id','=','subjects.id')
                 ->join('years','sis.year_id','=','years.id')
                 ->select('sis.id','subjects.code','subjects.name','sections.section','sis.date','sis.startTime','sis.endTime','years.year','years.term')
+                ->where('sis.status','=','active')
                 ->get();
 
 //            dd($sections);
@@ -75,6 +76,7 @@ class HomeController extends Controller
                 ->join('sections','sis.section_id','=','sections.id')
                 ->join('assignments','sis.id','=','assignments.sis_id')
                 ->select('*','assignments.id')->orderBy('dueDate','asc')->orderBy('dueTime','asc')
+                ->where('assignments.status','=','active')
                 ->get();
 
 //            dd($assignments);

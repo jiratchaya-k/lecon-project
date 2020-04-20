@@ -104,7 +104,7 @@
                                 <div class="row">
                                     <div class="tz-gallery">
                                     <div class="col-md-3 mt-2 mb-2">
-                                        <a href="/assignment/{{$assignment->id}}/assignmentFiles={{ $assignment->file }}" class="btn lightbox" style="background-color: transparent; padding: 0;">
+                                        <a href="/assignment/{{$assignment->id}}/assignmentFiles={{ $assignment->file }}" class="btn lightbox" style="background-color: transparent; padding: 0;" data-toggle="tooltip" data-placement="bottom" title="คลิกเพื่อดูรูป">
 
                                             <div class="card img-fluid" style="margin-bottom: 0; width: 150px; overflow: hidden;" >
                                                 <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5; overflow: hidden;">
@@ -159,7 +159,16 @@
                                     @if(!empty($assignmentWork))
                                     <div class="row">
                                         <div class="col-md-8 col-xs-12">
-                                            เกรดที่ได้ <span style="margin-left: 5px; color: #3956A3; font-size: 30px; font-weight: bold;">{{ $grade }}</span>
+                                            เกรดที่ได้
+
+                                            @if($grade != '')
+                                                <span style="margin-left: 5px; color: #3956A3; font-size: 30px; font-weight: bold;">
+                                                    {{ $grade }}
+                                                </span>
+                                            @else
+                                                 <span style="font-size: 15px; color: #5e5d5d;">(ยังไม่มีเกรด)</span>
+                                            @endif
+
                                             <br>
                                             <p style="font-size: 12px; color: #5e5d5d;">
                                                 @if($assignmentWork->remark != '')
@@ -179,7 +188,7 @@
                                             @foreach($works as $work)
                                                 <div class="col-md-6">
                                                     <div class="card mb-4 box-shadow">
-                                                        <a href="/assignment/{{$assignment->id}}/workFiles={{$work}}">
+                                                        <a href="/assignment/{{$assignment->id}}/workFiles={{$work}}" data-toggle="tooltip" data-placement="bottom" title="คลิกเพื่อดูรูป">
                                                             <img src="/uploads/workFiles/{{$work}}" class="card-img-top" alt="">
                                                         </a>
                                                     </div>

@@ -165,7 +165,7 @@
                                         <figure class="col-md-4">
                                             <a href="/uploads/assignmentFiles/{{ $assignment->file }}" data-toggle="lightbox" data-gallery="gallery" data-size="1600x1067">
                                                 <div class="card img-fluid" style="margin-bottom: 0; width: 150px; overflow: hidden;" >
-                                                    <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5;">
+                                                    <div class="img-square-wrapper" style="width: 100%; height: 80px; opacity: .5;" data-toggle="tooltip" data-placement="bottom" title="คลิกเพื่อดูรูป">
                                                         <?php
                                                         $filename = $assignment->file;
                                                         $ext =  substr($filename, strrpos($filename, '.' )+1);
@@ -241,7 +241,7 @@
                         @if(count($allWorks) <= 0)
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <a href="/teacher/assignment/{{ $assignment->id }}/edit" class="btn btn-primary btn-dark" style="width: 200px;">
+                                    <a href="/teacher/assignment/{{ $assignment->id }}/edit" class="btn btn-primary btn-dark" style="width: 200px; border-radius: 20px;">
                                         แก้ไข
                                     </a>
                                 </div>
@@ -249,7 +249,7 @@
                                     <form method="POST" action="/teacher/assignment/{{ $assignment->id }}/delete">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button class="btn btn-primary btn-danger" onclick="return confirm('Are you sure to delete?')" style="width: 200px;"> <i class="fas fa-trash"></i> ลบ</button>
+                                        <button class="btn btn-primary btn-danger" onclick="return confirm('Are you sure to delete?')" style="width: 200px; border-radius: 20px;"> <i class="fas fa-trash"></i> ลบ</button>
                                     </form>
                                     {{--<a href="#" class="btn btn-primary btn-danger" style="width: 200px;">--}}
                                         {{--delete--}}
@@ -325,11 +325,11 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td>ยังไม่มีงานที่ส่ง</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <th colspan="6" class="text-center" style="color: lightgray;">
+                                            <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 100px; opacity: .5;">
+                                            <br>
+                                            <span style="font-family: 'Prompt', sans-serif;">ไม่มีงานที่นักศึกษาส่ง</span>
+                                        </th>
                                     </tr>
                                 @endif
                                 </tbody>

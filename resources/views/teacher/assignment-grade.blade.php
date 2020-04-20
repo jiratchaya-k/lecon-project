@@ -206,8 +206,8 @@
                                                         @foreach( $files as $file)
 
                                                                 <div class="col-md-6 mt-2">
-                                                                    <div class="card mr-3" style="width: 100%; box-shadow: none;">
-                                                                        <a href="/teacher/assignment/{{$asm_id->id}}/workFiles={{$file->file}}">
+                                                                    <div class="card mr-3" style="width: 100%; border: 2px solid #FF8574;">
+                                                                        <a href="/teacher/assignment/{{$asm_id->id}}/workFiles={{$file->file}}" data-toggle="tooltip" data-placement="right" title="คลิกเพื่อดูรูป">
                                                                             <img class="card-img-top" src="/uploads/workFiles/{{ $file->file }}" alt="Card image cap">
                                                                         </a>
                                                                     </div>

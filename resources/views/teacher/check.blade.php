@@ -135,9 +135,9 @@
                                             <table class="table">
                                                 <thead>
                                                 <tr>
-                                                    <th class="table-head">กลุ่มเรียน</th>
-                                                    <th class="table-head">วัน</th>
-                                                    <th class="table-head">เวลา</th>
+                                                    <th class="table-head" >กลุ่มเรียน</th>
+                                                    <th class="table-head" style="width: 100px!important;">วัน</th>
+                                                    <th class="table-head" >เวลา</th>
                                                     <th class="table-head">วันที่เช็คชื่อ</th>
                                                     <th class="table-head">สถานที่ที่เช็คชื่อ</th>
                                                     <th class="table-head"> </th>
@@ -222,7 +222,8 @@
                                                                 {{--</a>--}}
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="/teacher/student-check/{{ $subject->code }}/{{ $section->section }}/{{ $section->sis_id }}" class="detail-btn" data-toggle="tooltip" data-placement="bottom" title="รายละเอียดการเช็คชื่อ"><i class="far fa-list-alt fa-2x"></i></a>
+                                                                <a href="/teacher/student-check/{{ $subject->code }}/{{ $section->section }}/{{ $section->sis_id }}" class="detail-btn" data-toggle="tooltip" data-placement="bottom" title="รายละเอียดการเช็คชื่อ"><img
+                                                                            src="/uploads/icons/icon-list.png" alt="" style="width: 35px;"></a>
                                                             </td>
                                                         </tr>
                                                         </form>

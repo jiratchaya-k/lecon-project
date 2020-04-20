@@ -258,8 +258,36 @@ class ProfileController extends Controller
         $checks = DB::table('section_checks')->where('section_checks.sis_id',$sis_id)
         ->select('*')->get();
 
+        $count_checkdate = count($checks);
+
+        $count_checked = 0;
+        $count_late = 0;
+        $count_leave = 0;
+        $count_missed = 0;
+
+        foreach ($checks as $check){
+            $stdCheck = DB::table('student_checks')->where('user_id',Auth::id())
+                ->where('student_checks.sectionCheck_id',$check->id)
+                ->select('*')->first();
+            $check_date = strtotime($check->check_date);
+            $date = strtotime(date("Y-m-d"));
+            if(!empty($stdCheck)){
+                if( $stdCheck->status == 'checked'){
+                    $count_checked += 1;
+                }elseif ($stdCheck->status == 'checked late'){
+                    $count_late += 1;
+                }elseif ($stdCheck->status == 'leave'){
+                    $count_leave += 1;
+                }
+            }
+            elseif ($date > $check_date) {
+                $count_missed += 1;
+            }
+
+        }
+
         if ($user->id == Auth::id()) {
-            return view('student.profile-checkname-detail',compact('user','section','date','checks'));
+            return view('student.profile-checkname-detail',compact('user','section','date','checks','count_checkdate','count_checked','count_late','count_leave','count_missed'));
         }else {
             return redirect('/');
         }

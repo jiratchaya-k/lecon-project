@@ -149,7 +149,7 @@
                                             <th class="table-head">กลุ่มเรียน</th>
                                             <th class="table-head">ปีการศึกษา</th>
                                             <th class="table-head">เทอม</th>
-                                            <th class="table-head">ดูรายละเอียด</th>
+                                            <th class="table-head" style="width: 100px!important;">ดูรายละเอียด</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -184,7 +184,7 @@
                                                     <td>{{ $section -> year }}</td>
                                                     <td>{{ $section -> term }}</td>
                                                     <td>
-                                                        <a href="/teacher/subject/section/{{$section->sis_id}}" class="btn btn-primary btn-submit" style="background:#FF8574; width: 60%;">
+                                                        <a href="/teacher/subject/section/{{$section->sis_id}}" class="btn btn-primary btn-submit" style="background:#FF8574; width: 100%;">
                                                             ดูรายละเอียด
                                                         </a>
                                                     </td>
@@ -228,53 +228,3 @@
 </body>
 
 </html>
-
-
-
-{{--old ver--}}
-{{--@extends('layouts.app')--}}
-
-{{--@section('content')--}}
-    {{--<div class="container-fluid banner">--}}
-    {{--</div>--}}
-
-    {{--<div class="container-fluid">--}}
-        {{--<div class="container mt-4">--}}
-            {{--<h4>Your Section</h4>--}}
-            {{--<a href="/teacher/section/create" class="btn btn-primary btn-submit" style="width: 150px;">--}}
-                {{--Create Section--}}
-            {{--</a>--}}
-            {{--<a href="/teacher/assignment/create" class="btn btn-primary btn-submit" style="width: 200px;">--}}
-                {{--Create Assignment--}}
-            {{--</a>--}}
-
-            {{--<hr>--}}
-
-            {{--<h4>Assignment</h4>--}}
-            {{--<div class="row">--}}
-                {{--@if(count($assignments)>0)--}}
-                    {{--@foreach($assignments as $assignment)--}}
-                        {{--<a href="/teacher/assignment/{{ $assignment->id }}" class="cardLink col-md-3">--}}
-                            {{--<div class="card card-shadow mt-3 mb-2">--}}
-                                {{--<div class="card-header bg-gradient" style="border-radius: 20px 20px 0px 0px;">--}}
-                                    {{--<span>Sect.</span>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="card-body">--}}
-                                    {{--<h5 class="card-title font-weight-bold fs-18">{{ $assignment->title }}</h5>--}}
-                                    {{--<p class="card-text fs-12">Due. {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}} </p>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</a>--}}
-                    {{--@endforeach--}}
-                {{--@else--}}
-                    {{--<div>--}}
-                        {{--<p>No Assignment</p>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
-
-            {{--</div>--}}
-
-        {{--</div>--}}
-    {{--</div>--}}
-{{--@endsection--}}

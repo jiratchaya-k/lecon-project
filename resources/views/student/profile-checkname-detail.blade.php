@@ -79,6 +79,59 @@
                             </div>
                         </div>
                         <hr>
+
+                        <div class="row mb-2">
+                            <div class="col-md-3">
+                                <div class="card text-center" style="border-radius: 20px;">
+                                    <div class="card-body">
+                                        <h4 style="font-weight: bold; color: #3956A3;">
+                                            {{ $count_checked }}
+                                        </h4>
+                                        <span style="font-size: 14px; color: #818182;">
+                                            เข้าเรียน
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center" style="border-radius: 20px;">
+                                    <div class="card-body">
+                                        <h4 style="font-weight: bold; color: #3956A3;">
+                                            {{ $count_late }}
+                                        </h4>
+                                        <span style="font-size: 14px; color: #818182;">
+                                            เข้าสาย
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center" style="border-radius: 20px;">
+                                    <div class="card-body">
+                                        <h4 style="font-weight: bold; color: #3956A3;">
+                                            {{ $count_missed }}
+                                        </h4>
+                                        <span style="font-size: 14px; color: #818182;">
+                                            ขาดเรียน
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center" style="border-radius: 20px;">
+                                    <div class="card-body">
+                                        <h4 style="font-weight: bold; color: #3956A3;">
+                                            {{ $count_leave }}
+                                        </h4>
+                                        <span style="font-size: 14px; color: #818182;">
+                                            ลา
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                         <div class="table-responsive-xl">
                             <table class="table">
                                 <thead>

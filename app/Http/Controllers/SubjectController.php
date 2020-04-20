@@ -28,6 +28,7 @@ class SubjectController extends Controller
             ->join('sections_in_subjects as sis','attend.sis_id','=','sis.id')
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->where('attend.status','=','active')
+            ->where('sis.status','=','active')
             ->select('code','name')->distinct()
             ->get();
         $subjects = json_decode($subject);
@@ -39,6 +40,7 @@ class SubjectController extends Controller
             ->join('subjects','sis.subject_id','=','subjects.id')
             ->join('years','sis.year_id','=','years.id')
             ->select('sis.id','subjects.code','subjects.name','sections.section','sis.date','sis.startTime','sis.endTime','years.year','years.term')
+            ->where('sis.status','=','active')
             ->get();
 
 //        dd($subject);

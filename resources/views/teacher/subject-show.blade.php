@@ -323,7 +323,7 @@
                         @if(count($assignments) > 0)
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <a href="/teacher/subject/section/{{$sections->sis_id}}/edit" class="btn btn-primary btn-dark" style="width: 200px;">
+                                    <a href="/teacher/subject/section/{{$sections->sis_id}}/edit" class="btn btn-primary btn-dark" style="width: 200px; border-radius: 20px;">
                                         แก้ไข
                                     </a>
                                 </div>
@@ -332,7 +332,7 @@
                         @else
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <a href="/teacher/subject/section/{{$sections->sis_id}}/edit" class="btn btn-primary btn-dark" style="width: 200px;">
+                                    <a href="/teacher/subject/section/{{$sections->sis_id}}/edit" class="btn btn-primary btn-dark" style="width: 200px; border-radius: 20px;">
                                         แก้ไข
                                     </a>
                                 </div>
@@ -340,7 +340,7 @@
                                     <form method="POST" action="/teacher/subject/section/{{$sections->sis_id}}/delete">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button class="btn btn-primary btn-danger" onclick="return confirm('Are you sure to delete?')" style="width: 200px;"> <i class="fas fa-trash"></i> ลบ</button>
+                                        <button class="btn btn-primary btn-danger" onclick="return confirm('Are you sure to delete?')" style="width: 200px; border-radius: 20px;"> <i class="fas fa-trash"></i> ลบ</button>
                                     </form>
                                     {{--<a href="#" class="btn btn-primary btn-danger" style="width: 200px;">--}}
                                     {{--delete--}}
