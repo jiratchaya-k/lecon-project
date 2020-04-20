@@ -270,7 +270,7 @@ class ProfileController extends Controller
                 ->where('student_checks.sectionCheck_id',$check->id)
                 ->select('*')->first();
             $check_date = strtotime($check->check_date);
-            $date = strtotime(date("Y-m-d"));
+            $cur_date = strtotime(date("Y-m-d"));
             if(!empty($stdCheck)){
                 if( $stdCheck->status == 'checked'){
                     $count_checked += 1;
@@ -280,7 +280,7 @@ class ProfileController extends Controller
                     $count_leave += 1;
                 }
             }
-            elseif ($date > $check_date) {
+            elseif ($cur_date > $check_date) {
                 $count_missed += 1;
             }
 

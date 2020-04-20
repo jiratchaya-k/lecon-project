@@ -48,7 +48,7 @@
 //
                         ?>
                         <div class="col-md-6 text-center">
-                            {!! QrCode::size(400)->encoding('UTF-8')->generate('lecon.com/check-in/'.$section->id.'/'.date('His',$currentTime)); !!}
+                            {!! QrCode::size(400)->encoding('UTF-8')->generate('thelecon.com/check-in/'.$section->id.'/'.date('His',$currentTime)); !!}
                         </div>
                         <div class="col-md-6 text-center" style="padding-top: 80px;">
                             <h5>QR Code เช็คชื่อ</h5>
