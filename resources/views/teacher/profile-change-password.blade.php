@@ -68,20 +68,64 @@
                                 background-color: #3956A3;
                                 color: white;
                             }
+                            .mobile-box{
+                                display: none;
+                            }
+                            .desk-box {
+                                display: block;
+                            }
+                            @media (min-width: 320px) and (max-width: 480px)
+                            {
+                                .banner {
+                                    height: 180px;
+                                    margin-top: 30px;
+                                }
+                                .mobile-box{
+                                    display: block;
+                                }
+                                .desk-box {
+                                    display: none;
+                                }
+                            }
+                            @media (min-width: 481px) and (max-width: 767px)
+                            {
+                                .banner {
+                                    height: 180px;
+                                    margin-top: 30px;
+                                }
+                                .mobile-box{
+                                    display: block;
+                                }
+                                .desk-box {
+                                    display: none;
+                                }
+                            }
                         </style>
 
-                        <div class="vertical-menu text-center mb-3">
+                        <div class="vertical-menu text-center mb-3 desk-box">
                             <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="">โปรไฟล์</a>
                             <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="active">เปลี่ยนรหัสผ่าน</a>
+                            {{--<a href="#">Link 2</a>--}}
+                            {{--<a href="#">Link 3</a>--}}
+                            {{--<a href="#">Link 4</a>--}}
                         </div>
-                        <div class="vertical-menu text-center mb-2">
+                        <div class="vertical-menu text-center mb-2 desk-box">
                             <a href="/logout" class="btn btn-submit" style=" width:100%; background: #5e5d5d; color: white;">ออกจากระบบ</a>
+                            {{--<a href="#">Link 2</a>--}}
+                            {{--<a href="#">Link 3</a>--}}
+                            {{--<a href="#">Link 4</a>--}}
+                        </div>
+
+                        <div class="vertical-menu text-center mb-3 mobile-box">
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="" style="width:50%; float: left;border-right: 2px solid white;">โปรไฟล์</a>
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="active">เปลี่ยนรหัสผ่าน</a>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="mobile-box" style="margin: 10px;"></div>
+            <div class="col-md-8 col-xs-12">
                 <div class="card box-shadow" style="width: 100%; border-radius: 20px; border: none;">
                     <div class="card-body">
                         <form method="POST" action="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password/update" enctype="multipart/form-data">

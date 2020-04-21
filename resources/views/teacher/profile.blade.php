@@ -48,26 +48,64 @@
                                 background-color: #3956A3;
                                 color: white;
                             }
+                            .mobile-box{
+                                display: none;
+                            }
+                            .desk-box {
+                                display: block;
+                            }
+                            @media (min-width: 320px) and (max-width: 480px)
+                            {
+                                .banner {
+                                    height: 180px;
+                                    margin-top: 30px;
+                                }
+                                .mobile-box{
+                                    display: block;
+                                }
+                                .desk-box {
+                                    display: none;
+                                }
+                            }
+                            @media (min-width: 481px) and (max-width: 767px)
+                            {
+                                .banner {
+                                    height: 180px;
+                                    margin-top: 30px;
+                                }
+                                .mobile-box{
+                                    display: block;
+                                }
+                                .desk-box {
+                                    display: none;
+                                }
+                            }
                         </style>
 
-                        <div class="vertical-menu text-center mb-3">
+                        <div class="vertical-menu text-center mb-3 desk-box">
                             <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="active">โปรไฟล์</a>
                             <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password" class="">เปลี่ยนรหัสผ่าน</a>
                             {{--<a href="#">Link 2</a>--}}
                             {{--<a href="#">Link 3</a>--}}
                             {{--<a href="#">Link 4</a>--}}
                         </div>
-                        <div class="vertical-menu text-center mb-2">
+                        <div class="vertical-menu text-center mb-2 desk-box">
                             <a href="/logout" class="btn btn-submit" style=" width:100%; background: #5e5d5d; color: white;">ออกจากระบบ</a>
                             {{--<a href="#">Link 2</a>--}}
                             {{--<a href="#">Link 3</a>--}}
                             {{--<a href="#">Link 4</a>--}}
                         </div>
 
+                        <div class="vertical-menu text-center mb-3 mobile-box">
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}" class="active" style="width:50%; float: left;border-right: 2px solid white;">โปรไฟล์</a>
+                            <a href="/teacher/profile/{{ $user->firstname.'-'.$user->lastname }}/change-password">เปลี่ยนรหัสผ่าน</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="mobile-box" style="margin: 10px;"></div>
+            <div class="col-md-8 col-xs-12">
                 <div class="card box-shadow" style="width: 100%; border-radius: 20px; border: none;">
                     <div class="card-body">
 
@@ -79,7 +117,7 @@
                                 <img src="/uploads/profileImage/{{ $user->profile_img }}" alt="Avatar" style="width: 150px;border-radius: 50%;">
                             </div>
                         </div>
-                        <div class="container mt-5">
+                        <div class="container mt-5 desk-box">
                             <div class="row">
                                 <label class="col-md-4 text-right">ชื่อจริง : </label>
                                 <label class="col-md-8">{{ $user->firstname }}</label>
@@ -100,6 +138,46 @@
                                 <label class="col-md-8">********</label>
                             </div>
                         </div>
+
+                        <div class="container mt-4 mobile-box">
+                            <div class="row">
+                                <div class="col-xs-5 col-5 text-right" style="padding: 5px;">
+                                    ชื่อจริง :
+                                </div>
+                                <div class="col-xs-7 col-7" style="padding: 5px;">
+                                    {{ $user->firstname }}
+                                </div>
+
+                            </div>
+                            <hr style="margin: 0 auto; width: 100%;">
+                            <div class="row mt-2">
+                                <div class="col-xs-5 col-5 text-right" style="padding: 5px;">
+                                    นามสกุล :
+                                </div>
+                                <div class="col-xs-7 col-7" style="padding: 5px;">
+                                    {{ $user->lastname }}
+                                </div>
+                            </div>
+                            <hr style="margin: 0 auto; width: 100%;">
+                            <div class="row mt-2">
+                                <div class="col-xs-5 col-5 text-right" style="padding: 5px;">
+                                    อีเมล :
+                                </div>
+                                <div class="col-xs-7 col-7" style="padding: 5px;">
+                                    {{ $user->email }}
+                                </div>
+                            </div>
+                            <hr style="margin: 0 auto; width: 100%;">
+                            <div class="row mt-2">
+                                <div class="col-xs-5 col-5 text-right" style="padding: 5px;">
+                                    รหัสผ่าน :
+                                </div>
+                                <div class="col-xs-7 col-7" style="padding: 5px;">
+                                    ********
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
