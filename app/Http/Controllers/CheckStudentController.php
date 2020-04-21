@@ -98,7 +98,10 @@ class CheckStudentController extends Controller
             ->join('sections','sections.id','=','sis.section_id')
         ->join('subjects','sis.subject_id','=','subjects.id')
         ->join('years','sis.year_id','=','years.id')
-        ->select('*','section_checks.id')->first();
+        ->select('*','section_checks.id','section_checks.updated_at as sectcheck_update')->first();
+
+
+//        dd($section);
 
 
 //        dd($teachers);
@@ -143,6 +146,7 @@ class CheckStudentController extends Controller
         $time = time();
         $currentTime = date('Y-m-d H:i:s',$time);
 
+//        dd($time);
 //        dd($currentTime);
 
         DB::table('section_checks')->where('id', $id) -> update(['updated_at' => $currentTime]);

@@ -25,33 +25,25 @@
                     @endif
                 @endfor
                 {{--<span>อาจารย์ พลเอก สังฆกุล</span>--}}
-
-                <div class="box mt-5" style="width: 600px; height: 250px; background-color: lightblue; border-radius: 20px; margin: 0 auto; padding: 20px;">
-                    <?php
-                    $time = $section->startTime;
-                    $inTime = strtotime("+15 minutes",strtotime($time));
-                    ?>
+                <div class="row col-12">
+                    <div class="box mt-5" style="width: 600px; height: 250px; background-color: lightblue; border-radius: 20px; margin: 0 auto; padding: 20px;">
+                        <?php
+                        $time = $section->startTime;
+                        $inTime = strtotime("+15 minutes",strtotime($time));
+                        ?>
                         <h5 class="mt-5">เช็คชื่อเข้าเรียน</h5>
                         <h6 class="mt-3">ภายใน {{ date('H:i', $inTime) }} น.</h6>
-                    <input type="hidden" name="latitude" id="lat" value="">
-                    <input type="hidden" name="longitude" id="long" value="">
-                    <input type="hidden" name="sectionCheck_id" value="{{ $section->id }}">
-                    <div class="col-md-12 mt-5 mb-3">
-                        <input class="btn btn-dark btn-submit" type="submit" value="เช็คชื่อเลย!" style="background: #3956A3 !important; border: none; width: 50%">
+                        <input type="hidden" name="latitude" id="lat" value="">
+                        <input type="hidden" name="longitude" id="long" value="">
+                        <input type="hidden" name="sectionCheck_id" value="{{ $section->id }}">
+                        <div class="col-md-12 mt-5 mb-3">
+                            <input class="btn btn-dark btn-submit" type="submit" value="เช็คชื่อเลย!" style="background: #3956A3 !important; border: none; width: 50%">
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-
-        {{--<button onclick="getLocation()">Try It</button>--}}
-
-        {{--<p id="demo"></p>--}}
-        {{--Latitude: <input type="text" name="latitude" id="lat" value="">--}}
-        {{--<br>Longitude: <input type="text" name="longitude" id="long" value="">--}}
-            {{--<div class="col-md-6 mt-5 mb-3">--}}
-                {{--<input class="btn btn-dark btn-submit" type="submit" value="check in" style="background: #3956A3 !important; border: none; width: 50%">--}}
-            {{--</div>--}}
         </form>
     </div>
     </body>

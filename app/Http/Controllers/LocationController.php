@@ -60,8 +60,12 @@ class LocationController extends Controller
                 break;
         }
 
+        $inTime = strtotime("+1 second",strtotime($time));
+        $checkupdate = date('H:i:s',$inTime);
+//        dd(date('H:i:s',$inTime) , $qrcode_update ,$updateTime);
+
         if (!empty(Auth::check())) {
-            if (($updateTime == $qrcode_update)){
+            if (($updateTime == $qrcode_update) || $checkupdate == $qrcode_update){
                 if (session('error_message')) {
                     Alert::error('ไม่สามารถเช็คชื่อได้', 'เนื่องจากไม่อยู่ภายในพื้นที่ที่กำหนด');
                 }else if (session('success_message')) {
