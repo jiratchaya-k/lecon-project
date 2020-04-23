@@ -138,12 +138,24 @@
                     <div class="card-body container">
                     <div class="row">
                     <div class="col-md-8">
-                    <h5 style="line-height: 2px; padding-top: 10px;">Assignment Sect. {{ $sections->section}}</h5>
-                    <span>{{ $sections->code.' '.$sections->name  }}</span>
+                        <h5><strong>งานที่มอบหมาย</strong> - <br class="mobile-box"> กลุ่มเรียน {{ $sections->section}}</h5>
+                        <span>{{ $sections->code.' '.$sections->name  }}</span>
                     </div>
-                    <div class="col-md-4 text-right">
-                    <h4 style="color: #3956A3; padding-top: 10px;">ส่งภายใน {{ $assignment->dueDate }} {{substr($assignment->dueTime, 0,-3)}}</h4>
-                    </div>
+                        <?php
+
+                        $strYear = date("Y",strtotime($assignment->dueDate))+543;
+                        $strMonth= date("n",strtotime($assignment->dueDate));
+                        $strDay= date("j",strtotime($assignment->dueDate));
+                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                        $strMonthThai=$strMonthCut[$strMonth];
+
+                        $dueDate = "$strDay $strMonthThai $strYear";
+
+                        ?>
+                        <div class="col-md-4 col-xs-12 text-right due-box">
+                            <h5 style="color: #FF8574;"><span style="color: #5e5d5d; font-size: 16px;">ส่งภายใน</span> {{ $dueDate }} <br>
+                                เวลา {{substr($assignment->dueTime, 0,-3)}}</h5>
+                        </div>
                     </div>
 
                     <hr>

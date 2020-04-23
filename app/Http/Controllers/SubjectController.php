@@ -117,8 +117,8 @@ class SubjectController extends Controller
 
             $teachers = DB::table('attend_sections')->where('attend_sections.sis_id','=',$sections->sis_id)->get();
 
-
-            $posts = DB::table('posts')->where('posts.sis_id','=',$id)->get();
+            $posts = DB::table('posts')->where('posts.sis_id','=',$id)
+                ->where('posts.status','=','active')->get();
             $lessons = DB::table('lessons')->where('lessons.sis_id','=',$id)->get();
 
             foreach ($teachers as $teacher) {
@@ -791,6 +791,63 @@ class SubjectController extends Controller
             return view('student.subject-lesson-detail',compact('sections','assignments','date','allTeacher','lesson','filename','ext'));
         }
 
+    }
+
+    public function post_edit($sis_id, $id)
+    {
+        $years = Year::all();
+        $sections = Section::all();
+
+        $section = DB::table('sections_in_subjects as sis')->where('sis.id',$id)
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('sis.id as sis_id','sis.date','sis.startTime','sis.endTime','subjects.id as subject_id','sections.section','subjects.code','subjects.name','sis.year_id','sis.section_id')
+            ->first();
+
+        $teachers = DB::table('sections_in_subjects as sis')->where('sis.id',$id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_teacher)
+            ->where('users.id','!=',Auth::id())
+            ->where('attend_sections.status','=','active')
+            ->select('users.id','users.firstname','users.lastname','users.email')->get();
+
+        $allTeachers = DB::table('users')->where('role',User::role_teacher)
+            ->where('id','!=',Auth::id())->get();
+        $allStudents = DB::table('users')->where('role',User::role_student)->get();
+
+        $students = DB::table('sections_in_subjects as sis')->where('sis.id',$id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_student)
+            ->where('attend_sections.status','=','active')
+            ->select('users.id','users.firstname','users.lastname','users.email','users.student_id')->get();
+
+        $post = DB::table('posts')->where('id',$id)
+        ->first();
+//            dd($post);
+
+        return view('teacher.post-edit',compact('post','section','teachers','students','years','sections','allStudents','allTeachers'));
+
+    }
+
+    public function post_update(Request $request, $sis_id, $id){
+        $post = Post::find($id);
+        $post->topic = $request->input('post_topic');
+        $post->description = $request->input('post_description');
+        $post->user_id = Auth::id();
+        $post->save();
+
+        return redirect('/teacher/subject/section/'.$sis_id);
+    }
+
+    public function post_destroy($sis_id, $id)
+    {
+        //
+        $post = Post::find($id);
+        $post->status = 'inactive';
+        $post->save();
+        return redirect('/teacher/subject/section/'.$sis_id);
     }
 
 }

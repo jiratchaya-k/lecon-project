@@ -101,6 +101,45 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="card mb-3" style="border: 3px solid #3956A3; border-radius: 20px; background-color: white;">
+                                <div class="card-body container">
+                                    <h5 class="card-title" style="font-weight: bolder">งานที่มอบหมาย</h5>
+                                    <hr>
+                                    @if(count($assignments)>0)
+                                        @foreach($assignments as $assignment)
+                                            <a href="/teacher/assignment/{{ $assignment->id }}" class="lesson-box">
+                                                <div class="card lesson-card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df; margin-bottom: 10px;">
+                                                    <div class="card-body">
+                                                        <?php
+
+                                                        $strYear = date("Y",strtotime($assignment->dueDate))+543;
+                                                        $strMonth= date("n",strtotime($assignment->dueDate));
+                                                        $strDay= date("j",strtotime($assignment->dueDate));
+                                                        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                                                        $strMonthThai=$strMonthCut[$strMonth];
+
+                                                        $dueDate = "$strDay $strMonthThai $strYear";
+
+                                                        ?>
+
+                                                            <h4 style="font-size: 16px; font-weight: bolder; margin-bottom: 5px;">{{ $assignment->title }}</h4>
+                                                        <h6 style="font-size: 14px; color: #818182; font-weight: normal; margin: 0;">ส่งภายใน {{ $dueDate.' '}} เวลา {{substr($assignment->dueTime, 0,-3)}}</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @endforeach
+
+                                    @else
+                                        <div colspan="6" class="text-center" style="color: lightgray;">
+                                            <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 50px; opacity: .5;">
+                                            <br>
+                                            <span style="font-family: 'Prompt', sans-serif;">ไม่มีงานที่มอบหมาย</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 

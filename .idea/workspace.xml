@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e12c524b-36f4-4472-8ee3-1e50059801c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/icons/clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/teacher/post-edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/check.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/check.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ManageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ManageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SubjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SubjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/subject-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/subject-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,54 +37,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/student/check.blade.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/profile.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+            <state relative-caret-position="362">
+              <caret line="81" column="29" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="81" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/post-edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
               <folding>
-                <element signature="e#858#898#0#HTML" expanded="true" />
-                <element signature="e#385#429#0#HTML" expanded="true" />
-                <element signature="e#1192#1239#0#HTML" expanded="true" />
-                <element signature="e#1803#1829#0#HTML" expanded="true" />
-                <element signature="e#2076#2116#0#HTML" expanded="true" />
-                <element signature="e#2212#2236#0#HTML" expanded="true" />
-                <element signature="e#2437#2461#0#HTML" expanded="true" />
-                <element signature="e#2871#2977#0#HTML" expanded="true" />
-                <element signature="e#3252#3300#0#HTML" expanded="true" />
-                <element signature="e#3237#3285#0#HTML" expanded="true" />
-                <element signature="e#1858#1882#0#HTML" expanded="true" />
-                <element signature="e#1943#1994#0#HTML" expanded="true" />
-                <element signature="e#1915#1950#0#HTML" expanded="true" />
-                <element signature="e#2066#2106#0#HTML" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/student/assignment-show.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1460">
-              <caret line="88" column="53" selection-start-line="88" selection-start-column="46" selection-end-line="88" selection-end-column="53" />
+            <state relative-caret-position="-2720">
+              <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubjectController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/profile.blade.php">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="82" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/inc/navbar.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="14" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="10" selection-end-column="14" />
+            <state relative-caret-position="308">
+              <caret line="79" column="39" lean-forward="true" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -132,11 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/teacher/subject-lesson-show.blade.php" />
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/config/mail.php" />
-        <option value="$PROJECT_DIR$/public/css/style-email.css" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/EmailController.php" />
         <option value="$PROJECT_DIR$/app/Mail/AssignmentMail.php" />
         <option value="$PROJECT_DIR$/resources/views/emails/newAssignment.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
@@ -155,19 +154,15 @@
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/registerTeacher.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/home.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app-teacher.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/appForLogin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/check.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/assignment-grade.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/home.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SubjectController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/student/subject.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/profile.blade.php" />
@@ -183,6 +178,15 @@
         <option value="$PROJECT_DIR$/resources/views/teacher/profile-change-password.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/profile-edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/check.blade.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/student/subject-show.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ManageController.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/manage.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/post-edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SubjectController.php" />
       </list>
     </option>
   </component>
@@ -447,16 +451,16 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\00_MyDoc\lecon-project\public\uploads\icons" />
-      <recent name="D:\00_MyDoc\lecon-project\resources\views\teacher" />
-      <recent name="D:\00_MyDoc\lecon-project\public\uploads\profileImage" />
-      <recent name="D:\00_MyDoc\lecon-project\resources\views\student" />
-      <recent name="D:\00_MyDoc\lecon-project\public\uploads" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\00_MyDoc\lecon-project\public\uploads" />
       <recent name="C:\xampp\htdocs\lecon-project\resources\views\student" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\00_MyDoc\lecon-project\resources\views\teacher" />
+      <recent name="D:\00_MyDoc\lecon-project\public\uploads\icons" />
+      <recent name="D:\00_MyDoc\lecon-project\public\uploads\profileImage" />
+      <recent name="D:\00_MyDoc\lecon-project\resources\views\student" />
+      <recent name="D:\00_MyDoc\lecon-project\public\uploads" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -592,16 +596,18 @@
       <workItem from="1587461507585" duration="7128000" />
       <workItem from="1587485698459" duration="2480000" />
       <workItem from="1587573379388" duration="6533000" />
+      <workItem from="1587658757979" duration="9366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="657149000" />
+    <option name="totallyTimeSpent" value="666515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22541603" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22844176" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -649,58 +655,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/check-detail-list.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="106" column="76" selection-start-line="106" selection-start-column="76" selection-end-line="106" selection-end-column="76" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-compare.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-compare-detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="316" column="86" selection-start-line="316" selection-start-column="86" selection-end-line="316" selection-end-column="86" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-comparegrade.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="106" column="76" selection-start-line="106" selection-start-column="76" selection-end-line="106" selection-end-column="76" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show-file.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="32" column="75" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/student/subject-lesson-detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -714,9 +668,6 @@
           <caret line="32" column="146" selection-start-line="32" selection-start-column="146" selection-end-line="32" selection-end-column="146" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/subject-show.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/public/uploads/lecon-logo-blue.png" />
     <entry file="file://$PROJECT_DIR$/public/uploads/logo-blue.png">
@@ -777,18 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="325" column="172" selection-start-line="325" selection-start-column="172" selection-end-line="325" selection-end-column="172" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -815,23 +754,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/uploads/icons/icon-list.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="167" column="200" selection-start-line="167" selection-start-column="200" selection-end-line="167" selection-end-column="200" />
-          <folding>
-            <element signature="e#9439#9486#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2640">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="90" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-grade.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -863,23 +785,6 @@
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="167" column="86" selection-start-line="167" selection-start-column="86" selection-end-line="167" selection-end-column="86" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -935,13 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="162" column="63" selection-start-line="162" selection-start-column="63" selection-end-line="162" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -963,13 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1120">
           <caret line="62" selection-start-line="62" selection-end-line="63" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1420">
-          <caret line="80" column="62" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -1022,47 +913,163 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/student/check.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/inc/navbar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="10" selection-end-column="14" />
+          <caret line="10" column="14" selection-start-line="9" selection-start-column="12" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/student/assignment-show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1460">
-          <caret line="88" column="53" selection-start-line="88" selection-start-column="46" selection-end-line="88" selection-end-column="53" />
+        <state relative-caret-position="-1775">
+          <caret line="90" column="30" lean-forward="true" selection-start-line="87" selection-start-column="24" selection-end-line="90" selection-end-column="30" />
+          <folding>
+            <element signature="e#2778#2801#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/manage-edit-year.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1980">
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="156" column="75" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="75" />
+          <folding>
+            <element signature="e#8539#8562#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/student/subject-show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-58">
+          <caret line="106" column="105" selection-start-line="106" selection-start-column="105" selection-end-line="106" selection-end-column="105" />
+          <folding>
+            <element signature="e#3888#3915#0#HTML" expanded="true" />
+            <element signature="e#4541#4606#0#HTML" expanded="true" />
+            <element signature="e#5650#5691#0#HTML" expanded="true" />
+            <element signature="e#6644#6747#0#HTML" expanded="true" />
+            <element signature="e#7747#7795#0#HTML" expanded="true" />
+            <element signature="e#8398#8423#0#HTML" expanded="true" />
+            <element signature="e#8529#8562#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1060">
+          <caret line="187" column="56" lean-forward="true" selection-start-line="187" selection-start-column="56" selection-end-line="187" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ManageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/manage.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="308" column="124" selection-start-line="308" selection-start-column="124" selection-end-line="308" selection-end-column="124" />
+          <folding>
+            <element signature="e#10057#10091#0#HTML" expanded="true" />
+            <element signature="e#10255#10297#0#HTML" expanded="true" />
+            <element signature="e#13428#13461#0#HTML" expanded="true" />
+            <element signature="e#13594#13636#0#HTML" expanded="true" />
+            <element signature="e#18003#18036#0#HTML" expanded="true" />
+            <element signature="e#18169#18211#0#HTML" expanded="true" />
+            <element signature="e#19994#20027#0#HTML" expanded="true" />
+            <element signature="e#20160#20202#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="231" column="41" lean-forward="true" selection-start-line="225" selection-start-column="36" selection-end-line="231" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-372">
+          <caret line="167" column="86" selection-start-line="167" selection-start-column="86" selection-end-line="167" selection-end-column="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="82" selection-end-column="32" />
+        <state relative-caret-position="362">
+          <caret line="81" column="29" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="81" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/check.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+        <state relative-caret-position="-2720">
+          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/post-edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
           <folding>
-            <element signature="e#858#898#0#HTML" expanded="true" />
-            <element signature="e#385#429#0#HTML" expanded="true" />
-            <element signature="e#1192#1239#0#HTML" expanded="true" />
-            <element signature="e#1803#1829#0#HTML" expanded="true" />
-            <element signature="e#2076#2116#0#HTML" expanded="true" />
-            <element signature="e#2212#2236#0#HTML" expanded="true" />
-            <element signature="e#2437#2461#0#HTML" expanded="true" />
-            <element signature="e#2871#2977#0#HTML" expanded="true" />
-            <element signature="e#3252#3300#0#HTML" expanded="true" />
-            <element signature="e#3237#3285#0#HTML" expanded="true" />
-            <element signature="e#1858#1882#0#HTML" expanded="true" />
-            <element signature="e#1943#1994#0#HTML" expanded="true" />
-            <element signature="e#1915#1950#0#HTML" expanded="true" />
-            <element signature="e#2066#2106#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="79" column="39" lean-forward="true" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
         </state>
       </provider>
     </entry>

@@ -76,6 +76,11 @@ Route::post('/teacher/subject/store', 'SubjectController@store');
 Route::get('/teacher/subject/{id}/add-section', 'SubjectController@addSection');
 Route::post('/teacher/subject/{id}/add-section/store', 'SubjectController@sectionStore');
 
+Route::get('/teacher/subject/section/{sis_id}/post/{id}/edit', 'SubjectController@post_edit');
+Route::post('/teacher/subject/section/{sis_id}/post/{id}/update', 'SubjectController@post_update');
+Route::delete('/teacher/subject/section/{sis_id}/post/{id}/delete', 'SubjectController@post_destroy');
+
+
 Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentController@update');
 Route::get('/teacher/student-check', 'CheckStudentController@index');
 Route::get('/teacher/student-check/check={check_id}/get-qrcode', 'CheckStudentController@getQrcode');
@@ -92,6 +97,7 @@ Route::get('/section', 'SubjectController@index');
 Route::get('/subject/section/{id}', 'SubjectController@show');
 Route::get('/subject/section/{sis_id}/lesson={id}', 'SubjectController@lessonShow');
 Route::get('/subject/section/{sis_id}/lesson={lesson_id}/{filename}', 'SubjectController@lessonDetail');
+
 
 Route::get('/assignment/{id}', 'AssignmentController@show');
 Route::post('/assignment/{id}/send', 'WorkController@store');

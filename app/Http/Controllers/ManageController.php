@@ -18,11 +18,19 @@ class ManageController extends Controller
     public function index()
     {
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
-            $years = DB::table('years')->select('*')->orderBy('year','asc')->get();
-            $sections = DB::table('sections')->select('*')->orderBy('section','asc')->get();
+            $years = DB::table('years')->where('user_id',Auth::id())
+                ->where('status','=','active')
+                ->select('*')->orderBy('year','asc')->get();
+            $sections = DB::table('sections')
+                ->where('user_id',Auth::id())
+                ->where('status','=','active')
+                ->select('*')->orderBy('section','asc')->get();
 //            $terms = DB::table('terms')->select('*')->orderBy('term','asc')->get();
             $teachers = DB::table('users')->select('*')->where('role',User::role_teacher)->orderBy('firstname','asc')->get();
-            $locations = DB::table('locations')->select('*')->where('status','=','active')->get();
+            $locations = DB::table('locations')
+                ->where('user_id',Auth::id())
+                ->where('status','=','active')
+                ->select('*')->get();
 //            dd($years);
 
 //            dd(url()->previous());

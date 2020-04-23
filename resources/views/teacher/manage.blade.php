@@ -162,9 +162,11 @@
                                                     @endforeach
                                                 @else
                                                     <tr>
-                                                        <td>ไม่มีข้อมูล</td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <th colspan="6" class="text-center" style="color: lightgray;">
+                                                            <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 50px; opacity: .5;">
+                                                            <br>
+                                                            <span style="font-family: 'Prompt', sans-serif;">ไม่มีข้อมูลปีการศึกษา</span>
+                                                        </th>
                                                     </tr>
                                                 @endif
                                                 </tbody>
@@ -205,9 +207,11 @@
                                                     @endforeach
                                                 @else
                                                     <tr>
-                                                        <td>ไม่มีข้อมูล</td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <th colspan="6" class="text-center" style="color: lightgray;">
+                                                            <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 50px; opacity: .5;">
+                                                            <br>
+                                                            <span style="font-family: 'Prompt', sans-serif;">ไม่มีข้อมูลกลุ่มเรียน</span>
+                                                        </th>
                                                     </tr>
                                                 @endif
                                                 </tbody>
@@ -259,6 +263,14 @@
                                                         </td>
                                                     </tr>
                                                 @endforeach
+                                            @else
+                                                <tr>
+                                                    <th colspan="6" class="text-center" style="color: lightgray;">
+                                                        <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 50px; opacity: .5;">
+                                                        <br>
+                                                        <span style="font-family: 'Prompt', sans-serif;">ไม่มีข้อมูลสถานที่</span>
+                                                    </th>
+                                                </tr>
                                             @endif
                                             </tbody>
                                         </table>
@@ -289,6 +301,14 @@
                                                         <td>{{ $teacher->email }}</td>
                                                     </tr>
                                                 @endforeach
+                                            @else
+                                                <tr>
+                                                    <th colspan="6" class="text-center" style="color: lightgray;">
+                                                        <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 50px; opacity: .5;">
+                                                        <br>
+                                                        <span style="font-family: 'Prompt', sans-serif;">ไม่มีข้อมูลผรายชื่อู้สอน</span>
+                                                    </th>
+                                                </tr>
                                             @endif
                                             </tbody>
                                         </table>

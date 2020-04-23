@@ -158,8 +158,8 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6">
+                        <div class="row mt-3">
+                            <div class="col-md-5 col-sm-6">
                                 <div class="card mb-3" style="border: 3px solid #FF8574; border-radius: 20px; background-color: white;">
                                     <div class="card-body container">
                                         <div class="row">
@@ -175,22 +175,39 @@
                                         <hr>
                                         @if(count($posts)>0)
                                             @foreach($posts as $post)
-                                                <div class="card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df;">
-                                                    <div class="card-body">
+                                                <div class="card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df; margin-bottom: 10px;">
+                                                    <div class="card-body" style="padding-bottom: 0px;">
                                                         <h5 style="font-weight: bolder; margin-bottom: 5px;">{{ $post->topic }}</h5>
                                                         <h6 style="font-size: 14px; color: #818182; font-weight: normal; margin: 0;">{{ $post->description }}</h6>
+                                                        {{--<div class="row">--}}
+                                                            <div class="col-md-6 col-xs-12 col-12" style="margin: 0 0 0 auto; text-align: center;">
+                                                                <a href="/teacher/subject/section/{{ $sections->sis_id }}/post/{{ $post->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข" style="float: left; padding-top: 18px; margin-left: 50px;">
+                                                                    <i class="fas fa-pencil-alt" style="font-size: 18px; color: #818182;"></i>
+                                                                </a>
+                                                                <form method="POST" action="/teacher/subject/section/{{ $sections->sis_id }}/post/{{ $post->id }}/delete">
+                                                                    @csrf
+                                                                    <input name="_method" type="hidden" value="DELETE">
+                                                                    <button class="btn ml-3" onclick="return confirm('Are you sure to delete?')" style="background-color: transparent; padding-left: 0; padding-right: 0;"> <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ลบ" style="font-size: 18px; color: #818182;"></i></button>
+                                                                </form>
+                                                            </div>
+                                                        {{--</div>--}}
+
                                                     </div>
                                                 </div>
                                             @endforeach
 
                                         @else
-                                            ไม่มีโพสต์
+                                            <div colspan="6" class="text-center" style="color: lightgray;">
+                                                <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 50px; opacity: .5;">
+                                                <br>
+                                                <span style="font-family: 'Prompt', sans-serif;">ไม่มีโพสต์</span>
+                                            </div>
                                         @endif
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8 col-sm-6">
+                            <div class="col-md-7 col-sm-6">
                                 <div class="card mb-3" style="border: 3px solid #3956A3; border-radius: 20px; background-color: white;">
                                     <div class="card-body container">
                                         <div class="row">
@@ -207,7 +224,7 @@
                                         @if(count($lessons)>0)
                                             @foreach($lessons as $lesson)
                                                 <a href="/teacher/subject/section/{{$sections->sis_id}}/lesson={{ $lesson->id }}" class="lesson-box">
-                                                    <div class="card lesson-card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df;">
+                                                    <div class="card lesson-card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df; margin-bottom: 10px;">
                                                         <div class="card-body">
 
                                                             <h4 style="font-weight: bolder; margin-bottom: 5px;">{{ $lesson->topic }}</h4>
@@ -218,10 +235,62 @@
                                             @endforeach
 
                                         @else
-                                            ไม่มีโพสต์
+                                            <div colspan="6" class="text-center" style="color: lightgray;">
+                                                <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 50px; opacity: .5;">
+                                                <br>
+                                                <span style="font-family: 'Prompt', sans-serif;">ไม่มีเนื้อหา</span>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
+
+                                <div class="card mb-3" style="border: 3px solid #3956A3; border-radius: 20px; background-color: white;">
+                                    <div class="card-body container">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <h5 class="card-title" style="font-weight: bolder; float: left;">งานที่มอบหมาย</h5>
+                                            </div>
+                                            <div class="col">
+                                                <button class="text-right" id="myBtn-lesson" style="width: 100%; background: none; border: none">
+                                                    <i class="fas fa-edit" style="font-size: 16px; cursor: pointer;"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        @if(count($assignments)>0)
+                                            @foreach($assignments as $assignment)
+                                                <a href="/teacher/assignment/{{ $assignment->id }}" class="lesson-box">
+                                                    <div class="card lesson-card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df; margin-bottom: 10px;">
+                                                        <div class="card-body">
+                                                            <?php
+
+                                                            $strYear = date("Y",strtotime($assignment->dueDate))+543;
+                                                            $strMonth= date("n",strtotime($assignment->dueDate));
+                                                            $strDay= date("j",strtotime($assignment->dueDate));
+                                                            $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+                                                            $strMonthThai=$strMonthCut[$strMonth];
+
+                                                            $dueDate = "$strDay $strMonthThai $strYear";
+
+                                                            ?>
+
+                                                            <h4 style="font-weight: bolder; margin-bottom: 5px;">{{ $assignment->title }}</h4>
+                                                            <h6 style="font-size: 14px; color: #818182; font-weight: normal; margin: 0;">ส่งภายใน {{ $dueDate.' '}} เวลา {{substr($assignment->dueTime, 0,-3)}}</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            @endforeach
+
+                                        @else
+                                            <div colspan="6" class="text-center" style="color: lightgray;">
+                                                <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 50px; opacity: .5;">
+                                                <br>
+                                                <span style="font-family: 'Prompt', sans-serif;">ไม่มีงานที่มอบหมาย</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -289,7 +358,7 @@
                                             </div>
 
                                             <div class="row mb-3">
-                                                <label for="file" class="control-label col-3 pt-4">Upload your work</label>
+                                                <label for="file" class="control-label col-3 pt-4">อับโหลดไฟล์</label>
 
 
                                             <div class="controls col-md">
