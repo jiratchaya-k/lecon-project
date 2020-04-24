@@ -59,7 +59,7 @@
                         </a>
                     @endforeach
                 @else
-                    <div class="text-center">
+                    <div class="text-center item-center">
                         <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 100px; opacity: .5;">
                         <br>
                         <span>ไม่มีงานที่มอบหมาย</span>
@@ -122,7 +122,7 @@
 
                     @endforeach
                 @else
-                    <div class="text-center">
+                    <div class="text-center item-center">
                         <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 100px; opacity: .5;">
                         <br>
                         <span>ไม่มีกลุ่มเรียน</span>

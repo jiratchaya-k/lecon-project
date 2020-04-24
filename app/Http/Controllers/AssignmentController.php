@@ -278,9 +278,13 @@ class AssignmentController extends Controller
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
-            $workFile = DB::table('works')->join('files','works.id','=','files.work_id')
-                ->where('works.student_id','=',Auth::id())->where('works.assignment_id','=',$id)
+            $workFile = DB::table('files')->where('files.status','=','use')
+                ->join('works','works.id','=','files.work_id')
+                ->where('works.student_id','=',Auth::id())
+                ->where('works.assignment_id','=',$id)
                 ->select('files.file')->get();
+//
+//            dd($workFile);
 
             $files = [];
 

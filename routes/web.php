@@ -65,8 +65,12 @@ Route::get('/teacher/subject', 'SubjectController@index');
 Route::get('/teacher/subject/section/{id}', 'SubjectController@show');
 Route::get('/teacher/subject/section/{id}/edit', 'SubjectController@edit');
 Route::post('/teacher/subject/section/{id}/update', 'SubjectController@update');
-
 Route::delete('/teacher/subject/section/{id}/delete', 'SubjectController@destroy');
+
+Route::get('/teacher/subject/section/{id}/join-list', 'SubjectController@joinList_show');
+Route::post('/teacher/subject/section/{id}/join-list/add', 'SubjectController@joinList_add');
+Route::delete('/teacher/subject/section/{sis_id}/join-list/user_id={id}/delete', 'SubjectController@joinList_delete');
+
 Route::post('/teacher/subject/section/{id}/post/store', 'SubjectController@postStore');
 Route::post('/teacher/subject/section/{id}/lesson/store', 'SubjectController@lessonStore');
 Route::get('/teacher/subject/section/{sis_id}/lesson={id}', 'SubjectController@lessonShow');
@@ -104,6 +108,7 @@ Route::get('/subject/section/{sis_id}/lesson={lesson_id}/{filename}', 'SubjectCo
 
 Route::get('/assignment/{id}', 'AssignmentController@show');
 Route::post('/assignment/{id}/send', 'WorkController@store');
+Route::post('/assignment/{id}/work=update', 'WorkController@update');
 Route::get('/assignment/{id}/assignmentFiles={filename}', 'AssignmentController@showFile');
 Route::get('/assignment/{id}/workFiles={filename}', 'AssignmentController@showFile');
 

@@ -195,6 +195,20 @@
                                                 </div>
                                             @endforeach
                                         </div>
+                                        <?php
+                                        $dueDate = strtotime($assignment->dueDate);
+                                        $dueTime = strtotime($assignment->dueTime);
+                                        $date = strtotime(date("Y-m-d"));
+                                        $time = strtotime(date("H:i:s"));
+                                        ?>
+                                        @if($date <= $dueDate && $time <= $dueTime)
+                                            <div class="col-md-6 item-center">
+                                                <button class="btn btn-primary btn-submit" id="myBtn-newwork" style="background:#FF8574; width: 100%;">
+                                                    ส่งงานใหม่
+                                                </button>
+                                            </div>
+
+                                        @endif
                                     @else
                                             <div class="col-md-12 text-right">
                                                 <h6 class="btn" style="background-color: #3956A3; color: white;">
@@ -253,9 +267,101 @@
                 </div>
             </div>
 
+            <!-- The Modal Section-->
+            <div id="modelNewWork" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content modal-content-newwork">
+                    <span class="close">&times;</span>
+                    <div class="container" style="padding: 30px;">
+                        <h3>ส่งงานใหม่</h3>
+                        <hr>
+                        <form method="POST" action="/assignment/{{ $assignment->id }}/work=update" enctype="multipart/form-data" class="sendAssignment card">
+                            @csrf
+
+                            <div class="form-group col-md-8 item-center mt-4 text-center">
+                                <label for="file" class="control-label">อับโหลดไฟล์งาน</label>
+                                <input class="form-control" name="assignment_id" value="{{ $assignment->id }}" type="hidden">
+                            </div>
+
+                            <div class="controls">
+                                <div class="form-group item-center mt-2 mb-3">
+                                    <div class="entry input-group col-md-8 item-center">
+                                        <input class="form-control f-input col-md-12" name="work_file[]" type="file" style="float: left">
+                                        <span class="input-group-btn ml-2" style="float: left;" >
+                                <button class="btn btn-success btn-addfile">
+                                  <span class="glyphicon glyphicon-plus">+</span>
+                                </button>
+                                </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-md-3 item-center mt-2 mb-3">
+                                <input class="btn btn-dark btn-submit" type="submit" value="ส่งงาน" style="background: #3956A3 !important; border: none; width: 100%">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
+    <script>
+        // Get the modal
+        var modalNewWork = document.getElementById("modelNewWork");
+        // var modalStudent = document.getElementById("modelStudent");
+        // var modalLocation = document.getElementById("modelLocation");
+
+        // Get the button that opens the modal
+        var btnNewWork = document.getElementById("myBtn-newwork");
+        // var btnStudent = document.getElementById("myBtn-student");
+        // var btnLocation = document.getElementById("myBtn-location");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // var spanStudent = document.getElementsByClassName("close-student")[0];
+        // var spanLocation = document.getElementsByClassName("close-location")[0];
+
+        // When the user clicks on the button, open the modal
+        btnNewWork.onclick = function() {
+            modalNewWork.style.display = "block";
+        }
+        // btnStudent.onclick = function() {
+        //     modalStudent.style.display = "block";
+        // }
+        // btnLocation.onclick = function() {
+        //     modalLocation.style.display = "block";
+        // }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modalNewWork.style.display = "none";
+        }
+        // spanStudent.onclick = function() {
+        //     modalStudent.style.display = "none";
+        // }
+        // spanLocation.onclick = function() {
+        //     modalLocation.style.display = "none";
+        // }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modalNewWork) {
+                modalNewWork.style.display = "none";
+            }
+            // if (event.target == modalStudent) {
+            //     modalStudent.style.display = "none";
+            // }
+            // if (event.target == modalLocation) {
+            //     modalLocation.style.display = "none";
+            // }
+        }
+    </script>
 
     
 @endsection

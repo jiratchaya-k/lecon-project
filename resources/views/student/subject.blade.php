@@ -80,7 +80,7 @@
 
                     @endforeach
                 @else
-                    <div class="text-center">
+                    <div class="text-center item-center">
                         <img src="/uploads/icons/icon-no-information.png" alt="" style="width: 100px; opacity: .5;">
                         <br>
                         <span>ไม่มีข้อมูล</span>

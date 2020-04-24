@@ -58,7 +58,7 @@
                             <h3><strong style="color: #3956A3;">{{ date('H:i', $inTime) }} น.</strong></h3>
 
                             <div class="count mt-5">
-                                <div id="timer"><i class="fas fa-redo-alt fa-sm"></i> 00:30</div>
+                                <div id="timer"><i class="fas fa-redo-alt fa-sm"></i> 01:00</div>
                             </div>
 
                             <button onclick="refresh()" class="btn btn-block btn-primary mt-2 box-shadow btn-submit" style="background:#FF8574; border: none; width: 200px; margin: 0 auto; ">
@@ -140,7 +140,7 @@
 
     </script>
     <script>
-        var sec         = 30,
+        var sec         = 60,
             countDiv    = document.getElementById("timer"),
             secpass,
             countDown   = setInterval(function () {

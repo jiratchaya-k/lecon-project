@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'student_id', 'email','role', 'password',
+        'firstname', 'lastname', 'student_id', 'email','role', 'password','profile_img'
     ];
 
     /**
@@ -40,5 +40,6 @@ class User extends Authenticatable
 //    const role_admin = 1;
     const role_teacher = 'teacher';
     const  role_student = 'student';
+    const profile_default = 'profile_default.png';
 
 }

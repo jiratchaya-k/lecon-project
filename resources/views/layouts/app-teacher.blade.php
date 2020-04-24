@@ -233,6 +233,58 @@
         var iframe = document.querySelector('iframe');
         iframe.src = iframe.src;
     }
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        var max_fields      = 6; //maximum input boxes allowed
+        var wrapper_teacher   		= $(".input_teacher_wrap"); //Fields wrapper
+        var add_button_teacher      = $(".add_button_teacher"); //Add button Class
+        var wrapper_student   		= $(".input_student_wrap"); //Fields wrapper
+        var add_button_student      = $(".add_button_student"); //Add button Class
+        // var wrapper_location   		= $(".input_location_wrap"); //Fields wrapper
+        // var add_button_location      = $(".add_button_location"); //Add button Class
+
+        var teacher = 1; //initlal text box count
+        var student = 1;
+        // var location = 1;
+
+        if ($(add_button_teacher).click) {
+            $(add_button_teacher).click(function (e) { //on add input button click
+                e.preventDefault();
+                if (teacher < max_fields) { //max input box allowed
+                    teacher++; //text box increment
+                    $(wrapper_teacher).append('<div class="col-md-6"><input class="form-control f-input"  name="subject_teacher[]" type="text" list="teachers" style="width: 90%;height: 35px;float: left; margin-bottom: 10px"><a href="#" class="remove_teacher ml-1 pt-1" style="float: left">X</a></div> '); //add input box
+                }
+            });
+
+            $(wrapper_teacher).on("click", ".remove_teacher", function (e) { //user click on remove text
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            })
+        }
+        if ($(add_button_student).click) {
+            $(add_button_student).click(function (e) { //on add input button click
+                e.preventDefault();
+                if (student < max_fields) { //max input box allowed
+                    student++; //text box increment
+                    $(wrapper_student).append('<div class="col-md-6"><input class="form-control f-input"  name="subject_student[]" type="text" list="students" style="width: 90%;height: 35px;float: left; margin-bottom: 10px"><a href="#" class="remove_teacher ml-1 pt-1" style="float: left">X</a></div> '); //add input box
+                }
+            });
+
+            $(wrapper_student).on("click", ".remove_student", function (e) { //user click on remove text
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            })
+        }
+
+
+
+
+    });
 </script>
 
 </body>

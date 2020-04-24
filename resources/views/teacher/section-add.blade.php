@@ -249,7 +249,11 @@
                                                     <div class="tab-content pt-3" id="nav-tabContent">
                                                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                                             <input class="form-control f-input col-md-6" id="addList" type="file" name="file" accept=".csv">
-
+                                                            <br>
+                                                            ดาวน์โหลดแบบฟอร์ม
+                                                            <a href="/uploads/student_list_form.csv" download>
+                                                                <span style="color: #FF8574;">student_list_form.csv คลิก!</span>
+                                                            </a>
                                                             {{--<input type="file" name="file" accept=".csv">--}}
                                                         </div>
                                                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

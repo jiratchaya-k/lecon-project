@@ -136,7 +136,7 @@
                     <div class="card-body container">
 
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-10">
                                 <span>{{ $sections->code }} <br> {{ $sections->name }}</span>
                                 <h5 class="mb-0 mt-2">กลุ่มเรียน {{ $sections->section }}
                                     วัน{{ $date }}
@@ -150,10 +150,10 @@
                                     @endfor
                                 </h5>
                             </div>
-                            <div class="col-md-4">
-                                {{--<a href="/teacher/assignment/create" class="btn btn-primary btn-submit" style="width: 100%;">--}}
-                                    {{--สร้าง--}}
-                                {{--</a>--}}
+                            <div class="col-md-2">
+                                <a href="/teacher/subject/section/{{$sections->sis_id}}/join-list" class="btn btn-primary btn-submit" style="width: 100%;">
+                                    รายชื่อผู้เข้าร่วม
+                                </a>
 
                             </div>
                         </div>
