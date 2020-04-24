@@ -119,7 +119,8 @@ class SubjectController extends Controller
 
             $posts = DB::table('posts')->where('posts.sis_id','=',$id)
                 ->where('posts.status','=','active')->get();
-            $lessons = DB::table('lessons')->where('lessons.sis_id','=',$id)->get();
+            $lessons = DB::table('lessons')->where('lessons.sis_id','=',$id)
+                ->where('lessons.status','=','active')->get();
 
             foreach ($teachers as $teacher) {
                 $teach = DB::table('users')->where('users.role','=',User::role_teacher)->where('users.id','=',$teacher->user_id)->select('users.firstname','users.lastname')->first();
@@ -847,6 +848,89 @@ class SubjectController extends Controller
         $post = Post::find($id);
         $post->status = 'inactive';
         $post->save();
+        return redirect('/teacher/subject/section/'.$sis_id);
+    }
+
+    public function lesson_edit($sis_id, $id)
+    {
+        $years = Year::all();
+        $sections = Section::all();
+
+        $section = DB::table('sections_in_subjects as sis')->where('sis.id',$sis_id)
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('sis.id as sis_id','sis.date','sis.startTime','sis.endTime','subjects.id as subject_id','sections.section','subjects.code','subjects.name','sis.year_id','sis.section_id')
+            ->first();
+
+        $teachers = DB::table('sections_in_subjects as sis')->where('sis.id',$sis_id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_teacher)
+            ->where('users.id','!=',Auth::id())
+            ->where('attend_sections.status','=','active')
+            ->select('users.id','users.firstname','users.lastname','users.email')->get();
+
+        $allTeachers = DB::table('users')->where('role',User::role_teacher)
+            ->where('id','!=',Auth::id())->get();
+        $allStudents = DB::table('users')->where('role',User::role_student)->get();
+
+        $students = DB::table('sections_in_subjects as sis')->where('sis.id',$id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_student)
+            ->where('attend_sections.status','=','active')
+            ->select('users.id','users.firstname','users.lastname','users.email','users.student_id')->get();
+
+        $lesson = DB::table('lessons')->where('id',$id)
+            ->first();
+//            dd($lesson);
+        $files = json_decode($lesson->file);
+
+        return view('teacher.lesson-edit',compact('lesson','files','section','teachers','students','years','sections','allStudents','allTeachers'));
+
+    }
+
+    public function lesson_update(Request $request, $sis_id, $id){
+
+        $lesson_files = $request->file('lesson_file');
+
+        foreach ($lesson_files as $file) {
+            // get file with extension
+            $filenameWithExt = $file->getClientOriginalName();
+
+            // get file name = 1
+            $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+
+            // get extention = jpg
+            $extension = $file->getClientOriginalExtension();
+
+            // crete new file name = 1_1223322.jpg
+            $filenameToStore = date("YmdHis").'_'.$filename.'.'.$extension;
+
+            // upload image
+            $file->move('uploads/LessonFiles/'.$id,$filenameToStore);
+
+            $fileStore[] = $filenameToStore;
+
+        }
+
+//        dd($request->input('lesson_description'));
+
+        $lesson = Lesson::find($id);
+        $lesson->topic = $request->input('lesson_topic');
+        $lesson->description = $request->input('lesson_description');
+        $lesson->file = json_encode($fileStore);
+        $lesson->save();
+
+        return redirect('/teacher/subject/section/'.$sis_id.'/lesson='.$id);
+    }
+
+    public function lesson_destroy($sis_id, $id)
+    {
+        //
+        $lesson = Lesson::find($id);
+        $lesson->status = 'inactive';
+        $lesson->save();
         return redirect('/teacher/subject/section/'.$sis_id);
     }
 

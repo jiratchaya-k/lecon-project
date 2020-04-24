@@ -79,6 +79,9 @@ Route::post('/teacher/subject/{id}/add-section/store', 'SubjectController@sectio
 Route::get('/teacher/subject/section/{sis_id}/post/{id}/edit', 'SubjectController@post_edit');
 Route::post('/teacher/subject/section/{sis_id}/post/{id}/update', 'SubjectController@post_update');
 Route::delete('/teacher/subject/section/{sis_id}/post/{id}/delete', 'SubjectController@post_destroy');
+Route::get('/teacher/subject/section/{sis_id}/lesson/{id}/edit', 'SubjectController@lesson_edit');
+Route::post('/teacher/subject/section/{sis_id}/lesson/{id}/update', 'SubjectController@lesson_update');
+Route::delete('/teacher/subject/section/{sis_id}/lesson/{id}/delete', 'SubjectController@lesson_destroy');
 
 
 Route::post('/check={check_id}/get-qrcode/update/{time}', 'CheckStudentController@update');
@@ -128,8 +131,10 @@ Route::post('/teacher/manage/year-term/store','ManageController@storeYear_Term')
 Route::post('/teacher/manage/location/store','ManageController@storeLocation');
 Route::get('/teacher/manage/year-term/{id}/edit','ManageController@edit_YearTerm');
 Route::post('/teacher/manage/year-term/{id}/update','ManageController@update_YearTerm');
+Route::delete('/teacher/manage/year-term/{id}/delete','ManageController@destroy_YearTerm');
 Route::get('/teacher/manage/section/{id}/edit','ManageController@edit_section');
 Route::post('/teacher/manage/section/{id}/update','ManageController@update_section');
+Route::delete('/teacher/manage/section/{id}/delete','ManageController@destroy_section');
 Route::get('/teacher/manage/location/{id}/edit','ManageController@edit_location');
 Route::post('/teacher/manage/location/{id}/update','ManageController@update_location');
 Route::delete('/teacher/manage/location/{id}/delete','ManageController@destroy_location');

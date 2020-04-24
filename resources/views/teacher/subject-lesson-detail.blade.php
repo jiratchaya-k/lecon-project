@@ -30,7 +30,7 @@
                 <div class="card-body container">
                     <div class="row">
                         <div class="col-md-8">
-                            <h5 style="padding-top: 10px; margin-bottom: 5px;">Assignment Sect. {{ $sections->section}}</h5>
+                            <h5><strong>เนื้อหา</strong> - กลุ่มเรียน {{ $sections->section}}</h5>
                             <span>{{ $sections->code.' '.$sections->name  }}</span>
                         </div>
                         <div class="col-md-4 text-right">
@@ -60,7 +60,7 @@
                                             <source src="/uploads/LessonFiles/{{$lesson->sis_id}}/{{ $filename }}">
                                         </video>
                                     @else
-                                        <img class="item-center" src="/uploads/LessonFiles/{{$lesson->sis_id}}/{{ $filename }}"  alt="Card image cap" style="height: 100%; border: none; align-items: center;">
+                                        <img class="item-center" src="/uploads/LessonFiles/{{$lesson->sis_id}}/{{ $filename }}"  alt="Card image cap" style="border: 2px solid #FF8574!important; width: 100%; border: none; align-items: center;">
                                     @endif
                                     <h6 style="color: #818182;">{{ $filename }}</h6>
                                         <a href="javascript:history.back()" class="btn btn-submit mt-3 mb-3" style="background: #3956A3; width: 150px; color: white;">ย้อนกลับ</a>

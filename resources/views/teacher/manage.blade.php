@@ -147,6 +147,15 @@
                                                 <tbody>
                                                 @if(count($years)>0)
                                                     @foreach($years as $year)
+                                                        <?php
+                                                            $useYear = \Illuminate\Support\Facades\DB::table('sections_in_subjects as sis')
+                                                                ->where('sis.status','active')
+                                                                ->where('sis.year_id','=',$year->id)
+                                                                ->count();
+
+//                                                            dd($useYear);
+                                                        ?>
+
                                                         <tr>
                                                             <td>{{ $year->year }}</td>
                                                             <td>{{ $year->term }}</td>
@@ -154,9 +163,17 @@
                                                                 {{--<a href="/teacher/manage/year-term/{{ $year->id }}/edit" class="btn btn-primary btn-dark btn-table" style="width: 80px;">--}}
                                                                     {{--edit--}}
                                                                 {{--</a>--}}
-                                                                <a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">
-                                                                    <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
-                                                                </a>
+                                                                @if($useYear > 0)
+                                                                    <button class="btn" disabled onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;">
+                                                                        <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ไม่สามารถลบได้" style="font-size: 20px; color: #818182; opacity: .5;"></i>
+                                                                    </button>
+                                                                @else
+                                                                    <form method="POST" action="/teacher/manage/year-term/{{ $year->id }}/delete">
+                                                                        @csrf
+                                                                        <input name="_method" type="hidden" value="DELETE">
+                                                                        <button class="btn" onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;"> <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ลบ" style="font-size: 20px; color: #818182;"></i></button>
+                                                                    </form>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -193,15 +210,28 @@
                                                 <tbody>
                                                 @if(count($sections)>0)
                                                     @foreach($sections as $section)
+                                                        <?php
+                                                        $useSect = \Illuminate\Support\Facades\DB::table('sections_in_subjects as sis')
+                                                            ->where('sis.status','active')
+                                                            ->where('sis.section_id','=',$section->id)
+                                                            ->count();
+
+                                                        //                                                            dd($useYear);
+                                                        ?>
                                                 <tr>
                                                     <td>{{ $section->section }}</td>
                                                     <td>
-                                                        {{--<a href="/teacher/manage/section/{{ $section->id }}/edit" class="btn btn-primary btn-dark btn-table">--}}
-                                                            {{--edit--}}
-                                                        {{--</a>--}}
-                                                        <a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">
-                                                            <i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>
-                                                        </a>
+                                                        @if($useSect > 0)
+                                                            <button class="btn" disabled onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;">
+                                                                <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ไม่สามารถลบได้" style="font-size: 20px; color: #818182; opacity: .5;"></i>
+                                                            </button>
+                                                        @else
+                                                        <form method="POST" action="/teacher/manage/section/{{ $section->id }}/delete">
+                                                            @csrf
+                                                            <input name="_method" type="hidden" value="DELETE">
+                                                            <button class="btn" onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;"> <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ลบ" style="font-size: 20px; color: #818182;"></i></button>
+                                                        </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                                     @endforeach
@@ -244,6 +274,11 @@
                                             <tbody>
                                             @if(count($locations)>0)
                                                 @foreach($locations as $location)
+                                                    <?php
+                                                    $useLocation = \Illuminate\Support\Facades\DB::table('section_checks')
+                                                        ->where('section_checks.location_id','=',$location->id)
+                                                        ->count();
+                                                    ?>
                                                     <tr>
                                                         <td>{{ $location->name }}</td>
                                                         <td>{{ $location->latitude }}</td>
@@ -252,11 +287,17 @@
                                                             <a href="/teacher/manage/location/{{ $location->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข" style="float: left; padding-top: 18px;">
                                                                 <i class="fas fa-pencil-alt" style="font-size: 20px; color: #FF8574;"></i>
                                                             </a>
-                                                            <form method="POST" action="/teacher/manage/location/{{ $location->id }}/delete">
-                                                                @csrf
-                                                                <input name="_method" type="hidden" value="DELETE">
-                                                                <button class="btn" onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;"> <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ลบ" style="font-size: 20px; color: #818182;"></i></button>
-                                                            </form>
+                                                            @if($useLocation > 0)
+                                                                <button class="btn" disabled onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;">
+                                                                    <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ไม่สามารถลบได้" style="font-size: 20px; color: #818182; opacity: .5;"></i>
+                                                                </button>
+                                                            @else
+                                                                <form method="POST" action="/teacher/manage/location/{{ $location->id }}/delete">
+                                                                    @csrf
+                                                                    <input name="_method" type="hidden" value="DELETE">
+                                                                    <button class="btn" onclick="return confirm('Are you sure to delete?')" style="background-color: transparent;"> <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ลบ" style="font-size: 20px; color: #818182;"></i></button>
+                                                                </form>
+                                                            @endif
                                                             {{--<a href="#" class="ml-3" data-toggle="tooltip" data-placement="bottom" title="ลบ">--}}
                                                                 {{--<i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>--}}
                                                             {{--</a>--}}

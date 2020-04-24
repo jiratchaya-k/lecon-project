@@ -30,11 +30,11 @@
                 <div class="card-body container">
                     <div class="row">
                         <div class="col-md-8">
-                            <h5 style="padding-top: 10px; margin-bottom: 5px;">Assignment Sect. {{ $sections->section}}</h5>
+                            <h5><strong>เนื้อหา</strong> - กลุ่มเรียน {{ $sections->section}}</h5>
                             <span>{{ $sections->code.' '.$sections->name  }}</span>
                         </div>
                         <div class="col-md-4 text-right">
-                            <h4 style="color: #3956A3; padding-top: 10px;"></h4>
+                            <a href="javascript:history.back()" class="btn btn-submit mt-3" style="background: white; border: 2px solid #3956A3; color: #3956A3;  width: 150px;">ย้อนกลับ</a>
                         </div>
                     </div>
 
@@ -80,6 +80,25 @@
                             @else
 
                             @endif
+                        @if($lesson->user_id == \Illuminate\Support\Facades\Auth::id())
+                        <div class="row item-center mt-3">
+                            <div class="col-md-6 text-right">
+                                <a href="/teacher/subject/section/{{ $sections->sis_id }}/lesson/{{ $lesson->id }}/edit" class="btn btn-primary btn-dark" style="width: 200px; border-radius: 20px;">
+                                    แก้ไข
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <form method="POST" action="/teacher/subject/section/{{ $sections->sis_id }}/lesson/{{ $lesson->id }}/delete">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="btn btn-primary btn-danger" onclick="return confirm('Are you sure to delete?')" style="width: 200px; border-radius: 20px;"> <i class="fas fa-trash"></i> ลบ</button>
+                                </form>
+                                {{--<a href="#" class="btn btn-primary btn-danger" style="width: 200px;">--}}
+                                {{--delete--}}
+                                {{--</a>--}}
+                            </div>
+                        </div>
+                        @endif
 
                     </div>
                 </div>

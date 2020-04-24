@@ -30,8 +30,9 @@ class ManageController extends Controller
             $locations = DB::table('locations')
                 ->where('user_id',Auth::id())
                 ->where('status','=','active')
+//                ->orderBy('id','ASC')
                 ->select('*')->get();
-//            dd($years);
+//            dd($locations);
 
 //            dd(url()->previous());
             return view('teacher.manage',compact('years','sections','teachers','locations'));
@@ -130,6 +131,16 @@ class ManageController extends Controller
         return redirect('/teacher/manage');
 
     }
+
+    public function destroy_YearTerm($id)
+    {
+        //
+        $year = Year::find($id);
+        $year->status = 'inactive';
+        $year->save();
+        return redirect('/teacher/manage');
+    }
+
     public function edit_section($id){
 
         $section = DB::table('sections')->where('id',$id)->select('*')->first();
@@ -150,6 +161,15 @@ class ManageController extends Controller
 
 //        dd($request->all());
 
+        return redirect('/teacher/manage');
+    }
+
+    public function destroy_section($id)
+    {
+        //
+        $section = Section::find($id);
+        $section->status = 'inactive';
+        $section->save();
         return redirect('/teacher/manage');
     }
 

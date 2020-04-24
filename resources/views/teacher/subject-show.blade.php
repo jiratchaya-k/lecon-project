@@ -180,6 +180,7 @@
                                                         <h5 style="font-weight: bolder; margin-bottom: 5px;">{{ $post->topic }}</h5>
                                                         <h6 style="font-size: 14px; color: #818182; font-weight: normal; margin: 0;">{{ $post->description }}</h6>
                                                         {{--<div class="row">--}}
+                                                        @if($post->user_id == \Illuminate\Support\Facades\Auth::id())
                                                             <div class="col-md-6 col-xs-12 col-12" style="margin: 0 0 0 auto; text-align: center;">
                                                                 <a href="/teacher/subject/section/{{ $sections->sis_id }}/post/{{ $post->id }}/edit" data-toggle="tooltip" data-placement="bottom" title="แก้ไข" style="float: left; padding-top: 18px; margin-left: 50px;">
                                                                     <i class="fas fa-pencil-alt" style="font-size: 18px; color: #818182;"></i>
@@ -190,6 +191,10 @@
                                                                     <button class="btn ml-3" onclick="return confirm('Are you sure to delete?')" style="background-color: transparent; padding-left: 0; padding-right: 0;"> <i class="fas fa-trash-alt mt-2" data-toggle="tooltip" data-placement="bottom" title="ลบ" style="font-size: 18px; color: #818182;"></i></button>
                                                                 </form>
                                                             </div>
+                                                        @else
+                                                            <div class="mt-4">
+                                                            </div>
+                                                        @endif
                                                         {{--</div>--}}
 
                                                     </div>
