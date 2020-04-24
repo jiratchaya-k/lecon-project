@@ -156,10 +156,10 @@
                         <div class="form-group">
                             <div class="row input_student_wrap">
                                 <div class="col-md-6">
-                                    <input class="form-control f-input"  name="subject_student[]" type="text" list="teachers" style="float: left; width: 90%; height: 35px; margin-bottom: 10px" value="">
+                                    <input class="form-control f-input"  name="subject_student[]" type="text" list="students" style="float: left; width: 90%; height: 35px; margin-bottom: 10px" value="">
                                 </div>
                             </div>
-                            <datalist id="teachers">
+                            <datalist id="students">
                                 @if(count($allStudents)>0)
                                     @foreach($allStudents as $allStudent)
                                         <option value="{{ $allStudent->firstname.' '.$allStudent->lastname.' ('.$allStudent->email.')' }}" ></option>

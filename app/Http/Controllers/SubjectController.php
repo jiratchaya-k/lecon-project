@@ -389,7 +389,7 @@ class SubjectController extends Controller
         $teachers = $request->input('subject_teacher');
 
 
-        if (!empty($teachers)){
+        if (!empty($teachers) && $teachers[0] != null){
 
             for ($i=0;$i < count($teachers);$i++){
                 $start = "(";
@@ -422,7 +422,7 @@ class SubjectController extends Controller
 //        }
 //        else {
             $students = $request->input('subject_student');
-            if (!empty($students)){
+            if (!empty($students) && $students[0] != null){
                 for($i=0;$i < count($students);$i++){
                     $start = "(";
                     $end = ")";
@@ -618,6 +618,7 @@ class SubjectController extends Controller
         $post->description = $request->input('post_description');
         $post->user_id = Auth::id();
         $post->sis_id = $id;
+        $post->status = 'active';
         $post->save();
         return redirect('/teacher/subject/section/'.$id);
     }
@@ -653,6 +654,7 @@ class SubjectController extends Controller
         $lesson->file = json_encode($fileStore);
         $lesson->user_id = Auth::id();
         $lesson->sis_id = $id;
+        $lesson->status = 'active';
         $lesson->save();
         return redirect('/teacher/subject/section/'.$id);
     }
@@ -897,32 +899,37 @@ class SubjectController extends Controller
 
         $lesson_files = $request->file('lesson_file');
 
-        foreach ($lesson_files as $file) {
-            // get file with extension
-            $filenameWithExt = $file->getClientOriginalName();
+        if ($lesson_files != null){
+            foreach ($lesson_files as $file) {
+                // get file with extension
+                $filenameWithExt = $file->getClientOriginalName();
 
-            // get file name = 1
-            $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+                // get file name = 1
+                $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
 
-            // get extention = jpg
-            $extension = $file->getClientOriginalExtension();
+                // get extention = jpg
+                $extension = $file->getClientOriginalExtension();
 
-            // crete new file name = 1_1223322.jpg
-            $filenameToStore = date("YmdHis").'_'.$filename.'.'.$extension;
+                // crete new file name = 1_1223322.jpg
+                $filenameToStore = date("YmdHis").'_'.$filename.'.'.$extension;
 
-            // upload image
-            $file->move('uploads/LessonFiles/'.$id,$filenameToStore);
+                // upload image
+                $file->move('uploads/LessonFiles/'.$id,$filenameToStore);
 
-            $fileStore[] = $filenameToStore;
+                $fileStore[] = $filenameToStore;
 
+            }
         }
+
 
 //        dd($request->input('lesson_description'));
 
         $lesson = Lesson::find($id);
         $lesson->topic = $request->input('lesson_topic');
         $lesson->description = $request->input('lesson_description');
-        $lesson->file = json_encode($fileStore);
+        if ($lesson_files != null) {
+            $lesson->file = json_encode($fileStore);
+        }
         $lesson->save();
 
         return redirect('/teacher/subject/section/'.$sis_id.'/lesson='.$id);
@@ -996,7 +1003,6 @@ class SubjectController extends Controller
         $allTeachers = DB::table('users')->where('role',User::role_teacher)
             ->where('id','!=',Auth::id())->get();
         $allStudents = DB::table('users')->where('role',User::role_student)->get();
-//        dd($teachers,$students);
 
         if (Auth::check() && auth()->user()->role == User::role_teacher) {
 
@@ -1064,7 +1070,7 @@ class SubjectController extends Controller
                 $student_id = DB::table('users')->select('id')->where('email',$student_email)->first();
 
                 $haveStudent = DB::table('attend_sections')->where('sis_id',$id)
-                    ->where('user_id',$teacher_id->id)->count();
+                    ->where('user_id',$student_id->id)->count();
 
                 if ($haveStudent > 0) {
                     DB::table('attend_sections')

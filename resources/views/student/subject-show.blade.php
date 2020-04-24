@@ -72,7 +72,11 @@
                                         @endforeach
 
                                     @else
-                                        ไม่มีโพสต์
+                                        <div colspan="6" class="text-center" style="color: lightgray;">
+                                            <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 50px; opacity: .5;">
+                                            <br>
+                                            <span style="font-family: 'Prompt', sans-serif;">ไม่มีโพสต์</span>
+                                        </div>
                                     @endif
 
                                 </div>
@@ -97,7 +101,12 @@
                                         @endforeach
 
                                     @else
-                                        ไม่มีโพสต์
+
+                                        <div colspan="6" class="text-center" style="color: lightgray;">
+                                            <img src="/uploads/icons/icon-no-assignment.png" alt="" style="width: 50px; opacity: .5;">
+                                            <br>
+                                            <span style="font-family: 'Prompt', sans-serif;">ไม่มีเนื้อหา</span>
+                                        </div>
                                     @endif
                                 </div>
                             </div>

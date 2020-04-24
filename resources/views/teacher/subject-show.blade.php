@@ -172,7 +172,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <hr>
+                                        <hr style="margin-top: 0px;">
                                         @if(count($posts)>0)
                                             @foreach($posts as $post)
                                                 <div class="card" style="border: 2px solid #fafafa; border-radius: 20px; background-color: #d7d7df; margin-bottom: 10px;">
@@ -225,7 +225,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <hr>
+                                        <hr style="margin-top: 0px;">
                                         @if(count($lessons)>0)
                                             @foreach($lessons as $lesson)
                                                 <a href="/teacher/subject/section/{{$sections->sis_id}}/lesson={{ $lesson->id }}" class="lesson-box">
@@ -256,12 +256,10 @@
                                                 <h5 class="card-title" style="font-weight: bolder; float: left;">งานที่มอบหมาย</h5>
                                             </div>
                                             <div class="col">
-                                                <button class="text-right" id="myBtn-lesson" style="width: 100%; background: none; border: none">
-                                                    <i class="fas fa-edit" style="font-size: 16px; cursor: pointer;"></i>
-                                                </button>
+
                                             </div>
                                         </div>
-                                        <hr>
+                                        <hr style="margin-top: 0px;">
                                         @if(count($assignments)>0)
                                             @foreach($assignments as $assignment)
                                                 <a href="/teacher/assignment/{{ $assignment->id }}" class="lesson-box">

@@ -50,7 +50,7 @@ class LoginController extends Controller
         $urlBase = url()->to('/');
 
         // Set the previous url that we came from to redirect to after successful login but only if is internal
-        if(($urlPrevious != $urlBase . '/login') && (substr($urlPrevious, 0, strlen($urlBase)) === $urlBase)) {
+        if(($urlPrevious != $urlBase . '/login') && ($urlPrevious != $urlBase . '/sign-up') && ($urlPrevious != $urlBase . '/teacher/sign-up') && (substr($urlPrevious, 0, strlen($urlBase)) === $urlBase)) {
             session()->put('url.intended', $urlPrevious);
         }
 

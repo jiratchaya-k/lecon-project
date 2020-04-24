@@ -53,6 +53,8 @@ class ManageController extends Controller
         foreach ($sections as $sect){
             $section = new Section;
             $section->section = $sect;
+            $section->user_id = Auth::id();
+            $section->status = 'active';
             $section->save();
         }
 
@@ -72,6 +74,8 @@ class ManageController extends Controller
             $Tyear = new Year;
             $Tyear->year = $years[$x];
             $Tyear->term = $terms[$x];
+            $Tyear->user_id = Auth::id();
+            $Tyear->status = 'active';
             $Tyear->save();
         }
 //        foreach ($terms as $term){
