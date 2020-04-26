@@ -164,7 +164,14 @@
                             <input class="form-control f-input" name="assignment_file" type="file">
                         </div>
 
-
+                        <div class="form-group container">
+                            <label for="filename" class="control-label mt-2">ชื่อไฟล์งาน</label><button class="btn btn-default btn-add ml-2 add_button_filename">+ เพิ่ม</button>
+                            <div class="row input_filename_wrap mt-2">
+                                <div class="col-md-4">
+                                    <input class="form-control f-input"  name="assignment_filename[]" id="filename" type="text" style="width: 90%; height: 35px; margin-bottom: 10px; float: left">
+                                </div>
+                            </div>
+                        </div>
 
                         <br>
                         <div class="row">
@@ -357,6 +364,42 @@
 
     })
 </script>
+
+<script>
+    $(document).ready(function() {
+        var max_fields_filename      = 5; //maximum input boxes allowed
+        var max_fields_student      = 50; //maximum input boxes allowed
+        var wrapper_filename  		= $(".input_filename_wrap"); //Fields wrapper
+        var add_button_filename      = $(".add_button_filename"); //Add button Class
+        var wrapper_student   		= $(".input_student_wrap"); //Fields wrapper
+        var add_button_student      = $(".add_button_student"); //Add button Class
+
+        var filename = 1; //initlal text box count
+        var student = 1;
+
+        if ($(add_button_filename).click) {
+            $(add_button_filename).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(filename < max_fields_filename){ //max input box allowed
+                    filename++; //text box increment
+                    $(wrapper_filename).append('' +
+                        '<div class="col-md-4">' +
+                        '<input class="form-control f-input"  name="assignment_filename[]" type="text"' +
+                        'style="width: 90%; height: 35px; margin-bottom: 10px; float: left">' +
+                        '<a href="#" class="remove_filename ml-1 pt-1" style="float: left; margin-top: 4px;">X</a></div> '); //add input box
+                }
+            });
+
+            $(wrapper_filename).on("click",".remove_filename", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); teacher--;
+            })
+        }
+
+
+
+    });
+</script>
+
 </body>
 
 </html>

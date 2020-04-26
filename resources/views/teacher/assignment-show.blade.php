@@ -163,7 +163,13 @@
                             <div class="col-md-8">
                                 <h2 style="color: black">{{ $assignment->title }}</h2>
                                 <span style="font-size: 12px; color: #818182;">รายละเอียด</span><br>
-                                <span style="font-size: 16px; color: black;">{{ $assignment-> description }}</span>
+                                <span style="font-size: 16px; color: black;">
+                                    @if(!empty($assignment-> description))
+                                        {{ $assignment-> description }}
+                                    @else
+                                        -
+                                    @endif
+                                </span>
 
                                 <?php
                                 $filename = $assignment->file;
@@ -202,23 +208,34 @@
 
                                 @endif
 
-                                <h5 class="mt-4">Work Required</h5>
-                                <p>File Type :
+                                <h5 class="mt-3 font-weight-bold" style="color: #3956A3;">เงื่อนไขของงาน</h5>
+                                <p><span style="font-size: 12px; color: #818182;">ชื่อไฟล์</span><br>
+                                    @if(empty($assignment->filename))
+                                        ไม่กำหนด
+                                    @else
+                                        @foreach($filenames as $i=>$filename)
+                                            {{ $filename }}
+                                            @if($i != count($filenames)-1)
+                                                <br>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    <br><br>
+                                    <span style="font-size: 12px; color: #818182;">นามสกุลไฟล์</span><br>
                                     @if(empty($assignment->fileType))
-                                        None
+                                        ไม่กำหนด
                                     @else
                                         @foreach($fileType as $type)
                                             {{ $type.' ' }}
                                         @endforeach
                                     @endif
-                                    <br>
-                                    Dimentions :
-                                    @if( $assignment->dimensions == '')
-                                        None
+                                    <br><br>
+                                    <span style="font-size: 12px; color: #818182;">ขนาดของรูป (กว้าง x ยาว)</span><br>
+                                    @if( $assignment->dimensionsType == '')
+                                        ไม่กำหนด
                                     @else
                                         {{ $assignment->dimensions }} {{ $assignment->dimensionsType }}
                                     @endif
-
                                 </p>
                             </div>
                             <div class="col-md-4">
@@ -251,7 +268,7 @@
 
 
                         @if(count($allWorks) <= 0)
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-md-6 text-right">
                                     <a href="/teacher/assignment/{{ $assignment->id }}/edit" class="btn btn-primary btn-dark" style="width: 200px; border-radius: 20px;">
                                         แก้ไข

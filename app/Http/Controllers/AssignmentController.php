@@ -95,7 +95,8 @@ class AssignmentController extends Controller
 
         ]);
 
-//        dd($request->file('assignment_file'));
+
+//        dd($filenames);
 
 
         if ($request->file('assignment_file') != ''){
@@ -117,7 +118,7 @@ class AssignmentController extends Controller
             $filenameToStore = null;
         }
 
-
+        $filenames = json_encode($request->input('assignment_filename'));
 
 
 
@@ -177,6 +178,7 @@ class AssignmentController extends Controller
         $assignment->dueTime = $request->input('assignment_dueTime');
         $assignment->showGrade = 'hidden';
         $assignment->sis_id = $request->input('sis_id');
+        $assignment->filename = $filenames;
         $assignment->autoGrade_fileType = $autoGradeType;
         $assignment->autoGrade_dimensions = $autoGradeDimensions;
         $assignment->fileType = $inFileType;
@@ -263,6 +265,7 @@ class AssignmentController extends Controller
 //            dd(Search($value, $arr_workId));
 
             $fileType = json_decode($assignment->fileType);
+            $filenames = json_decode($assignment->filename);
 
 //            dd($assignment->showGrade);
 
@@ -274,8 +277,9 @@ class AssignmentController extends Controller
 
 //            dd($assignment->id);
 
-            return view('teacher.assignment-show',compact('assignment','sections','fileType','sections','allWorks','arr_workId','showGrade'));
+            return view('teacher.assignment-show',compact('assignment','sections','fileType','sections','allWorks','arr_workId','showGrade','filenames'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
+
 
             $assignmentWork = Work::all()->where('student_id',Auth::id())->where('assignment_id',$id)->first();
             $workFile = DB::table('files')->where('files.status','=','use')
@@ -293,6 +297,7 @@ class AssignmentController extends Controller
             }
 
             $fileType = json_decode($assignment->fileType);
+            $filenames = json_decode($assignment->filename);
 
 
             // change string of date,time(2019-12-05) to number of date,time (1575478800)
@@ -339,7 +344,7 @@ class AssignmentController extends Controller
 
 //            dd($assignmentWork);
 
-            return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections','grade'));
+            return view('student.assignment-show',compact('assignment','assignmentWork','sections','works','fileType','status','sections','grade','filenames'));
         }
         }else {
             return redirect('/login');
@@ -352,6 +357,7 @@ class AssignmentController extends Controller
         $assignment = DB::table('assignments')->where('id',$id)->first();
 
         $fileType = json_decode($assignment->fileType);
+        $filenames = json_decode($assignment->filename);
 
         $sections = DB::table('attend_sections')->where('attend_sections.user_id','=',Auth::id())
             ->join('sections_in_subjects as sis','sis.id', '=','attend_sections.sis_id')
@@ -372,7 +378,7 @@ class AssignmentController extends Controller
 
 //        dd($assignment->dueDate);
 
-        return view('teacher.assignment-edit',compact('assignment','fileType','width','height','sections'));
+        return view('teacher.assignment-edit',compact('assignment','fileType','width','height','sections','filenames'));
     }
 
     public function update(Request $request,$id){
@@ -398,7 +404,7 @@ class AssignmentController extends Controller
 
 
 
-
+        $filenames = json_encode($request->input('assignment_filename'));
 
         // auto grade
         if (($request->input('autoGrade-fileType') == '1') && ($request->input('autoGrade-dimensions') == '1')) {
@@ -455,6 +461,7 @@ class AssignmentController extends Controller
         $assignment->dueDate = $request->input('assignment_dueDate');
         $assignment->dueTime = $request->input('assignment_dueTime');
         $assignment->sis_id = $request->input('sis_id');
+        $assignment->filename = $filenames;
         $assignment->autoGrade_fileType = $autoGradeType;
         $assignment->autoGrade_dimensions = $autoGradeDimensions;
         $assignment->fileType = $inFileType;

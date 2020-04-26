@@ -2,282 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e12c524b-36f4-4472-8ee3-1e50059801c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ManageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ManageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SubjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SubjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022557_UXDy61_13590252_asm19_masterchefthaiseason3ep7&amp;ep8.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022557_fnpde60_13590252_n4_uimotion3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022630_UXDy61_13590252_asm19_masterchefthaiseason3ep7&amp;ep8.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022630_fnpde60_13590252_n4_uimotion3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022640_13590252_finalexam_a_JiratchayaKongmuang.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022640_fnpde60_13590252_n4_uimotion3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022843_fnpde60_13590252_n3_presentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022843_fnpde60_13590252_n4_uimotion3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022941_fnpde60_13590252_n3_presentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223022941_fnpde60_13590252_n4_uimotion3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023041_fnpde60_13590252_n3_presentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023041_fnpde60_13590252_n4_uimotion3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023107_fnpde60_13590252_n3_presentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023107_fnpde60_13590252_n4_uimotion3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023401_fnpde60_13590252_n3_presentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023401_fnpde60_13590252_n4_uimotion1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023415_fnpde60_13590252_n3_presentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223023415_fnpde60_13590252_n4_uimotion1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223024949_9c1712f73cb12e4db6457163f5d5d491.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223025009_9c1712f73cb12e4db6457163f5d5d491.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223025013_9c1712f73cb12e4db6457163f5d5d491.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223025022_6abd58f3198070a69798638d196a9183.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223222850_IMG_1736.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223222850_fnpde60_13590252_n3_presentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223223115_20180417-29516_11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200223223115_p62wmw8a9GG97xko702-o.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/LessonFiles/1/20200424175214_cg2sk01_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191203215114_13590252-artwork.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191203215246_13590252-artwork.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191203215922_13590252-artwork.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191203220343_13590252-artwork.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191203220417_13590252-artwork.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191204001158_artworkA1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191205140114_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191205140257_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191205155534_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191211002038_hs5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191211002130_hs5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191211013731_IMG_20160222_213538.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191211013902_DiS4gViV4AEEwnm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191211013943_DiS4gViV4AEEwnm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191211014012_dx1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191212150110_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191216130825_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20191218231114_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20200108141017_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20200127124918_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/assignmentFiles/20200314183608_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205002212_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205002441_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205002511_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205002626_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205002712_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205014138_cg2hw06_135902522.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205014218_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205014557_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205014734_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205014925_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205015012_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205015043_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205015118_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205015228_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205015635_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205015743_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205015949_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020038_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020158_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020232_cg2hw06_13590252_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020319_cg2hw06_13590252_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020338_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020552_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020605_cg2hw06_135902522.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020641_cg2hw06_135902522.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020651_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020730_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020753_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205020819_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205021040_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205021053_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205021505_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205021917_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205021937_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205022206_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205022439_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205022549_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205022623_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205022717_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205022827_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205022900_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205023030_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205023129_cg2hw07_135902526.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205023158_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205023215_cg2hw07_135902522.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205133119_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205133200_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191205155820_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191210153237_8k7Jkw4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191210160004_DiS4gViV4AEEwnm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191210160114_d2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191211011110_d2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191211225747_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191211225808_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212154531_cg2hw06_13590252_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212154613_cg2hw06_13590252_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212155247_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212160444_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212170022_cg2hw02_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212170022_cg2hw06_13590252_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212170311_cg2hw06_135902522.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191212170311_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191214004831_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191214004931_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191214005112_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191214005139_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191214005204_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191214005221_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191214005436_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215001219_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215001317_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215001413_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215001734_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215001734_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215002746_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215002803_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215005521_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215005812_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215005915_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215010222_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215010335_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215010433_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215010559_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215010616_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215012217_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215014025_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215014100_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215014824_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215014831_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215014833_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215014848_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215014929_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015045_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015102_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015150_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015317_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015323_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015421_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015537_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015544_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015640_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015659_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015822_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015829_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215015901_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020054_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020213_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020337_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020538_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020714_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020732_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020805_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020917_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215020930_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021050_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021151_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021252_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021308_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021329_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021452_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021505_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021627_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021747_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021754_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021818_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021924_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215021957_cg2hw07_13590252.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215022035_cg2hw07_13590252.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215022137_cg2hw07_13590252.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215022914_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215022929_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215022943_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191215023135_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191216131018_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191216131045_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218225543_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218225622_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218225655_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218230054_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218230210_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218230237_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218230301_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218230313_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218230616_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218230844_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218231136_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218231156_cg2hw02_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218231228_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218231228_cg2hw06_13590252_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218231305_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191218231305_cg2hw07_135902526.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221025830_cg2sk01_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030010_cg2sk01_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030027_cg2sk01_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030211_cg2hw04_13590252_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030223_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030506_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030522_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030532_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221030545_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221031110_cg2hw06_13590252_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221031216_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221034507_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221034507_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221132225_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221144332_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221144403_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221144626_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221144703_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20191221153025_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200107233011_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200108141214_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200108141214_cg2hw06_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200126024801_d1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200126024832_d1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200126024832_jollybaer.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127002736_cg2hw07_135902526.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127002817_cg2hw09_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127002912_cg2hw09_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127002940_cg2hw09_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127003033_cg2hw09_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127003105_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127003105_cg2hw09_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127003124_cg2hw05_13590252.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127003124_cg2hw09_13590252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127010007_cg2hw06_13590252_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127010007_cg2hw06_13590252_4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127125103_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200127125103_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200131141536_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200131141536_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200131141814_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200131141814_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201111818_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201112010_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201112039_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201112111_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201112147_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201154244_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201154416_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201154453_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201155128_cg2hw02_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200201155128_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200209222511_images.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200209222616_images.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200209222649_images.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200209223930_color.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200209224318_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200212144654_color.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200311183205_cg2hw04_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200311192510_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200314151418_cg2hw06_13590252_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200314183751_2-tree-png-image-download-picture-thumb.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200314183813_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200314183838_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200419152200_cg2hw01_13590252_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200425013656_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200425013656_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200425013750_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/workFiles/20200425013750_cg2hw06_13590252_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/subject-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/subject-show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/check.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/check.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/lesson-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/lesson-edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/subject-joinlist-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/subject-joinlist-show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/assignment-compare-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/assignment-compare-detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/assignment-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/assignment-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -305,78 +39,89 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubjectController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-comparegrade.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="928" column="54" selection-start-line="928" selection-start-column="54" selection-end-line="928" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="195" column="66" lean-forward="true" selection-start-line="195" selection-start-column="66" selection-end-line="195" selection-end-column="66" />
+            <state>
+              <caret line="134" column="90" selection-start-line="134" selection-start-column="90" selection-end-line="134" selection-end-column="90" />
               <folding>
-                <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/home.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WorkController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="205" column="30" lean-forward="true" selection-start-line="201" selection-start-column="24" selection-end-line="205" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/lesson-edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="277" column="102" selection-start-line="277" selection-start-column="102" selection-end-line="277" selection-end-column="102" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="262">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/teacher/check.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="240" column="42" lean-forward="true" selection-start-line="240" selection-start-column="42" selection-end-line="240" selection-end-column="42" />
+            <state relative-caret-position="190">
+              <caret line="386" column="23" selection-start-line="386" selection-start-column="23" selection-end-line="386" selection-end-column="23" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="110" column="66" selection-start-line="110" selection-start-column="66" selection-end-line="110" selection-end-column="66" />
+            <state relative-caret-position="222">
+              <caret line="166" column="36" lean-forward="true" selection-start-line="166" selection-start-column="36" selection-end-line="170" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CheckStudentController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3265">
-              <caret line="207" column="56" selection-start-line="207" selection-start-column="56" selection-end-line="207" selection-end-column="56" />
+            <state relative-caret-position="4862">
+              <caret line="470" column="71" selection-start-line="470" selection-start-column="71" selection-end-line="470" selection-end-column="71" />
               <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="367" selection-start-line="367" selection-end-line="400" selection-end-column="9" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4118">
+              <caret line="253" column="60" selection-start-line="253" selection-start-column="60" selection-end-line="253" selection-end-column="151" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -431,14 +176,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/student/subject-lesson-show.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/registerTeacher.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/appForLogin.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/assignment-grade.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
@@ -446,8 +188,6 @@
         <option value="$PROJECT_DIR$/resources/views/student/profile-edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/profile-change-password.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/profile-checkname.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
-        <option value="$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CheckStudentController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/profile.blade.php" />
@@ -455,7 +195,6 @@
         <option value="$PROJECT_DIR$/resources/views/teacher/profile-edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/student/check.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/post-edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/manage.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/assignment-show-file.blade.php" />
@@ -470,10 +209,7 @@
         <option value="$PROJECT_DIR$/resources/views/student/subject.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/section-add.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/check-qrcode.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ManageController.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/subject-joinlist-show.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
@@ -482,6 +218,15 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/SubjectController.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/check.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
+        <option value="$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-compare-detail.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkController.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/student/assignment-show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/assignment-edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php" />
       </list>
     </option>
   </component>
@@ -584,9 +329,9 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1677" />
-    <option name="y" value="-28" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1358" />
+    <option name="y" value="-8" />
     <option name="width" value="697" />
     <option name="height" value="775" />
   </component>
@@ -595,6 +340,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -681,6 +427,13 @@
             <path>
               <item name="lecon-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="lecon-project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="uploads" type="462c0819:PsiDirectoryNode" />
+              <item name="workFiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lecon-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lecon-project" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -740,7 +493,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -901,17 +653,20 @@
       <workItem from="1587658757979" duration="9945000" />
       <workItem from="1587715705670" duration="7894000" />
       <workItem from="1587738194951" duration="19999000" />
+      <workItem from="1587788231651" duration="2608000" />
+      <workItem from="1587896534700" duration="7662000" />
+      <workItem from="1587917642981" duration="11032000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="694987000" />
+    <option name="totallyTimeSpent" value="716289000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1382" height="784" extended-state="7" />
+    <frame x="1358" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23600605" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2473525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -959,40 +714,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Assignment.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/check-detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1211">
-          <caret line="109" column="34" lean-forward="true" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/profile-change-password.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="109" column="79" lean-forward="true" selection-start-line="109" selection-start-column="79" selection-end-line="109" selection-end-column="79" />
-          <folding>
-            <element signature="e#4815#4876#0#HTML" expanded="true" />
-            <element signature="e#4989#5050#0#HTML" expanded="true" />
-            <element signature="e#5757#5778#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/profile-edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="124" column="39" selection-start-line="124" selection-start-column="39" selection-end-line="124" selection-end-column="39" />
-          <folding>
-            <element signature="e#4815#4876#0#HTML" expanded="true" />
-            <element signature="e#4989#5050#0#HTML" expanded="true" />
-            <element signature="e#5757#5778#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -1000,24 +721,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LocationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="62" selection-start-line="62" selection-end-line="63" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/student/profile-checkname.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="105" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProfileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="280" column="17" selection-start-line="280" selection-start-column="17" selection-end-line="280" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1067,24 +774,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="231" column="41" lean-forward="true" selection-start-line="225" selection-start-column="36" selection-end-line="231" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/post-edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315">
           <caret line="158" column="23" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="278" column="24" selection-start-line="278" selection-start-column="24" selection-end-line="278" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1175,19 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="474" column="40" lean-forward="true" selection-start-line="474" selection-start-column="40" selection-end-line="474" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app-teacher.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
@@ -1239,19 +919,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="270" column="64" lean-forward="true" selection-start-line="266" selection-start-column="60" selection-end-line="270" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/section-add.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1269,40 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="187" column="56" lean-forward="true" selection-start-line="187" selection-start-column="56" selection-end-line="187" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/assignment-show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2522">
-          <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="279" />
-          <folding>
-            <element signature="e#10665#10705#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WorkController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="257" column="53" selection-start-line="257" selection-start-column="53" selection-end-line="257" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="287" lean-forward="true" selection-start-line="287" selection-end-line="287" />
-          <folding>
-            <element signature="e#40#59#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1334,59 +967,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/subject-show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="79" column="42" lean-forward="true" selection-start-line="79" selection-start-column="42" selection-end-line="79" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/lesson-edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="277" column="102" selection-start-line="277" selection-start-column="102" selection-end-line="277" selection-end-column="102" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubjectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="18260">
           <caret line="928" column="54" selection-start-line="928" selection-start-column="54" selection-end-line="928" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="205" column="30" lean-forward="true" selection-start-line="201" selection-start-column="24" selection-end-line="205" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="195" column="66" lean-forward="true" selection-start-line="195" selection-start-column="66" selection-end-line="195" selection-end-column="66" />
-          <folding>
-            <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="3900">
+          <caret line="195" column="66" selection-start-line="195" selection-start-column="66" selection-end-line="195" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4100">
+          <caret line="205" column="30" selection-start-line="201" selection-start-column="24" selection-end-line="205" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
+        <state relative-caret-position="2020">
           <caret line="110" column="66" selection-start-line="110" selection-start-column="66" selection-end-line="110" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CheckStudentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3265">
+        <state relative-caret-position="3980">
           <caret line="207" column="56" selection-start-line="207" selection-start-column="56" selection-end-line="207" selection-end-column="56" />
           <folding>
             <element signature="e#40#57#0#PHP" expanded="true" />
@@ -1397,10 +1008,152 @@
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/check.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
-          <caret line="240" column="42" lean-forward="true" selection-start-line="240" selection-start-column="42" selection-end-line="240" selection-end-column="42" />
+          <caret line="240" column="42" selection-start-line="240" selection-start-column="42" selection-end-line="240" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LocationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="287" selection-start-line="287" selection-end-line="287" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/student/profile-checkname-detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="221" column="49" selection-start-line="221" selection-start-column="49" selection-end-line="221" selection-end-column="49" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#13335#13360#0#HTML" expanded="true" />
+            <element signature="e#13463#13497#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/lesson-edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="277" column="102" selection-start-line="277" selection-start-column="102" selection-end-line="277" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-compare-detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8000">
+          <caret line="405" column="43" selection-start-line="405" selection-start-column="43" selection-end-line="405" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WorkController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="405" column="9" lean-forward="true" selection-start-line="354" selection-end-line="405" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="187" column="56" lean-forward="true" selection-start-line="187" selection-start-column="56" selection-end-line="187" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/student/subject-show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="41" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/student/assignment-show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="101" column="37" lean-forward="true" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+          <folding>
+            <element signature="e#6866#6924#0#HTML" expanded="true" />
+            <element signature="e#7420#7478#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="166" column="36" lean-forward="true" selection-start-line="166" selection-start-column="36" selection-end-line="170" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/subject-edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4118">
+          <caret line="253" column="60" selection-start-line="253" selection-start-column="60" selection-end-line="253" selection-end-column="151" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="367" selection-start-line="367" selection-end-line="400" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-comparegrade.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="134" column="90" selection-start-line="134" selection-start-column="90" selection-end-line="134" selection-end-column="90" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/assignment-edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4862">
+          <caret line="470" column="71" selection-start-line="470" selection-start-column="71" selection-end-line="470" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AssignmentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="386" column="23" selection-start-line="386" selection-start-column="23" selection-end-line="386" selection-end-column="23" />
+          <folding>
+            <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

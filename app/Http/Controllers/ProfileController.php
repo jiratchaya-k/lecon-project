@@ -286,6 +286,7 @@ class ProfileController extends Controller
 
         }
 
+
         if ($user->id == Auth::id()) {
             return view('student.profile-checkname-detail',compact('user','section','date','checks','count_checkdate','count_checked','count_late','count_leave','count_missed'));
         }else {

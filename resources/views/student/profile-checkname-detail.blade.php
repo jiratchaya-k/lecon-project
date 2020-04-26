@@ -209,9 +209,9 @@
                                                 @if(!empty($stdCheck))
                                                     @if( $stdCheck->status == 'checked')
                                                         <i class="fas fa-check-circle" style="color: #00ab6c; font-size: 18px;" data-toggle="tooltip" data-placement="bottom" title="เข้าเรียน"></i>
-                                                    @elseif ( $status == 'checked late')
-                                                        <i class="fas fa-check-circle" style="color: sandybrown; font-size: 18px;" data-toggle="tooltip" data-placement="bottom" title="เข้าสาน"></i>
-                                                    @elseif ( $status == 'leave')
+                                                    @elseif ( $stdCheck->status == 'checked late')
+                                                        <i class="fas fa-check-circle" style="color: sandybrown; font-size: 18px;" data-toggle="tooltip" data-placement="bottom" title="เข้าสาย"></i>
+                                                    @elseif ( $stdCheck->status == 'leave')
                                                         <i class="fas fa-exclamation-circle" style="color: #f3b600; font-size: 18px;" data-toggle="tooltip" data-placement="bottom" title="ลา"></i>
                                                     @endif
                                                 @elseif ($date < $check_date)

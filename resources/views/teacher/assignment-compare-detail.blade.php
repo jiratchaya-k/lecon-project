@@ -284,7 +284,7 @@
                                                     <div class="container">
                                                         <div class="row">
                                                             <h5 style="float: left; margin-top: 5px">เปรียบเทียบกับเกรด</h5>
-                                                            <select class="f-input ml-2" name="grade" style="width: 100px; height: 32px; padding-left: 10px;">
+                                                            <select class="f-input ml-2" name="grade2" style="width: 100px; height: 32px; padding-left: 10px;">
                                                                 <option value="">เลือกเกรด</option>
                                                                 <option value="A">A</option>
                                                                 <option value="B+">B+</option>
@@ -402,7 +402,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function ()
     {
-        jQuery('select[name="grade"]').on('change',function(){
+        jQuery('select[name="grade2"]').on('change',function(){
             var grade = jQuery(this).val();
             var asm_id = $('.asm_id').val();
             if(grade)
