@@ -346,9 +346,6 @@
                                                 <a href="/teacher/assignment/{{$assignment->title}}/index={{$arrayIndex}}/work={{ $work->id }}" class="btn btn-primary btn-dark bg-gradient box-shadow" style="border: none">
                                                     ให้เกรด
                                                 </a>
-                                                {{--<a href="#" class="ml-3">--}}
-                                                    {{--<i class="fas fa-trash-alt mt-2" style="font-size: 20px;"></i>--}}
-                                                {{--</a>--}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -373,7 +370,7 @@
                             <!-- Modal content -->
                             <div class="modal-content modal-content-img" style="height: 90%">
                                 <span class="close">&times;</span>
-                                {{--<div class="container" style="padding: 30px;">--}}
+
                                     @if($ext == 'pdf')
                                         <iframe src="/uploads/assignmentFiles/20191204001158_artworkA1.pdf" scrolling="no" style="height: 100%; border: none;">
                                             <p>Your browser does not support iframes.</p>
@@ -381,7 +378,7 @@
                                     @else
                                         <img class="item-center" src="/uploads/assignmentFiles/{{ $assignment->file }}"  alt="Card image cap" style="height: 100%; border: none; align-items: center;">
                                     @endif
-                                {{--</div>--}}
+
                                 </div>
                             </div>
                         </div>

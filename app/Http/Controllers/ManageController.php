@@ -28,7 +28,7 @@ class ManageController extends Controller
 //            $terms = DB::table('terms')->select('*')->orderBy('term','asc')->get();
             $teachers = DB::table('users')->select('*')->where('role',User::role_teacher)->orderBy('firstname','asc')->get();
             $locations = DB::table('locations')
-                ->where('user_id',Auth::id())
+//                ->where('user_id',Auth::id())
                 ->where('status','=','active')
 //                ->orderBy('id','ASC')
                 ->select('*')->get();

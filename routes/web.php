@@ -161,6 +161,7 @@ Route::get('teacher/assignment/{id}/workFiles={filename}', 'AssignmentController
 
 
 Route::get('/teacher/assignment/{id}', 'AssignmentController@show');
+Route::get('/teacher/assignment/{id}/student-list', 'AssignmentController@studentList_show');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}', 'AssignmentController@showWorkDetail');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/next', 'AssignmentController@nextWork');
 Route::get('/teacher/assignment/{title}/index={arr_index}/work={id}/previous', 'AssignmentController@previousWork');

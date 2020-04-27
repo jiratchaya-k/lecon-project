@@ -1000,6 +1000,8 @@ class SubjectController extends Controller
             ->where('attend_sections.status','=','active')
             ->select('users.id','users.firstname','users.lastname','users.email','users.student_id','users.profile_img')->get();
 
+
+
         $allTeachers = DB::table('users')->where('role',User::role_teacher)
             ->where('id','!=',Auth::id())->get();
         $allStudents = DB::table('users')->where('role',User::role_student)->get();

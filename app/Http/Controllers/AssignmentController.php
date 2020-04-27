@@ -250,7 +250,6 @@ class AssignmentController extends Controller
 
             $arr_workId = array();
 
-
             foreach ($arr_allWorks as $arr_work){
                 $arr_workId[] = $arr_work->id;
             }
@@ -728,6 +727,85 @@ class AssignmentController extends Controller
             return view('teacher.assignment-show-file',compact('assignment','sections','filename','ext','folder','works','files'));
         }else if (Auth::check() && auth()->user()->role == User::role_student) {
             return view('student.assignment-show-file',compact('assignment','sections','filename','ext','folder'));
+        }
+
+    }
+
+    public function studentList_show($id){
+
+        $assignment = Assignment::find($id);
+        $sis_id = $assignment->sis_id;
+//        dd($sis_id);
+
+        $sections = DB::table('sections_in_subjects as sis')->where('sis.id',$sis_id)
+            ->join('sections','sis.section_id','=','sections.id')
+            ->join('subjects','subjects.id','=','sis.subject_id')
+            ->select('sis.id as sis_id','sis.date','sis.startTime','sis.endTime','subjects.id','sections.section','subjects.code','subjects.name')->first();
+
+
+        switch( $sections->date ) {
+            case('Sunday') :
+                $date = 'อาทิตย์';
+                break;
+            case('Monday') :
+                $date = 'จันทร์';
+                break;
+            case('Tuesday') :
+                $date = 'อังคาร';
+                break;
+            case('Wednesday') :
+                $date = 'พุธ';
+                break;
+            case('Thursday') :
+                $date = 'พฤหัสบดี';
+                break;
+            case('Friday') :
+                $date = 'ศุกร์';
+                break;
+            case('Saturday') :
+                $date = 'เสาร์';
+                break;
+        }
+
+        $teachers = DB::table('sections_in_subjects as sis')->where('sis.id',$sis_id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_teacher)
+//            ->where('users.id','!=',Auth::id())
+            ->where('attend_sections.status','=','active')
+            ->select('users.id','users.firstname','users.lastname','users.email','users.profile_img')->get();
+
+        $students = DB::table('sections_in_subjects as sis')->where('sis.id',$sis_id)
+            ->join('attend_sections','attend_sections.sis_id','=','sis.id')
+            ->join('users','users.id','=','attend_sections.user_id')
+            ->where('users.role','=',User::role_student)
+            ->where('attend_sections.status','=','active')
+            ->orderBy('users.student_id')
+            ->select('users.id','users.firstname','users.lastname','users.email','users.student_id','users.profile_img')->get();
+
+        $allWorks = DB::table('works')->where('assignment_id',$id)
+            ->join('users','users.id','=','works.student_id')
+            ->select('*','works.id')->distinct('users.student_id')->orderBy('users.student_id')->get();
+
+
+
+        $std_notsend = array();
+
+        foreach ($students as $student){
+            foreach ($allWorks as $work){
+                if ($student->student_id != $work->student_id){
+                    $std_notsend[] = $student;
+                }
+            }
+        }
+
+
+        if (Auth::check() && auth()->user()->role == User::role_teacher) {
+
+            return view('teacher.assignment-student-list',compact('sections','assignment','date','teachers','students','allWorks','std_notsend'));
+        }else if (Auth::check() && auth()->user()->role == User::role_student) {
+
+            return redirect('/');
         }
 
     }
